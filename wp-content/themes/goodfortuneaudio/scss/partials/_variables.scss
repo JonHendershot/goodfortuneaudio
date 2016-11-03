@@ -1,0 +1,74 @@
+/*************************************
+  - - - - - - - FONT FACES - - - - - - 
+**************************************/
+
+
+/*************************************
+  - - - - - - COLOR PALETTE - - - - - 
+**************************************/
+$black : #2e2e2e;
+$altblack : #323232;
+$green : #8dc153;
+$darkgreen : #54693d;
+$transgreen : rgba(141,193,83,0.85);
+$accentgreen : rgba(161,213,103,0.27);
+$white : #ffffff;
+$offwhite : #f7f7f7;
+$dividercolor : #e1e1e1;
+$darkbody : #666666;
+$darkheader : #464646;
+$menubg : rgba(34,34,34,0.9);
+$bodytext : #606060;
+$metacolor : #acacac;
+$formcolor : #898989;
+$altmenuitem : rgba(133,195,93,0.4);
+
+/*************************************
+  - - - - - - MISC VARIALBES - - - - - 
+**************************************/
+$max-width : 1300px;
+
+/*************************************
+  - - - - - - - - MIXINS - - - - - - - 
+**************************************/
+@mixin flexbox($align,$justify){
+	display: flex;
+	display: -webkit-flex;
+	display: -moz-flex;
+	display: -ms-flex;
+	align-items: $align;
+	-webkit-align-items: $align;
+	justify-content: $justify;
+	-webkit-justify-content: $justify;
+}
+@mixin translate($Xvalue,$Yvalue,$Zvalue){
+	-webkit-transform: translate3d($Xvalue,$Yvalue,$Zvalue);
+	-moz-transform: translate3d($Xvalue,$Yvalue,$Zvalue);
+	-ms-transform: translate3d($Xvalue,$Yvalue,$Zvalue);
+	transform: translate3d($Xvalue,$Yvalue,$Zvalue);
+}
+@mixin rotate($deg) {
+	    -ms-transform: rotate($deg); /* IE 9 */
+    -webkit-transform: rotate($deg); /* Chrome, Safari, Opera */
+    -moz-transform: rotate($deg); /* Mozilla ? */
+    transform: rotate($deg);
+}
+@mixin transition($time,$for,$style){
+	transition: $time $for $style;
+	-webkit-transition: $time $for $style;
+	-moz-transition: $time $for $style;
+	-ms-transition: $time $for $style;
+	-o-transition: $time $for $style;
+}
+@mixin easeout($time){
+-webkit-transition: all $time cubic-bezier(0.375, 0.005, 0.000, 1.000); 
+   -moz-transition: all $time cubic-bezier(0.375, 0.005, 0.000, 1.000); 
+     -o-transition: all $time cubic-bezier(0.375, 0.005, 0.000, 1.000); 
+        transition: all $time cubic-bezier(0.375, 0.005, 0.000, 1.000); /* custom */
+}
+@mixin calc($property, $expression) { 
+  #{$property}: -o-calc(#{$expression}); 
+  #{$property}: -moz-calc(#{$expression}); 
+  #{$property}: -webkit-calc(#{$expression}); 
+  #{$property}: calc(#{$expression}); 
+} 
