@@ -1,27 +1,16 @@
 /*************************************
   - - - - - - - FONT FACES - - - - - - 
 **************************************/
-
+$heading-font: "Bebas Nue", sans-serif;
+$body-font: "Roboto", sans-serif;
 
 /*************************************
   - - - - - - COLOR PALETTE - - - - - 
 **************************************/
-$black : #2e2e2e;
-$altblack : #323232;
-$green : #8dc153;
-$darkgreen : #54693d;
-$transgreen : rgba(141,193,83,0.85);
-$accentgreen : rgba(161,213,103,0.27);
-$white : #ffffff;
-$offwhite : #f7f7f7;
-$dividercolor : #e1e1e1;
-$darkbody : #666666;
-$darkheader : #464646;
-$menubg : rgba(34,34,34,0.9);
-$bodytext : #606060;
-$metacolor : #acacac;
-$formcolor : #898989;
-$altmenuitem : rgba(133,195,93,0.4);
+$black: #000;
+$white: #fff;
+$dark_grey: #222629;
+$orange: #CA5D44;
 
 /*************************************
   - - - - - - MISC VARIALBES - - - - - 
@@ -71,4 +60,10 @@ $max-width : 1300px;
   #{$property}: -moz-calc(#{$expression}); 
   #{$property}: -webkit-calc(#{$expression}); 
   #{$property}: calc(#{$expression}); 
-} 
+}
+@mixin max-content($mproperty) {
+	#{$mproperty}: max-content;
+	#{$mproperty}: -webkit-max-content;
+	#{$mproperty}: -moz-max-content;
+	#{$mproperty}: -moz-fit-content;
+}

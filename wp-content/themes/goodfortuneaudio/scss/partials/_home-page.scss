@@ -1,0 +1,11 @@
+section {
+	height: 100vh;
+	@include flexbox(center,center);
+	background-color: $orange;
+	background-size: cover;
+	background-position: center center;
+	background-repeat: no-repeat;
+}
+.home-header, .gear {
+	background-color: $dark_grey;
+}

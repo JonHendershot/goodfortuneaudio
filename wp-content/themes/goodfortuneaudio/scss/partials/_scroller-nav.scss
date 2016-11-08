@@ -1,0 +1,63 @@
+$outer_bubble_size : 14px;
+$inner_bubble_size :  6px;
+.scroller-nav {
+
+	position: fixed;
+	top: 0;
+	bottom: 0;
+	margin: auto;
+	left: 25px;
+	@include max-content(height);
+	
+	.outer-circle {
+		height: $outer_bubble_size;
+		width: $outer_bubble_size;
+		@include calc(border-radius, $outer_bubble_size " * 0.5");
+		@include transition(0.3s,all,ease-in-out);			
+		background-color: rgba(255,255,255,0.20);
+		position: absolute;
+		top: 4px;
+		left: -4px;
+
+	}
+	.info {
+		color: $white;
+		margin-left: 10px;
+		font-family: $body-font;
+		text-transform: uppercase;
+		font-size: 8px;
+		letter-spacing: 6px;
+		font-weight: 100;
+		position: absolute;
+		top: 5px;
+		left: 10px;
+
+		@include transition(0.3s,all,ease-in-out);
+		
+		.section-num {
+			color: $orange;
+			@include transition(0.3s,all,ease-in-out);
+		}
+	}
+	
+	.nav-wrapper {
+
+		@include flexbox(center,center);
+		padding: 8px 0;
+		@include transition(0.3s, all, ease-in-out);
+		.circles {
+
+			@include flexbox(center,center);
+			flex-direction: column;
+				
+			.inner-circle {
+				height: $inner_bubble_size;
+				width: $inner_bubble_size;
+				@include calc(border-radius, $inner_bubble_size " * 0.5");
+				background-color: $white;
+			}
+		
+		}
+		
+	}
+}
