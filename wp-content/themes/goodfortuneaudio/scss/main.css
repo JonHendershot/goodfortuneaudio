@@ -38,7 +38,8 @@
     -moz-transition: 0.3s all ease-in-out;
     -ms-transition: 0.3s all ease-in-out;
     -o-transition: 0.3s all ease-in-out;
-    background-color: rgba(255, 255, 255, 0.2);
+    background-color: #fff;
+    opacity: 0.2;
     position: absolute;
     top: 4px;
     left: -4px; }
@@ -97,7 +98,29 @@
         border-radius: -moz-calc(6px  * 0.5);
         border-radius: -webkit-calc(6px  * 0.5);
         border-radius: calc(6px  * 0.5);
-        background-color: #fff; }
+        background-color: #fff;
+        transition: 0.3s all ease-in-out;
+        -webkit-transition: 0.3s all ease-in-out;
+        -moz-transition: 0.3s all ease-in-out;
+        -ms-transition: 0.3s all ease-in-out;
+        -o-transition: 0.3s all ease-in-out; }
+
+header .header-logo {
+  display: block;
+  position: fixed;
+  top: 75px;
+  right: 45px;
+  width: 175px; }
+  header .header-logo img {
+    max-width: 100%;
+    height: auto;
+    position: absolute;
+    top: 0;
+    right: 0; }
+  header .header-logo img.orange {
+    clip: rect(0px, auto, 20px, 0px); }
+  header .header-logo img.white {
+    clip: rect(20px, auto, auto, 0px); }
 
 /*************************************
   - - - - - - - PAGES - - - - - - - -
@@ -119,3 +142,6 @@ section {
 
 .home-header, .gear {
   background-color: #222629; }
+
+.contact {
+  background-color: #F6F6F6; }

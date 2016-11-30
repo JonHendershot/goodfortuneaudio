@@ -3,26 +3,26 @@
 /**
  * Theme Option Page Example
  */
-function plate_theme_menu()
+function GFA_theme_menu()
 {
-  add_theme_page( 'Theme Option', 'plate Options', 'manage_options', 'plate_theme_options.php', 'plate_theme_page');  
+  add_theme_page( 'Theme Option', 'GFA Options', 'manage_options', 'GFA_theme_options.php', 'GFA_theme_page');  
 }
-add_action('admin_menu', 'plate_theme_menu');
+add_action('admin_menu', 'GFA_theme_menu');
 
 /**
  * Callback function to the add_theme_page
  * Will display the theme options page
  */ 
-function plate_theme_page()
+function GFA_theme_page()
 {
 ?>
     <div class="section panel">
       <h1>Custom Theme Options</h1>
       <form method="post" enctype="multipart/form-data" action="options.php" id="admin-options">
         <?php 
-          settings_fields('plate_theme_options'); 
+          settings_fields('GFA_theme_options'); 
         
-          do_settings_sections('plate_theme_options.php');
+          do_settings_sections('GFA_theme_options.php');
         ?>
             <p class="submit">  
                 <input type="submit" class="button-primary" value="<?php _e('Save Changes') ?>" />  
@@ -37,47 +37,47 @@ function plate_theme_page()
 /**
  * Register the settings to use on the theme options page
  */
-add_action( 'admin_init', 'plate_register_settings' );
+add_action( 'admin_init', 'GFA_register_settings' );
 
 /**
  * Function to register the settings
  */
-function plate_register_settings()
+function GFA_register_settings()
 {
     // Register the settings with Validation callback
-    register_setting( 'plate_theme_options', 'plate_theme_options', 'plate_validate_settings' );
+    register_setting( 'GFA_theme_options', 'GFA_theme_options', 'GFA_validate_settings' );
 
     // Add settings section
-    add_settings_section( 'plate_contact_section', 'Contact Information', 'plate_display_section', 'plate_theme_options.php' );
-    add_settings_section( 'plate_text_section', 'Social Links', 'plate_display_section', 'plate_theme_options.php' );
+    add_settings_section( 'GFA_contact_section', 'Contact Information', 'GFA_display_section', 'GFA_theme_options.php' );
+    add_settings_section( 'GFA_text_section', 'Social Links', 'GFA_display_section', 'GFA_theme_options.php' );
 
     
     
     // Create About Title field for Footer
     $field_args = array(
       'type'      => 'text',
-      'id'        => 'plate_fabout_title',
-      'name'      => 'plate_fabout_title',
+      'id'        => 'GFA_fabout_title',
+      'name'      => 'GFA_fabout_title',
       'desc'      => 'Footer About Title',
       'std'       => '',
-      'label_for' => 'plate_fabout_title',
+      'label_for' => 'GFA_fabout_title',
       'class'     => 'css_class'
     );
 
-    add_settings_field( 'plate_fabout_title', 'Footer About Title', 'plate_display_setting', 'plate_theme_options.php', 'plate_contact_section', $field_args );
+    add_settings_field( 'GFA_fabout_title', 'Footer About Title', 'GFA_display_setting', 'GFA_theme_options.php', 'GFA_contact_section', $field_args );
     
      // Create About field for footer
     $field_args = array(
       'type'      => 'text',
-      'id'        => 'plate_fabout_text',
-      'name'      => 'plate_fabout_text',
+      'id'        => 'GFA_fabout_text',
+      'name'      => 'GFA_fabout_text',
       'desc'      => 'About paragraph for footer',
       'std'       => '',
-      'label_for' => 'plate_fabout_text',
+      'label_for' => 'GFA_fabout_text',
       'class'     => 'css_class'
     );
 
-    add_settings_field( 'plate_fabout_text', 'About Text', 'plate_display_setting', 'plate_theme_options.php', 'plate_contact_section', $field_args );
+    add_settings_field( 'GFA_fabout_text', 'About Text', 'GFA_display_setting', 'GFA_theme_options.php', 'GFA_contact_section', $field_args );
     
     // Create field for Know Your World Purchase Link
     $field_args = array(
@@ -90,7 +90,7 @@ function plate_register_settings()
       'class'     => 'css_class'
     );
 
-    add_settings_field( 'kyw_purchase', 'Know Your World Link', 'plate_display_setting', 'plate_theme_options.php', 'plate_contact_section', $field_args );
+    add_settings_field( 'kyw_purchase', 'Know Your World Link', 'GFA_display_setting', 'GFA_theme_options.php', 'GFA_contact_section', $field_args );
     
     // Create field for Know Your World Purchase text
     $field_args = array(
@@ -103,76 +103,76 @@ function plate_register_settings()
       'class'     => 'css_class'
     );
 
-    add_settings_field( 'kyw_purchase_text', 'Know Your World Purchase Text', 'plate_display_setting', 'plate_theme_options.php', 'plate_contact_section', $field_args );
+    add_settings_field( 'kyw_purchase_text', 'Know Your World Purchase Text', 'GFA_display_setting', 'GFA_theme_options.php', 'GFA_contact_section', $field_args );
 
     
     
     // Create textbox field
     $field_args = array(
       'type'      => 'text',
-      'id'        => 'plate_facebook',
-      'name'      => 'plate_facebook',
+      'id'        => 'GFA_facebook',
+      'name'      => 'GFA_facebook',
       'desc'      => 'Facebook Social Link',
       'std'       => '',
-      'label_for' => 'plate_facebook',
+      'label_for' => 'GFA_facebook',
       'class'     => 'css_class'
     );
 
-    add_settings_field( 'facebook_link', 'Facebook Link', 'plate_display_setting', 'plate_theme_options.php', 'plate_text_section', $field_args );
+    add_settings_field( 'facebook_link', 'Facebook Link', 'GFA_display_setting', 'GFA_theme_options.php', 'GFA_text_section', $field_args );
     
     // Create textbox field
     $field_args = array(
       'type'      => 'text',
-      'id'        => 'plate_instagram',
-      'name'      => 'plate_instagram',
+      'id'        => 'GFA_instagram',
+      'name'      => 'GFA_instagram',
       'desc'      => 'Instagram Link',
       'std'       => '',
-      'label_for' => 'plate_instagram',
+      'label_for' => 'GFA_instagram',
       'class'     => 'css_class'
     );
 
-    add_settings_field( 'insta_link', 'Instagram Link', 'plate_display_setting', 'plate_theme_options.php', 'plate_text_section', $field_args );
+    add_settings_field( 'insta_link', 'Instagram Link', 'GFA_display_setting', 'GFA_theme_options.php', 'GFA_text_section', $field_args );
     
     
     // Create textbox field
     $field_args = array(
       'type'      => 'text',
-      'id'        => 'plate_twitter',
-      'name'      => 'plate_twitter',
+      'id'        => 'GFA_twitter',
+      'name'      => 'GFA_twitter',
       'desc'      => 'twitter Social Link',
       'std'       => '',
-      'label_for' => 'plate_twitter',
+      'label_for' => 'GFA_twitter',
       'class'     => 'css_class'
     );
 
-    add_settings_field( 'twitter_link', 'twitter Link', 'plate_display_setting', 'plate_theme_options.php', 'plate_text_section', $field_args );
+    add_settings_field( 'twitter_link', 'twitter Link', 'GFA_display_setting', 'GFA_theme_options.php', 'GFA_text_section', $field_args );
     
     
 	// Search Header Image Upload
     $field_args = array(
       'type'      => 'text',
-      'id'        => 'plate_logo',
-      'name'      => 'plate_logo',
-      'desc'      => '<input data-category="plate_logo" class="left-float image-trigger" type="button" value="Upload Image"><p>Company Logo for Site Header</p>',
+      'id'        => 'GFA_logo',
+      'name'      => 'GFA_logo',
+      'desc'      => '<input data-category="GFA_logo" class="left-float image-trigger" type="button" value="Upload Image"><p>Company Logo for Site Header</p>',
       'std'       => '',
-      'label_for' => 'plate_logo',
-      'class'     => ' left-float header_image plate_logo'
+      'label_for' => 'GFA_logo',
+      'class'     => ' left-float header_image GFA_logo'
     );
 
-    add_settings_field( 'plate_logo', 'Header Logo', 'plate_display_setting', 'plate_theme_options.php', 'plate_text_section', $field_args );
+    add_settings_field( 'GFA_logo', 'Header Logo', 'GFA_display_setting', 'GFA_theme_options.php', 'GFA_text_section', $field_args );
     
-    // Know Your World Header Photo
+    // Alternate Header Logo Color
     $field_args = array(
       'type'      => 'text',
-      'id'        => 'know-your-world-header',
-      'name'      => 'know-your-world-header',
-      'desc'      => '<input data-category="kyw-header" class="left-float image-trigger" type="button" value="Upload Image"><p>Know Your World Archive Page Header</p>',
+      'id'        => 'GFA_logo_alt1',
+      'name'      => 'GFA_logo_alt1',
+      'desc'      => '<input data-category="gfa-alt" class="left-float image-trigger" type="button" value="Upload Image"><p>Alternate Header Logo</p>',
       'std'       => '',
       'label_for' => 'know-your-world-header',
-      'class'     => ' left-float header_image kyw-header'
+      'class'     => ' left-float header_image gfa-alt'
     );
 
-    add_settings_field( 'know-your-world-header', 'Know Your World Header Photo', 'plate_display_setting', 'plate_theme_options.php', 'plate_text_section', $field_args );
+    add_settings_field( 'GFA_logo_alt1', 'Header Logo - Alternate 1', 'GFA_display_setting', 'GFA_theme_options.php', 'GFA_text_section', $field_args );
     
         
     // Know Your World Header Logo
@@ -186,21 +186,21 @@ function plate_register_settings()
       'class'     => ' left-float header_image kyw-logo'
     );
 
-    add_settings_field( 'know-your-world-logo', 'Know Your World Header Logo', 'plate_display_setting', 'plate_theme_options.php', 'plate_text_section', $field_args );
+    add_settings_field( 'know-your-world-logo', 'Know Your World Header Logo', 'GFA_display_setting', 'GFA_theme_options.php', 'GFA_text_section', $field_args );
     
 
 // Footer Copyright
     $field_args = array(
       'type'      => 'text',
-      'id'        => 'plate_footer_copy',
-      'name'      => 'plate_footer_copy',
+      'id'        => 'GFA_footer_copy',
+      'name'      => 'GFA_footer_copy',
       'desc'      => 'Text for footer copyright',
       'std'       => '',
-      'label_for' => 'plate_footer_copy',
+      'label_for' => 'GFA_footer_copy',
       'class'     => 'css_class'
     );
 
-    add_settings_field( 'plate_footer_copy', 'Footer Copyright', 'plate_display_setting', 'plate_theme_options.php', 'plate_contact_section', $field_args );    
+    add_settings_field( 'GFA_footer_copy', 'Footer Copyright', 'GFA_display_setting', 'GFA_theme_options.php', 'GFA_contact_section', $field_args );    
   
 }
 
@@ -213,14 +213,14 @@ add_action('admin_enqueue_scripts', 'my_admin_scripts');
  
 function my_admin_scripts() {
         wp_enqueue_media();
-        wp_register_script('my-admin-js',get_template_directory_uri() . '/js/plate-admin.js', array('jquery'));
+        wp_register_script('my-admin-js',get_template_directory_uri() . '/js/GFA-admin.js', array('jquery'));
         wp_enqueue_script('my-admin-js');
 }
 
 /**
  * Function to add extra text to display on each section
  */
-function plate_display_section($section){ 
+function GFA_display_section($section){ 
 
 }
 
@@ -230,11 +230,11 @@ function plate_display_section($section){
  * In future you can add multiple types to be display from this function,
  * Such as checkboxes, select boxes, file upload boxes etc.
  */
-function plate_display_setting($args)
+function GFA_display_setting($args)
 {
     extract( $args );
 
-    $option_name = 'plate_theme_options';
+    $option_name = 'GFA_theme_options';
 
     $options = get_option( $option_name );
 
@@ -252,7 +252,7 @@ function plate_display_setting($args)
  * Callback function to the register_settings function will pass through an input variable
  * You can then validate the values and the return variable will be the values stored in the database.
  */
-function plate_validate_settings($input)
+function GFA_validate_settings($input)
 {
   foreach($input as $k => $v)
   {

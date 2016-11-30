@@ -5,7 +5,7 @@
 	</div>
 	<?php
 	
-		for($ii = 1; $ii <= 3; $ii++){
+		for($ii = 1; $ii <= 5; $ii++){
 		
 	?>
 		<div class="nav-wrapper <?php echo "nav-$ii"; if( $ii == 1 ){ echo ' active'; }?>" data-self='{"section_num" : <?php echo $ii; ?>}'>

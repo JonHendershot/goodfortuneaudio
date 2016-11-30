@@ -14,7 +14,8 @@ $inner_bubble_size :  6px;
 		width: $outer_bubble_size;
 		@include calc(border-radius, $outer_bubble_size " * 0.5");
 		@include transition(0.3s,all,ease-in-out);			
-		background-color: rgba(255,255,255,0.20);
+		background-color: $white;
+		opacity: 0.2;
 		position: absolute;
 		top: 4px;
 		left: -4px;
@@ -55,6 +56,7 @@ $inner_bubble_size :  6px;
 				width: $inner_bubble_size;
 				@include calc(border-radius, $inner_bubble_size " * 0.5");
 				background-color: $white;
+				@include transition(0.3s,all,ease-in-out);
 			}
 		
 		}
