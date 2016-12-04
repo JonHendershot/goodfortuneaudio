@@ -43,6 +43,12 @@ $max-width : 1300px;
     -moz-transform: rotate($deg); /* Mozilla ? */
     transform: rotate($deg);
 }
+@mixin transrotate($X,$Y,$Z,$degree){
+		-webkit-transform: translate3d($X,$Y,$Z) rotate($degree);
+	-moz-transform: translate3d($X,$Y,$Z) rotate($degree);
+	-ms-transform: translate3d($X,$Y,$Z) rotate($degree);
+	transform: translate3d($X,$Y,$Z) rotate($degree);
+}
 @mixin transition($time,$for,$style){
 	transition: $time $for $style;
 	-webkit-transition: $time $for $style;

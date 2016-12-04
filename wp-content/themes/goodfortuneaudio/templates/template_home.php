@@ -12,11 +12,16 @@
 	$dark_grey = "#222629";
 	$orange = "#CA5D44";
 ?>
+<?php get_template_part( 'template-parts/module_nav' );
+	  get_template_part( 'template-parts/module_scroll-hint' );
+	 ?>
 
 <section class="home-header trigger section-1 active" style="background-image: url(<?php echo $image; ?>)" data-self='{ "section_id" : 1, "section_title" : "Home", "menu_main_clr" : "<?php echo $white; ?>" , "menu_second_clr" : "<?php echo $orange; ?>", "logo_clr" : "white", "shade_trigger" : 0  }'>
-	<?php get_template_part( 'template-parts/module_nav' ); ?>
 </section>
 <section class="about trigger section-2" data-self='{ "section_id" : 2, "section_title" : "About", "menu_main_clr" : "<?php echo $white; ?>" , "menu_second_clr" : "<?php echo $dark_grey; ?>", "logo_clr" : "white", "shade_trigger" : 1 }'>
+	<video id="lazyParticle" height="100%" width="auto" autoplay loop data-url="<?php echo get_template_directory_uri() . '/video/looptest_mtd2-2040_23976fps.mp4'; ?>">
+			<source src="<?php echo get_template_directory_uri() . '/video/looptest_mtd2-2040_23976fps.mp4'; ?>" type="video/mp4">
+	</video>
 </section>
 <section class="gear trigger section-3" data-self='{ "section_id" : 3, "section_title" : "Gear", "menu_main_clr" : "<?php echo $white; ?>" , "menu_second_clr" : "<?php echo $orange; ?>", "logo_clr" : "white", "shade_trigger" : 0  }'>
 </section>

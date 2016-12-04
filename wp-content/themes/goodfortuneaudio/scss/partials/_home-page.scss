@@ -1,3 +1,69 @@
+// Scroll Hint 
+.scroll-hint-container {
+	position: fixed;
+	bottom: 30px;
+	left: 0;
+	right: 0;
+	margin: auto;
+	@include max-content(width);
+	@include flexbox(center,center);
+	z-index: 999;
+	
+	p {
+				font-family: $body-font;
+		text-transform: uppercase;
+		font-size: 8px;
+		letter-spacing: 6px;
+		font-weight: 100;
+		text-align: center;
+		color: $white;
+	}
+	
+	.hint-wrapper {
+		.hint-line {
+			width: 30px;
+			height: 1px;
+			background-color: $orange;
+			display: block;
+			position: absolute;
+			top: 0;
+			left: 0;
+			right: 0;
+			bottom: 0;
+			margin: auto;
+			@include easeout(600ms);	
+			z-index: 99999999;
+		}
+		$distance : 15px;
+		.line-1 {
+			@include transrotate($distance,-$distance,0,45deg);
+		}
+		.line-2 {
+			@include transrotate(-$distance,-$distance,0,-45deg);
+		}
+		.line-3 {
+			@include transrotate(-$distance,$distance,0,45deg);
+		}
+		.line-4 {
+			@include transrotate($distance,$distance,0,-45deg);
+		}
+	}
+}
+.scroll-hint-container:hover {
+			$hoverdistance: 11px;
+		.line-1 {
+			@include transrotate($hoverdistance,-$hoverdistance,0,45deg);
+		}
+		.line-2 {
+			@include transrotate(-$hoverdistance,-$hoverdistance,0,-45deg);
+		}
+		.line-3 {
+			@include transrotate(-$hoverdistance,$hoverdistance,0,45deg);
+		}
+		.line-4 {
+			@include transrotate($hoverdistance,$hoverdistance,0,-45deg);
+		}
+}
 section {
 	height: 100vh;
 	@include flexbox(center,center);
@@ -5,6 +71,17 @@ section {
 	background-size: cover;
 	background-position: center center;
 	background-repeat: no-repeat;
+	position: relative;
+	z-index: 9;
+	
+	video {
+		position: absolute;
+		top: 0;
+		left: 0;
+		mix-blend-mode: screen;
+		opacity: 0.55;
+		z-index: 1;
+	}
 }
 .home-header, .gear {
 	background-color: $dark_grey;

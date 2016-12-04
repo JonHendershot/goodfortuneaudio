@@ -75,7 +75,6 @@
 					if( shadeTrigger == 1 ){
 						$('.header-logo img.' + logoColor).css({"clip":"rect(21px,auto,auto,0px"}).removeClass('visible').addClass('hidden');
 						$('.header-logo img').not("." + logoColor).css({"clip":"rect(0px,auto,21px,0px"}).addClass('visible').removeClass('hidden');
-						console.log('event fired');	
 					}
 				}	
 		});

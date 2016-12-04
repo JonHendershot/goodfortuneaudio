@@ -8,6 +8,7 @@ $inner_bubble_size :  6px;
 	margin: auto;
 	left: 25px;
 	@include max-content(height);
+	z-index: 99999;
 	
 	.outer-circle {
 		height: $outer_bubble_size;
