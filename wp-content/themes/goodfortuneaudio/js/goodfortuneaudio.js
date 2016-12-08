@@ -28,7 +28,7 @@
 						var active = elemInfo.section_id - 1;
 					}
 					var outerPosition = 4 + (active - 1) * 22,
-						infoPosition =  5 + ( (active - 1) * 22),
+						infoPosition =  6.5 + ( (active - 1) * 22),
 						menu_main_clr = $('section.trigger.section-' + active).data('self').menu_main_clr,
 						menu_second_clr = $('section.trigger.section-' + active).data('self').menu_second_clr,
 						active_num = $('section.trigger.section-' + active).data('self').section_id,
@@ -81,3 +81,40 @@
 		
 	});
 }(jQuery));
+(function scrollerTest($){
+	$('html').on ('mousewheel', function (e) {
+	    var delta = e.originalEvent.wheelDelta;
+	
+	    if (delta < 0 && delta > -4.4) { // User is Scrolling Down
+	        var distance = delta + 14,
+	        	section = 100 - distance,
+	        	currentScreen = $('section.active').data('self').section_id;
+	        
+	        console.log(delta);
+
+			// logo animation
+	        $('.hint-line.line-1').css({'transform' : 'translate3d(0px, ' + distance + 'px, 0px)'});
+	        $('.hint-line.line-2').css({'transform' : 'translate3d(-'+ distance + 'px,0px, 0px) rotate(90deg)'});
+	        $('.hint-line.line-3').css({'transform' : 'translate3d(0px, -' + distance + 'px, 0px)'});
+	        $('.hint-line.line-4').css({'transform' : 'translate3d('+ distance + 'px,0px, 0px) rotate(90deg)'});
+	        
+	        // page transitions
+// 	        nextScreen(currentScreen);
+	
+	    } else if (delta > 0) { // User is Scrolling Up
+	        console.log(delta);
+	    }
+	});
+
+}(jQuery));
+
+function nextScreen(currentScreenID){
+	var $ = jQuery,
+		nsID = currentScreenID + 1,
+		nsData = $('.section-' + nsID).data('self');
+		
+	$('.section-' + currentScreenID).removeClass('active').addClass('top');
+	$('.section-' + nsID).addClass('active').removeClass('bottom');
+	
+	console.log('next screen fired');
+}

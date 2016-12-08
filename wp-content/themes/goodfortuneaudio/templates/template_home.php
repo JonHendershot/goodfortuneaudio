@@ -17,6 +17,15 @@
 	 ?>
 
 <section class="home-header trigger section-1 active" style="background-image: url(<?php echo $image; ?>)" data-self='{ "section_id" : 1, "section_title" : "Home", "menu_main_clr" : "<?php echo $white; ?>" , "menu_second_clr" : "<?php echo $orange; ?>", "logo_clr" : "white", "shade_trigger" : 0  }'>
+	<div class="content-wrapper">
+		<div class="tagline">
+			<h1>Disruptive</br>in all the right wavs</h1>
+			<img src="<?php echo get_template_directory_uri() . '/images/logo.png'; ?>" alt="Good Fortune Audio"/>
+		</div>
+		<a href="#" class="main-btn orange">
+			<span>view our project planner</span>
+		</a>
+	</div>
 </section>
 <section class="about trigger section-2" data-self='{ "section_id" : 2, "section_title" : "About", "menu_main_clr" : "<?php echo $white; ?>" , "menu_second_clr" : "<?php echo $dark_grey; ?>", "logo_clr" : "white", "shade_trigger" : 1 }'>
 	<video id="lazyParticle" height="100%" width="auto" autoplay loop data-url="<?php echo get_template_directory_uri() . '/video/looptest_mtd2-2040_23976fps.mp4'; ?>">

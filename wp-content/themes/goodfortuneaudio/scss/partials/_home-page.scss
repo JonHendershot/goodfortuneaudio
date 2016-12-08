@@ -1,4 +1,11 @@
 // Scroll Hint 
+
+// Setup variables for scroll hint box
+$lineWidth : 22px;
+$distance : 0.7 * $lineWidth;
+$hoverdistance : 0.5 * $lineWidth;
+
+// Apply styles
 .scroll-hint-container {
 	position: fixed;
 	bottom: 30px;
@@ -10,18 +17,26 @@
 	z-index: 999;
 	
 	p {
-				font-family: $body-font;
+		font-family: $body-font;
 		text-transform: uppercase;
-		font-size: 8px;
-		letter-spacing: 6px;
+		font-size: 6px;
+		letter-spacing: 7px;
 		font-weight: 100;
 		text-align: center;
 		color: $white;
+		line-height: 10px;
 	}
 	
 	.hint-wrapper {
+		@include rotate(45deg);
+		position: absolute;
+		top: 0;
+		bottom: 0;
+		left: 0;
+		right: 0;
+		margin: auto;
 		.hint-line {
-			width: 30px;
+			width: $lineWidth;
 			height: 1px;
 			background-color: $orange;
 			display: block;
@@ -34,58 +49,96 @@
 			@include easeout(600ms);	
 			z-index: 99999999;
 		}
-		$distance : 15px;
+		
 		.line-1 {
-			@include transrotate($distance,-$distance,0,45deg);
+			@include translate(0,$distance,0);
 		}
 		.line-2 {
-			@include transrotate(-$distance,-$distance,0,-45deg);
+			@include transrotate(-$distance,0,0,90deg);
 		}
 		.line-3 {
-			@include transrotate(-$distance,$distance,0,45deg);
+			@include translate(0,-$distance,0);
 		}
 		.line-4 {
-			@include transrotate($distance,$distance,0,-45deg);
+			@include transrotate($distance,0px,0,90deg);
 		}
 	}
 }
 .scroll-hint-container:hover {
-			$hoverdistance: 11px;
+	
 		.line-1 {
-			@include transrotate($hoverdistance,-$hoverdistance,0,45deg);
+			@include translate(0,$hoverdistance,0);
 		}
 		.line-2 {
-			@include transrotate(-$hoverdistance,-$hoverdistance,0,-45deg);
+			@include transrotate(-$hoverdistance,0,0,90deg);
 		}
 		.line-3 {
-			@include transrotate(-$hoverdistance,$hoverdistance,0,45deg);
+			@include translate(0,-$hoverdistance,0);
 		}
 		.line-4 {
-			@include transrotate($hoverdistance,$hoverdistance,0,-45deg);
+			@include transrotate($hoverdistance,0px,0,-90deg);
 		}
 }
+
+// Home Page
+/*
 section {
-	height: 100vh;
-	@include flexbox(center,center);
-	background-color: $orange;
-	background-size: cover;
-	background-position: center center;
-	background-repeat: no-repeat;
-	position: relative;
-	z-index: 9;
+	position: fixed;
+	width: 100%;
+}
+*/
+section.active {
+	@include translate(0,0,0);
+}
+section.bottom {
+	@include translate(0,100%,0);
+}
+section.top {
+	@include translate(0,-20%,0);
+}
+.home-header {
 	
-	video {
-		position: absolute;
-		top: 0;
-		left: 0;
-		mix-blend-mode: screen;
-		opacity: 0.55;
-		z-index: 1;
+	.content-wrapper {
+		position: relative;
+		text-align: center;
+		.tagline {
+			position: relative;
+			img {
+				position: absolute;
+				top: 0;
+				bottom: 0;
+				left: 0;
+				right: 0;
+				margin: auto;
+				width: 125px;
+			}
+			h1 {
+				font-family: $heading-font;
+				color: $white;
+				text-transform: uppercase;
+				font-size: 20px;
+				text-align: center;
+				font-weight: 400;
+				letter-spacing: 15px;
+				line-height: 1.2em;
+				padding-left: 15px;
+			}			
+		}
+		.main-btn {
+			display: inline-block;
+			margin-top: 50px;
+		}
 	}
+
+	
 }
-.home-header, .gear {
-	background-color: $dark_grey;
+
+/*
+section.about {
+	position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    transform: translate3d(0,100%,0);
 }
-.contact {
-	background-color: $offwhite;
-}
+*/

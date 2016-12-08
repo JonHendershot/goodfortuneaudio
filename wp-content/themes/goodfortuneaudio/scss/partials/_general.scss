@@ -1,0 +1,69 @@
+// General Styles
+section {
+	height: 100vh;
+	@include flexbox(center,center);
+	background-color: $orange;
+	background-size: cover;
+	background-position: center center;
+	background-repeat: no-repeat;
+	position: relative;
+	z-index: 9;
+	background-image: url('../images/grain_trans.png');
+	@include easeout(600ms);
+	overflow: hidden;
+	video {
+		position: absolute;
+		top: 0;
+		left: 0;
+		mix-blend-mode: screen;
+		opacity: 0.55;
+		z-index: 1;
+	}
+}
+.home-header, .gear {
+	background-color: $dark_grey;
+}
+.contact {
+	background-color: $offwhite;
+}
+
+.main-btn {
+	text-transform: uppercase;
+	color: $white;
+	text-decoration: none;
+	padding: 16px 26px 16px 30px;
+	font-size: 7px;
+	letter-spacing: 4px;
+	font-weight: 200;
+	position: relative;
+	overflow: hidden;
+// 	@include easeout(600ms);
+	span {
+		z-index: 999999;
+		position: relative;
+	}
+}
+.main-btn:after {
+	content: '';
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: $dark_grey;
+	z-index: 99;
+	@include translate(0,100%,0);
+	@include easeout(600ms);
+}
+.main-btn:hover:after {
+	@include translate(0,0,0);
+}
+.main-btn.orange {
+	background-color: $orange;
+}
+.main-btn.orange:after {
+	
+}
+.main-btn.blue {
+	background-color: $dark_grey;
+}
