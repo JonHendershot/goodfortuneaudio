@@ -29,21 +29,23 @@
 					}
 					var outerPosition = 4 + (active - 1) * 22,
 						infoPosition =  6.5 + ( (active - 1) * 22),
-						menu_main_clr = $('section.trigger.section-' + active).data('self').menu_main_clr,
-						menu_second_clr = $('section.trigger.section-' + active).data('self').menu_second_clr,
-						active_num = $('section.trigger.section-' + active).data('self').section_id,
-						active_title = $('section.trigger.section-' + active).data('self').section_title;
+						activeSection = $('section.trigger.section-' + active),
+						menuBubbleClr = activeSection.data('self').menu_bubble_clr,
+						menuNumberClr = activeSection.data('self').menu_number_clr,
+						menuSectionClr = activeSection.data('self').menu_section_name_clr,
+						active_num = activeSection.data('self').section_id,
+						active_title = activeSection.data('self').section_title;
 					
 					if( ! $('section.section-' + active).hasClass('active') ){ // scope the functions to only fire once
 						$('.nav-wrapper.active').removeClass('active');
 						$('.nav-wrapper.nav-' + active).addClass('active');
 						$('.outer-circle').css({"top":outerPosition});
-						$('.scroller-nav .info').css({"top":infoPosition, "color":menu_main_clr});
-						$('.section-num').css({"color":menu_second_clr}).text('0'+active_num);
+						$('.scroller-nav .info').css({"top":infoPosition}).find( $('.section-title') ).css({"color":menuSectionClr});
+						$('.section-num').css({"color":menuNumberClr}).text('0'+active_num);
 						$('.info .section-title').text('/'+active_title);
 						$('section.active').not('.section-' + active).removeClass('active');
 						$('.section-' + active).addClass('active');
-						$('.outer-circle, .inner-circle').css({"background-color":menu_main_clr});
+						$('.outer-circle, .inner-circle').css({"background-color":menuBubbleClr});
 					}	
 				}
 				

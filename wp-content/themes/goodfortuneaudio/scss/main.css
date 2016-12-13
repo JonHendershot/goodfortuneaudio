@@ -83,10 +83,10 @@ section {
   height: 100%;
   background-color: #222629;
   z-index: 99;
-  -webkit-transform: translate3d(0, 100%, 0);
-  -moz-transform: translate3d(0, 100%, 0);
-  -ms-transform: translate3d(0, 100%, 0);
-  transform: translate3d(0, 100%, 0);
+  -webkit-transform: translate3d(0, -100%, 0);
+  -moz-transform: translate3d(0, -100%, 0);
+  -ms-transform: translate3d(0, -100%, 0);
+  transform: translate3d(0, -100%, 0);
   -webkit-transition: all 600ms cubic-bezier(0.375, 0.005, 0, 1);
   -moz-transition: all 600ms cubic-bezier(0.375, 0.005, 0, 1);
   -o-transition: all 600ms cubic-bezier(0.375, 0.005, 0, 1);
@@ -94,10 +94,10 @@ section {
   /* custom */ }
 
 .main-btn:hover:after {
-  -webkit-transform: translate3d(0, 0, 0);
-  -moz-transform: translate3d(0, 0, 0);
-  -ms-transform: translate3d(0, 0, 0);
-  transform: translate3d(0, 0, 0); }
+  -webkit-transform: translate3d(0, -2px, 0);
+  -moz-transform: translate3d(0, -2px, 0);
+  -ms-transform: translate3d(0, -2px, 0);
+  transform: translate3d(0, -2px, 0); }
 
 .main-btn.orange {
   background-color: #CA5D44; }
@@ -350,14 +350,33 @@ section.top {
 section .content-wrapper {
   max-width: 70%; }
 
-section.home-header {
+section .background-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center center;
+  z-index: -1; }
+
+section.orange {
+  background-color: #CA5D44; }
+
+section.blue {
   background-color: #222629; }
-  section.home-header .content-wrapper {
+
+section.white {
+  background-color: #fff; }
+
+section.home {
+  background-color: #222629; }
+  section.home .content-wrapper {
     position: relative;
     text-align: center; }
-    section.home-header .content-wrapper .tagline {
+    section.home .content-wrapper .tagline {
       position: relative; }
-      section.home-header .content-wrapper .tagline img {
+      section.home .content-wrapper .tagline img {
         position: absolute;
         top: 0;
         bottom: 0;
@@ -365,7 +384,7 @@ section.home-header {
         right: 0;
         margin: auto;
         width: 125px; }
-      section.home-header .content-wrapper .tagline h1 {
+      section.home .content-wrapper .tagline h1 {
         font-family: "Bebas Neue", sans-serif;
         color: #fff;
         text-transform: uppercase;
@@ -375,34 +394,49 @@ section.home-header {
         letter-spacing: 15px;
         line-height: 1.2em;
         padding-left: 15px; }
-    section.home-header .content-wrapper .main-btn {
+    section.home .content-wrapper .main-btn {
       display: inline-block;
       margin-top: 50px; }
 
 section.about {
   background-color: #222629; }
   section.about .content-wrapper {
-    margin: 0 auto; }
-    section.about .content-wrapper .about-content {
-      width: 50%; }
-      section.about .content-wrapper .about-content h2 {
-        font-weight: 400; }
-      section.about .content-wrapper .about-content p {
-        font-size: 14px;
-        font-weight: 500;
-        line-height: 24px; }
-      section.about .content-wrapper .about-content .about-btns {
-        display: flex;
-        display: -webkit-flex;
-        display: -moz-flex;
-        display: -ms-flex;
-        align-items: center;
-        -webkit-align-items: center;
-        justify-content: space-between;
-        -webkit-justify-content: space-between;
-        margin-top: 40px; }
-        section.about .content-wrapper .about-content .about-btns a {
-          width: 45%;
-          text-align: center;
-          padding-left: 4px;
-          padding-right: 0; }
+    margin: 0 auto;
+    position: relative; }
+    section.about .content-wrapper img {
+      max-width: 100%;
+      box-shadow: 0px 6px 28px rgba(0, 0, 0, 0.5); }
+    section.about .content-wrapper .about-content-wrapper {
+      position: relative;
+      width: 90%;
+      margin: 0 auto; }
+      section.about .content-wrapper .about-content-wrapper .about-content {
+        width: 55%; }
+        section.about .content-wrapper .about-content-wrapper .about-content h2 {
+          font-weight: 400;
+          max-width: 65%;
+          margin-top: 45px; }
+        section.about .content-wrapper .about-content-wrapper .about-content p {
+          font-size: 14px;
+          font-weight: 500;
+          line-height: 24px; }
+        section.about .content-wrapper .about-content-wrapper .about-content .about-btns {
+          display: flex;
+          display: -webkit-flex;
+          display: -moz-flex;
+          display: -ms-flex;
+          align-items: center;
+          -webkit-align-items: center;
+          justify-content: space-between;
+          -webkit-justify-content: space-between;
+          margin-top: 40px; }
+          section.about .content-wrapper .about-content-wrapper .about-content .about-btns a {
+            width: 45%;
+            text-align: center;
+            padding-left: 4px;
+            padding-right: 0; }
+      section.about .content-wrapper .about-content-wrapper img.side-image {
+        width: 35%;
+        position: absolute;
+        bottom: -40px;
+        right: 0; }
