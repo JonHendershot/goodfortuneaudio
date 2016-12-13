@@ -96,7 +96,13 @@ section.bottom {
 section.top {
 	@include translate(0,-20%,0);
 }
-.home-header {
+section {
+	.content-wrapper {
+		max-width:70%;
+	}
+}
+section.home-header {
+	background-color: $dark_grey;
 	
 	.content-wrapper {
 		position: relative;
@@ -133,12 +139,34 @@ section.top {
 	
 }
 
-/*
 section.about {
-	position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    transform: translate3d(0,100%,0);
+	background-color: $dark_grey;
+	.content-wrapper {
+		margin: 0 auto;
+		
+		.about-content {
+			width: 50%;
+			
+			h2 {
+				font-weight: 400;
+			}
+			p {
+				font-size: 14px;
+				font-weight: 500;
+				line-height: 24px;
+			}
+			
+			.about-btns {
+				@include flexbox(center,space-between);
+				margin-top: 40px;
+				a {
+					width: 45%;
+					text-align: center;	
+					padding-left: 4px;
+					padding-right: 0;
+				}
+			}
+		}
+		
+	}
 }
-*/
