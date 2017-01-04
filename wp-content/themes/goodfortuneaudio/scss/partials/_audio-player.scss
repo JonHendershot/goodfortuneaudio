@@ -1,0 +1,75 @@
+.audio-player {
+	.default-bar {
+		height: 3px;
+		background-color: $gray;
+		width: 50%;
+		margin: 25px auto;
+		position: relative;
+		border-radius: 4px;
+		
+		.progress-bar {
+			height: 3px;
+			background-color: $orange;
+			width: 0%;
+			position: absolute;
+			top: 0;
+			left: 0;
+			border-radius: 4px;
+			@include translate(-100%,0,0);
+		}
+		.progress-bar:after {
+			content: "";
+			height: 8px;
+			width: 8px;
+			border-radius: 8px;
+			border: 1px solid $white;
+			background-color: $orange;
+			position: absolute;
+			top: 0;
+			bottom: 0;
+			margin: auto;
+			right: -4px;
+		}
+		
+		.current-time, .track-duration {
+			position: absolute;
+			top: 0;
+			bottom: 0;
+			font-size: 9px;
+			letter-spacing: 1px;
+		}
+		.current-time {
+			left: 0;
+			@include translate(-140%,-3.5px,0);
+		}
+		.track-duration {
+			right: 0;
+			@include translate(140%,-3.5px,0);
+		}
+	}
+	.buttons {
+		@include flexbox(center,space-between);
+		width: 20%;
+		margin: 0 auto;
+		.prev, .next, .play {
+			height: 40px;
+			width: 40px;
+			background-size: 35%;
+			background-position: center center;
+			background-repeat: no-repeat;
+			border-radius: 25px;
+			cursor: pointer;
+		}
+		.prev, .next {
+			background-image: url('../images/button_reverse.png');
+		}
+		.next, .play {
+			@include rotate(180deg);
+		}
+		.play {
+			background-image: url('../images/button_play.png');
+			border: 1px solid $orange;
+			background-position: 11px center;
+		}
+	}
+}
