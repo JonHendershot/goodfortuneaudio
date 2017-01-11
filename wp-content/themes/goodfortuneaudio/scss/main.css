@@ -658,3 +658,81 @@ section.about {
     -moz-transform: translate3d(0, -34vh, 0);
     -ms-transform: translate3d(0, -34vh, 0);
     transform: translate3d(0, -34vh, 0); }
+
+.blog-container {
+  width: 60%; }
+  .blog-container .searchform {
+    width: 100%; }
+    .blog-container .searchform input[type="search"] {
+      width: 100%;
+      background-color: transparent;
+      border: 1px solid transparent;
+      border-radius: 0;
+      border-bottom-color: #fff;
+      margin-bottom: 17px;
+      padding: 7px 0 12px 20px;
+      font-size: 12px; }
+    .blog-container .searchform input:focus {
+      outline: none; }
+    .blog-container .searchform label {
+      position: relative; }
+    .blog-container .searchform label:before {
+      content: "";
+      background-image: url(../images/search.png);
+      position: absolute;
+      top: 3.75px;
+      left: 0;
+      width: 12px;
+      display: block;
+      height: 12px;
+      background-position: center center;
+      background-size: contain;
+      background-repeat: no-repeat; }
+  .blog-container .blog-posts {
+    width: 100%;
+    height: 60vh;
+    box-shadow: 0px 6px 28px rgba(17, 17, 17, 0.5); }
+    .blog-container .blog-posts .blog-post {
+      width: 100%;
+      background-position: center center;
+      background-size: cover;
+      background-repeat: no-repeat;
+      height: 33.333%;
+      position: relative; }
+      .blog-container .blog-posts .blog-post .post-meta-container {
+        position: absolute;
+        bottom: 15px;
+        left: 15px;
+        opacity: 0;
+        z-index: 9;
+        transition: 0.3s all ease-in-out;
+        -webkit-transition: 0.3s all ease-in-out;
+        -moz-transition: 0.3s all ease-in-out;
+        -ms-transition: 0.3s all ease-in-out;
+        -o-transition: 0.3s all ease-in-out; }
+        .blog-container .blog-posts .blog-post .post-meta-container h2 {
+          margin: 0;
+          margin-bottom: -8px;
+          letter-spacing: 1px; }
+        .blog-container .blog-posts .blog-post .post-meta-container .post-meta {
+          font-size: 10px;
+          font-weight: 600;
+          letter-spacing: 1px;
+          margin: 0; }
+    .blog-container .blog-posts .blog-post:after {
+      content: "";
+      height: 100%;
+      width: 100%;
+      position: absolute;
+      z-index: 1;
+      background-image: linear-gradient(rgba(0, 0, 0, 0.9) 3%, rgba(30, 30, 30, 0.8) 60%);
+      opacity: 0;
+      transition: 0.3s all ease-in-out;
+      -webkit-transition: 0.3s all ease-in-out;
+      -moz-transition: 0.3s all ease-in-out;
+      -ms-transition: 0.3s all ease-in-out;
+      -o-transition: 0.3s all ease-in-out; }
+    .blog-container .blog-posts .blog-post:hover .post-meta-container {
+      opacity: 1; }
+    .blog-container .blog-posts .blog-post:hover:after {
+      opacity: 1; }

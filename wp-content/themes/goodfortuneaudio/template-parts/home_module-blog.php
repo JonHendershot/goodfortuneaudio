@@ -26,8 +26,10 @@ $query = new WP_Query( $args );
 		?>
 		<a href="<?php the_permalink(); ?>">
 			<div class="blog-post" style="background-image: url(<?php echo $image; ?>);">
-				<h2 class="post-title"><?php the_title(); ?></h2>
-				<span class="post-meta"><?php echo get_the_date(); ?></span>
+				<div class="post-meta-container">
+					<h2 class="post-title"><?php the_title(); ?></h2>
+					<span class="post-meta"><?php echo get_the_date(); ?></span>
+				</div>
 			</div>
 		</a>
 <!-- 		add hover overlay after		 -->
