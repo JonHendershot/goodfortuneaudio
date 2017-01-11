@@ -19,6 +19,7 @@
 // Pre-Loop Variables 
 	
 	$ii = 1;
+	$logo_eval;
 
 // Start Loop
 
@@ -37,7 +38,7 @@
 	$color_scheme = get_field('color_scheme');
 	$color_class = strtolower($color_scheme);
 	$module_handle = 'template-parts/home_module-' . $section_class . '.php';
-	$logo_eval;
+
 	
 	if($color_scheme == 'Orange'){
 		$menu_bubble_clr = $white;
