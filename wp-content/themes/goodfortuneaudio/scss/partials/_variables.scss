@@ -65,6 +65,13 @@ $home-width : 60%;
      -o-transition: all $time cubic-bezier(0.375, 0.005, 0.000, 1.000); 
         transition: all $time cubic-bezier(0.375, 0.005, 0.000, 1.000); /* custom */
 }
+@mixin blur($blur){
+	-webkit-filter: blur($blur);
+	-moz-filter: blur($blur);
+	-ms-filter: blur($blur);
+	-o-filter: blur($blur);
+	filter: blur($blur);
+}
 @mixin calc($property, $expression) { 
   #{$property}: -o-calc(#{$expression}); 
   #{$property}: -moz-calc(#{$expression}); 
@@ -76,4 +83,10 @@ $home-width : 60%;
 	#{$mproperty}: -webkit-max-content;
 	#{$mproperty}: -moz-max-content;
 	#{$mproperty}: -moz-fit-content;
+}
+@mixin placeholder {
+  &::-webkit-input-placeholder {@content}
+  &:-moz-placeholder           {@content}
+  &::-moz-placeholder          {@content}
+  &:-ms-input-placeholder      {@content}  
 }

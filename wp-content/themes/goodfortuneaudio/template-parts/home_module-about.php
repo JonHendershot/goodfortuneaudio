@@ -17,10 +17,10 @@
 				<h2><?php echo $content_heading; ?></h2>
 				<p><?php echo $body_content; ?></p>
 				<div class="about-btns">
-					<a href="#" class="main-btn orange lightbox-trigger" data-trigger-id="gear">
+					<div class="main-btn orange lightbox-trigger" data-trigger-id="gear">
 						<span><?php echo $gear_btn; ?>
 						</span>
-					</a>
+					</div>
 					<a href="#" class="main-btn orange">
 						<span>
 						<?php echo $contact_btn; ?>
@@ -30,4 +30,8 @@
 			</div>
 		<img src="<?php echo $side_img; ?>" class="side-image" />
 	</div>
+	
+</div>
+<div class="accordion gear-container lightbox gear" id="gear-accordion">
+	<?php get_template_part( 'template-parts/module_gear-accordion' ); ?>
 </div>

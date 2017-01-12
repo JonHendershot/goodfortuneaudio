@@ -109,6 +109,28 @@
 	});
 
 }(jQuery));
+(function lightbox($){
+	$('.lightbox-trigger').click(function(){
+		var lightbox = $(this).attr('data-trigger-id');
+		
+		if( ! $('.lightbox').hasClass('open')){
+			if(lightbox = 'gear'){
+				
+				setTimeout(function(){
+					$('.lightbox.' + lightbox).addClass('visible open');			
+				}, 300);
+				$('.section-about .content-wrapper').addClass('blur');
+			}
+		}
+	});
+	
+	$('.content-wrapper').click(function(){
+		if($('.lightbox').hasClass('open')){
+			$('.lightbox').removeClass('open visible');
+			$(this).removeClass('blur');
+		}
+	});
+}(jQuery));
 
 function nextScreen(currentScreenID){
 	var $ = jQuery,
@@ -120,3 +142,11 @@ function nextScreen(currentScreenID){
 	
 	console.log('next screen fired');
 }
+
+jQuery(document).ready(function($) {
+	$( "#gear-accordion" ).accordion({
+		collapsible: true,
+		heightStyle: "content",
+		animate: {'duration':300}
+	});
+});

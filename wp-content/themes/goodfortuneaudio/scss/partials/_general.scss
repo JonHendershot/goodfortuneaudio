@@ -46,6 +46,7 @@ section {
 	position: relative;
 	overflow: hidden;
 	font-weight: 500;
+	cursor: pointer;
 // 	@include easeout(600ms);
 	span {
 		z-index: 999999;
