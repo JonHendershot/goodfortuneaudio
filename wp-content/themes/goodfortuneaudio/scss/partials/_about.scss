@@ -5,7 +5,8 @@ section.about {
 		margin: 0 auto;
 		position: relative;
 		@include blur(0px);
-		@include easeout(500ms);
+		@include easeout(200ms);
+		@include translate(0,0,0); // force hardware accelleration on able machines
 		img {
 			max-width: 100%;
 			box-shadow: 0px 6px 28px rgba(0,0,0,.5);
@@ -70,7 +71,7 @@ section.about {
 		box-shadow: 0px 6px 28px rgba(0,0,0,0.65);
 		@include max-content(height);
 		visibility: hidden;
-		transition-delay: 500ms;
+// 		transition-delay: 500ms;
 		opacity: 0;
 		@include translate(0,-50px,0);
 		@include easeout(800ms);

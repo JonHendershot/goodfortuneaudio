@@ -2,6 +2,7 @@
 	width: 62%;
 	margin: 0 auto;
 	position: relative;
+
 	
 	.image-container {
 		width: 100%;
@@ -36,11 +37,10 @@
 		top: 0;
 		left: 0;
 		background-image: linear-gradient(rgba(0,0,0,0.94) 3%, rgba(81,81,81,0.29) 60%);
+		opacity: 0.2;
+		@include easeout(800ms);
 	}
-	.project-meta {
-		display: none;
-		
-	}
+
 	.project-wrapper {
 		z-index: 99;
 		position: absolute;
@@ -50,6 +50,7 @@
 		bottom: 0;
 		margin: auto;
 		@include max-content(height);
+		visibility: hidden;
 		
 		h2 {
 			text-align: center;
@@ -67,57 +68,76 @@
 			@include max-content(height);
 			@include easeout(800ms);
 		}
-		.project-content {
-			@include translate(0,100px,0);
-			@include easeout(800ms);
-			opacity: 0;
-		}
+
 	}
-	.project-wrapper.active:hover {
-		.project-content {
-			@include translate(0,50px,0);
-			opacity: 1;
-		}
-		h2 {
-			@include translate(0,-100px,0);
-		}
-	}
-	
 	.project-wrapper.active {
+		visibility: visible;
 		h2 {
 			opacity: 1;
-		}
-		.project-meta {
-			@include flexbox(center, space-between);
-			max-width: 60%;
-			margin: 0 auto;
-			.divider {
-				height: 1px;
-				background-color: $white;
-				width: 20px;
-				margin: 12px auto;
-			}
-			h3 {
-				letter-spacing: 15px;
-				padding-left: 15px;
-				text-align: center;
-				margin: 0;
-				font-weight: 100;
-			}
-			.meta {
-				letter-spacing: 6px;
-				padding-left: 6px;
-				text-align: center;
-				font-weight: 200;
-				font-size: 12px;
-			}
 		}
 	}
 	.project-wrapper.next {
+		visibility: visible;
 		@include translate(0,34vh,0);
 		
 	}
 	.project-wrapper.last {
+		visibility: visible;
 		@include translate(0,-34vh,0);
+	}
+}
+
+
+
+		
+.project-content {
+	@include translate(0,-30px,0);
+	@include easeout(800ms);
+	opacity: 0;
+	position: absolute;
+	width: 100%;
+	z-index: 9999999;
+	visibility: hidden;
+	bottom: 0;
+	.project-meta {
+		@include flexbox(center, space-between);
+		max-width: 60%;
+		margin: 0 auto;
+		.divider {
+			height: 1px;
+			background-color: $white;
+			width: 20px;
+			margin: 12px auto;
+		}
+		h3 {
+			letter-spacing: 15px;
+			padding-left: 15px;
+			text-align: center;
+			margin: 0;
+			font-weight: 100;
+		}
+		.meta {
+			letter-spacing: 6px;
+			padding-left: 6px;
+			text-align: center;
+			font-weight: 200;
+			font-size: 12px;
+		}
+	}
+}
+.project-box.open, .project-box.playing {
+	.project-content {
+		@include translate(0,-100px,0);
+		visibility: visible;
+		opacity: 1;
+	}
+}
+.project-box.open:after,.project-box.playing:after{
+	opacity: 1;
+} 
+.project-wrapper.active.open, .project-wrapper.active.playing  {
+		
+	h2 {
+		@include translate(0,-100px,0);
 	}
 }

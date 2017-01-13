@@ -118,7 +118,7 @@
 				
 				setTimeout(function(){
 					$('.lightbox.' + lightbox).addClass('visible open');			
-				}, 300);
+				}, 0);
 				$('.section-about .content-wrapper').addClass('blur');
 			}
 		}
@@ -130,6 +130,57 @@
 			$(this).removeClass('blur');
 		}
 	});
+}(jQuery));
+(function projects($){
+	
+	
+	// Hover Event
+		$('.project-box').hover(function(){
+			$('.project-box, .project-wrapper.active').addClass('open');
+		},function(){
+			$('.project-box, .project-wrapper.active').removeClass('open');
+		});
+		
+	// Play/Pause Audio
+		var audioTrack = document.getElementById('project-player'),
+			playBtn = $('.buttons .play');
+
+		playBtn.click(function(){
+			if(!audioTrack.paused && !audioTrack.ended){
+				// Pause Audio
+				audioTrack.pause();
+				
+				// Update Classes
+				$('.project-box, .project-wrapper.active').removeClass('playing');
+				playBtn.removeClass('pause');
+			}else{
+				// Play Audio
+				audioTrack.play();
+				
+				// Update Classes
+				$('.project-box, .project-wrapper.active').addClass('playing');
+				playBtn.addClass('pause');
+				
+				alert(audioTrack.duration);
+			}
+		});	
+
+	// Duration
+		
+	
+		var duration = $('#track-duration'),
+			currentTime = $('#current-time');
+
+		duration.text(audioTrack.duration);
+		alert(audioTrack.duration);
+	
+			
+
+			
+		
+		
+		
+	
 }(jQuery));
 
 function nextScreen(currentScreenID){
