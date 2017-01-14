@@ -223,7 +223,8 @@ header .header-logo {
   width: 50%;
   margin: 25px auto;
   position: relative;
-  border-radius: 4px; }
+  border-radius: 4px;
+  cursor: pointer; }
   .audio-player .default-bar .progress-bar {
     height: 3px;
     background-color: #CA5D44;
@@ -232,10 +233,11 @@ header .header-logo {
     top: 0;
     left: 0;
     border-radius: 4px;
-    -webkit-transform: translate3d(-100%, 0, 0);
-    -moz-transform: translate3d(-100%, 0, 0);
-    -ms-transform: translate3d(-100%, 0, 0);
-    transform: translate3d(-100%, 0, 0); }
+    -webkit-transition: all 500ms cubic-bezier(0.375, 0.005, 0, 1);
+    -moz-transition: all 500ms cubic-bezier(0.375, 0.005, 0, 1);
+    -o-transition: all 500ms cubic-bezier(0.375, 0.005, 0, 1);
+    transition: all 500ms cubic-bezier(0.375, 0.005, 0, 1);
+    /* custom */ }
   .audio-player .default-bar .progress-bar:after {
     content: "";
     height: 8px;

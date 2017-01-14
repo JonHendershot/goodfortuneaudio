@@ -6,6 +6,7 @@
 		margin: 25px auto;
 		position: relative;
 		border-radius: 4px;
+		cursor: pointer;
 		
 		.progress-bar {
 			height: 3px;
@@ -15,7 +16,8 @@
 			top: 0;
 			left: 0;
 			border-radius: 4px;
-			@include translate(-100%,0,0);
+// 			@include translate(-100%,0,0);
+			@include easeout(500ms);
 		}
 		.progress-bar:after {
 			content: "";

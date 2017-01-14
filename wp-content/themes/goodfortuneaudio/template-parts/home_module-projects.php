@@ -36,12 +36,12 @@
 							</div>
 						</div>
 						<div class="audio-player-container">
-							<audio id="project-player" controls>
+							<audio id="project-player">
 							  <source src="<?php echo $song_file; ?>" type="audio/mp3" />
 							Your browser does not support the audio element.
 							</audio>
 							<div class="audio-player">
-								<div class="default-bar">
+								<div class="default-bar" id="default-bar">
 									<div class="progress-bar"></div>
 									<span class="current-time" id="current-time">0:00</span>
 									<span class="track-duration" id="track-duration">0:00</span>

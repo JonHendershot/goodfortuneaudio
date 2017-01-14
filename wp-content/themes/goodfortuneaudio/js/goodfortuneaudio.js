@@ -92,7 +92,7 @@
 	        	section = 100 - distance,
 	        	currentScreen = $('section.active').data('self').section_id;
 	        
-	        console.log(delta);
+/* 	        console.log(delta); */
 
 			// logo animation
 	        $('.hint-line.line-1').css({'transform' : 'translate3d(0px, ' + distance + 'px, 0px)'});
@@ -104,7 +104,7 @@
 // 	        nextScreen(currentScreen);
 	
 	    } else if (delta > 0) { // User is Scrolling Up
-	        console.log(delta);
+/* 	        console.log(delta); */
 	    }
 	});
 
@@ -141,9 +141,19 @@
 			$('.project-box, .project-wrapper.active').removeClass('open');
 		});
 		
-	// Play/Pause Audio
+		
+	// AUDIO TRACK HANDLES 	
+	
+	// Variables
 		var audioTrack = document.getElementById('project-player'),
-			playBtn = $('.buttons .play');
+			playBtn = $('.buttons .play'),
+			progressBar = $('.progress-bar'),
+			bar = document.getElementById('default-bar'),
+			barSize = 520;
+			
+			
+	// Play/Pause Audio
+		
 
 		playBtn.click(function(){
 			if(!audioTrack.paused && !audioTrack.ended){
@@ -153,6 +163,9 @@
 				// Update Classes
 				$('.project-box, .project-wrapper.active').removeClass('playing');
 				playBtn.removeClass('pause');
+				
+				// Pause Timer Update
+				window.clearInterval(updateTime);
 			}else{
 				// Play Audio
 				audioTrack.play();
@@ -161,20 +174,70 @@
 				$('.project-box, .project-wrapper.active').addClass('playing');
 				playBtn.addClass('pause');
 				
-				alert(audioTrack.duration);
+				// Update Current Time
+				updateTime = setInterval(update, 500);
 			}
 		});	
+		
+	// Update player on bar click
+		bar.addEventListener('click',clickedBar,false);
 
 	// Duration
-		
-	
+			
 		var duration = $('#track-duration'),
 			currentTime = $('#current-time');
 
-		duration.text(audioTrack.duration);
-		alert(audioTrack.duration);
-	
+		audioTrack.onloadedmetadata = function(){ // fire when metadata for track is loaded
 			
+			// Grab minutes and seconds of full time from track
+			var trackMinutes = parseInt(audioTrack.duration/60),
+				trackSeconds = parseInt(audioTrack.duration%60);
+			
+			// Add full duration to duration element
+			duration.text(trackMinutes + ':' + trackSeconds);
+		}
+	
+	// Update Player
+		function update(){
+			if(!audioTrack.ended){
+				// Current Time
+				var playedMinutes = parseInt(audioTrack.currentTime/60),
+					playedSecondsRaw = parseInt(audioTrack.currentTime%60);
+				
+				// Add zero to seconds if less than 10
+					if(playedSecondsRaw < 10){
+						var playedSeconds = '0' + playedSecondsRaw;
+					}else {
+						var playedSeconds = playedSecondsRaw;
+					}
+				
+				currentTime.text(playedMinutes + ':' + playedSeconds);
+				
+				// Progress Bar
+				var size = parseInt(audioTrack.currentTime*barSize/audioTrack.duration);
+				
+				progressBar.css({'width' : size + 'px'});
+			}else{
+				currentTime.text('0:00');
+				playBtn.removeClass('pause');
+				progressBar.css({'width' : '0px'});
+				window.clearInterval(updateTime);
+			}	
+		}
+		
+		function clickedBar(e){
+			if(!audioTrack.ended){
+				var mouseX = (e.pageX - barSize) - 58, //wtf is up with this offset tho?
+					newTime = mouseX*audioTrack.duration/barSize;
+					
+					audioTrack.currentTime = newTime;
+					progressBar.css({'width':mouseX + 'px'});
+			
+			}
+		}
+
+
+		
 
 			
 		
@@ -191,7 +254,7 @@ function nextScreen(currentScreenID){
 	$('.section-' + currentScreenID).removeClass('active').addClass('top');
 	$('.section-' + nsID).addClass('active').removeClass('bottom');
 	
-	console.log('next screen fired');
+/* 	console.log('next screen fired'); */
 }
 
 jQuery(document).ready(function($) {
