@@ -149,7 +149,8 @@
 			playBtn = $('.buttons .play'),
 			progressBar = $('.progress-bar'),
 			bar = document.getElementById('default-bar'),
-			barSize = 520;
+			barSize = 520,
+			projectWrapper = document.getElementById('project-container');
 			
 			
 	// Play/Pause Audio
@@ -197,6 +198,24 @@
 			duration.text(trackMinutes + ':' + trackSeconds);
 		}
 	
+	
+	// PROJECT NAVIGATION
+	// Begin Clone
+		var lastItemID = parseInt($('.project-wrapper.last').attr('data-number')),
+			penultItemID = lastItemID - 1;
+			
+			if(!$('.project-wrapper.top.project-' + penultItemID).length){
+				$('.project-wrapper.project-' + penultItemID).clone(true).removeClass('bottom').addClass('top').prependTo('.projects-container');
+			}
+			
+	// Title Click
+		$('.project-wrapper').click(function(){
+			var projectdata = $(this).data('heuristic');
+			
+			nextProject(projectdata);
+		});
+	
+	// Anon Functions
 	// Update Player
 		function update(){
 			if(!audioTrack.ended){
@@ -227,24 +246,134 @@
 		
 		function clickedBar(e){
 			if(!audioTrack.ended){
-				var mouseX = (e.pageX - barSize) - 58, //wtf is up with this offset tho?
+				var mouseX = e.pageX - ( bar.offsetLeft + projectWrapper.offsetLeft ), // need to add bar & wrapper offset to get full offset from side of browser
 					newTime = mouseX*audioTrack.duration/barSize;
 					
 					audioTrack.currentTime = newTime;
 					progressBar.css({'width':mouseX + 'px'});
-			
+					
 			}
 		}
+	// Switch projects
+		function nextProject(projectdata){
+			$('.project-box, .project-wrapper').removeClass('playing');
+			
+			// Variables
+			var projectID = parseInt(projectdata.project_number),
+				projectTitle = projectdata.artist,
+				projectImage = projectdata.artist_image,
+				projectFile = projectdata.song_file
+				projectFileTitle = projectdata.song_title,
+				projectRoles = projectdata.roles_played,
+				nextProjectID = projectID + 1,
+				prevProjectID = projectID -1,
+				nextCloneID = projectID + 2,
+				prevCloneID = projectID - 2,
+				totalProjects = parseInt(projectdata.total_projects);
+				
+			if(nextProjectID <= totalProjects){
+				var nextProject = $('.project-wrapper.bottom.project-' + nextProjectID).first();
+			} else {
+				var nextProject = $('.project-wrapper.bottom.project-1').first();
+			}
+			
+			if(prevProjectID >= 1){
+				var prevProject = $('.project-wrapper.top.project-' + prevProjectID).last();
+			} else {
+				var prevProject = $('.project-wrapper.top.project-' + totalProjects).last();
 
+			}
+				
+			// Audio Player
+				audioTrack.pause();	
+			// Animate Off
+				/* $('.project-wrapper.next, .project-wrapper.last').addClass('off'); */
+				
+					if( $('.project-wrapper.project-' + projectID).hasClass('next') ){ // animate upwards
+						
+						$('.project-wrapper.last').removeClass('last').addClass('top');
+						$('.project-wrapper.active').removeClass('active').addClass('last');
+						$('.project-wrapper.next').removeClass('next').addClass('active');	
+						nextProject.removeClass('bottom').addClass('next');
+						
+						if(nextCloneID <= totalProjects && !$('.project-wrapper.bottom.project-' + nextCloneID).length){
+							$('.project-wrapper.project-' + nextCloneID).first().clone(true).removeClass('top active last next bottom').addClass('bottom').appendTo('.projects-container');
+						} else if( nextCloneID == (totalProjects + 1)){
+							$('.project-wrapper.project-1').first().clone(true).removeClass('top active last next bottom').addClass('bottom').appendTo('.projects-container');
+						}else if( nextCloneID == (totalProjects + 2)){
+							$('.project-wrapper.project-2').first().clone(true).removeClass('top active last next bottom').addClass('bottom').appendTo('.projects-container');
+						}
+						
+						
+					}
+					
+					if( $('.project-wrapper.project-' + projectID).hasClass('last') ){ // animate down
+						
+						$('.project-wrapper.next').removeClass('next').addClass('bottom');	
+						$('.project-wrapper.active').removeClass('active').addClass('next');
+						$('.project-wrapper.last').removeClass('last').addClass('active');
+						prevProject.removeClass('top').addClass('last');
+						
+						if(prevCloneID >= 1 && !$('.project-wrapper.top.project-' + prevCloneID).length){
+							$('.project-wrapper.project-' + prevCloneID).first().clone(true).removeClass('bottom active last next').addClass('top').prependTo('.projects-container');
+						}else if(! $('.project-wrapper.top.project-' + totalProjects).length){
+							if(prevCloneID == 0){
+								$('.project-wrapper.project-' + (totalProjects)).first().clone(true).removeClass('top active last bottom next').addClass('top').prependTo('.projects-container');
+							}else if(prevCloneID == -1){
+								$('.project-wrapper.project-' + (totalProjects-1)).first().clone(true).removeClass('top active last bottom next').addClass('top').prependTo('.projects-container');
+							}
+							
+						}
+						
+						
+					}
+					
+				
+					
+					$('.project-box').addClass('off');
+					$('.project-box audio source').attr('src','');
+					
+				
+			// Update Info
+				setTimeout(function(){
+					
+			
+					
+					// Change Data
+					$('.project-box').css({'background-image':'url(' + projectImage + ')'});
+					$('.project-box audio source').attr('src',projectFile);
+					$('.role.meta').text(projectRoles);
+					$('.title.meta').text(projectFileTitle);
+					
 
-		
+					audioTrack.load();
+					audioTrack.onloadedmetadata = function(){ // fire when metadata for track is loaded
+			
+						// Grab minutes and seconds of full time from track
+						var trackMinutes = parseInt(audioTrack.duration/60),
+							trackSeconds = parseInt(audioTrack.duration%60);
+						
+						// Add full duration to duration element
+						duration.text(trackMinutes + ':' + trackSeconds);
+						update();
+						playBtn.removeClass('pause');
+
+					}
+				
+					
+				},100)
+				
+				setTimeout(function(){
+					$('.project-box').removeClass('off');
+					$('.project-wrapper.next, .project-wrapper.last').removeClass('off');
+				},500);
 
 			
-		
-		
-		
+		}
 	
 }(jQuery));
+
+
 
 function nextScreen(currentScreenID){
 	var $ = jQuery,

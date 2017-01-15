@@ -507,7 +507,12 @@ section.home {
     background-position: center center;
     background-repeat: no-repeat;
     box-shadow: 0px 6px 26px rgba(22, 22, 22, 0.5);
-    z-index: 9; }
+    z-index: 9;
+    -webkit-transition: all 600ms cubic-bezier(0.375, 0.005, 0, 1);
+    -moz-transition: all 600ms cubic-bezier(0.375, 0.005, 0, 1);
+    -o-transition: all 600ms cubic-bezier(0.375, 0.005, 0, 1);
+    transition: all 600ms cubic-bezier(0.375, 0.005, 0, 1);
+    /* custom */ }
   .projects-container .image-container:before {
     content: "";
     height: 100%;
@@ -542,6 +547,11 @@ section.home {
     height: -webkit-max-content;
     height: -moz-max-content;
     height: -moz-fit-content;
+    -webkit-transition: all 800ms cubic-bezier(0.375, 0.005, 0, 1);
+    -moz-transition: all 800ms cubic-bezier(0.375, 0.005, 0, 1);
+    -o-transition: all 800ms cubic-bezier(0.375, 0.005, 0, 1);
+    transition: all 800ms cubic-bezier(0.375, 0.005, 0, 1);
+    /* custom */
     visibility: hidden; }
     .projects-container .project-wrapper h2 {
       text-align: center;
@@ -556,6 +566,7 @@ section.home {
       margin: auto;
       left: 0;
       right: 0;
+      cursor: pointer;
       height: max-content;
       height: -webkit-max-content;
       height: -moz-max-content;
@@ -571,16 +582,39 @@ section.home {
       opacity: 1; }
   .projects-container .project-wrapper.next {
     visibility: visible;
-    -webkit-transform: translate3d(0, 34vh, 0);
-    -moz-transform: translate3d(0, 34vh, 0);
-    -ms-transform: translate3d(0, 34vh, 0);
-    transform: translate3d(0, 34vh, 0); }
+    -webkit-transform: translate3d(0, 38vh, 0);
+    -moz-transform: translate3d(0, 38vh, 0);
+    -ms-transform: translate3d(0, 38vh, 0);
+    transform: translate3d(0, 38vh, 0);
+    z-index: 1; }
+    .projects-container .project-wrapper.next h2 {
+      font-size: 25px;
+      letter-spacing: 10px; }
   .projects-container .project-wrapper.last {
     visibility: visible;
-    -webkit-transform: translate3d(0, -34vh, 0);
-    -moz-transform: translate3d(0, -34vh, 0);
-    -ms-transform: translate3d(0, -34vh, 0);
-    transform: translate3d(0, -34vh, 0); }
+    -webkit-transform: translate3d(0, -38vh, 0);
+    -moz-transform: translate3d(0, -38vh, 0);
+    -ms-transform: translate3d(0, -38vh, 0);
+    transform: translate3d(0, -38vh, 0);
+    z-index: 1; }
+    .projects-container .project-wrapper.last h2 {
+      font-size: 25px;
+      letter-spacing: 10px; }
+  .projects-container .project-wrapper.next.off, .projects-container .project-wrapper.last.off {
+    -webkit-transform: translate3d(0, 0, 0);
+    -moz-transform: translate3d(0, 0, 0);
+    -ms-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0); }
+  .projects-container .project-wrapper.bottom {
+    -webkit-transform: translate3d(0, 60vh, 0);
+    -moz-transform: translate3d(0, 60vh, 0);
+    -ms-transform: translate3d(0, 60vh, 0);
+    transform: translate3d(0, 60vh, 0); }
+  .projects-container .project-wrapper.top {
+    -webkit-transform: translate3d(0, -60vh, 0);
+    -moz-transform: translate3d(0, -60vh, 0);
+    -ms-transform: translate3d(0, -60vh, 0);
+    transform: translate3d(0, -60vh, 0); }
 
 .project-content {
   -webkit-transform: translate3d(0, -30px, 0);
@@ -625,13 +659,15 @@ section.home {
       padding-left: 6px;
       text-align: center;
       font-weight: 200;
-      font-size: 12px; }
+      font-size: 12px;
+      width: 100%;
+      display: block; }
 
 .project-box.open .project-content, .project-box.playing .project-content {
-  -webkit-transform: translate3d(0, -100px, 0);
-  -moz-transform: translate3d(0, -100px, 0);
-  -ms-transform: translate3d(0, -100px, 0);
-  transform: translate3d(0, -100px, 0);
+  -webkit-transform: translate3d(0, -70px, 0);
+  -moz-transform: translate3d(0, -70px, 0);
+  -ms-transform: translate3d(0, -70px, 0);
+  transform: translate3d(0, -70px, 0);
   visibility: visible;
   opacity: 1; }
 
@@ -643,6 +679,10 @@ section.home {
   -moz-transform: translate3d(0, -100px, 0);
   -ms-transform: translate3d(0, -100px, 0);
   transform: translate3d(0, -100px, 0); }
+
+.project-box.off {
+  transform: scale(0.35);
+  opacity: 0; }
 
 .blog-container {
   width: 60%; }

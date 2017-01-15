@@ -1,4 +1,4 @@
-<div class="projects-container">
+<div class="projects-container" id="project-container">
 	<?php 
 		
 		// Setup Loop for Projects
@@ -59,8 +59,7 @@
 					 
 		<?php	} ?>
 		
-
-			<div class="project-wrapper <?php if($ii === 1){echo'active';} if($ii === 2){echo' next ';} if($ii === $project_num){echo ' last';} ?>" data-hueristic='{"artist_image" : "<?php echo $featured_image; ?>", "artist" : "<?php echo $artist;?>", "song_file" : "<?php echo $song_file; ?>", "song_title" : "<?php echo $song_title; ?>, "roles" : "<?php echo $roles; ?>", "project_number" : "<?php echo $ii; ?>"}'>
+			<div class="project-wrapper <?php echo "project-$ii "; if($ii === 1){echo'active';} if($ii === 2){echo' next ';} if($ii === $project_num){echo ' last';} if( $ii > 2  && $ii !== $project_num){ echo " bottom "; } ?>" data-heuristic='{	"artist_image":"<?php echo $featured_image; ?>", "artist":"<?php echo $artist; ?>", "song_file":"<?php echo $song_file; ?>", "song_title":"<?php echo $song_title; ?>", "roles_played":"<?php echo $roles; ?>", "project_number" : "<?php echo $ii; ?>", "total_projects":<?php echo $project_num; ?>}' data-number="<?php echo $ii; ?>">
 				<h2><?php echo $artist; ?></h2>
 			</div>
 
