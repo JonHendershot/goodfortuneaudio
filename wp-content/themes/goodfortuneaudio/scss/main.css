@@ -352,7 +352,11 @@ header .header-logo {
     min-width: 100%;
     min-height: 100%;
     width: auto;
-    height: auto; }
+    height: auto;
+    -webkit-transform: translate3d(0, 0, 0);
+    -moz-transform: translate3d(0, 0, 0);
+    -ms-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0); }
   .page-viewer video.visible {
     opacity: 0.55; }
   .page-viewer .background-image {

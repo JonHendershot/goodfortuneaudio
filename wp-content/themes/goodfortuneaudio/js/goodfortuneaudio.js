@@ -163,6 +163,7 @@
 			if(!audioTrack.paused && !audioTrack.ended){
 				// Pause Audio
 				audioTrack.pause();
+				document.getElementById('vid2').playbackRate = 1;
 				
 				// Update Classes
 				$('.project-box, .project-wrapper.active').removeClass('playing');
@@ -173,7 +174,8 @@
 			}else{
 				// Play Audio
 				audioTrack.play();
-				
+				document.getElementById('vid2').playbackRate = 4;
+			
 				// Update Classes
 				$('.project-box, .project-wrapper.active').addClass('playing');
 				playBtn.addClass('pause');
@@ -244,6 +246,7 @@
 				playBtn.removeClass('pause');
 				progressBar.css({'width' : '0px'});
 				window.clearInterval(updateTime);
+				document.getElementById('vid2').playbackRate = 1;
 			}	
 		}
 		

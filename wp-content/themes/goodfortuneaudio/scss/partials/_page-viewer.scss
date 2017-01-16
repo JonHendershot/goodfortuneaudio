@@ -23,6 +23,7 @@
 	    min-height: 100%;
 	    width: auto;
 	    height: auto;
+	    @include translate(0,0,0); //hardware accelleration
 	}
 	video.visible {
 		opacity: 0.55;
