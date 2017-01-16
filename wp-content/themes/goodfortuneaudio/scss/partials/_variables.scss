@@ -65,6 +65,18 @@ $home-width : 60%;
      -o-transition: all $time cubic-bezier(0.375, 0.005, 0.000, 1.000); 
         transition: all $time cubic-bezier(0.375, 0.005, 0.000, 1.000); /* custom */
 }
+@mixin ease($duration){
+	-webkit-transition: all $duration cubic-bezier(0.740, 0.005, 0.240, 0.995); 
+	   -moz-transition: all $duration cubic-bezier(0.740, 0.005, 0.240, 0.995); 
+	     -o-transition: all $duration cubic-bezier(0.740, 0.005, 0.240, 0.995); 
+	        transition: all $duration cubic-bezier(0.740, 0.005, 0.240, 0.995); /* custom */
+	
+	-webkit-transition-timing-function: cubic-bezier(0.740, 0.005, 0.240, 0.995); 
+	   -moz-transition-timing-function: cubic-bezier(0.740, 0.005, 0.240, 0.995); 
+	     -o-transition-timing-function: cubic-bezier(0.740, 0.005, 0.240, 0.995); 
+	        transition-timing-function: cubic-bezier(0.740, 0.005, 0.240, 0.995); /* custom */
+}
+
 @mixin blur($blur){
 	-webkit-filter: blur($blur);
 	-moz-filter: blur($blur);

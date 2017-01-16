@@ -13,13 +13,14 @@ header {
 			position: absolute;
 			top: 0;
 			right: 0;
+			@include ease(1500ms);
 		}
 		
-		img.orange {
-			clip: rect(0px,auto,20px,0px);
+		img.hidden {
+			opacity: 0;
 		}
-		img.white {
-			clip: rect(20px,auto,auto,0px);
+		img.visible {
+			opacity: 1;
 		}
 	}
 }

@@ -1,3 +1,4 @@
+/*
 (function scrollNav($){
 	var sectionTrigger = $('section.trigger');
 	$(window).scroll(function(){
@@ -83,29 +84,31 @@
 		
 	});
 }(jQuery));
-(function scrollerTest($){
-	$('html').on ('mousewheel', function (e) {
-	    var delta = e.originalEvent.wheelDelta;
+*/
+(function scroller($){
 	
-	    if (delta < 0 && delta > -4.4) { // User is Scrolling Down
-	        var distance = delta + 14,
-	        	section = 100 - distance,
-	        	currentScreen = $('section.active').data('self').section_id;
-	        
-/* 	        console.log(delta); */
-
-			// logo animation
-	        $('.hint-line.line-1').css({'transform' : 'translate3d(0px, ' + distance + 'px, 0px)'});
-	        $('.hint-line.line-2').css({'transform' : 'translate3d(-'+ distance + 'px,0px, 0px) rotate(90deg)'});
-	        $('.hint-line.line-3').css({'transform' : 'translate3d(0px, -' + distance + 'px, 0px)'});
-	        $('.hint-line.line-4').css({'transform' : 'translate3d('+ distance + 'px,0px, 0px) rotate(90deg)'});
-	        
-	        // page transitions
-// 	        nextScreen(currentScreen);
+	// Set Variables
+	var scrollTrigger = 100,
+		screenCount = $('section').length,
+		scrollPort = $('#scrollport'),
+		portHeight = (scrollTrigger) * (screenCount - 1),
+		scrollerCache = 0;
 	
-	    } else if (delta > 0) { // User is Scrolling Up
-/* 	        console.log(delta); */
-	    }
+	// Set Scrollport Height
+	scrollPort.css({'height':'calc(100vh + ' + portHeight + 'px'});
+	
+	// Handle Scroll Event
+	$(window).scroll(function(){
+		// Scroll Variables
+		var activeScreenData = $('section.active').data('self'),
+			activeScreenID = parseInt(activeScreenData.section_id),
+			distanceScrolled = parseInt( (window.pageYOffset * 0.01) + 1);
+			console.log(parseInt(distanceScrolled));
+		
+		if(distanceScrolled !== activeScreenID){
+			nextScreen(activeScreenID, distanceScrolled)
+		}
+			
 	});
 
 }(jQuery));
@@ -375,15 +378,93 @@
 
 
 
-function nextScreen(currentScreenID){
+function nextScreen(currentScreenID, nextID){
 	var $ = jQuery,
-		nsID = currentScreenID + 1,
-		nsData = $('.section-' + nsID).data('self');
+		nsID = nextID,
+		nsData = $('.section-' + nsID).data('self'),
+		backgroundClr = nsData.background_color,
+		screenTitle = nsData.section_title,
+		bubbleColor = nsData.menu_bubble_clr,
+		numberColor = nsData.menu_number_clr,
+		nameColor = nsData.menu_section_name_clr,
+		logoColor = nsData.logo_clr;
 		
-	$('.section-' + currentScreenID).removeClass('active').addClass('top');
-	$('.section-' + nsID).addClass('active').removeClass('bottom');
+	if(nextID > currentScreenID){ // Next Screen :: Animate Down
+		
+		var outerPosition = 4 + (currentScreenID * 22),
+			infoPosition =  6.5 + ( currentScreenID * 22);
+			
+		$('.section-' + currentScreenID).removeClass('active').addClass('top');
+		$('.section-' + nsID).addClass('active').removeClass('bottom');
+		$('.page-viewer').css({'background-color':backgroundClr});
+		$('.page-viewer .background-image').css({'opacity':0});
+		$('.header-logo img.visible').removeClass('visible').addClass('hidden');
+		$('.header-logo img.'+logoColor).removeClass('hidden').addClass('visible');
+		
+		
+		
+		$('.nav-wrapper.active').removeClass('active');
+		$('.nav-wrapper.nav-' + currentScreenID).addClass('active');
+		$('.outer-circle').css({"top":outerPosition});
+		$('.scroller-nav .info').css({"top":infoPosition}).find( $('.section-title') ).css({"color":nameColor});
+		$('.section-num').css({"color":numberColor}).text('0'+nsID);
+		$('.info .section-title').text('/'+screenTitle);
+		$('section.active').not('.section-' + nsID).removeClass('active');
+		$('.section-' + nsID).addClass('active');
+		$('.outer-circle, .inner-circle').css({"background-color":bubbleColor});
+		
+	}else if(nextID < currentScreenID){ // Previous Screen :: Animate Up
+		
+		var outerPosition = 4 + ((nsID-1) * 22),
+			infoPosition =  6.5 + ((nsID-1) * 22);
+			
+		$('.section-' + currentScreenID).removeClass('active').addClass('bottom');
+		$('.section-' + nsID).addClass('active').removeClass('top');
+		$('.page-viewer').css({'background-color':backgroundClr});
+		
+		$('.header-logo img.visible').removeClass('visible').addClass('hidden');
+		$('.header-logo img.'+logoColor).removeClass('hidden').addClass('visible');
+		
+		
+		
+		$('.nav-wrapper.active').removeClass('active');
+		$('.nav-wrapper.nav-' + currentScreenID).addClass('active');
+		$('.outer-circle').css({"top":outerPosition});
+		$('.scroller-nav .info').css({"top":infoPosition}).find( $('.section-title') ).css({"color":nameColor});
+		$('.section-num').css({"color":numberColor}).text('0'+nsID);
+		$('.info .section-title').text('/'+screenTitle);
+		$('section.active').not('.section-' + nsID).removeClass('active');
+		$('.section-' + nsID).addClass('active');
+		$('.outer-circle, .inner-circle').css({"background-color":bubbleColor});
+	}
 	
-/* 	console.log('next screen fired'); */
+	$('.hint-line').css({'background-color':numberColor});
+	
+	if(nextID == 1){
+		$('.page-viewer .background-image').css({'opacity':1});
+	}
+	
+	if(nextID > 2 && !$('#vid2').hasClass('visible')){
+		$('#vid2').addClass('visible');
+		$('#vid1').removeClass('visible');
+		
+		
+		document.getElementById('vid2').play();
+		setTimeout(function(){
+			document.getElementById('vid1').pause();
+		}, 1500);
+	} 
+	
+	if(nextID <=2 && !$('#vid1').hasClass('visible')){
+		$('#vid1').addClass('visible');
+		$('#vid2').removeClass('visible');
+		
+		document.getElementById('vid1').play();
+		setTimeout(function(){
+			document.getElementById('vid2').pause();
+		}, 1500);
+	}
+
 }
 
 jQuery(document).ready(function($) {
@@ -393,3 +474,35 @@ jQuery(document).ready(function($) {
 		animate: {'duration':300}
 	});
 });
+
+
+
+
+
+/*
+
+old scroll 
+$('html').on ('mousewheel', function (e) {
+	    var delta = e.originalEvent.wheelDelta;
+	
+	    if (delta < 0 && delta > -4.4) { // User is Scrolling Down
+	        var distance = delta + 14,
+	        	section = 100 - distance,
+	        	currentScreen = $('section.active').data('self').section_id;
+	        
+/* 	        console.log(delta); */
+
+			/* logo animation
+	        $('.hint-line.line-1').css({'transform' : 'translate3d(0px, ' + distance + 'px, 0px)'});
+	        $('.hint-line.line-2').css({'transform' : 'translate3d(-'+ distance + 'px,0px, 0px) rotate(90deg)'});
+	        $('.hint-line.line-3').css({'transform' : 'translate3d(0px, -' + distance + 'px, 0px)'});
+	        $('.hint-line.line-4').css({'transform' : 'translate3d('+ distance + 'px,0px, 0px) rotate(90deg)'});
+	        
+	        // page transitions
+// 	        nextScreen(currentScreen);
+	
+	    } else if (delta > 0) { // User is Scrolling Up
+	        console.log(delta); 
+	    }
+	});
+*/

@@ -8,13 +8,29 @@
 	
 	$black = "#000";
 	$white = "#fff";
+	$offwhite = "#f5f5f5";
 	$dark_grey = "#222629";
 	$orange = "#CA5D44";
+	$page_header_photo = get_the_post_thumbnail_url();
 
 // Get Header Parts
 
 	get_template_part( 'template-parts/module_nav' );
 	get_template_part( 'template-parts/module_scroll-hint' );
+	
+?>
+<div id="scrollport"></div>
+<div class="page-viewer">
+	<div class="background-image" style="background-image: url(<?php  echo $page_header_photo; ?>);"></div>
+	<video id="vid1" autoplay loop class="visible">
+		<source src="<?php echo get_template_directory_uri() . '/video/particle_1.mp4'; ?>" type="video/mp4"/>
+	</video>
+	<video id="vid2" loop>
+		<source src="<?php echo get_template_directory_uri() . '/video/lazyLoop.mp4'; ?>" type="video/mp4"/>
+	</video>
+	<div id="pages">
+	
+<?php	
 
 // Pre-Loop Variables 
 	
@@ -41,18 +57,21 @@
 
 	
 	if($color_scheme == 'Orange'){
+		$background_clr = $orange;
 		$menu_bubble_clr = $white;
 		$menu_number_clr = $dark_grey;
 		$menu_section_name_clr = $white;
 		$logo_clr = 'white';
 	}
 	if($color_scheme == 'White'){
+		$background_clr = $offwhite;
 		$menu_bubble_clr = $dark_grey;
 		$menu_number_clr = $dark_grey;
 		$menu_section_name_clr = $orange;
 		$logo_clr = 'orange';
 	}
 	if($color_scheme == 'Blue'){
+		$background_clr = $dark_grey;
 		$menu_bubble_clr = $white;
 		$menu_number_clr = $orange;
 		$menu_section_name_clr = $white;
@@ -64,10 +83,12 @@
 		$shade_trigger = 0;
 	}
 ?>
-	<section class="<?php echo "section-$ii section-$section_class $section_class trigger $color_class"; if($ii === 1){ echo ' active'; } ?>" data-self='{<?php echo '"section_id" :'.$ii.',"section_title" : "'.$section_title.'","menu_bubble_clr" : "'.$menu_bubble_clr.'","menu_number_clr" : "'.$menu_number_clr.'","menu_section_name_clr" : "'.$menu_section_name_clr.'","logo_clr" : "'.$logo_clr.'", "shade_trigger" : '.$shade_trigger; ?>}'>
+	<section class="<?php echo "section-$ii section-$section_class $section_class trigger $color_class"; if($ii === 1){ echo ' active'; }else{ echo ' bottom'; } ?>" data-self='{<?php echo '"section_id" :'.$ii.',"background_color" : "' . $background_clr . '","section_title" : "'.$section_title.'","menu_bubble_clr" : "'.$menu_bubble_clr.'","menu_number_clr" : "'.$menu_number_clr.'","menu_section_name_clr" : "'.$menu_section_name_clr.'","logo_clr" : "'.$logo_clr.'", "shade_trigger" : '.$shade_trigger; ?>}'>
 		<?php get_template_part("template-parts/home_module-$section_class"); ?>
 	</section>
 <?php $logo_eval = $logo_clr; $ii++; endwhile; ?>
+	</div> <!-- end #pages -->
+</div> <!-- end .viewer -->
 <!--
 
 <section class="home-header trigger section-1 active" style="background-image: url(<?php echo $image; ?>)" data-self='{ "section_id" : 1, "section_title" : "Home", "menu_main_clr" : "<?php echo $white; ?>" , "menu_second_clr" : "<?php echo $orange; ?>", "logo_clr" : "white", "shade_trigger" : 0  }'>

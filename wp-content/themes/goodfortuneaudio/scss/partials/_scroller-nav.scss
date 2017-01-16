@@ -14,7 +14,7 @@ $inner_bubble_size :  6px;
 		height: $outer_bubble_size;
 		width: $outer_bubble_size;
 		@include calc(border-radius, $outer_bubble_size " * 0.5");
-		@include transition(0.3s,all,ease-in-out);			
+		@include ease(1500ms);			
 		background-color: $white;
 		opacity: 0.2;
 		position: absolute;
@@ -34,11 +34,11 @@ $inner_bubble_size :  6px;
 		top: 6.5px;
 		left: 10px;
 
-		@include transition(0.3s,all,ease-in-out);
+		@include ease(1500ms);
 		
 		.section-num {
 			color: $orange;
-			@include transition(0.3s,all,ease-in-out);
+			@include ease(1500ms);
 		}
 	}
 	
@@ -46,7 +46,7 @@ $inner_bubble_size :  6px;
 
 		@include flexbox(center,center);
 		padding: 8px 0;
-		@include transition(0.3s, all, ease-in-out);
+		@include ease(1500ms);
 		.circles {
 
 			@include flexbox(center,center);
@@ -57,7 +57,7 @@ $inner_bubble_size :  6px;
 				width: $inner_bubble_size;
 				@include calc(border-radius, $inner_bubble_size " * 0.5");
 				background-color: $white;
-				@include transition(0.3s,all,ease-in-out);
+				@include ease(1500ms);
 			}
 		
 		}

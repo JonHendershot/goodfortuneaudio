@@ -14,27 +14,6 @@ div,p,a,span,input,textarea {
 	font-family: $body_font;
 	color: $white;
 }
-section {
-	height: 100vh;
-	@include flexbox(center,center);
-	background-color: $orange;
-	background-size: cover;
-	background-position: center center;
-	background-repeat: no-repeat;
-	position: relative;
-	z-index: 9;
-	background-image: url('../images/grain_trans.png');
-	@include easeout(600ms);
-	overflow: hidden;
-	video {
-		position: absolute;
-		top: 0;
-		left: 0;
-		mix-blend-mode: screen;
-		opacity: 0.55;
-		z-index: 1;
-	}
-}
 .main-btn {
 	text-transform: uppercase;
 	color: $white;

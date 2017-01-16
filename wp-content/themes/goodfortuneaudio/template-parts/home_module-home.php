@@ -6,7 +6,7 @@
 	$tag_2 = get_field('tagline_bottom');
 	$button_text = get_field('button_text');
 ?>
-<div class="background-image" style="background-image: url(<?php echo $image; ?>);"></div>
+<!-- <div class="background-image" style="background-image: url(<?php echo $image; ?>);"></div> -->
 <div class="content-wrapper">
 	<div class="tagline">
 		<h1><?php echo $tag_1; ?></br><?php echo $tag_2; ?></h1>
