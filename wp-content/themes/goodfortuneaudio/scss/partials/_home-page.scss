@@ -21,6 +21,7 @@ $hoverdistance : 0.5 * $lineWidth;
 	@include max-content(width);
 	@include flexbox(center,center);
 	z-index: 999;
+	cursor: pointer;
 	
 	p {
 		font-family: $body-font;

@@ -103,12 +103,46 @@
 		var activeScreenData = $('section.active').data('self'),
 			activeScreenID = parseInt(activeScreenData.section_id),
 			distanceScrolled = parseInt( (window.pageYOffset * 0.01) + 1);
-			console.log(parseInt(distanceScrolled));
+/* 			console.log(parseInt(distanceScrolled)); */
 		
-		if(distanceScrolled !== activeScreenID){
-			nextScreen(activeScreenID, distanceScrolled)
+		if(distanceScrolled !== activeScreenID && !scrollPort.hasClass('scrollLock')){
+		
+			scrollPort.addClass('scrollLock');
+			nextScreen(activeScreenID, distanceScrolled);
 		}
+		
+	});
+	
+	// Handle Mouse events on Nav
+	$('.nav-wrapper').hover(function(){
+		$(this).addClass('hover');
+	},function(){
+		$(this).removeClass('hover');
+	});
+	
+	$('.nav-wrapper').click(function(){
+		var activeScreenData = $('section.active').data('self'),
+			activeScreenID = parseInt(activeScreenData.section_id),
+			nextScreenID = parseInt($(this).data('self').section_num),
+			scrollY = (scrollTrigger * nextScreenID) - 10;
 			
+			nextScreen(activeScreenID,nextScreenID);
+			window.scrollTo(0, scrollY);
+	});
+	
+	// Click event on Scroll Hint
+	
+	$('.scroll-hint-container').click(function(){
+	
+		var activeScreenData = $('section.active').data('self'),
+			activeScreenID = parseInt(activeScreenData.section_id),
+			nextScreenID = parseInt(activeScreenID + 1),
+			scrollY = (scrollTrigger * nextScreenID) - 10;
+			
+			console.log(activeScreenData);
+			
+			nextScreen(activeScreenID,nextScreenID);
+			window.scrollTo(0, scrollY);
 	});
 
 }(jQuery));
@@ -390,55 +424,43 @@ function nextScreen(currentScreenID, nextID){
 		bubbleColor = nsData.menu_bubble_clr,
 		numberColor = nsData.menu_number_clr,
 		nameColor = nsData.menu_section_name_clr,
-		logoColor = nsData.logo_clr;
+		logoColor = nsData.logo_clr,
+		totalScreen = nsData.total_screen;
 		
 	if(nextID > currentScreenID){ // Next Screen :: Animate Down
 		
-		var outerPosition = 4 + (currentScreenID * 22),
-			infoPosition =  6.5 + ( currentScreenID * 22);
-			
+
+		// animate screens	
 		$('.section-' + currentScreenID).removeClass('active').addClass('top');
 		$('.section-' + nsID).addClass('active').removeClass('bottom');
-		$('.page-viewer').css({'background-color':backgroundClr});
 		$('.page-viewer .background-image').css({'opacity':0});
-		$('.header-logo img.visible').removeClass('visible').addClass('hidden');
-		$('.header-logo img.'+logoColor).removeClass('hidden').addClass('visible');
 		
 		
+		// check for skipped screens and adjust them
+		for(count = 1; count < nextID; count++){
+			if(!$('section.top.section-'+count).length){ // if sections less than called section don't exist :: adjust	
+				$('section.section-'+count).addClass('top').removeClass('bottom');
+			}
+		}
 		
-		$('.nav-wrapper.active').removeClass('active');
-		$('.nav-wrapper.nav-' + currentScreenID).addClass('active');
-		$('.outer-circle').css({"top":outerPosition});
-		$('.scroller-nav .info').css({"top":infoPosition}).find( $('.section-title') ).css({"color":nameColor});
-		$('.section-num').css({"color":numberColor}).text('0'+nsID);
-		$('.info .section-title').text('/'+screenTitle);
-		$('section.active').not('.section-' + nsID).removeClass('active');
-		$('.section-' + nsID).addClass('active');
-		$('.outer-circle, .inner-circle').css({"background-color":bubbleColor});
+
+
 		
+			
 	}else if(nextID < currentScreenID){ // Previous Screen :: Animate Up
-		
-		var outerPosition = 4 + ((nsID-1) * 22),
-			infoPosition =  6.5 + ((nsID-1) * 22);
+		for(count = (nextID + 1); count > nextID && count <= totalScreen; count++){
+			
+			
+			
+			if(!$('section.bottom.section-'+count).length){ // if sections greater than called section don't exist :: adjust	
+				$('section.section-'+count).addClass('bottom').removeClass('top');
+				
+			}
+		}	
 			
 		$('.section-' + currentScreenID).removeClass('active').addClass('bottom');
 		$('.section-' + nsID).addClass('active').removeClass('top');
-		$('.page-viewer').css({'background-color':backgroundClr});
-		
-		$('.header-logo img.visible').removeClass('visible').addClass('hidden');
-		$('.header-logo img.'+logoColor).removeClass('hidden').addClass('visible');
-		
-		
-		
-		$('.nav-wrapper.active').removeClass('active');
-		$('.nav-wrapper.nav-' + currentScreenID).addClass('active');
-		$('.outer-circle').css({"top":outerPosition});
-		$('.scroller-nav .info').css({"top":infoPosition}).find( $('.section-title') ).css({"color":nameColor});
-		$('.section-num').css({"color":numberColor}).text('0'+nsID);
-		$('.info .section-title').text('/'+screenTitle);
-		$('section.active').not('.section-' + nsID).removeClass('active');
-		$('.section-' + nsID).addClass('active');
-		$('.outer-circle, .inner-circle').css({"background-color":bubbleColor});
+	
 	}
 	
 	$('.hint-line').css({'background-color':numberColor});
@@ -468,6 +490,30 @@ function nextScreen(currentScreenID, nextID){
 		}, 1500);
 	}
 
+	$('.nav-wrapper.active').removeClass('active');
+	$('.nav-wrapper.nav-' + nsID).addClass('active');
+	$('.scroller-nav .info').find( $('.section-title') ).css({"color":nameColor});
+	$('.section-num').css({"color":numberColor});
+	$('.outer-circle, .inner-circle').css({"background-color":bubbleColor});
+	$('section.active').not('.section-' + nsID).removeClass('active');
+	$('.section-' + nsID).addClass('active');	
+	$('.page-viewer').css({'background-color':backgroundClr});
+	$('.header-logo img.visible').removeClass('visible').addClass('hidden');
+	$('.header-logo img.'+logoColor).removeClass('hidden').addClass('visible');
+	
+	// scroll Lock
+	$(window).scroll(function(){
+		if($('#scrollport').hasClass('scrollLock')){
+			var scrollLock = (nextID * 100)-10;
+			window.scrollTo(0,scrollLock);
+		}
+	});
+		
+
+			
+	setTimeout(function(){
+		$('#scrollport').removeClass('scrollLock');
+	},1500);
 }
 
 jQuery(document).ready(function($) {

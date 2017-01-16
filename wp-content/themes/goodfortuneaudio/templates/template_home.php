@@ -35,7 +35,6 @@
 // Pre-Loop Variables 
 	
 	$ii = 1;
-	$logo_eval;
 
 // Start Loop
 
@@ -54,6 +53,7 @@
 	$color_scheme = get_field('color_scheme');
 	$color_class = strtolower($color_scheme);
 	$module_handle = 'template-parts/home_module-' . $section_class . '.php';
+	$total_screen = $query->found_posts;
 
 	
 	if($color_scheme == 'Orange'){
@@ -77,16 +77,12 @@
 		$menu_section_name_clr = $white;
 		$logo_clr = 'orange';
 	}
-	if($logo_clr !== $logo_eval && $logo_eval !== null){
-		$shade_trigger = 1;
-	}else {
-		$shade_trigger = 0;
-	}
+
 ?>
-	<section class="<?php echo "section-$ii section-$section_class $section_class trigger $color_class"; if($ii === 1){ echo ' active'; }else{ echo ' bottom'; } ?>" data-self='{<?php echo '"section_id" :'.$ii.',"background_color" : "' . $background_clr . '","section_title" : "'.$section_title.'","menu_bubble_clr" : "'.$menu_bubble_clr.'","menu_number_clr" : "'.$menu_number_clr.'","menu_section_name_clr" : "'.$menu_section_name_clr.'","logo_clr" : "'.$logo_clr.'", "shade_trigger" : '.$shade_trigger; ?>}'>
+	<section class="<?php echo "section-$ii section-$section_class $section_class trigger $color_class"; if($ii === 1){ echo ' active'; }else{ echo ' bottom'; } ?>" data-self='{<?php echo '"section_id" :'.$ii.',"background_color" : "' . $background_clr . '","section_title" : "'.$section_title.'","menu_bubble_clr" : "'.$menu_bubble_clr.'","menu_number_clr" : "'.$menu_number_clr.'","menu_section_name_clr" : "'.$menu_section_name_clr.'","logo_clr" : "'.$logo_clr.'","total_screen" : ' . $total_screen; ?>}'>
 		<?php get_template_part("template-parts/home_module-$section_class"); ?>
 	</section>
-<?php $logo_eval = $logo_clr; $ii++; endwhile; ?>
+<?php $ii++; endwhile; ?>
 	</div> <!-- end #pages -->
 </div> <!-- end .viewer -->
 <!--

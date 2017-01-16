@@ -14,43 +14,51 @@ $inner_bubble_size :  6px;
 		height: $outer_bubble_size;
 		width: $outer_bubble_size;
 		@include calc(border-radius, $outer_bubble_size " * 0.5");
-		@include ease(1500ms);			
 		background-color: $white;
 		opacity: 0.2;
 		position: absolute;
-		top: 4px;
+		top: 0;
+		bottom: 0;
+		margin: auto;
 		left: -4px;
-
+		@include scale(0);
+		@include ease(600ms);
 	}
 	.info {
 		color: $white;
-		margin-left: 10px;
+		margin-left: 15px;
 		font-family: $body-font;
 		text-transform: uppercase;
 		font-size: 7px;
-		letter-spacing: 6px;
+		letter-spacing: -2px;
 		font-weight: 100;
-		position: absolute;
-		top: 6.5px;
-		left: 10px;
+		opacity: 0;
+		@include translate(-20px,0,0);
+		visibility: hidden;
+		@include ease(600ms);
 
-		@include ease(1500ms);
+
 		
 		.section-num {
 			color: $orange;
-			@include ease(1500ms);
+			@include transition(1500ms,color,linear);
+		}
+		.section-title {
+			@include transition(1500ms,color,linear);
 		}
 	}
 	
 	.nav-wrapper {
 
-		@include flexbox(center,center);
+		@include flexbox(center,flex-start);
 		padding: 8px 0;
 		@include ease(1500ms);
+		cursor: pointer;
 		.circles {
-
+			position: relative;
 			@include flexbox(center,center);
 			flex-direction: column;
+			z-index: 999999999;
 				
 			.inner-circle {
 				height: $inner_bubble_size;
@@ -62,5 +70,33 @@ $inner_bubble_size :  6px;
 		
 		}
 		
+	}
+	.nav-wrapper.active {
+		.info {
+			opacity: 1;
+			letter-spacing: 6px;
+			@include translate(0,0,0);
+			visibility: visible;
+			@include easeout(1500ms);
+
+		}
+		.outer-circle {
+			@include scale(1);
+			@include bounceOut(1200ms);			
+
+		}
+	}
+	.nav-wrapper.hover {
+		.info {
+			opacity: 1;
+			letter-spacing: 6px;
+			@include translate(0,0,0);
+			visibility: visible;
+
+		}
+		.outer-circle {
+			@include scale(1);
+
+		}
 	}
 }

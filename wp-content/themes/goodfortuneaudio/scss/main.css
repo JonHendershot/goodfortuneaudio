@@ -96,36 +96,48 @@ div, p, a, span, input, textarea {
     border-radius: -moz-calc(14px  * 0.5);
     border-radius: -webkit-calc(14px  * 0.5);
     border-radius: calc(14px  * 0.5);
-    -webkit-transition: all 1500ms cubic-bezier(0.74, 0.005, 0.24, 0.995);
-    -moz-transition: all 1500ms cubic-bezier(0.74, 0.005, 0.24, 0.995);
-    -o-transition: all 1500ms cubic-bezier(0.74, 0.005, 0.24, 0.995);
-    transition: all 1500ms cubic-bezier(0.74, 0.005, 0.24, 0.995);
+    background-color: #fff;
+    opacity: 0.2;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    left: -4px;
+    -ms-transform: scale(0);
+    /* IE 9 */
+    -webkit-transform: scale(0);
+    /* Chrome, Safari, Opera */
+    -moz-transform: scale(0);
+    /* Mozilla ? */
+    transform: scale(0);
+    -webkit-transition: all 600ms cubic-bezier(0.74, 0.005, 0.24, 0.995);
+    -moz-transition: all 600ms cubic-bezier(0.74, 0.005, 0.24, 0.995);
+    -o-transition: all 600ms cubic-bezier(0.74, 0.005, 0.24, 0.995);
+    transition: all 600ms cubic-bezier(0.74, 0.005, 0.24, 0.995);
     /* custom */
     -webkit-transition-timing-function: cubic-bezier(0.74, 0.005, 0.24, 0.995);
     -moz-transition-timing-function: cubic-bezier(0.74, 0.005, 0.24, 0.995);
     -o-transition-timing-function: cubic-bezier(0.74, 0.005, 0.24, 0.995);
     transition-timing-function: cubic-bezier(0.74, 0.005, 0.24, 0.995);
-    /* custom */
-    background-color: #fff;
-    opacity: 0.2;
-    position: absolute;
-    top: 4px;
-    left: -4px; }
+    /* custom */ }
   .scroller-nav .info {
     color: #fff;
-    margin-left: 10px;
+    margin-left: 15px;
     font-family: "Roboto", sans-serif;
     text-transform: uppercase;
     font-size: 7px;
-    letter-spacing: 6px;
+    letter-spacing: -2px;
     font-weight: 100;
-    position: absolute;
-    top: 6.5px;
-    left: 10px;
-    -webkit-transition: all 1500ms cubic-bezier(0.74, 0.005, 0.24, 0.995);
-    -moz-transition: all 1500ms cubic-bezier(0.74, 0.005, 0.24, 0.995);
-    -o-transition: all 1500ms cubic-bezier(0.74, 0.005, 0.24, 0.995);
-    transition: all 1500ms cubic-bezier(0.74, 0.005, 0.24, 0.995);
+    opacity: 0;
+    -webkit-transform: translate3d(-20px, 0, 0);
+    -moz-transform: translate3d(-20px, 0, 0);
+    -ms-transform: translate3d(-20px, 0, 0);
+    transform: translate3d(-20px, 0, 0);
+    visibility: hidden;
+    -webkit-transition: all 600ms cubic-bezier(0.74, 0.005, 0.24, 0.995);
+    -moz-transition: all 600ms cubic-bezier(0.74, 0.005, 0.24, 0.995);
+    -o-transition: all 600ms cubic-bezier(0.74, 0.005, 0.24, 0.995);
+    transition: all 600ms cubic-bezier(0.74, 0.005, 0.24, 0.995);
     /* custom */
     -webkit-transition-timing-function: cubic-bezier(0.74, 0.005, 0.24, 0.995);
     -moz-transition-timing-function: cubic-bezier(0.74, 0.005, 0.24, 0.995);
@@ -134,16 +146,17 @@ div, p, a, span, input, textarea {
     /* custom */ }
     .scroller-nav .info .section-num {
       color: #CA5D44;
-      -webkit-transition: all 1500ms cubic-bezier(0.74, 0.005, 0.24, 0.995);
-      -moz-transition: all 1500ms cubic-bezier(0.74, 0.005, 0.24, 0.995);
-      -o-transition: all 1500ms cubic-bezier(0.74, 0.005, 0.24, 0.995);
-      transition: all 1500ms cubic-bezier(0.74, 0.005, 0.24, 0.995);
-      /* custom */
-      -webkit-transition-timing-function: cubic-bezier(0.74, 0.005, 0.24, 0.995);
-      -moz-transition-timing-function: cubic-bezier(0.74, 0.005, 0.24, 0.995);
-      -o-transition-timing-function: cubic-bezier(0.74, 0.005, 0.24, 0.995);
-      transition-timing-function: cubic-bezier(0.74, 0.005, 0.24, 0.995);
-      /* custom */ }
+      transition: 1500ms color linear;
+      -webkit-transition: 1500ms color linear;
+      -moz-transition: 1500ms color linear;
+      -ms-transition: 1500ms color linear;
+      -o-transition: 1500ms color linear; }
+    .scroller-nav .info .section-title {
+      transition: 1500ms color linear;
+      -webkit-transition: 1500ms color linear;
+      -moz-transition: 1500ms color linear;
+      -ms-transition: 1500ms color linear;
+      -o-transition: 1500ms color linear; }
   .scroller-nav .nav-wrapper {
     display: flex;
     display: -webkit-flex;
@@ -151,8 +164,8 @@ div, p, a, span, input, textarea {
     display: -ms-flex;
     align-items: center;
     -webkit-align-items: center;
-    justify-content: center;
-    -webkit-justify-content: center;
+    justify-content: flex-start;
+    -webkit-justify-content: flex-start;
     padding: 8px 0;
     -webkit-transition: all 1500ms cubic-bezier(0.74, 0.005, 0.24, 0.995);
     -moz-transition: all 1500ms cubic-bezier(0.74, 0.005, 0.24, 0.995);
@@ -163,8 +176,10 @@ div, p, a, span, input, textarea {
     -moz-transition-timing-function: cubic-bezier(0.74, 0.005, 0.24, 0.995);
     -o-transition-timing-function: cubic-bezier(0.74, 0.005, 0.24, 0.995);
     transition-timing-function: cubic-bezier(0.74, 0.005, 0.24, 0.995);
-    /* custom */ }
+    /* custom */
+    cursor: pointer; }
     .scroller-nav .nav-wrapper .circles {
+      position: relative;
       display: flex;
       display: -webkit-flex;
       display: -moz-flex;
@@ -173,7 +188,8 @@ div, p, a, span, input, textarea {
       -webkit-align-items: center;
       justify-content: center;
       -webkit-justify-content: center;
-      flex-direction: column; }
+      flex-direction: column;
+      z-index: 999999999; }
       .scroller-nav .nav-wrapper .circles .inner-circle {
         height: 6px;
         width: 6px;
@@ -192,6 +208,57 @@ div, p, a, span, input, textarea {
         -o-transition-timing-function: cubic-bezier(0.74, 0.005, 0.24, 0.995);
         transition-timing-function: cubic-bezier(0.74, 0.005, 0.24, 0.995);
         /* custom */ }
+  .scroller-nav .nav-wrapper.active .info {
+    opacity: 1;
+    letter-spacing: 6px;
+    -webkit-transform: translate3d(0, 0, 0);
+    -moz-transform: translate3d(0, 0, 0);
+    -ms-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+    visibility: visible;
+    -webkit-transition: all 1500ms cubic-bezier(0.375, 0.005, 0, 1);
+    -moz-transition: all 1500ms cubic-bezier(0.375, 0.005, 0, 1);
+    -o-transition: all 1500ms cubic-bezier(0.375, 0.005, 0, 1);
+    transition: all 1500ms cubic-bezier(0.375, 0.005, 0, 1);
+    /* custom */ }
+  .scroller-nav .nav-wrapper.active .outer-circle {
+    -ms-transform: scale(1);
+    /* IE 9 */
+    -webkit-transform: scale(1);
+    /* Chrome, Safari, Opera */
+    -moz-transform: scale(1);
+    /* Mozilla ? */
+    transform: scale(1);
+    -webkit-transition: all 1200ms cubic-bezier(0.485, 0.095, 0.705, 1);
+    /* older webkit */
+    -webkit-transition: all 1200ms cubic-bezier(0.485, 0.095, 0.705, 1.65);
+    -moz-transition: all 1200ms cubic-bezier(0.485, 0.095, 0.705, 1.65);
+    -o-transition: all 1200ms cubic-bezier(0.485, 0.095, 0.705, 1.65);
+    transition: all 1200ms cubic-bezier(0.485, 0.095, 0.705, 1.65);
+    /* custom */
+    -webkit-transition-timing-function: cubic-bezier(0.485, 0.095, 0.705, 1);
+    /* older webkit */
+    -webkit-transition-timing-function: cubic-bezier(0.485, 0.095, 0.705, 1.65);
+    -moz-transition-timing-function: cubic-bezier(0.485, 0.095, 0.705, 1.65);
+    -o-transition-timing-function: cubic-bezier(0.485, 0.095, 0.705, 1.65);
+    transition-timing-function: cubic-bezier(0.485, 0.095, 0.705, 1.65);
+    /* custom */ }
+  .scroller-nav .nav-wrapper.hover .info {
+    opacity: 1;
+    letter-spacing: 6px;
+    -webkit-transform: translate3d(0, 0, 0);
+    -moz-transform: translate3d(0, 0, 0);
+    -ms-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+    visibility: visible; }
+  .scroller-nav .nav-wrapper.hover .outer-circle {
+    -ms-transform: scale(1);
+    /* IE 9 */
+    -webkit-transform: scale(1);
+    /* Chrome, Safari, Opera */
+    -moz-transform: scale(1);
+    /* Mozilla ? */
+    transform: scale(1); }
 
 header .header-logo {
   display: block;
@@ -409,7 +476,8 @@ header .header-logo {
   -webkit-align-items: center;
   justify-content: center;
   -webkit-justify-content: center;
-  z-index: 999; }
+  z-index: 999;
+  cursor: pointer; }
   .scroll-hint-container p {
     font-family: "Roboto", sans-serif;
     text-transform: uppercase;

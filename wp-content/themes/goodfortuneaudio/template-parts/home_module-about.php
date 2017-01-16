@@ -18,13 +18,10 @@
 				<p><?php echo $body_content; ?></p>
 				<div class="about-btns">
 					<div class="main-btn orange lightbox-trigger" data-trigger-id="gear">
-						<span><?php echo $gear_btn; ?>
-						</span>
+						<span><?php echo $gear_btn; ?></span>
 					</div>
 					<a href="#" class="main-btn orange">
-						<span>
-						<?php echo $contact_btn; ?>
-						</span>
+						<span><?php echo $contact_btn; ?></span>
 					</a>
 				</div>
 			</div>

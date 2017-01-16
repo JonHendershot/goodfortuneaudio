@@ -46,6 +46,12 @@ $home-width : 60%;
     -moz-transform: rotate($deg); /* Mozilla ? */
     transform: rotate($deg);
 }
+@mixin scale($percent) {
+	    -ms-transform: scale($percent); /* IE 9 */
+    -webkit-transform: scale($percent); /* Chrome, Safari, Opera */
+    -moz-transform: scale($percent); /* Mozilla ? */
+    transform: scale($percent);
+}
 @mixin transrotate($X,$Y,$Z,$degree){
 		-webkit-transform: translate3d($X,$Y,$Z) rotate($degree);
 	-moz-transform: translate3d($X,$Y,$Z) rotate($degree);
@@ -76,7 +82,19 @@ $home-width : 60%;
 	     -o-transition-timing-function: cubic-bezier(0.740, 0.005, 0.240, 0.995); 
 	        transition-timing-function: cubic-bezier(0.740, 0.005, 0.240, 0.995); /* custom */
 }
+@mixin bounceOut($length){
+	-webkit-transition: all $length cubic-bezier(0.485, 0.095, 0.705, 1); /* older webkit */
+-webkit-transition: all $length cubic-bezier(0.485, 0.095, 0.705, 1.650); 
+   -moz-transition: all $length cubic-bezier(0.485, 0.095, 0.705, 1.650); 
+     -o-transition: all $length cubic-bezier(0.485, 0.095, 0.705, 1.650); 
+        transition: all $length cubic-bezier(0.485, 0.095, 0.705, 1.650); /* custom */
 
+-webkit-transition-timing-function: cubic-bezier(0.485, 0.095, 0.705, 1); /* older webkit */
+-webkit-transition-timing-function: cubic-bezier(0.485, 0.095, 0.705, 1.650); 
+   -moz-transition-timing-function: cubic-bezier(0.485, 0.095, 0.705, 1.650); 
+     -o-transition-timing-function: cubic-bezier(0.485, 0.095, 0.705, 1.650); 
+        transition-timing-function: cubic-bezier(0.485, 0.095, 0.705, 1.650); /* custom */
+}
 @mixin blur($blur){
 	-webkit-filter: blur($blur);
 	-moz-filter: blur($blur);
