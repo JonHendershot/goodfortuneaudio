@@ -1,0 +1,12 @@
+// Height Queries 
+
+@media (min-height: 900px){
+	.projects-container {
+		.project-wrapper.next {
+			@include translate(0,34vh,0);
+		}
+		.project-wrapper.last{
+			@include translate(0,-34vh,0);
+		}
+	}
+}

@@ -77,6 +77,7 @@
 		visibility: visible;
 		h2 {
 			opacity: 1;
+			cursor: text;
 		}
 	}
 	.project-wrapper.next {
@@ -125,7 +126,7 @@
 	visibility: hidden;
 	bottom: 0;
 	.project-meta {
-		@include flexbox(center, space-between);
+		@include flexbox(flex-start, space-between);
 		max-width: 60%;
 		margin: 0 auto;
 		.divider {
@@ -149,6 +150,9 @@
 			font-size: 12px;
 			width: 100%;
 			display: block;
+		}
+		.roles, .song-title {
+			width: 50%;
 		}
 	}
 }

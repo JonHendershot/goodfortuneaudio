@@ -22,6 +22,8 @@ $hoverdistance : 0.5 * $lineWidth;
 	@include flexbox(center,center);
 	z-index: 999;
 	cursor: pointer;
+	visibility: visible;
+	@include ease(1500ms);
 	
 	p {
 		font-family: $body-font;
@@ -70,6 +72,10 @@ $hoverdistance : 0.5 * $lineWidth;
 			@include transrotate($distance,0px,0,90deg);
 		}
 	}
+}
+.scroll-hint-container.hidden {
+	opacity: 0;
+	visibility: hidden;
 }
 .scroll-hint-container:hover {
 	

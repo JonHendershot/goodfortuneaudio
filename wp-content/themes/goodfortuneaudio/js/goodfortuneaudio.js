@@ -139,11 +139,35 @@
 			nextScreenID = parseInt(activeScreenID + 1),
 			scrollY = (scrollTrigger * nextScreenID) - 10;
 			
-			console.log(activeScreenData);
 			
 			nextScreen(activeScreenID,nextScreenID);
 			window.scrollTo(0, scrollY);
 	});
+	
+	// Keypress
+	
+	document.onkeydown = function(e){
+		
+		var activeScreenData = $('section.active').data('self'),
+			activeScreenID = parseInt(activeScreenData.section_id);
+
+			
+			
+
+		
+		if(e.keyCode == '38'){ // pressed up
+			var nextScreenID = parseInt(activeScreenID - 1);
+		}
+		if(e.keyCode == '40'){ // pressed down
+			var nextScreenID = parseInt(activeScreenID);
+		}	
+	var scrollY = (scrollTrigger * nextScreenID) - 10
+		nextScreen(activeScreenID,nextScreenID);
+		window.scrollTo(0, scrollY);
+	
+	}
+	
+	
 
 }(jQuery));
 (function lightbox($){
@@ -172,8 +196,10 @@
 	
 	
 	// Hover Event
-		$('.project-box').hover(function(){
-			$('.project-box, .project-wrapper.active').addClass('open');
+		$('.project-box, .project-wrapper').hover(function(){
+			if($(this).hasClass('active') || $(this).hasClass('project-box')){
+				$('.project-box, .project-wrapper.active').addClass('open');
+			}
 		},function(){
 			$('.project-box, .project-wrapper.active').removeClass('open');
 		});
@@ -186,7 +212,7 @@
 			playBtn = $('.buttons .play'),
 			progressBar = $('.progress-bar'),
 			bar = document.getElementById('default-bar'),
-			barSize = 520,
+			barSize = bar.offsetWidth,
 			projectWrapper = document.getElementById('project-container');
 			
 			
@@ -249,9 +275,12 @@
 			
 	// Title Click
 		$('.project-wrapper').click(function(){
-			var projectdata = $(this).data('heuristic');
+			if( ! $(this).hasClass('active')){
+				var projectdata = $(this).data('heuristic');
+				document.getElementById('vid2').playbackRate = 1;
+				nextProject(projectdata);
+			}
 			
-			nextProject(projectdata);
 		});
 	
 	// Anon Functions
@@ -272,7 +301,7 @@
 				currentTime.text(playedMinutes + ':' + playedSeconds);
 				
 				// Progress Bar
-				var size = parseInt(audioTrack.currentTime*barSize/audioTrack.duration);
+				var size = (audioTrack.currentTime/audioTrack.duration) * barSize;
 				
 				progressBar.css({'width' : size + 'px'});
 			}else{
@@ -489,6 +518,12 @@ function nextScreen(currentScreenID, nextID){
 			document.getElementById('vid2').pause();
 		}, 1500);
 	}
+	
+	if(nextID ==5){
+		$('.scroll-hint-container').addClass('hidden');
+	}else {
+		$('.scroll-hint-container').removeClass('hidden');
+	}
 
 	$('.nav-wrapper.active').removeClass('active');
 	$('.nav-wrapper.nav-' + nsID).addClass('active');
@@ -497,7 +532,7 @@ function nextScreen(currentScreenID, nextID){
 	$('.outer-circle, .inner-circle').css({"background-color":bubbleColor});
 	$('section.active').not('.section-' + nsID).removeClass('active');
 	$('.section-' + nsID).addClass('active');	
-	$('.page-viewer').css({'background-color':backgroundClr});
+	$('.page-viewer, html').css({'background-color':backgroundClr});
 	$('.header-logo img.visible').removeClass('visible').addClass('hidden');
 	$('.header-logo img.'+logoColor).removeClass('hidden').addClass('visible');
 	

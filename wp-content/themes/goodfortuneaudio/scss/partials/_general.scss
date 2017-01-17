@@ -1,4 +1,7 @@
 // General Styles
+html {
+	@include transition(1500ms, background-color, ease-in-out);
+}
 * {
 	-webkit-font-smoothing: antialiased;
 	text-rendering: optimizeLegibility;

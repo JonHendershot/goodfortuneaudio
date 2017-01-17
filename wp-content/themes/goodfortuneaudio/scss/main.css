@@ -13,6 +13,13 @@
 /*************************************
   - - - - - - - - MIXINS - - - - - - - 
 **************************************/
+html {
+  transition: 1500ms background-color ease-in-out;
+  -webkit-transition: 1500ms background-color ease-in-out;
+  -moz-transition: 1500ms background-color ease-in-out;
+  -ms-transition: 1500ms background-color ease-in-out;
+  -o-transition: 1500ms background-color ease-in-out; }
+
 * {
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility; }
@@ -477,7 +484,18 @@ header .header-logo {
   justify-content: center;
   -webkit-justify-content: center;
   z-index: 999;
-  cursor: pointer; }
+  cursor: pointer;
+  visibility: visible;
+  -webkit-transition: all 1500ms cubic-bezier(0.74, 0.005, 0.24, 0.995);
+  -moz-transition: all 1500ms cubic-bezier(0.74, 0.005, 0.24, 0.995);
+  -o-transition: all 1500ms cubic-bezier(0.74, 0.005, 0.24, 0.995);
+  transition: all 1500ms cubic-bezier(0.74, 0.005, 0.24, 0.995);
+  /* custom */
+  -webkit-transition-timing-function: cubic-bezier(0.74, 0.005, 0.24, 0.995);
+  -moz-transition-timing-function: cubic-bezier(0.74, 0.005, 0.24, 0.995);
+  -o-transition-timing-function: cubic-bezier(0.74, 0.005, 0.24, 0.995);
+  transition-timing-function: cubic-bezier(0.74, 0.005, 0.24, 0.995);
+  /* custom */ }
   .scroll-hint-container p {
     font-family: "Roboto", sans-serif;
     text-transform: uppercase;
@@ -538,6 +556,10 @@ header .header-logo {
       -moz-transform: translate3d(15.4px, 0px, 0) rotate(90deg);
       -ms-transform: translate3d(15.4px, 0px, 0) rotate(90deg);
       transform: translate3d(15.4px, 0px, 0) rotate(90deg); }
+
+.scroll-hint-container.hidden {
+  opacity: 0;
+  visibility: hidden; }
 
 .scroll-hint-container:hover .line-1 {
   -webkit-transform: translate3d(0, 11px, 0);
@@ -730,7 +752,8 @@ section.home .content-wrapper {
   .projects-container .project-wrapper.active {
     visibility: visible; }
     .projects-container .project-wrapper.active h2 {
-      opacity: 1; }
+      opacity: 1;
+      cursor: text; }
   .projects-container .project-wrapper.next {
     visibility: visible;
     -webkit-transform: translate3d(0, 38vh, 0);
@@ -788,8 +811,8 @@ section.home .content-wrapper {
     display: -webkit-flex;
     display: -moz-flex;
     display: -ms-flex;
-    align-items: center;
-    -webkit-align-items: center;
+    align-items: flex-start;
+    -webkit-align-items: flex-start;
     justify-content: space-between;
     -webkit-justify-content: space-between;
     max-width: 60%;
@@ -813,6 +836,8 @@ section.home .content-wrapper {
       font-size: 12px;
       width: 100%;
       display: block; }
+    .project-content .project-meta .roles, .project-content .project-meta .song-title {
+      width: 50%; }
 
 .project-box.open .project-content, .project-box.playing .project-content {
   -webkit-transform: translate3d(0, -70px, 0);
@@ -1121,3 +1146,18 @@ section.about .gear-container.visible {
   -moz-transform: translate3d(0, 0, 0);
   -ms-transform: translate3d(0, 0, 0);
   transform: translate3d(0, 0, 0); }
+
+/*************************************
+  - - - - - - - PAGES - - - - - - - -
+**************************************/
+@media (min-height: 900px) {
+  .projects-container .project-wrapper.next {
+    -webkit-transform: translate3d(0, 34vh, 0);
+    -moz-transform: translate3d(0, 34vh, 0);
+    -ms-transform: translate3d(0, 34vh, 0);
+    transform: translate3d(0, 34vh, 0); }
+  .projects-container .project-wrapper.last {
+    -webkit-transform: translate3d(0, -34vh, 0);
+    -moz-transform: translate3d(0, -34vh, 0);
+    -ms-transform: translate3d(0, -34vh, 0);
+    transform: translate3d(0, -34vh, 0); } }
