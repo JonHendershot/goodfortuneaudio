@@ -175,7 +175,7 @@
 			scrollY = (scrollTrigger * target) - 10;
 			
 			
-			nextScreen(activeScreenID,target);
+			nextScreen(activeScreenID,target);D0n
 			window.scrollTo(0, scrollY);
 	});
 	
