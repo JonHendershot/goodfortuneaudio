@@ -442,8 +442,12 @@
 						var trackMinutes = parseInt(audioTrack.duration/60),
 							trackSeconds = parseInt(audioTrack.duration%60);
 						
+						if(trackSeconds < 10){
+							var prepend = '0';
+						}
+						
 						// Add full duration to duration element
-						duration.text(trackMinutes + ':' + trackSeconds);
+						duration.text(trackMinutes + ':' + prepend+trackSeconds);
 						update();
 						playBtn.removeClass('pause');
 
