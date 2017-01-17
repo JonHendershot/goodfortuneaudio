@@ -275,8 +275,12 @@
 			var trackMinutes = parseInt(audioTrack.duration/60),
 				trackSeconds = parseInt(audioTrack.duration%60);
 			
+			if(trackSeconds < 10){
+				var durationPre = '0';
+			}
+			
 			// Add full duration to duration element
-			duration.text(trackMinutes + ':' + trackSeconds);
+			duration.text(trackMinutes + ':' + durationPre+trackSeconds);
 		}
 	
 	
