@@ -1165,11 +1165,11 @@ section.about .gear-container {
     left: 35px;
     display: block; }
   section.about .gear-container div {
-    font-family: "Roboto", sans-serif;
+    font-family: "Bebas Neue", sans-serif;
     padding: 25px 44px 18px;
     line-height: 1.8em;
     font-size: 14px;
-    max-height: 250px;
+    max-height: 280px;
     overflow-y: scroll;
     text-transform: uppercase; }
 
