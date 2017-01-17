@@ -277,6 +277,8 @@
 			
 			if(trackSeconds < 10){
 				var durationPre = '0';
+			}else {
+				var durationPre = '';
 			}
 			
 			// Add full duration to duration element
@@ -444,6 +446,8 @@
 						
 						if(trackSeconds < 10){
 							var prepend = '0';
+						}else {
+							var prepend = '';
 						}
 						
 						// Add full duration to duration element
