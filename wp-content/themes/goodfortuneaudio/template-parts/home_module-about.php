@@ -9,7 +9,7 @@
 	$side_img = get_field('side_image')['url'];
 
 ?>
-<div class="content-wrapper">
+<div class="content-wrapper preblur">
 	
 	<img src="<?php echo $top_img; ?>" class="top-image" />
 	<div class="about-content-wrapper">
@@ -20,7 +20,7 @@
 					<div class="main-btn orange lightbox-trigger" data-trigger-id="gear">
 						<span><?php echo $gear_btn; ?></span>
 					</div>
-					<a href="#" class="main-btn orange">
+					<div class="main-btn orange anchor" data-target="5">
 						<span><?php echo $contact_btn; ?></span>
 					</a>
 				</div>
@@ -32,3 +32,4 @@
 <div class="accordion gear-container lightbox gear" id="gear-accordion">
 	<?php get_template_part( 'template-parts/module_gear-accordion' ); ?>
 </div>
+<div class="close-lb"></div>

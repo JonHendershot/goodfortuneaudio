@@ -25,8 +25,8 @@
 <div id="page" class="site">
 	<header id="masthead" class="site-header" role="banner">
 		<a class="header-logo" href="<?php echo site_url(); ?>">
-			<img src="<?php echo $options['GFA_logo']; ?>" class="header-logo orange visible" />
-			<img src="<?php echo $options['GFA_logo_alt1']; ?>" class="header-logo white hidden" />
+			<img src="<?php echo $options['GFA_logo']; ?>" class="header-logo orange visible preblur" />
+			<img src="<?php echo $options['GFA_logo_alt1']; ?>" class="header-logo white hidden preblur" />
 		</a>
 	</header><!-- #masthead -->
 

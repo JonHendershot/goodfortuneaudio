@@ -12,7 +12,7 @@
 		<h1><?php echo $tag_1; ?></br><?php echo $tag_2; ?></h1>
 		<img src="<?php echo get_template_directory_uri() . '/images/logo.png'; ?>" alt="Good Fortune Audio"/>
 	</div>
-	<a href="#" class="main-btn orange">
+	<div class="main-btn orange anchor" data-target="5">
 		<span><?php echo $button_text; ?></span>
 	</a>
 </div>

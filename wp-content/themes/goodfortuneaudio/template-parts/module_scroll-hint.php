@@ -1,4 +1,4 @@
-<div class="scroll-hint-container">
+<div class="scroll-hint-container preblur">
 	<p>scroll<br />to explore</p>
 	<div class="hint-wrapper">
 		<span class="line-1 hint-line"></span>

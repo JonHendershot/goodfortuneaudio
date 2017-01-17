@@ -167,6 +167,18 @@
 	
 	}
 	
+	// Anchor click
+	$('.anchor').click(function(){
+		var activeScreenData = $('section.active').data('self'),
+			activeScreenID = parseInt(activeScreenData.section_id),
+			target = $(this).data('target'),
+			scrollY = (scrollTrigger * target) - 10;
+			
+			
+			nextScreen(activeScreenID,target);
+			window.scrollTo(0, scrollY);
+	});
+	
 	
 
 }(jQuery));
@@ -180,15 +192,19 @@
 				setTimeout(function(){
 					$('.lightbox.' + lightbox).addClass('visible open');			
 				}, 0);
-				$('.section-about .content-wrapper').addClass('blur');
+				$('.section-about .content-wrapper, #vid1, .scroller-nav, .scroll-hint-container, .header-logo.visible').addClass('blur');
+				$('.close-lb').addClass('open');
+				$('body').addClass('lb-open');
 			}
 		}
 	});
 	
-	$('.content-wrapper').click(function(){
+	$('.close-lb, .section-about .content-wrapper').click(function(){
 		if($('.lightbox').hasClass('open')){
 			$('.lightbox').removeClass('open visible');
-			$(this).removeClass('blur');
+			$('.blur').removeClass('blur');
+			$('.close-lb').removeClass('open');
+			$('body').removeClass('lb-open');
 		}
 	});
 }(jQuery));
@@ -442,8 +458,6 @@
 	
 }(jQuery));
 
-
-
 function nextScreen(currentScreenID, nextID){
 	var $ = jQuery,
 		nsID = nextID,
@@ -558,35 +572,3 @@ jQuery(document).ready(function($) {
 		animate: {'duration':300}
 	});
 });
-
-
-
-
-
-/*
-
-old scroll 
-$('html').on ('mousewheel', function (e) {
-	    var delta = e.originalEvent.wheelDelta;
-	
-	    if (delta < 0 && delta > -4.4) { // User is Scrolling Down
-	        var distance = delta + 14,
-	        	section = 100 - distance,
-	        	currentScreen = $('section.active').data('self').section_id;
-	        
-/* 	        console.log(delta); */
-
-			/* logo animation
-	        $('.hint-line.line-1').css({'transform' : 'translate3d(0px, ' + distance + 'px, 0px)'});
-	        $('.hint-line.line-2').css({'transform' : 'translate3d(-'+ distance + 'px,0px, 0px) rotate(90deg)'});
-	        $('.hint-line.line-3').css({'transform' : 'translate3d(0px, -' + distance + 'px, 0px)'});
-	        $('.hint-line.line-4').css({'transform' : 'translate3d('+ distance + 'px,0px, 0px) rotate(90deg)'});
-	        
-	        // page transitions
-// 	        nextScreen(currentScreen);
-	
-	    } else if (delta > 0) { // User is Scrolling Up
-	        console.log(delta); 
-	    }
-	});
-*/

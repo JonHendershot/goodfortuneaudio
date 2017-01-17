@@ -13,7 +13,11 @@ header {
 			position: absolute;
 			top: 0;
 			right: 0;
-			@include ease(1500ms);
+// 			@include ease(1500ms);
+			transition: 1500ms opacity ease-in-out !important;
+			-webkit-transition: 1500ms opacity ease-in-out !important;
+			-moz-transition: 1500ms opacity ease-in-out !important;
+			-ms-transition: 1500ms opacity ease-in-out !important;
 		}
 		
 		img.hidden {

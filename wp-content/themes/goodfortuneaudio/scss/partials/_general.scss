@@ -2,9 +2,22 @@
 html {
 	@include transition(1500ms, background-color, ease-in-out);
 }
+body.lb-open {
+	overflow: hidden;
+}
 * {
 	-webkit-font-smoothing: antialiased;
 	text-rendering: optimizeLegibility;
+}
+.preblur {
+	@include blur(0px);
+	transition: 0s filter linear !important;
+	-webkit-transition: 0s filter linear !important;
+	-moz-transition: 0s filter linear !important;
+	-ms-transition: 0s filter linear !important;
+}
+.blur {
+	@include blur(5px);
 }
 h1,h2,h3,h4,h5,h6 {
 	font-family: $heading_font;

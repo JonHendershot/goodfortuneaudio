@@ -22,7 +22,7 @@
 <div id="scrollport"></div>
 <div class="page-viewer">
 	<div class="background-image" style="background-image: url(<?php  echo $page_header_photo; ?>);"></div>
-	<video id="vid1" autoplay loop class="visible">
+	<video id="vid1" autoplay loop class="visible preblur">
 		<source src="<?php echo get_template_directory_uri() . '/video/particle_1.mp4'; ?>" type="video/mp4"/>
 	</video>
 	<video id="vid2" loop>

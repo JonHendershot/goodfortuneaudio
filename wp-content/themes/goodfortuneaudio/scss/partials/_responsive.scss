@@ -87,8 +87,11 @@
 	}
 	.blog-container {
 		max-width: 55%;
+	}	
+}
+
+@media (min-width:1800px){
+	.project-box.open .project-content, .project-box.playing .project-content {
+		@include translate(0,-100px,0);
 	}
-
-
-	
 }
