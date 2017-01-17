@@ -10,3 +10,85 @@
 		}
 	}
 }
+
+@media (max-height: 800px){
+	section.about {
+		.content-wrapper {
+			.top-image {
+				display: none;
+			}
+			.about-content-wrapper {
+				.about-content {
+					h2 {
+						max-width: 80%;
+						margin-top: 35px;
+					}
+					.about-btns {
+						margin-top: 15px;
+					}
+				}
+				
+				img.side-image {
+					bottom: 0;
+				}
+			}
+			
+		}
+	}
+	#project-container {
+		width: 55%;
+		
+		.project-wrapper.active {
+			h2 {
+				font-size: 30px;
+			}
+		}
+		
+		.project-content {
+			.project-meta {
+				max-width: 85%;
+				
+				h3 {
+					font-size: 15px;
+				}
+				.meta {
+					font-size: 10px;
+				}
+			}
+			.audio-player-container {
+				.audio-player {
+					.default-bar {
+						width: 62%; 
+					}
+				}
+			}
+		}
+		.project-box.playing .project-content, .project-box.open .project-content {
+			@include translate(0,-45px,0);
+		}
+		.project-wrapper.active.playing h2, .project-wrapper.active.open h2 {
+			@include translate(0,-85px,0);
+		}
+		
+		.project-wrapper.next {
+			@include translate(0,35vh,0);
+		}
+		.project-wrapper.last{
+			@include translate(0,-35vh,0);
+		}
+		.project-wrapper.next, .project-wrapper.last {
+			h2 {
+				font-size: 20px;
+				letter-spacing: 13px;
+			}
+		}
+
+		
+	}
+	.blog-container {
+		max-width: 55%;
+	}
+
+
+	
+}

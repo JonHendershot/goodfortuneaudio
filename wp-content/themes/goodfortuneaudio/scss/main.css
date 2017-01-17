@@ -1161,3 +1161,51 @@ section.about .gear-container.visible {
     -moz-transform: translate3d(0, -34vh, 0);
     -ms-transform: translate3d(0, -34vh, 0);
     transform: translate3d(0, -34vh, 0); } }
+
+@media (max-height: 800px) {
+  section.about .content-wrapper .top-image {
+    display: none; }
+  section.about .content-wrapper .about-content-wrapper .about-content h2 {
+    max-width: 80%;
+    margin-top: 35px; }
+  section.about .content-wrapper .about-content-wrapper .about-content .about-btns {
+    margin-top: 15px; }
+  section.about .content-wrapper .about-content-wrapper img.side-image {
+    bottom: 0; }
+  #project-container {
+    width: 55%; }
+    #project-container .project-wrapper.active h2 {
+      font-size: 30px; }
+    #project-container .project-content .project-meta {
+      max-width: 85%; }
+      #project-container .project-content .project-meta h3 {
+        font-size: 15px; }
+      #project-container .project-content .project-meta .meta {
+        font-size: 10px; }
+    #project-container .project-content .audio-player-container .audio-player .default-bar {
+      width: 62%; }
+    #project-container .project-box.playing .project-content, #project-container .project-box.open .project-content {
+      -webkit-transform: translate3d(0, -45px, 0);
+      -moz-transform: translate3d(0, -45px, 0);
+      -ms-transform: translate3d(0, -45px, 0);
+      transform: translate3d(0, -45px, 0); }
+    #project-container .project-wrapper.active.playing h2, #project-container .project-wrapper.active.open h2 {
+      -webkit-transform: translate3d(0, -85px, 0);
+      -moz-transform: translate3d(0, -85px, 0);
+      -ms-transform: translate3d(0, -85px, 0);
+      transform: translate3d(0, -85px, 0); }
+    #project-container .project-wrapper.next {
+      -webkit-transform: translate3d(0, 35vh, 0);
+      -moz-transform: translate3d(0, 35vh, 0);
+      -ms-transform: translate3d(0, 35vh, 0);
+      transform: translate3d(0, 35vh, 0); }
+    #project-container .project-wrapper.last {
+      -webkit-transform: translate3d(0, -35vh, 0);
+      -moz-transform: translate3d(0, -35vh, 0);
+      -ms-transform: translate3d(0, -35vh, 0);
+      transform: translate3d(0, -35vh, 0); }
+    #project-container .project-wrapper.next h2, #project-container .project-wrapper.last h2 {
+      font-size: 20px;
+      letter-spacing: 13px; }
+  .blog-container {
+    max-width: 55%; } }
