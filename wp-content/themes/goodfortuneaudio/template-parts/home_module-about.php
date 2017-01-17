@@ -9,10 +9,11 @@
 	$side_img = get_field('side_image')['url'];
 
 ?>
-<div class="content-wrapper preblur">
+<div class="close-lb"></div>
+<div class="content-wrapper">
 	
 	<img src="<?php echo $top_img; ?>" class="top-image" />
-	<div class="about-content-wrapper">
+	<div class="about-content-wrapper preblur">
 		<div class="about-content">
 				<h2><?php echo $content_heading; ?></h2>
 				<p><?php echo $body_content; ?></p>
@@ -32,4 +33,3 @@
 <div class="accordion gear-container lightbox gear" id="gear-accordion">
 	<?php get_template_part( 'template-parts/module_gear-accordion' ); ?>
 </div>
-<div class="close-lb"></div>

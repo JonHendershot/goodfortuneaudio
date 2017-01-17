@@ -4,6 +4,8 @@
 /*************************************
   - - - - - - - FONT FACES - - - - - - 
 **************************************/
+@import url("https://fonts.googleapis.com/css?family=Roboto:400,500,700");
+@import url(../fonts/stylesheet.css);
 /*************************************
   - - - - - - COLOR PALETTE - - - - - 
 **************************************/
@@ -1110,6 +1112,7 @@ section.about .gear-container {
   margin: auto;
   z-index: 999999999;
   width: 25%;
+  min-width: 340px;
   border-radius: 10px;
   overflow: hidden;
   background-color: #222629;
@@ -1133,14 +1136,14 @@ section.about .gear-container {
     background-color: #CA5D44;
     color: #fff;
     letter-spacing: 12px;
-    padding-left: 12px;
     text-align: center;
     font-weight: 400;
     font-size: 20px;
     margin: 0;
     padding: 15px 0;
     cursor: pointer;
-    position: relative; }
+    position: relative;
+    padding-left: 12px; }
   section.about .gear-container h3:not(:first-child) {
     border-top: 1px solid #C8422C; }
   section.about .gear-container h3:focus {

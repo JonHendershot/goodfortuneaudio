@@ -192,14 +192,14 @@
 				setTimeout(function(){
 					$('.lightbox.' + lightbox).addClass('visible open');			
 				}, 0);
-				$('.section-about .content-wrapper, #vid1, .scroller-nav, .scroll-hint-container, .header-logo.visible').addClass('blur');
+					$('.section-about .about-content-wrapper, #vid1, .scroller-nav, .scroll-hint-container, .header-logo.visible').addClass('blur');
 				$('.close-lb').addClass('open');
 				$('body').addClass('lb-open');
 			}
 		}
 	});
 	
-	$('.close-lb, .section-about .content-wrapper').click(function(){
+	$('.close-lb, .section-about .about-content-wrapper').click(function(){
 		if($('.lightbox').hasClass('open')){
 			$('.lightbox').removeClass('open visible');
 			$('.blur').removeClass('blur');
