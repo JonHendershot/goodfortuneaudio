@@ -120,10 +120,13 @@ section.about {
 			display: block;
 		}
 		div {
-			font-family: $heading_font;
+			font-family: $body_font;
 			padding: 25px 44px 18px;
 			line-height: 1.8em;
 			font-size: 14px;
+			max-height: 250px;
+			overflow-y: scroll;
+			text-transform: uppercase;
 		}
 	}
 	.gear-container.visible {
