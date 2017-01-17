@@ -18,7 +18,7 @@
 					<div class="inner-circle"></div>
 			</div>	
 			<div class="info">
-				<span class="section-num"><?php echo $ii; ?></span><span class="section-title">/<?php the_title(); ?></span>
+				<span class="section-num"><?php echo "0$ii"; ?></span><span class="section-title">/<?php the_title(); ?></span>
 			</div>
 		</div>
 	<?php
