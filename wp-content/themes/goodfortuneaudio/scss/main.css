@@ -925,7 +925,7 @@ section.home .content-wrapper {
       background-position: center center;
       background-size: cover;
       background-repeat: no-repeat;
-      height: 33.333%;
+      height: 100%;
       position: relative; }
       .blog-container .blog-posts .blog-post .post-meta-container {
         position: absolute;
