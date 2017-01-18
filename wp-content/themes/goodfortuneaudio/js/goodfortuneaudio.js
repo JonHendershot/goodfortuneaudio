@@ -192,7 +192,7 @@
 				setTimeout(function(){
 					$('.lightbox.' + lightbox).addClass('visible open');			
 				}, 0);
-					$('.section-about .about-content-wrapper, #vid1, .scroller-nav, .scroll-hint-container, .header-logo.visible').addClass('blur');
+					$('.section-about .about-content-wrapper, #vid1, .scroller-nav, .scroll-hint-container, .header-logo.visible, .content-wrapper .top-image').addClass('blur');
 				$('.close-lb').addClass('open');
 				$('body').addClass('lb-open');
 			}
