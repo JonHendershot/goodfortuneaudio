@@ -489,6 +489,7 @@ function nextScreen(currentScreenID, nextID){
 		$('#scrollport').removeClass('scrollLock');
 	},1500);
 }
+/*
 
 function projectHover(event){
 	
@@ -524,6 +525,7 @@ function projectReset(){
 		projectBackground.style.transform = 'rotateY(0deg) rotateX(0deg)';
 		projectBackground.style['box-shadow'] ='0px 6px 26px rgba(22, 22, 22, 0.5)';	
 }
+*/
 
 
 jQuery(document).ready(function($) {
