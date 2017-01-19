@@ -11,13 +11,19 @@
 		while( $query->have_posts() ) : $query->the_post(); 
 		
 		// Variables
-			$featured_image = get_field('artist_promo')['url'];
+			$post_featured_image = get_field('artist_promo')['url'];
 			$artist = get_the_title();
 			$song_title = get_field('song_title');
 			$song_file = get_field('example_song')['url'];
 			$roles = get_field('roles');
 			$project_num = $query->found_posts;
-	
+		
+		// If project image doesn't exist use placeholder
+			if($post_featured_image){
+				$featured_image = $post_featured_image;
+			}else {
+				$featured_image = get_template_directory_uri() . '/images/project_contingency.jpg';
+			}
 		// Setup Project Image box and populate with first project image -- this only runs one time
 			if($ii === 1){ ?>
 				
