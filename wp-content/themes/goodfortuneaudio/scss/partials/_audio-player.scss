@@ -64,6 +64,8 @@
 		}
 		.prev, .next {
 			background-image: url('../images/button_reverse.png');
+			@include easeout(800ms);
+			
 		}
 		.next, .play {
 			@include rotate(180deg);
@@ -79,6 +81,12 @@
 			background-image:url('../images/button_pause.png');
 			background-position: 13.5px center;
 			background-size: 30%;
+		}
+		.next {
+			@include transrotate(-20px,0,0,180deg);
+		}
+		.prev {
+			@include translate(20px,0,0);
 		}
 	}
 }

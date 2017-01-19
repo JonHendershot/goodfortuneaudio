@@ -377,7 +377,7 @@
 					}
 				
 					
-				},100)
+				},400)
 				
 				setTimeout(function(){
 					$('.project-box').removeClass('off');

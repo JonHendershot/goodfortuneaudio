@@ -185,6 +185,16 @@
 			@include translate(0,0,0);
 		}
 	}
+	.audio-player-container {
+		.next {
+			@include transrotate(0,0,0,180deg);
+		}
+		
+		.prev {
+			@include translate(0,0,0);
+		}
+	}
+	
 }
 .project-box.open #project-background:after,.project-box.playing #project-background:after{
 	opacity: 1;
