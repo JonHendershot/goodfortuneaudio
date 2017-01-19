@@ -21,7 +21,8 @@
 		// Setup Project Image box and populate with first project image -- this only runs one time
 			if($ii === 1){ ?>
 				
-				<div class="project-box image-container" style="background-image:url(<?php echo $featured_image ; ?>);">
+				<div class="project-box image-container" id="project-box" onmousemove="projectHover(event)" onmouseout="projectReset()" >
+					<div style="background-image: url(<?php echo $featured_image; ?>)" id="project-background"/></div>
 					<div class="project-content">
 						<div class="project-meta">
 							<div class="roles">

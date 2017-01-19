@@ -67,6 +67,8 @@
 		}
 		.next, .play {
 			@include rotate(180deg);
+			backface-visibility: hidden;
+			-webkit-backface-visibility: hidden;
 		}
 		.play {
 			background-image: url('../images/button_play.png');

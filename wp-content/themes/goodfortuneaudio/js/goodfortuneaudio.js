@@ -1,90 +1,3 @@
-/*
-(function scrollNav($){
-	var sectionTrigger = $('section.trigger');
-	$(window).scroll(function(){
-
-		var menuTop = $('.scroller-nav').offset().top,
-			scrolled = $(window).scrollTop(),
-			menuHeight = $('.scroller-nav').height(),
-			pad = 20; // padding on range to trigger changeover function
-
-			
-		sectionTrigger.each(function(){
-			
-			// MENU CHANGER
-			var elem = $(this),
-				elemInfo = elem.data('self'), // retrieve data-self json array from section
-				elemTop =  elem.offset().top - scrolled, //distance from top of section to top of threshold
-				threshold = (menuTop - scrolled) +  ( elemInfo.section_id * 22 ) - 10, // adjust for padding 
-				bottomRange = threshold - pad, // bottom of trigger range
-				topRange = threshold + pad; // top of trigger range 				
-				
-				
-				if( bottomRange <= elemTop && elemTop <= topRange ) { // element enters trigger range
-					
-
-					if( elemTop < threshold ){
-						var active = elemInfo.section_id;
-					} else if ( elemTop > ( threshold - menuHeight ) ){
-						var active = elemInfo.section_id - 1;
-					}
-					var outerPosition = 4 + (active - 1) * 22,
-						infoPosition =  6.5 + ( (active - 1) * 22),
-						activeSection = $('section.trigger.section-' + active),
-						menuBubbleClr = activeSection.data('self').menu_bubble_clr,
-						menuNumberClr = activeSection.data('self').menu_number_clr,
-						menuSectionClr = activeSection.data('self').menu_section_name_clr,
-						active_num = activeSection.data('self').section_id,
-						active_title = activeSection.data('self').section_title;
-					
-					if( ! $('section.section-' + active).hasClass('active') ){ // scope the functions to only fire once
-						$('.nav-wrapper.active').removeClass('active');
-						$('.nav-wrapper.nav-' + active).addClass('active');
-						$('.outer-circle').css({"top":outerPosition});
-						$('.scroller-nav .info').css({"top":infoPosition}).find( $('.section-title') ).css({"color":menuSectionClr});
-						$('.section-num').css({"color":menuNumberClr}).text('0'+active_num);
-						$('.info .section-title').text('/'+active_title);
-						$('section.active').not('.section-' + active).removeClass('active');
-						$('.section-' + active).addClass('active');
-						$('.outer-circle, .inner-circle').css({"background-color":menuBubbleClr});
-					}	
-				}
-				
-			// LOGO COLOR CHANGE		
-			var logoTop = 75,
-				logoBottom = 96,
-				logoColor = elemInfo.logo_clr,
-				whiteLine = elemTop - logoTop,
-				orangeLine = elemTop + logoTop,
-				shadeTrigger = elemInfo.shade_trigger,
-				windowHeight = $(window).height() * 0.25;			
-				
-				if( logoTop <= elemTop && elemTop <= logoBottom ){
-					
-					if( shadeTrigger == 1 ){
-							$('.header-logo img.' + logoColor).css({"clip":"rect(" + whiteLine + "px,auto,auto,0px"});
-							$('.header-logo img').not("." + logoColor).css({"clip":"rect(0px,auto," + whiteLine + "px,0px"});
-					}
-					
-				}
-				if( elemTop < 75 && elemTop > 0 && ! $('.header-logo img.' + logoColor).hasClass('visible')  ){
-					if( shadeTrigger == 1 ){
-						$('.header-logo img.' + logoColor).css({"clip":"rect(0px,auto,auto,0px"}).removeClass('hidden').addClass('visible');
-						$('.header-logo img').not("." + logoColor).css({"clip":"rect(0px,auto,0px,0px"}).addClass('hidden').removeClass('visible');		
-					}
-				}
-						
-				if( elemTop > 96 && elemTop < windowHeight && ! $('.header-logo img').not("." + logoColor).hasClass('visible')  ){
-					if( shadeTrigger == 1 ){
-						$('.header-logo img.' + logoColor).css({"clip":"rect(21px,auto,auto,0px"}).removeClass('visible').addClass('hidden');
-						$('.header-logo img').not("." + logoColor).css({"clip":"rect(0px,auto,21px,0px"}).addClass('visible').removeClass('hidden');
-					}
-				}	
-		});
-		
-	});
-}(jQuery));
-*/
 (function scroller($){
 	
 	// Set Variables
@@ -431,7 +344,7 @@
 			
 					
 					// Change Data
-					$('.project-box').css({'background-image':'url(' + projectImage + ')'});
+					$('#project-background').css({'background-image':'url(' + projectImage + ')'});
 					$('.project-box audio source').attr('src',projectFile);
 					$('.role.meta').text(projectRoles);
 					$('.title.meta').text(projectFileTitle);
@@ -576,6 +489,42 @@ function nextScreen(currentScreenID, nextID){
 		$('#scrollport').removeClass('scrollLock');
 	},1500);
 }
+/*
+function projectHover(event){
+	
+		var projectBox = document.getElementById('project-box'), 
+			projectBackground = document.getElementById('project-background'),
+			boxOffsetHeight = projectBox.getBoundingClientRect().top, // offset from top edge to window edge
+			boxOffsetWidth = projectBox.getBoundingClientRect().left, // ofset from left edge to window edge
+			boxHeight = projectBox.offsetHeight, // height of box
+			boxWidth = projectBox.offsetWidth, // width of box
+			adjustCoefficient = 0.5, // divide height & width and use to measure box in 4 equal Quadrants
+			widthAdjust = boxWidth * adjustCoefficient, // use this to adjust and get % of mouse X position
+			heightAdjust = boxHeight * adjustCoefficient, // use this to adjust and get % of mouseY position
+			mouseX = parseInt(event.clientX - boxOffsetWidth) - widthAdjust, // 0 = middle of box on X axis
+		    mouseY = parseInt(event.clientY - boxOffsetHeight) - heightAdjust, // 0 = middle of box on Y axis
+			percentX = mouseX / widthAdjust, // precent mouse position on the X axis ( 1 - right : -1 = left )
+			percentY = mouseY / heightAdjust, // precent mouse position on Y axis ( 1 = bottom : -1 = top )
+			rotateValue = 15, // the maxiumum value the container can rotate in any direction
+			shadowValue = 6,
+			shadowX = (percentX * shadowValue) * -1,
+			shadowY = (percentY * shadowValue) * -1,
+			rotateX = (percentX * rotateValue),
+			rotateY = (percentY * rotateValue) * -1;
+		
+		console.log('X: ' + rotateX +  ' Y: ' + rotateY);
+		
+		projectBackground.style.transform = 'rotateY(' + rotateX + 'deg) rotateX('+ rotateY +'deg)';
+		projectBackground.style['box-shadow'] = shadowX + 'px ' + shadowY + 'px 26px rgba(22, 22, 22, 0.5)';
+
+}
+function projectReset(){
+	var projectBackground = document.getElementById('project-background');
+
+		projectBackground.style.transform = 'rotateY(0deg) rotateX(0deg)';
+		projectBackground.style['box-shadow'] ='0px 6px 26px rgba(22, 22, 22, 0.5)';	
+}
+*/
 
 jQuery(document).ready(function($) {
 	$( "#gear-accordion" ).accordion({

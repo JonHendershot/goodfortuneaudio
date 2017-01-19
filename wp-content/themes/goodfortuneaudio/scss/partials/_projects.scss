@@ -17,11 +17,24 @@
 		background-size: cover;
 		background-position: center center;
 		background-repeat: no-repeat;
-		box-shadow: 0px 6px 26px rgba(22,22,22,0.5);
+		
 		z-index: 9;
 		@include easeout(600ms);
+		
+		#project-background {
+			position: absolute;
+		    top: 0;
+		    left: 0;
+		    width: 100%;
+		    height: 100%;
+		    background-position: center center;
+		    background-size: cover;
+		    background-repeat: no-repeat;
+		    box-shadow: 0px 6px 26px rgba(22,22,22,0.5);
+// 		    transition: 0.2s all ease-in-out;
+		}
 	}
-	.image-container:before {
+	.image-container #project-background:before {
 		content: "";
 		height: 100%;
 		width: 100%;
@@ -30,7 +43,7 @@
 		left: 0;
 		background-color: rgba(0,0,0,0.1);
 	}
-	.image-container:after {
+	.image-container #project-background:after {
 		content:"";
 		height: 100%;
 		width: 100%;
@@ -153,6 +166,13 @@
 		}
 		.roles, .song-title {
 			width: 50%;
+			@include easeout(800ms);
+		}
+		.song-title {
+			@include translate(40px,0,0);
+		}
+		.roles {
+			@include translate(-40px,0,0);
 		}
 	}
 }
@@ -161,9 +181,12 @@
 		@include translate(0,-70px,0);
 		visibility: visible;
 		opacity: 1;
+		.song-title, .roles {
+			@include translate(0,0,0);
+		}
 	}
 }
-.project-box.open:after,.project-box.playing:after{
+.project-box.open #project-background:after,.project-box.playing #project-background:after{
 	opacity: 1;
 } 
 .project-wrapper.active.open, .project-wrapper.active.playing  {
