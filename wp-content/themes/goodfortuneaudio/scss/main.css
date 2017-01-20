@@ -1224,13 +1224,39 @@ section.about .gear-container {
     left: 35px;
     display: block; }
   section.about .gear-container div {
-    font-family: "Bebas Neue", sans-serif;
     padding: 25px 44px 18px;
-    line-height: 1.8em;
-    font-size: 16px;
     max-height: 280px;
     overflow-y: scroll;
     text-transform: uppercase; }
+  section.about .gear-container span.gear-content {
+    font-family: "Bebas Neue", sans-serif;
+    line-height: 1.8em;
+    font-size: 16px; }
+  section.about .gear-container h5 {
+    letter-spacing: 3px;
+    margin: 0 0 10px;
+    background-color: #222629;
+    width: max-content;
+    width: -webkit-max-content;
+    width: -moz-max-content;
+    width: -moz-fit-content;
+    position: relative;
+    font-size: 20px; }
+  section.about .gear-container h5:after {
+    content: '';
+    background: #fff;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    margin: auto;
+    height: 2px;
+    width: 20%;
+    -webkit-transform: translate3d(1px, 7px, 0);
+    -moz-transform: translate3d(1px, 7px, 0);
+    -ms-transform: translate3d(1px, 7px, 0);
+    transform: translate3d(1px, 7px, 0); }
+  section.about .gear-container h5:not(:nth-child(1)) {
+    margin-top: 20px; }
 
 section.about .gear-container.visible {
   visibility: visible;

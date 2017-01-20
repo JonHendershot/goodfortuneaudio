@@ -120,14 +120,42 @@ section.about {
 			display: block;
 		}
 		div {
-			font-family: $heading_font;
+			
 			padding: 25px 44px 18px;
-			line-height: 1.8em;
-			font-size: 16px;
+			
+			
 			max-height: 280px;
 			overflow-y: scroll;
 			text-transform: uppercase;
 		}
+		span.gear-content {
+			font-family: $heading_font;
+			line-height: 1.8em;
+			font-size: 16px;
+		}
+		h5 {
+			letter-spacing: 3px;
+			margin: 0 0 10px;
+			background-color: $dark_grey;
+			@include max-content(width);
+			position: relative;
+			font-size: 20px;
+		}
+		h5:after {
+			content: '';
+			background: $white;
+			position: absolute;
+			left: 0;
+			bottom: 0;
+			margin: auto;
+			height: 2px;
+			width: 20%;
+			@include translate(1px,7px,0);
+		}
+		h5:not(:nth-child(1)){
+			margin-top: 20px;
+		}
+				
 	}
 	.gear-container.visible {
 		visibility: visible;

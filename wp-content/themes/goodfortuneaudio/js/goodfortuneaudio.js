@@ -496,9 +496,9 @@ function nextScreen(currentScreenID, nextID){
 	},1500);
 }
 
-/*
 
 function projectHover(event){
+/*
 	
 		var projectBox = document.getElementById('project-box'), 
 			projectBackground = document.getElementById('project-background'),
@@ -524,6 +524,7 @@ function projectHover(event){
 		
 		projectBackground.style.transform = 'rotateY(' + rotateX + 'deg) rotateX('+ rotateY +'deg)';
 		projectBackground.style['box-shadow'] = shadowX + 'px ' + shadowY + 'px 26px rgba(22, 22, 22, 0.5)';
+*/
 
 }
 function projectReset(){
@@ -532,7 +533,6 @@ function projectReset(){
 		projectBackground.style.transform = 'rotateY(0deg) rotateX(0deg)';
 		projectBackground.style['box-shadow'] ='0px 6px 26px rgba(22, 22, 22, 0.5)';	
 }
-*/
 
 
 function closeLb($){
