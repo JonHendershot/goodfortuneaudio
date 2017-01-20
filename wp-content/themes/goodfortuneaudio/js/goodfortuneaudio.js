@@ -123,7 +123,7 @@
 		}
 	});
 	
-	$('.close-lb, .section-about .about-content-wrapper').click(function(){
+	$('.close-lb, .section-about .about-content-wrapper, .section-about .top-image').click(function(){
 		closeLb($);
 	});
 }(jQuery));
