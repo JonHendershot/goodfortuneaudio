@@ -33,12 +33,13 @@
 		    box-shadow: 0px 6px 26px rgba(22,22,22,0.5);
 // 		    transition: 0.2s all ease-in-out;
 		}
-	}
-	.image-container.top {
-		background-position: center top;
-	}
-	.image-container.bottom {
-		background-position: center bottom;
+		
+		#project-background.top {
+			background-position: center top;
+		}
+		#project-background.bottom {
+			background-position: center bottom;
+		}
 	}
 	.image-container #project-background:before {
 		content: "";

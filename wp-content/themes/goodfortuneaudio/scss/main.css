@@ -740,10 +740,10 @@ section.home .content-wrapper {
       background-size: cover;
       background-repeat: no-repeat;
       box-shadow: 0px 6px 26px rgba(22, 22, 22, 0.5); }
-  .projects-container .image-container.top {
-    background-position: center top; }
-  .projects-container .image-container.bottom {
-    background-position: center bottom; }
+    .projects-container .image-container #project-background.top {
+      background-position: center top; }
+    .projects-container .image-container #project-background.bottom {
+      background-position: center bottom; }
   .projects-container .image-container #project-background:before {
     content: "";
     height: 100%;
