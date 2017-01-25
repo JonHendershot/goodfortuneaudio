@@ -78,8 +78,27 @@ if ( post_password_required() ) {
 		<p class="no-comments"><?php esc_html_e( 'Comments are closed.', 'plate' ); ?></p>
 	<?php
 	endif;
-
-	comment_form();
+	$comments_args = array(
+        // Reset author credial fields if not logged in
+        'fields' => apply_filters(
+		'comment_form_default_fields', array(
+			'author' =>'<div class="author-details-container"><p class="comment-form-author">' . '<input id="author" placeholder="Name *" name="author" type="text" value="' .
+				esc_attr( $commenter['comment_author'] ) . '" size="30" />'.
+				'</p>'
+				,
+			'email'  => '<p class="comment-form-email">' . '<input id="email" placeholder="Email *" name="email" type="text" value="' . esc_attr(  $commenter['comment_author_email'] ) .
+				'" size="30" />' 
+				 .
+				'</p>',
+			'url'    => '<p class="comment-form-url">' .
+			 '<input id="url" name="url" placeholder="Your Website" type="text" value="' . esc_attr( $commenter['comment_author_url'] ) . '" size="30" /> ' .
+	           '</p></div>'
+		)
+	),
+	// redefine your own textarea (the comment body)
+        'comment_field' => '<p class="comment-form-comment"><textarea id="comment" name="comment" aria-required="true" placeholder="Comment" cols="45" rows="8"></textarea></p>'
+);
+	comment_form($comments_args);
 	?>
 
 </div><!-- #comments -->

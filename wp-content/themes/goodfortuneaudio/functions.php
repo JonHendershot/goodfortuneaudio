@@ -104,6 +104,7 @@ add_action( 'widgets_init', 'goodfortuneaudio_widgets_init' );
 function goodfortuneaudio_scripts() {
 	wp_enqueue_style( 'goodfortuneaudio-style', get_stylesheet_uri() );
 	wp_enqueue_style('goodfortuneaudio-main', get_template_directory_uri() . '/scss/main.css');
+	wp_enqueue_style( 'font-awesome', get_template_directory_uri() . '/fonts/font_awesome/css/font-awesome.min.css' );
 
 	wp_enqueue_script( 'goodfortuneaudio-navigation', get_template_directory_uri() . '/js/navigation.js', array(), '20151215', true );
 
