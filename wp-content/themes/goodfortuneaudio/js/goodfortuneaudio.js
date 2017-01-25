@@ -355,7 +355,7 @@
 						'background-image':'url(' + projectImage + ')'}).removeClass('center top bottom').addClass(projectFrame);;
 					$('.project-box audio source').attr('src',projectFile);
 					$('.role.meta').text(projectRoles);
-					$('.title.meta').text(projectFileTitle);
+					$('.title.meta').text('"' + projectFileTitle + '"');
 					
 
 					audioTrack.load();
