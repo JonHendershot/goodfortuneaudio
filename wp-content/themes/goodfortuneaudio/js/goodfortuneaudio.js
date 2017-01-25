@@ -351,8 +351,8 @@
 			
 					
 					// Change Data
-					$('#project-background').css({'background-image':'url(' + projectImage + ')'});
-					$('.image-container').removeClass('center top bottom').addClass(projectFrame);
+					$('#project-background').css({
+						'background-image':'url(' + projectImage + ')'}).removeClass('center top bottom').addClass(projectFrame);;
 					$('.project-box audio source').attr('src',projectFile);
 					$('.role.meta').text(projectRoles);
 					$('.title.meta').text(projectFileTitle);
