@@ -275,6 +275,7 @@
 				projectFile = projectdata.song_file
 				projectFileTitle = projectdata.song_title,
 				projectRoles = projectdata.roles_played,
+				projectFrame = projectdata.project_frame,
 				nextProjectID = projectID + 1,
 				prevProjectID = projectID -1,
 				nextCloneID = projectID + 2,
@@ -351,6 +352,7 @@
 					
 					// Change Data
 					$('#project-background').css({'background-image':'url(' + projectImage + ')'});
+					$('.image-container').removeClass('center top bottom').addClass(projectFrame);
 					$('.project-box audio source').attr('src',projectFile);
 					$('.role.meta').text(projectRoles);
 					$('.title.meta').text(projectFileTitle);

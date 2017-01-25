@@ -34,6 +34,12 @@
 // 		    transition: 0.2s all ease-in-out;
 		}
 	}
+	.image-container.top {
+		background-position: center top;
+	}
+	.image-container.bottom {
+		background-position: center bottom;
+	}
 	.image-container #project-background:before {
 		content: "";
 		height: 100%;

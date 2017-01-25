@@ -17,6 +17,8 @@
 			$song_file = get_field('example_song')['url'];
 			$roles = get_field('roles');
 			$project_num = $query->found_posts;
+			$project_frame_var = get_field('promo_position');
+			$project_frame = strtolower($project_frame_var);
 		
 		// If project image doesn't exist use placeholder
 			if($post_featured_image){
@@ -27,7 +29,7 @@
 		// Setup Project Image box and populate with first project image -- this only runs one time
 			if($ii === 1){ ?>
 				
-				<div class="project-box image-container" id="project-box" onmousemove="projectHover(event)" onmouseout="projectReset()" >
+				<div class="project-box image-container <?php echo $project_frame; ?>" id="project-box" onmousemove="projectHover(event)" onmouseout="projectReset()" >
 					<div style="background-image: url(<?php echo $featured_image; ?>)" id="project-background"/></div>
 					<div class="project-content">
 						<div class="project-meta">
@@ -66,7 +68,7 @@
 					 
 		<?php	} ?>
 		
-			<div class="project-wrapper <?php echo "project-$ii "; if($ii === 1){echo'active';} if($ii === 2){echo' next ';} if($ii === $project_num){echo ' last';} if( $ii > 2  && $ii !== $project_num){ echo " bottom "; } ?>" data-heuristic='{	"artist_image":"<?php echo $featured_image; ?>", "artist":"<?php echo $artist; ?>", "song_file":"<?php echo $song_file; ?>", "song_title":"<?php echo $song_title; ?>", "roles_played":"<?php echo $roles; ?>", "project_number" : "<?php echo $ii; ?>", "total_projects":<?php echo $project_num; ?>}' data-number="<?php echo $ii; ?>">
+			<div class="project-wrapper <?php echo "project-$ii "; if($ii === 1){echo'active';} if($ii === 2){echo' next ';} if($ii === $project_num){echo ' last';} if( $ii > 2  && $ii !== $project_num){ echo " bottom "; } ?>" data-heuristic='{	"artist_image":"<?php echo $featured_image; ?>", "artist":"<?php echo $artist; ?>", "song_file":"<?php echo $song_file; ?>", "song_title":"<?php echo $song_title; ?>", "roles_played":"<?php echo $roles; ?>", "project_number" : "<?php echo $ii; ?>", "project_frame" : "<?php echo $project_frame; ?>", "total_projects":<?php echo $project_num; ?>}' data-number="<?php echo $ii; ?>">
 				<h2><?php echo $artist; ?></h2>
 			</div>
 
