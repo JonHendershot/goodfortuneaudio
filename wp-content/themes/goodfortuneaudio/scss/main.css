@@ -530,6 +530,27 @@ body.single.single-post #content {
       max-width: 100%;
       margin-top: 10px !important;
       height: auto; }
+  body.single.single-post #content .mejs-container {
+    width: 100%;
+    padding: 0 5%;
+    margin: 55px auto;
+    -webkit-transform: translate3d(-5%, 0, 0);
+    -moz-transform: translate3d(-5%, 0, 0);
+    -ms-transform: translate3d(-5%, 0, 0);
+    transform: translate3d(-5%, 0, 0);
+    color: #fff; }
+    body.single.single-post #content .mejs-container .mejs-mediaelement {
+      background-color: blue;
+      background: blue; }
+    body.single.single-post #content .mejs-container .mejs-time-current {
+      background: #CA5D44;
+      background-color: #CA5D44; }
+    body.single.single-post #content .mejs-container .mejs-currenttime, body.single.single-post #content .mejs-container .mejs-duration {
+      color: #fff;
+      font-family: "Roboto", sans-serif; }
+    body.single.single-post #content .mejs-container .mejs-controls {
+      background: #222629;
+      background-color: #222629; }
   body.single.single-post #content .entry-content {
     padding: 0 5%; }
     body.single.single-post #content .entry-content img {
@@ -541,6 +562,31 @@ body.single.single-post #content {
       -ms-transform: translate3d(-5%, 0, 0);
       transform: translate3d(-5%, 0, 0);
       margin: 55px 0; }
+  body.single.single-post #content figure {
+    margin: 0 auto;
+    max-width: 100%; }
+    body.single.single-post #content figure img {
+      margin-bottom: 0px !important; }
+    body.single.single-post #content figure figcaption {
+      margin-bottom: 55px;
+      width: 110%;
+      max-width: 100vw;
+      -webkit-transform: translate3d(-5%, 0, 0);
+      -moz-transform: translate3d(-5%, 0, 0);
+      -ms-transform: translate3d(-5%, 0, 0);
+      transform: translate3d(-5%, 0, 0);
+      font-style: italic;
+      font-size: 12px;
+      padding-left: 5px;
+      margin-top: 2px; }
+  body.single.single-post #content iframe {
+    width: 110%;
+    -webkit-transform: translate3d(-5%, 0, 0);
+    -moz-transform: translate3d(-5%, 0, 0);
+    -ms-transform: translate3d(-5%, 0, 0);
+    transform: translate3d(-5%, 0, 0);
+    margin: 55px auto;
+    max-width: 100vw; }
 
 body.single.single-post div, body.single.single-post p, body.single.single-post article * {
   color: #222629;
