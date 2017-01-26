@@ -647,7 +647,8 @@ body.single.single-post .comments-area {
   body.single.single-post .comments-area #respond p.logged-in-as {
     margin-top: 0;
     font-size: 13px;
-    margin-bottom: 20px; }
+    margin-bottom: 20px;
+    display: none; }
   body.single.single-post .comments-area #respond input[name="submit"] {
     border: none;
     background-color: transparent;
