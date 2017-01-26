@@ -556,7 +556,7 @@ body.single.single-post h1 {
   font-size: 40px !important;
   font-family: "Bebas Neue", sans-serif !important;
   letter-spacing: 6px !important;
-  margin-bottom: 10px !important; }
+  margin-bottom: 0px !important; }
 
 body.single.single-post h2 {
   text-align: center; }
@@ -849,7 +849,8 @@ a.back:hover:before {
   align-items: center;
   -webkit-align-items: center;
   justify-content: space-between;
-  -webkit-justify-content: space-between; }
+  -webkit-justify-content: space-between;
+  margin-bottom: 20px !important; }
   .post-header .entry-meta .back {
     margin: 0;
     width: max-content;

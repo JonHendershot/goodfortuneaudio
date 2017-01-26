@@ -43,7 +43,7 @@ body.single.single-post {
 		font-size: 40px !important;
 		font-family: $heading_font !important;
 		letter-spacing: 6px !important;
-		margin-bottom: 10px !important;
+		margin-bottom: 0px !important;
 	}
 	h2 {
 		text-align: center;
@@ -332,6 +332,7 @@ a.back:hover:before {
 .post-header .entry-meta {
 	
 	@include flexbox(center,space-between);
+	margin-bottom: 20px !important;
 	
 	.back {
 		margin: 0;
