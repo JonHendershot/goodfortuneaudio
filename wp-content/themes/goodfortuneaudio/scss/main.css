@@ -539,7 +539,8 @@ body.single.single-post #content {
       -webkit-transform: translate3d(-5%, 0, 0);
       -moz-transform: translate3d(-5%, 0, 0);
       -ms-transform: translate3d(-5%, 0, 0);
-      transform: translate3d(-5%, 0, 0); }
+      transform: translate3d(-5%, 0, 0);
+      margin: 55px 0; }
 
 body.single.single-post div, body.single.single-post p, body.single.single-post article * {
   color: #222629;
@@ -795,9 +796,6 @@ body.single.single-post blockquote {
 .comment-author a {
   color: #000;
   text-decoration: none; }
-
-.single-page-container .single-wrapper img {
-  margin: 0 !important; }
 
 .comment-metadata a {
   color: gainsboro;

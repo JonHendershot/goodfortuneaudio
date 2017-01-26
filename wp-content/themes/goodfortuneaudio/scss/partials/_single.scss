@@ -25,6 +25,7 @@ body.single.single-post {
 				height: auto;
 				max-width: 100vw;
 				@include translate(-5%,0,0);
+				margin: 55px 0;
 			}
 		}
 	}
@@ -289,9 +290,7 @@ body.single.single-post {
 	text-decoration: none;
 	
 }
-.single-page-container .single-wrapper img {
-	margin: 0 !important;
-}
+
 .comment-metadata a {
 	    color: rgb(220,220,220);
     text-decoration: none;
