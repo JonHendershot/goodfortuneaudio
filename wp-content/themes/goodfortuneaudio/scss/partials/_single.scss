@@ -61,9 +61,16 @@ body.single.single-post {
 			border: 1px solid rgb(220,220,200);
 			border-radius: 2px;
 			
+			form {
+				position: relative;
+				margin-bottom: 50px;
+			}
+			
 			.main-btn { 
 				border: none;
 				padding: 5px 26px 4px 30px;
+				position: absolute;
+				bottom: -60px;
 				span {
 					color: $white !important;
 				}

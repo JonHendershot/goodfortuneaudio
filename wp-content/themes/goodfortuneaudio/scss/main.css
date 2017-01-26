@@ -572,9 +572,14 @@ body.single.single-post .comments-area {
   padding-top: 50px;
   border: 1px solid #dcdcc8;
   border-radius: 2px; }
+  body.single.single-post .comments-area form {
+    position: relative;
+    margin-bottom: 50px; }
   body.single.single-post .comments-area .main-btn {
     border: none;
-    padding: 5px 26px 4px 30px; }
+    padding: 5px 26px 4px 30px;
+    position: absolute;
+    bottom: -60px; }
     body.single.single-post .comments-area .main-btn span {
       color: #fff !important; }
   body.single.single-post .comments-area input[type="submit"], body.single.single-post .comments-area p.form-submit {
