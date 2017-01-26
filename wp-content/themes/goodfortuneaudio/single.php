@@ -8,7 +8,7 @@
  */
 
 get_header(); ?>
-
+<!-- 	<div class="logo" style="background-image:url(<?php echo get_template_directory_uri() . '/images/logo_2.png' ?>);"></div> -->
 	<div class="single-page-container">
 		<div id="primary" class="content-area single-wrapper">
 			<main id="main" class="site-main" role="main">
