@@ -43,6 +43,7 @@ div,p,a,span,input,textarea {
 	font-weight: 500;
 	cursor: pointer;
 	z-index: 9;
+	@include max-content(width);
 // 	@include easeout(600ms);
 	span {
 		z-index: 999999;
@@ -72,4 +73,18 @@ div,p,a,span,input,textarea {
 }
 .main-btn.blue {
 	background-color: $dark_grey;
+}
+.main-btn.blue:after {
+	background-color: $orange;
+}
+input:not([type="submit"]):focus,textarea:focus {
+	outline-color: $orange;
+}
+*::selection {
+	background: $dark_grey;
+	color: $white;
+}
+*::-moz-selection {
+	background: $dark_grey;
+	color: $white;
 }

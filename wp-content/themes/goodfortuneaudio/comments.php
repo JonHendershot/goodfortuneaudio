@@ -96,7 +96,9 @@ if ( post_password_required() ) {
 		)
 	),
 	// redefine your own textarea (the comment body)
-        'comment_field' => '<p class="comment-form-comment"><textarea id="comment" name="comment" aria-required="true" placeholder="Comment" cols="45" rows="8"></textarea></p>'
+        'comment_field' => '<p class="comment-form-comment"><textarea id="comment" name="comment" aria-required="true" placeholder="Comment" cols="45" rows="8"></textarea></p>',
+		'comment_notes_after' => '<button type="submit" id="submit-new" class="main-btn blue"><span>'.__('Post Comment').'</span></button>' 
+
 );
 	comment_form($comments_args);
 	?>

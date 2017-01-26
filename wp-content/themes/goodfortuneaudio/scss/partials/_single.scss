@@ -60,6 +60,19 @@ body.single.single-post {
 			padding-top: 50px;
 			border: 1px solid rgb(220,220,200);
 			border-radius: 2px;
+			
+			.main-btn { 
+				border: none;
+				padding: 5px 26px 4px 30px;
+				span {
+					color: $white !important;
+				}
+			}
+			
+			input[type="submit"], p.form-submit{
+				display: none;
+			}
+			
 			ol.comment-list{
 				margin: 0;
 				padding: 0 63px 40px;
