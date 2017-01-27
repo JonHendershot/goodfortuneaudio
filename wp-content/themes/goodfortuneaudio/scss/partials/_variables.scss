@@ -97,6 +97,21 @@ $home-width : 60%;
      -o-transition-timing-function: cubic-bezier(0.485, 0.095, 0.705, 1.650); 
         transition-timing-function: cubic-bezier(0.485, 0.095, 0.705, 1.650); /* custom */
 }
+@mixin floatOut($float){
+	-webkit-transition: transform $float cubic-bezier(0.210, 0.395, 0.380, 1), box-shadow $float cubic-bezier(0.210, 0.395, 0.380, 1); /* older webkit */
+-webkit-transition: transform $float cubic-bezier(0.210, 0.395, 0.380, 1.030), box-shadow $float cubic-bezier(0.210, 0.395, 0.380, 1); 
+   -moz-transition: transform $float cubic-bezier(0.210, 0.395, 0.380, 1.030), box-shadow $float cubic-bezier(0.210, 0.395, 0.380, 1); 
+     -o-transition: transform $float cubic-bezier(0.210, 0.395, 0.380, 1.030), box-shadow $float cubic-bezier(0.210, 0.395, 0.380, 1); 
+        transition: transform $float cubic-bezier(0.210, 0.395, 0.380, 1.030), box-shadow $float cubic-bezier(0.210, 0.395, 0.380, 1); /* custom */
+
+-webkit-transition-timing-function: cubic-bezier(0.210, 0.395, 0.380, 1); /* older webkit */
+-webkit-transition-timing-function: cubic-bezier(0.210, 0.395, 0.380, 1.030); 
+   -moz-transition-timing-function: cubic-bezier(0.210, 0.395, 0.380, 1.030); 
+     -o-transition-timing-function: cubic-bezier(0.210, 0.395, 0.380, 1.030); 
+        transition-timing-function: cubic-bezier(0.210, 0.395, 0.380, 1.030); /* custom */
+
+
+}
 @mixin blur($blur){
 	-webkit-filter: blur($blur);
 	-moz-filter: blur($blur);

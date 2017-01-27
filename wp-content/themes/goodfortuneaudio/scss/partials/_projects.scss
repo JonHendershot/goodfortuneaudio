@@ -31,7 +31,9 @@
 		    background-size: cover;
 		    background-repeat: no-repeat;
 		    box-shadow: 0px 6px 26px rgba(22,22,22,0.5);
-// 		    transition: 0.2s all ease-in-out;
+		    transform: matrix3d(1,0,0,0,0,1,0,0,0,0,1,0,0,0,0,1);
+		    -webkit-transform: matrix3d(1,0,0,0,0,1,0,0,0,0,1,0,0,0,0,1);
+		    @include floatOut(2000ms);
 		}
 		
 		#project-background.top {

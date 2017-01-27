@@ -505,10 +505,7 @@ function nextScreen(currentScreenID, nextID){
 		$('#scrollport').removeClass('scrollLock');
 	},1500);
 }
-
-
 function projectHover(event){
-/*
 	
 		var projectBox = document.getElementById('project-box'), 
 			projectBackground = document.getElementById('project-background'),
@@ -521,30 +518,29 @@ function projectHover(event){
 			heightAdjust = boxHeight * adjustCoefficient, // use this to adjust and get % of mouseY position
 			mouseX = parseInt(event.clientX - boxOffsetWidth) - widthAdjust, // 0 = middle of box on X axis
 		    mouseY = parseInt(event.clientY - boxOffsetHeight) - heightAdjust, // 0 = middle of box on Y axis
-			percentX = mouseX / widthAdjust, // precent mouse position on the X axis ( 1 - right : -1 = left )
+			percentX = (mouseX / widthAdjust), // precent mouse position on the X axis ( 1 - right : -1 = left )
 			percentY = mouseY / heightAdjust, // precent mouse position on Y axis ( 1 = bottom : -1 = top )
-			rotateValue = 15, // the maxiumum value the container can rotate in any direction
+			rotateValue = 0.000055, // the maxiumum value the container can rotate in any direction
 			shadowValue = 6,
 			shadowX = (percentX * shadowValue) * -1,
 			shadowY = (percentY * shadowValue) * -1,
 			rotateX = (percentX * rotateValue),
-			rotateY = (percentY * rotateValue) * -1;
+			rotateY = (percentY * rotateValue);
 		
 		console.log('X: ' + rotateX +  ' Y: ' + rotateY);
 		
-		projectBackground.style.transform = 'rotateY(' + rotateX + 'deg) rotateX('+ rotateY +'deg)';
+	
+		projectBackground.style.transform = 'matrix3d(0.98,0,0.17,'+ rotateX +',0.00,0.98,0.17,' + rotateY + ',-0.17,-0.17,0.9603999999999999,0,0,0,0,1)';
+		jQuery('#project-background').css({'-webkit-transform':'matrix3d(0.98,0,0.17,'+ rotateX +',0.00,0.98,0.17,' + rotateY + ',-0.17,-0.17,0.9603999999999999,0,0,0,0,1)'});
 		projectBackground.style['box-shadow'] = shadowX + 'px ' + shadowY + 'px 26px rgba(22, 22, 22, 0.5)';
-*/
 
 }
 function projectReset(){
 	var projectBackground = document.getElementById('project-background');
-
-		projectBackground.style.transform = 'rotateY(0deg) rotateX(0deg)';
+	
+		projectBackground.style.transform = 'matrix3d(1,0,0,0,0,1,0,0,0,0,1,0,0,0,0,1)';
 		projectBackground.style['box-shadow'] ='0px 6px 26px rgba(22, 22, 22, 0.5)';	
 }
-
-
 function closeLb($){
 	if($('.lightbox').hasClass('open')){
 		$('.lightbox').removeClass('open visible');
@@ -563,7 +559,6 @@ function closeLb($){
 		
 	}
 };
-
 
 jQuery(document).ready(function($) {
 	$( "#gear-accordion" ).accordion({
