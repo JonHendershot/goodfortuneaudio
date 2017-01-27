@@ -1,109 +1,110 @@
 (function scroller($){
+	if( $('.page-viewer').length ){
 	
-	// Set Variables
-	var scrollTrigger = 100,
-		screenCount = $('section').length,
-		scrollPort = $('#scrollport'),
-		portHeight = (scrollTrigger) * (screenCount - 1),
-		scrollerCache = 0;
-	
-	// Set Scrollport Height
-	scrollPort.css({'height':'calc(100vh + ' + portHeight + 'px'});
-	
-	// Handle Scroll Event
-	$(window).scroll(function(){
-		// Scroll Variables
-		var activeScreenData = $('section.active').data('self'),
-			activeScreenID = parseInt(activeScreenData.section_id),
-			distanceScrolled = parseInt( (window.pageYOffset * 0.01) + 1);
-/* 			console.log(parseInt(distanceScrolled)); */
+		// Set Variables
+		var scrollTrigger = 100,
+			screenCount = $('section').length,
+			scrollPort = $('#scrollport'),
+			portHeight = (scrollTrigger) * (screenCount - 1),
+			scrollerCache = 0;
 		
-		if(distanceScrolled !== activeScreenID && !scrollPort.hasClass('scrollLock')){
+		// Set Scrollport Height
+		scrollPort.css({'height':'calc(100vh + ' + portHeight + 'px'});
 		
-			scrollPort.addClass('scrollLock');
-			nextScreen(activeScreenID, distanceScrolled);
-		}
-		
-	});
-	
-	// Handle Mouse events on Nav
-	$('.nav-wrapper').hover(function(){
-		$(this).addClass('hover');
-	},function(){
-		$(this).removeClass('hover');
-	});
-	
-	$('.nav-wrapper').click(function(){
-		var activeScreenData = $('section.active').data('self'),
-			activeScreenID = parseInt(activeScreenData.section_id),
-			nextScreenID = parseInt($(this).data('self').section_num),
-			scrollY = (scrollTrigger * nextScreenID) - 10;
+		// Handle Scroll Event
+		$(window).scroll(function(){
+			// Scroll Variables
+			var activeScreenData = $('section.active').data('self'),
+				activeScreenID = parseInt(activeScreenData.section_id),
+				distanceScrolled = parseInt( (window.pageYOffset * 0.01) + 1);
+	/* 			console.log(parseInt(distanceScrolled)); */
 			
+			if(distanceScrolled !== activeScreenID && !scrollPort.hasClass('scrollLock')){
+			
+				scrollPort.addClass('scrollLock');
+				nextScreen(activeScreenID, distanceScrolled);
+			}
+			
+		});
+		
+		// Handle Mouse events on Nav
+		$('.nav-wrapper').hover(function(){
+			$(this).addClass('hover');
+		},function(){
+			$(this).removeClass('hover');
+		});
+		
+		$('.nav-wrapper').click(function(){
+			var activeScreenData = $('section.active').data('self'),
+				activeScreenID = parseInt(activeScreenData.section_id),
+				nextScreenID = parseInt($(this).data('self').section_num),
+				scrollY = (scrollTrigger * nextScreenID) - 10;
+				
+				nextScreen(activeScreenID,nextScreenID);
+				window.scrollTo(0, scrollY);
+				
+				if($('.blur').length){
+					closeLb($);
+				}
+		});
+		
+		// Click event on Scroll Hint
+		
+		$('.scroll-hint-container').click(function(){
+		
+			var activeScreenData = $('section.active').data('self'),
+				activeScreenID = parseInt(activeScreenData.section_id),
+				nextScreenID = parseInt(activeScreenID + 1),
+				scrollY = (scrollTrigger * nextScreenID) - 10;
+				
+				
+				nextScreen(activeScreenID,nextScreenID);
+				window.scrollTo(0, scrollY);
+				if($('.blur').length){
+					closeLb($);
+				}
+		});
+		
+		// Keypress
+		
+		document.onkeydown = function(e){
+			
+			var activeScreenData = $('section.active').data('self'),
+				activeScreenID = parseInt(activeScreenData.section_id);
+	
+				
+				
+	
+			
+			if(e.keyCode == '38'){ // pressed up
+				var nextScreenID = parseInt(activeScreenID - 1);
+			}
+			if(e.keyCode == '40'){ // pressed down
+				var nextScreenID = parseInt(activeScreenID);
+			}	
+		var scrollY = (scrollTrigger * nextScreenID) - 10
 			nextScreen(activeScreenID,nextScreenID);
 			window.scrollTo(0, scrollY);
 			
 			if($('.blur').length){
 				closeLb($);
 			}
-	});
-	
-	// Click event on Scroll Hint
-	
-	$('.scroll-hint-container').click(function(){
-	
-		var activeScreenData = $('section.active').data('self'),
-			activeScreenID = parseInt(activeScreenData.section_id),
-			nextScreenID = parseInt(activeScreenID + 1),
-			scrollY = (scrollTrigger * nextScreenID) - 10;
-			
-			
-			nextScreen(activeScreenID,nextScreenID);
-			window.scrollTo(0, scrollY);
-			if($('.blur').length){
-				closeLb($);
-			}
-	});
-	
-	// Keypress
-	
-	document.onkeydown = function(e){
 		
-		var activeScreenData = $('section.active').data('self'),
-			activeScreenID = parseInt(activeScreenData.section_id);
-
-			
-			
-
-		
-		if(e.keyCode == '38'){ // pressed up
-			var nextScreenID = parseInt(activeScreenID - 1);
 		}
-		if(e.keyCode == '40'){ // pressed down
-			var nextScreenID = parseInt(activeScreenID);
-		}	
-	var scrollY = (scrollTrigger * nextScreenID) - 10
-		nextScreen(activeScreenID,nextScreenID);
-		window.scrollTo(0, scrollY);
 		
-		if($('.blur').length){
-			closeLb($);
-		}
-	
+		// Anchor click
+		$('.anchor').click(function(){
+			var activeScreenData = $('section.active').data('self'),
+				activeScreenID = parseInt(activeScreenData.section_id),
+				target = $(this).data('target'),
+				scrollY = (scrollTrigger * target) - 10;
+				
+				
+				nextScreen(activeScreenID,target);
+				window.scrollTo(0, scrollY);
+		});
+		
 	}
-	
-	// Anchor click
-	$('.anchor').click(function(){
-		var activeScreenData = $('section.active').data('self'),
-			activeScreenID = parseInt(activeScreenData.section_id),
-			target = $(this).data('target'),
-			scrollY = (scrollTrigger * target) - 10;
-			
-			
-			nextScreen(activeScreenID,target);
-			window.scrollTo(0, scrollY);
-	});
-	
-	
 
 }(jQuery));
 (function lightbox($){
@@ -129,265 +130,272 @@
 }(jQuery));
 (function projects($){
 	
-	
-	// Hover Event
-		$('.project-box, .project-wrapper').hover(function(){
-			if($(this).hasClass('active') || $(this).hasClass('project-box')){
-				$('.project-box, .project-wrapper.active').addClass('open');
-			}
-		},function(){
-			$('.project-box, .project-wrapper.active').removeClass('open');
-		});
+	if( $('.page-viewer').length ){
 		
 		
-	// AUDIO TRACK HANDLES 	
-	
-	// Variables
-		var audioTrack = document.getElementById('project-player'),
-			playBtn = $('.buttons .play'),
-			progressBar = $('.progress-bar'),
-			bar = document.getElementById('default-bar'),
-			barSize = bar.offsetWidth,
-			projectWrapper = document.getElementById('project-container');
+		// Hover Event
+			$('.project-box, .project-wrapper').hover(function(){
+				if($(this).hasClass('active') || $(this).hasClass('project-box')){
+					$('.project-box, .project-wrapper.active').addClass('open');
+				}
+			},function(){
+				$('.project-box, .project-wrapper.active').removeClass('open');
+			});
 			
 			
-	// Play/Pause Audio
+		// AUDIO TRACK HANDLES 	
 		
-
-		playBtn.click(function(){
-			if(!audioTrack.paused && !audioTrack.ended){
-				// Pause Audio
-				audioTrack.pause();
-				document.getElementById('vid2').playbackRate = 1;
+		// Variables
+			var audioTrack = document.getElementById('project-player'),
+				playBtn = $('.buttons .play'),
+				progressBar = $('.progress-bar'),
+				bar = document.getElementById('default-bar'),
+				barSize = bar.offsetWidth,
+				projectWrapper = document.getElementById('project-container');
 				
-				// Update Classes
-				$('.project-box, .project-wrapper.active').removeClass('playing');
-				playBtn.removeClass('pause');
 				
-				// Pause Timer Update
-				window.clearInterval(updateTime);
-			}else{
-				// Play Audio
-				audioTrack.play();
-				document.getElementById('vid2').playbackRate = 4;
+		// Play/Pause Audio
 			
-				// Update Classes
-				$('.project-box, .project-wrapper.active').addClass('playing');
-				playBtn.addClass('pause');
-				
-				// Update Current Time
-				updateTime = setInterval(update, 500);
-			}
-		});	
-		
-	// Update player on bar click
-		bar.addEventListener('click',clickedBar,false);
-
-	// Duration
-			
-		var duration = $('#track-duration'),
-			currentTime = $('#current-time');
-
-		audioTrack.onloadedmetadata = function(){ // fire when metadata for track is loaded
-			
-			// Grab minutes and seconds of full time from track
-			var trackMinutes = parseInt(audioTrack.duration/60),
-				trackSeconds = parseInt(audioTrack.duration%60);
-			
-			if(trackSeconds < 10){
-				var durationPre = '0';
-			}else {
-				var durationPre = '';
-			}
-			
-			// Add full duration to duration element
-			duration.text(trackMinutes + ':' + durationPre+trackSeconds);
-		}
 	
-	
-	// PROJECT NAVIGATION
-	// Begin Clone
-		var lastItemID = parseInt($('.project-wrapper.last').attr('data-number')),
-			penultItemID = lastItemID - 1;
-			
-			if(!$('.project-wrapper.top.project-' + penultItemID).length){
-				$('.project-wrapper.project-' + penultItemID).clone(true).removeClass('bottom').addClass('top').prependTo('.projects-container');
-			}
-			
-	// Title Click
-		$('.project-wrapper').click(function(){
-			if( ! $(this).hasClass('active')){
-				var projectdata = $(this).data('heuristic');
-				document.getElementById('vid2').playbackRate = 1;
-				nextProject(projectdata);
-			}
-			
-		});
-	
-	// Anon Functions
-	// Update Player
-		function update(){
-			if(!audioTrack.ended){
-				// Current Time
-				var playedMinutes = parseInt(audioTrack.currentTime/60),
-					playedSecondsRaw = parseInt(audioTrack.currentTime%60);
-				
-				// Add zero to seconds if less than 10
-					if(playedSecondsRaw < 10){
-						var playedSeconds = '0' + playedSecondsRaw;
-					}else {
-						var playedSeconds = playedSecondsRaw;
-					}
-				
-				currentTime.text(playedMinutes + ':' + playedSeconds);
-				
-				// Progress Bar
-				var size = (audioTrack.currentTime/audioTrack.duration) * barSize;
-				
-				progressBar.css({'width' : size + 'px'});
-			}else{
-				currentTime.text('0:00');
-				playBtn.removeClass('pause');
-				progressBar.css({'width' : '0px'});
-				window.clearInterval(updateTime);
-				document.getElementById('vid2').playbackRate = 1;
-			}	
-		}
-		
-		function clickedBar(e){
-			if(!audioTrack.ended){
-				var mouseX = e.pageX - ( bar.offsetLeft + projectWrapper.offsetLeft ), // need to add bar & wrapper offset to get full offset from side of browser
-					newTime = mouseX*audioTrack.duration/barSize;
+			playBtn.click(function(){
+				if(!audioTrack.paused && !audioTrack.ended){
+					// Pause Audio
+					audioTrack.pause();
+					document.getElementById('vid2').playbackRate = 1;
 					
-					audioTrack.currentTime = newTime;
-					progressBar.css({'width':mouseX + 'px'});
+					// Update Classes
+					$('.project-box, .project-wrapper.active').removeClass('playing');
+					playBtn.removeClass('pause');
 					
-			}
-		}
-	// Switch projects
-		function nextProject(projectdata){
-			$('.project-box, .project-wrapper').removeClass('playing');
+					// Pause Timer Update
+					window.clearInterval(updateTime);
+				}else{
+					// Play Audio
+					audioTrack.play();
+					document.getElementById('vid2').playbackRate = 4;
+				
+					// Update Classes
+					$('.project-box, .project-wrapper.active').addClass('playing');
+					playBtn.addClass('pause');
+					
+					// Update Current Time
+					updateTime = setInterval(update, 500);
+				}
+			});	
 			
-			// Variables
-			var projectID = parseInt(projectdata.project_number),
-				projectTitle = projectdata.artist,
-				projectImage = projectdata.artist_image,
-				projectFile = projectdata.song_file
-				projectFileTitle = projectdata.song_title,
-				projectRoles = projectdata.roles_played,
-				projectFrame = projectdata.project_frame,
-				nextProjectID = projectID + 1,
-				prevProjectID = projectID -1,
-				nextCloneID = projectID + 2,
-				prevCloneID = projectID - 2,
-				totalProjects = parseInt(projectdata.total_projects);
+		// Update player on bar click
+			bar.addEventListener('click',clickedBar,false);
+	
+		// Duration
 				
-			if(nextProjectID <= totalProjects){
-				var nextProject = $('.project-wrapper.bottom.project-' + nextProjectID).first();
-			} else {
-				var nextProject = $('.project-wrapper.bottom.project-1').first();
+			var duration = $('#track-duration'),
+				currentTime = $('#current-time');
+	
+			audioTrack.onloadedmetadata = function(){ // fire when metadata for track is loaded
+				
+				// Grab minutes and seconds of full time from track
+				var trackMinutes = parseInt(audioTrack.duration/60),
+					trackSeconds = parseInt(audioTrack.duration%60);
+				
+				if(trackSeconds < 10){
+					var durationPre = '0';
+				}else {
+					var durationPre = '';
+				}
+				
+				// Add full duration to duration element
+				duration.text(trackMinutes + ':' + durationPre+trackSeconds);
 			}
-			
-			if(prevProjectID >= 1){
-				var prevProject = $('.project-wrapper.top.project-' + prevProjectID).last();
-			} else {
-				var prevProject = $('.project-wrapper.top.project-' + totalProjects).last();
-
-			}
+		
+		
+		// PROJECT NAVIGATION
+		// Begin Clone
+			var lastItemID = parseInt($('.project-wrapper.last').attr('data-number')),
+				penultItemID = lastItemID - 1;
 				
-			// Audio Player
-				audioTrack.pause();	
-			// Animate Off
-				/* $('.project-wrapper.next, .project-wrapper.last').addClass('off'); */
+				if(!$('.project-wrapper.top.project-' + penultItemID).length){
+					$('.project-wrapper.project-' + penultItemID).clone(true).removeClass('bottom').addClass('top').prependTo('.projects-container');
+				}
 				
-					if( $('.project-wrapper.project-' + projectID).hasClass('next') ){ // animate upwards
-						
-						$('.project-wrapper.last').removeClass('last').addClass('top');
-						$('.project-wrapper.active').removeClass('active').addClass('last');
-						$('.project-wrapper.next').removeClass('next').addClass('active');	
-						nextProject.removeClass('bottom').addClass('next');
-						
-						if(nextCloneID <= totalProjects && !$('.project-wrapper.bottom.project-' + nextCloneID).length){
-							$('.project-wrapper.project-' + nextCloneID).first().clone(true).removeClass('top active last next bottom').addClass('bottom').appendTo('.projects-container');
-						} else if( nextCloneID == (totalProjects + 1)){
-							$('.project-wrapper.project-1').first().clone(true).removeClass('top active last next bottom').addClass('bottom').appendTo('.projects-container');
-						}else if( nextCloneID == (totalProjects + 2)){
-							$('.project-wrapper.project-2').first().clone(true).removeClass('top active last next bottom').addClass('bottom').appendTo('.projects-container');
+		// Title Click
+			$('.project-wrapper').click(function(){
+				if( ! $(this).hasClass('active')){
+					var projectdata = $(this).data('heuristic');
+					document.getElementById('vid2').playbackRate = 1;
+					nextProject(projectdata);
+				}
+				
+			});
+		
+		// Anon Functions
+		// Update Player
+			function update(){
+				if(!audioTrack.ended){
+					// Current Time
+					var playedMinutes = parseInt(audioTrack.currentTime/60),
+						playedSecondsRaw = parseInt(audioTrack.currentTime%60);
+					
+					// Add zero to seconds if less than 10
+						if(playedSecondsRaw < 10){
+							var playedSeconds = '0' + playedSecondsRaw;
+						}else {
+							var playedSeconds = playedSecondsRaw;
 						}
+					
+					currentTime.text(playedMinutes + ':' + playedSeconds);
+					
+					// Progress Bar
+					var size = (audioTrack.currentTime/audioTrack.duration) * barSize;
+					
+					progressBar.css({'width' : size + 'px'});
+				}else{
+					currentTime.text('0:00');
+					playBtn.removeClass('pause');
+					progressBar.css({'width' : '0px'});
+					window.clearInterval(updateTime);
+					document.getElementById('vid2').playbackRate = 1;
+				}	
+			}
+			
+			function clickedBar(e){
+				if(!audioTrack.ended){
+					var mouseX = e.pageX - ( bar.offsetLeft + projectWrapper.offsetLeft ), // need to add bar & wrapper offset to get full offset from side of browser
+						newTime = mouseX*audioTrack.duration/barSize;
 						
+						audioTrack.currentTime = newTime;
+						progressBar.css({'width':mouseX + 'px'});
 						
+				}
+			}
+		// Switch projects
+			function nextProject(projectdata){
+				$('.project-box, .project-wrapper').removeClass('playing');
+				
+				// Variables
+				var projectID = parseInt(projectdata.project_number),
+					projectTitle = projectdata.artist,
+					projectImage = projectdata.artist_image,
+					projectFile = projectdata.song_file
+					projectFileTitle = projectdata.song_title,
+					projectRoles = projectdata.roles_played,
+					projectFrame = projectdata.project_frame,
+					nextProjectID = projectID + 1,
+					prevProjectID = projectID -1,
+					nextCloneID = projectID + 2,
+					prevCloneID = projectID - 2,
+					totalProjects = parseInt(projectdata.total_projects);
+				
+				if( projectID <= totalProjects ){ // only execute if next id Exists
+						
+					if(nextProjectID <= totalProjects){
+						var nextProject = $('.project-wrapper.bottom.project-' + nextProjectID).first();
+					} else {
+						var nextProject = $('.project-wrapper.bottom.project-1').first();
 					}
 					
-					if( $('.project-wrapper.project-' + projectID).hasClass('last') ){ // animate down
+					if(prevProjectID >= 1){
+						var prevProject = $('.project-wrapper.top.project-' + prevProjectID).last();
+					} else {
+						var prevProject = $('.project-wrapper.top.project-' + totalProjects).last();
+		
+					}
 						
-						$('.project-wrapper.next').removeClass('next').addClass('bottom');	
-						$('.project-wrapper.active').removeClass('active').addClass('next');
-						$('.project-wrapper.last').removeClass('last').addClass('active');
-						prevProject.removeClass('top').addClass('last');
+					// Audio Player
+						audioTrack.pause();	
 						
-						if(prevCloneID >= 1 && !$('.project-wrapper.top.project-' + prevCloneID).length){
-							$('.project-wrapper.project-' + prevCloneID).first().clone(true).removeClass('bottom active last next').addClass('top').prependTo('.projects-container');
-						}else if(! $('.project-wrapper.top.project-' + totalProjects).length){
-							if(prevCloneID == 0){
-								$('.project-wrapper.project-' + (totalProjects)).first().clone(true).removeClass('top active last bottom next').addClass('top').prependTo('.projects-container');
-							}else if(prevCloneID == -1){
-								$('.project-wrapper.project-' + (totalProjects-1)).first().clone(true).removeClass('top active last bottom next').addClass('top').prependTo('.projects-container');
+					// Animate Off
+						/* $('.project-wrapper.next, .project-wrapper.last').addClass('off'); */
+						
+							if( $('.project-wrapper.project-' + projectID).hasClass('next') ){ // animate upwards
+								
+								$('.project-wrapper.last').removeClass('last').addClass('top');
+								$('.project-wrapper.active').removeClass('active').addClass('last');
+								$('.project-wrapper.next').removeClass('next').addClass('active');	
+								nextProject.removeClass('bottom').addClass('next');
+								
+								if(nextCloneID <= totalProjects && !$('.project-wrapper.bottom.project-' + nextCloneID).length){
+									$('.project-wrapper.project-' + nextCloneID).first().clone(true).removeClass('top active last next bottom').addClass('bottom').appendTo('.projects-container');
+								} else if( nextCloneID == (totalProjects + 1)){
+									$('.project-wrapper.project-1').first().clone(true).removeClass('top active last next bottom').addClass('bottom').appendTo('.projects-container');
+								}else if( nextCloneID == (totalProjects + 2)){
+									$('.project-wrapper.project-2').first().clone(true).removeClass('top active last next bottom').addClass('bottom').appendTo('.projects-container');
+								}
+								
+								
 							}
 							
-						}
+							if( $('.project-wrapper.project-' + projectID).hasClass('last') ){ // animate down
+								
+								$('.project-wrapper.next').removeClass('next').addClass('bottom');	
+								$('.project-wrapper.active').removeClass('active').addClass('next');
+								$('.project-wrapper.last').removeClass('last').addClass('active');
+								prevProject.removeClass('top').addClass('last');
+								
+								if(prevCloneID >= 1 && !$('.project-wrapper.top.project-' + prevCloneID).length){
+									$('.project-wrapper.project-' + prevCloneID).first().clone(true).removeClass('bottom active last next').addClass('top').prependTo('.projects-container');
+								}else if(! $('.project-wrapper.top.project-' + totalProjects).length){
+									if(prevCloneID == 0){
+										$('.project-wrapper.project-' + (totalProjects)).first().clone(true).removeClass('top active last bottom next').addClass('top').prependTo('.projects-container');
+									}else if(prevCloneID == -1){
+										$('.project-wrapper.project-' + (totalProjects-1)).first().clone(true).removeClass('top active last bottom next').addClass('top').prependTo('.projects-container');
+									}
+									
+								}
+								
+								
+							}
+							
 						
+							
+							$('.project-box').addClass('off');
+							$('.project-box audio source').attr('src','');
+							
 						
+					// Update Info
+						setTimeout(function(){
+							
+					
+							
+							// Change Data
+							$('#project-background').css({
+								'background-image':'url(' + projectImage + ')'}).removeClass('center top bottom').addClass(projectFrame);;
+							$('.project-box audio source').attr('src',projectFile);
+							$('.role.meta').text(projectRoles);
+							$('.title.meta').text('"' + projectFileTitle + '"');
+							
+		
+							audioTrack.load();
+							audioTrack.onloadedmetadata = function(){ // fire when metadata for track is loaded
+					
+								// Grab minutes and seconds of full time from track
+								var trackMinutes = parseInt(audioTrack.duration/60),
+									trackSeconds = parseInt(audioTrack.duration%60);
+								
+								if(trackSeconds < 10){
+									var prepend = '0';
+								}else {
+									var prepend = '';
+								}
+								
+								// Add full duration to duration element
+								duration.text(trackMinutes + ':' + prepend+trackSeconds);
+								update();
+								playBtn.removeClass('pause');
+		
+							}
+						
+							
+						},400)
+						
+						setTimeout(function(){
+							$('.project-box').removeClass('off');
+							$('.project-wrapper.next, .project-wrapper.last').removeClass('off');
+						},500);
+		
+					
 					}
-					
-				
-					
-					$('.project-box').addClass('off');
-					$('.project-box audio source').attr('src','');
-					
-				
-			// Update Info
-				setTimeout(function(){
-					
-			
-					
-					// Change Data
-					$('#project-background').css({
-						'background-image':'url(' + projectImage + ')'}).removeClass('center top bottom').addClass(projectFrame);;
-					$('.project-box audio source').attr('src',projectFile);
-					$('.role.meta').text(projectRoles);
-					$('.title.meta').text('"' + projectFileTitle + '"');
-					
-
-					audioTrack.load();
-					audioTrack.onloadedmetadata = function(){ // fire when metadata for track is loaded
-			
-						// Grab minutes and seconds of full time from track
-						var trackMinutes = parseInt(audioTrack.duration/60),
-							trackSeconds = parseInt(audioTrack.duration%60);
-						
-						if(trackSeconds < 10){
-							var prepend = '0';
-						}else {
-							var prepend = '';
-						}
-						
-						// Add full duration to duration element
-						duration.text(trackMinutes + ':' + prepend+trackSeconds);
-						update();
-						playBtn.removeClass('pause');
-
-					}
-				
-					
-				},400)
-				
-				setTimeout(function(){
-					$('.project-box').removeClass('off');
-					$('.project-wrapper.next, .project-wrapper.last').removeClass('off');
-				},500);
-
-			
-		}
+			}
+	}
 	
 }(jQuery));
 
