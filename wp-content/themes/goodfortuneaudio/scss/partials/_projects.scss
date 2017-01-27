@@ -34,6 +34,7 @@
 		    transform: matrix3d(1,0,0,0,0,1,0,0,0,0,1,0,0,0,0,1);
 		    -webkit-transform: matrix3d(1,0,0,0,0,1,0,0,0,0,1,0,0,0,0,1);
 		    @include floatOut(2000ms);
+		    @include translate(0,0,0);
 		}
 		
 		#project-background.top {

@@ -1189,7 +1189,11 @@ section.home .content-wrapper {
       -moz-transition-timing-function: cubic-bezier(0.21, 0.395, 0.38, 1.03);
       -o-transition-timing-function: cubic-bezier(0.21, 0.395, 0.38, 1.03);
       transition-timing-function: cubic-bezier(0.21, 0.395, 0.38, 1.03);
-      /* custom */ }
+      /* custom */
+      -webkit-transform: translate3d(0, 0, 0);
+      -moz-transform: translate3d(0, 0, 0);
+      -ms-transform: translate3d(0, 0, 0);
+      transform: translate3d(0, 0, 0); }
     .projects-container .image-container #project-background.top {
       background-position: center top; }
     .projects-container .image-container #project-background.bottom {
