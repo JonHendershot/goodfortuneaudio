@@ -1802,6 +1802,31 @@ section.about .gear-container.visible {
     -ms-transform: translate3d(0, -100px, 0);
     transform: translate3d(0, -100px, 0); } }
 
+@media (max-width: 1400px) {
+  body.single.single-post #masthead {
+    position: relative;
+    display: flex;
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flex;
+    align-items: center;
+    -webkit-align-items: center;
+    justify-content: flex-end;
+    -webkit-justify-content: flex-end;
+    width: 95%;
+    max-width: 850px;
+    margin: 0 auto;
+    padding-top: 34px; }
+    body.single.single-post #masthead .header-logo {
+      display: block;
+      position: relative;
+      top: 0;
+      right: 0; }
+  body.single.single-post #content {
+    margin-top: 15px;
+    border-top: 1px solid gainsboro;
+    padding-top: 0px; } }
+
 @media (max-width: 800px) {
   body.single.single-post .author-details-container {
     flex-direction: column; }

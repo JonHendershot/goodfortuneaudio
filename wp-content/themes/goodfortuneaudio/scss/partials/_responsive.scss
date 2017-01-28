@@ -99,6 +99,34 @@
 
 // Width Queries
 
+@media (max-width: 1400px){
+	
+	// Single Page
+	body.single.single-post {
+		#masthead {
+			position: relative;
+			@include flexbox(center,flex-end);
+			width: 95%;
+			max-width: 850px;
+			margin: 0 auto;
+			padding-top: 34px;
+			
+			
+			.header-logo {
+				display: block;
+				position: relative;
+				top: 0;
+				right: 0;
+			}
+		}
+		#content {
+			margin-top: 15px;
+			border-top: 1px solid rgb(220,220,220);
+			padding-top: 0px;
+		}
+	}
+}
+
 @media (max-width : 800px){
 
 	// Single Page	
@@ -123,5 +151,6 @@
 			figcaption {
 				width: 118% !important;
 			}
+		
 		}
 }
