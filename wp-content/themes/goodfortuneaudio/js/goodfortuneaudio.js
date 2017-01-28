@@ -348,6 +348,7 @@
 						
 							
 							$('.project-box').addClass('off');
+/* 							$('#project-background').addClass('transition'); */
 							$('.project-box audio source').attr('src','');
 							
 						
@@ -390,6 +391,7 @@
 						setTimeout(function(){
 							$('.project-box').removeClass('off');
 							$('.project-wrapper.next, .project-wrapper.last').removeClass('off');
+/* 							$('#project-background').removeClass('transition'); */
 						},500);
 		
 					
@@ -520,8 +522,8 @@ function projectHover(event){
 		    mouseY = parseInt(event.clientY - boxOffsetHeight) - heightAdjust, // 0 = middle of box on Y axis
 			percentX = (mouseX / widthAdjust), // precent mouse position on the X axis ( 1 - right : -1 = left )
 			percentY = mouseY / heightAdjust, // precent mouse position on Y axis ( 1 = bottom : -1 = top )
-			rotateValue = 0.000055, // the maxiumum value the container can rotate in any direction
-			shadowValue = 6,
+			rotateValue = 0.000055, // the maxiumum value the container can rotate in any direction (using matrix3D, this would be the depth rating)
+			shadowValue = 8, // the max distance the dropshadow can offset
 			shadowX = (percentX * shadowValue) * -1,
 			shadowY = (percentY * shadowValue) * -1,
 			rotateX = (percentX * rotateValue),

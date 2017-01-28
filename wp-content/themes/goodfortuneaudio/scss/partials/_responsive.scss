@@ -95,3 +95,33 @@
 		@include translate(0,-100px,0);
 	}
 }
+
+
+// Width Queries
+
+@media (max-width : 800px){
+
+	// Single Page	
+		body.single.single-post {	
+			.author-details-container {
+				flex-direction: column;
+				
+				p {
+					width: 100% !important;
+					margin: 5px auto !important;
+				}
+			}
+			
+			blockquote {
+				width: 110%;
+				
+				p {
+					font-size: 21px;
+					text-align: justify;
+				}
+			}
+			figcaption {
+				width: 118% !important;
+			}
+		}
+}
