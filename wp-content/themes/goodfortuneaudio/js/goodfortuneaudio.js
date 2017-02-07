@@ -534,7 +534,7 @@ function projectHover(event){
 		console.log('X: ' + rotateX +  ' Y: ' + rotateY);
 		
 	
-		projectBackground.style.transform = 'matrix3d(0.98,0,0.17,'+ rotateX +',0.00,0.98,0.17,' + rotateY + ',-0.17,-0.17,0.9603999999999999,0,0,0,0,1)';
+		projectBackground.style.transform = 'matrix3d(0.98,0,0.17,'+ rotateX +',0.00,0.98,0.17,' + rotateY + ',-0.17,-0.17,0.9603999999999999,0,0,0,0,1) translate3d(0,0,0)';
 		jQuery('#project-background').css({'-webkit-transform':'matrix3d(0.98,0,0.17,'+ rotateX +',0.00,0.98,0.17,' + rotateY + ',-0.17,-0.17,0.9603999999999999,0,0,0,0,1)'});
 		projectBackground.style['box-shadow'] = shadowX + 'px ' + shadowY + 'px 26px rgba(22, 22, 22, 0.5)';
 

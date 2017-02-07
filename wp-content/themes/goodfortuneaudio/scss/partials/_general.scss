@@ -11,10 +11,12 @@ body.lb-open {
 }
 .preblur {
 	@include blur(0px);
+/*
 	transition: 0.5s filter linear !important;
 	-webkit-transition: 0.5s filter linear !important;
 	-moz-transition: 0.5s filter linear !important;
 	-ms-transition: 0.5s filter linear !important;
+*/
 }
 .blur {
 	@include blur(5px);

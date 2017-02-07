@@ -102,6 +102,7 @@
 	}
 	.project-wrapper.active {
 		visibility: visible;
+		@include translate(0,0,100px);
 		h2 {
 			opacity: 1;
 			cursor: text;
@@ -144,7 +145,7 @@
 
 		
 .project-content {
-	@include translate(0,-30px,0);
+	@include translate(0,-30px,	100px);
 	@include easeout(800ms);
 	opacity: 0;
 	position: absolute;
@@ -192,11 +193,11 @@
 }
 .project-box.open, .project-box.playing {
 	.project-content {
-		@include translate(0,-70px,0);
+		@include translate(0,-70px,100px);
 		visibility: visible;
 		opacity: 1;
 		.song-title, .roles {
-			@include translate(0,0,0);
+			@include translate(0,0,100px);
 		}
 	}
 	.audio-player-container {
@@ -205,7 +206,7 @@
 		}
 		
 		.prev {
-			@include translate(0,0,0);
+			@include translate(0,0,100px);
 		}
 	}
 	

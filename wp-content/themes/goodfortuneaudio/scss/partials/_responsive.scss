@@ -64,10 +64,10 @@
 			}
 		}
 		.project-box.playing .project-content, .project-box.open .project-content {
-			@include translate(0,-45px,0);
+			@include translate(0,-45px,100px);
 		}
 		.project-wrapper.active.playing h2, .project-wrapper.active.open h2 {
-			@include translate(0,-85px,0);
+			@include translate(0,-85px, 100px);
 		}
 		
 		.project-wrapper.next {
@@ -92,7 +92,7 @@
 
 @media (min-width:1800px){
 	.project-box.open .project-content, .project-box.playing .project-content {
-		@include translate(0,-100px,0);
+		@include translate(0,-100px,100px);
 	}
 }
 
