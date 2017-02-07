@@ -6,10 +6,12 @@
 			screenCount = $('section').length,
 			scrollPort = $('#scrollport'),
 			portHeight = (scrollTrigger) * (screenCount - 1),
+			windowHeight = $(window).height(),
+			scrollPortHeight = windowHeight + portHeight,
 			scrollerCache = 0;
 		
 		// Set Scrollport Height
-		scrollPort.css({'height':'calc(100vh + ' + portHeight + 'px'});
+		scrollPort.css({'height':scrollPortHeight + 'px'});
 		
 		// Handle Scroll Event
 		$(window).scroll(function(){
