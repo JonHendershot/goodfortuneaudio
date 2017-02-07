@@ -24,6 +24,7 @@
 	    width: auto;
 	    height: auto;
 	    @include translate(0,0,0); //hardware accelleration
+// 	    display: none;
 	}
 	video.visible {
 		opacity: 0.55;
@@ -39,7 +40,7 @@
 	     -o-transition-timing-function: cubic-bezier(0.740, 0.005, 0.240, 0.995); 
 	        transition-timing-function: cubic-bezier(0.740, 0.005, 0.240, 0.995);	}
 
-	.background-image {
+	.background-image, .background-image-mobile {
 	    position: absolute;
 	    top: 0;
 	    left: 0;
@@ -51,4 +52,11 @@
 	    @include ease(1500ms);
 	    opacity: 1;
 	}	
+	.background-image-mobile {
+		visibility: hidden;
+		opacity: 0.55;
+	}
+	.background-image-mobile.visible {
+		visibility: visible;
+	}
 }

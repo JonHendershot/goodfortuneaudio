@@ -22,11 +22,12 @@
 <div id="scrollport"></div>
 <div class="page-viewer">
 	<div class="background-image" style="background-image: url(<?php  echo $page_header_photo; ?>);"></div>
+	<div class="background-image-mobile" style="background-image: url(<?php echo get_template_directory_uri() . '/images/particle_screen_1.png'; ?>);" data-screens='{"screen_1" : "<?php echo get_template_directory_uri() . '/images/particle_screen_1.png'; ?>", "screen_2" : "<?php echo get_template_directory_uri() . '/images/particle_screen_2.png'; ?>"}'></div>
 	<video id="vid1" autoplay loop class="visible preblur">
-		<source src="<?php echo get_template_directory_uri() . '/video/particle_1.mp4'; ?>" type="video/mp4"/>
+		<source src="<?php echo get_template_directory_uri() . '/images/tinygif.gif'; ?>" data-src="<?php echo get_template_directory_uri() . '/video/particle_1.mp4'; ?>" type="video/mp4"/>
 	</video>
 	<video id="vid2" loop>
-		<source src="<?php echo get_template_directory_uri() . '/video/lazyLoop.mp4'; ?>" type="video/mp4"/>
+		<source src="<?php echo get_template_directory_uri() . '/images/tinygif.gif'; ?>" data-src="<?php echo get_template_directory_uri() . '/video/lazyLoop.mp4'; ?>" type="video/mp4"/>
 	</video>
 	<div id="pages">
 	

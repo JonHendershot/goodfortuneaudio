@@ -90,14 +90,16 @@
 	}	
 }
 
+
+
+
+// Width Queries
+
 @media (min-width:1800px){
 	.project-box.open .project-content, .project-box.playing .project-content {
 		@include translate(0,-100px,100px);
 	}
 }
-
-
-// Width Queries
 
 @media (max-width: 1400px){
 	
@@ -127,7 +129,123 @@
 	}
 }
 
+@media (max-width: 900px){
+	
+	  /////////////////////////
+	 /////// HOME PAGE ///////
+	/////////////////////////
+	
+	
+	
+	body.home {
+		
+		// General
+		#masthead {
+			a.header-logo {
+				top: 25px;
+				left: 0;
+				right: 0;
+				margin: 0 auto; 
+			}
+		}
+		#content {
+			.scroller-nav {
+				display: none;
+			}
+		}
+		
+		// Projects
+		section.projects {
+			.projects-container {
+				width: 90%;
+				margin: 0 auto;
+				position: relative;
+				height: 100%;
+				
+				// Project Displayer
+				.project-box {
+					@include flexbox(center,center);
+					padding-bottom: 0;
+					height: 100%;
+					flex-direction: column;
+					
+					#project-background {
+						position: relative;
+						display: block;
+						padding-bottom: 56%;
+						height: 0;
+					}
+					.project-content {
+						@include translate(0,0,0);
+						opacity: 1;
+						visibility: visible;
+						margin-top: 100px;
+						position: relative;
+						width: 100%;
+						
+						.project-meta {
+							max-width: 100%;
+							margin: 0 auto 40px;
+							
+							.roles,.song-title {
+								@include translate(0,0,0);
+							}
+							
+							h3 {
+								font-size: 26px;
+							}
+							.meta {
+								font-size: 14px;
+							}
+						}
+						.audio-player-container {
+							.audio-player {
+								.default-bar {
+									width: 80%;
+									
+								}
+								.buttons {
+									width: 47%;
+									margin: 61px auto 0;
+									
+									.prev,.next,.play {
+										height: 80px;
+										width: 80px;
+										border-radius: 40px;
+										background-size: 40%;
+									}
+									.play {
+										background-position: 20px center;
+									}
+									.prev {
+										@include translate(0,0,0);
+									}
+									.next {
+										@include transrotate(0,0,0,180deg);
+									}
+								}
+							}
+						}
+					}
+				}
+				
+				// Project Wrappers 
+				.project-wrapper.next, .project-wrapper.last {
+					opacity: 0;
+				}
+				.project-wrapper.active {
+					@include translate(0,-160px,100px);
+					h2 {
+						@include translate(0,0,0);
+					}
+				}
+			}
+		}
+	}	
+}
+
 @media (max-width : 800px){
+
 
 	// Single Page	
 		body.single.single-post {	
