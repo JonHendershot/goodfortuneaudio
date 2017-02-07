@@ -174,7 +174,7 @@
 				}else{
 					// Play Audio
 					audioTrack.play();
-					document.getElementById('vid2').playbackRate = 4;
+					/* document.getElementById('vid2').playbackRate = 4; */
 				
 					// Update Classes
 					$('.project-box, .project-wrapper.active').addClass('playing');
