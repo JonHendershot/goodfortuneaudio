@@ -252,6 +252,17 @@ function mobile(){
 				}
 				
 			});
+			
+		// Mobile Trigger Click
+			$('.project-trigger').click(function(){
+				var projectID = parseInt($(this).attr('data-postid')),
+					projectObject = $('.project-wrapper.project-' + projectID).data('heuristic');
+				
+				console.log(projectID);
+				nextProject(projectObject);
+				
+				
+			});
 		
 		// Anon Functions
 		// Update Player
@@ -314,15 +325,19 @@ function mobile(){
 				if( projectID <= totalProjects ){ // only execute if next id Exists
 						
 					if(nextProjectID <= totalProjects){
-						var nextProject = $('.project-wrapper.bottom.project-' + nextProjectID).first();
+						var nextProject = $('.project-wrapper.bottom.project-' + nextProjectID).first(),
+							mobileProjectIDn = nextProjectID;
 					} else {
-						var nextProject = $('.project-wrapper.bottom.project-1').first();
+						var nextProject = $('.project-wrapper.bottom.project-1').first(),
+						mobileProjectIDn = 1;
 					}
 					
 					if(prevProjectID >= 1){
-						var prevProject = $('.project-wrapper.top.project-' + prevProjectID).last();
+						var prevProject = $('.project-wrapper.top.project-' + prevProjectID).last(),
+							mobileProjectIDp = prevProjectID;
 					} else {
-						var prevProject = $('.project-wrapper.top.project-' + totalProjects).last();
+						var prevProject = $('.project-wrapper.top.project-' + totalProjects).last(),
+							mobileProjectIDp = totalProjects;
 		
 					}
 						
@@ -419,7 +434,22 @@ function mobile(){
 							$('.project-wrapper.next, .project-wrapper.last').removeClass('off');
 /* 							$('#project-background').removeClass('transition'); */
 						},500);
+					
+					// Update Mobile Triggers
+					if(mobile() == true){
+						
 		
+						
+						var nextProjectTitle = $('.project-wrapper.project-' + mobileProjectIDn).data('heuristic').artist,
+							nextProjectID = $('.project-wrapper.project-' + mobileProjectIDn).data('heuristic').project_number;
+							prevProjectTitle = $('.project-wrapper.project-' + mobileProjectIDp).data('heuristic').artist,
+							prevProjectID = $('.project-wrapper.project-' + mobileProjectIDp).data('heuristic').project_number;
+							
+				
+						$('.project-trigger.next-project').attr('data-postid',nextProjectID).text(nextProjectTitle);
+						$('.project-trigger.previous-project').attr('data-postid',prevProjectID).text(prevProjectTitle);
+						$('.project-num.current-num').text(projectID);
+					}
 					
 					}
 			}
@@ -551,7 +581,8 @@ function nextScreen(currentScreenID, nextID){
 	},1500);
 }
 function projectHover(event){
-	
+	if(mobile()==false){
+		
 		var projectBox = document.getElementById('project-box'), 
 			projectBackground = document.getElementById('project-background'),
 			boxOffsetHeight = projectBox.getBoundingClientRect().top, // offset from top edge to window edge
@@ -579,6 +610,8 @@ function projectHover(event){
 		jQuery('#project-background').css({'-webkit-transform':'matrix3d(0.98,0,0.17,'+ rotateX +',0.00,0.98,0.17,' + rotateY + ',-0.17,-0.17,0.9603999999999999,0,0,0,0,1)'});
 		projectBackground.style['box-shadow'] = shadowX + 'px ' + shadowY + 'px 26px rgba(22, 22, 22, 0.5)';
 
+
+	}
 }
 function projectReset(){
 	var projectBackground = document.getElementById('project-background');

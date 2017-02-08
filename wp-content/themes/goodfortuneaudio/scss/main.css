@@ -1384,6 +1384,56 @@ section.home .content-wrapper {
       -moz-transform: translate3d(-40px, 0, 0);
       -ms-transform: translate3d(-40px, 0, 0);
       transform: translate3d(-40px, 0, 0); }
+  .project-content .project-nav-mobile {
+    display: flex;
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flex;
+    align-items: center;
+    -webkit-align-items: center;
+    justify-content: space-between;
+    -webkit-justify-content: space-between;
+    width: 100%;
+    font-size: 9px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin: 60px 0 20px;
+    position: relative; }
+    .project-content .project-nav-mobile .project-count {
+      position: absolute;
+      left: 0;
+      right: 0;
+      margin: auto;
+      width: max-content;
+      width: -webkit-max-content;
+      width: -moz-max-content;
+      width: -moz-fit-content;
+      padding: 0; }
+    .project-content .project-nav-mobile span.project-num {
+      color: #222629; }
+    .project-content .project-nav-mobile .project-trigger.next-project:after {
+      content: "\f061";
+      font: normal normal normal 9px/1 FontAwesome;
+      padding: 2px;
+      text-decoration: none;
+      display: inline-block;
+      -webkit-transition: all 600ms cubic-bezier(0.375, 0.005, 0, 1);
+      -moz-transition: all 600ms cubic-bezier(0.375, 0.005, 0, 1);
+      -o-transition: all 600ms cubic-bezier(0.375, 0.005, 0, 1);
+      transition: all 600ms cubic-bezier(0.375, 0.005, 0, 1);
+      /* custom */ }
+    .project-content .project-nav-mobile .project-trigger.previous-project:before {
+      content: "\f060";
+      font: normal normal normal 9px/1 FontAwesome;
+      padding: 2px;
+      text-decoration: none;
+      display: inline-block;
+      -webkit-transition: all 600ms cubic-bezier(0.375, 0.005, 0, 1);
+      -moz-transition: all 600ms cubic-bezier(0.375, 0.005, 0, 1);
+      -o-transition: all 600ms cubic-bezier(0.375, 0.005, 0, 1);
+      transition: all 600ms cubic-bezier(0.375, 0.005, 0, 1);
+      /* custom */ }
 
 .project-box.open .project-content, .project-box.playing .project-content {
   -webkit-transform: translate3d(0, -70px, 100px);
@@ -1420,6 +1470,12 @@ section.home .content-wrapper {
   transform: translate3d(0, -100px, 0); }
 
 .project-box.off {
+  -ms-transform: scale(0.35);
+  /* IE 9 */
+  -webkit-transform: scale(0.35);
+  /* Chrome, Safari, Opera */
+  -moz-transform: scale(0.35);
+  /* Mozilla ? */
   transform: scale(0.35);
   opacity: 0; }
 
@@ -1847,10 +1903,10 @@ section.about .gear-container.visible {
   body.home #content .scroller-nav {
     display: none; }
   body.home section.projects .projects-container {
-    width: 90%;
+    width: 80%;
     margin: 0 auto;
     position: relative;
-    height: 100%; }
+    height: 86%; }
     body.home section.projects .projects-container .project-box {
       display: flex;
       display: -webkit-flex;
@@ -1858,15 +1914,15 @@ section.about .gear-container.visible {
       display: -ms-flex;
       align-items: center;
       -webkit-align-items: center;
-      justify-content: center;
-      -webkit-justify-content: center;
+      justify-content: space-between;
+      -webkit-justify-content: space-between;
       padding-bottom: 0;
       height: 100%;
       flex-direction: column; }
       body.home section.projects .projects-container .project-box #project-background {
         position: relative;
         display: block;
-        padding-bottom: 56%;
+        padding-bottom: 73%;
         height: 0; }
       body.home section.projects .projects-container .project-box .project-content {
         -webkit-transform: translate3d(0, 0, 0);
@@ -1875,7 +1931,7 @@ section.about .gear-container.visible {
         transform: translate3d(0, 0, 0);
         opacity: 1;
         visibility: visible;
-        margin-top: 100px;
+        margin-top: 0;
         position: relative;
         width: 100%; }
         body.home section.projects .projects-container .project-box .project-content .project-meta {
@@ -1892,16 +1948,24 @@ section.about .gear-container.visible {
             font-size: 14px; }
         body.home section.projects .projects-container .project-box .project-content .audio-player-container .audio-player .default-bar {
           width: 80%; }
+          body.home section.projects .projects-container .project-box .project-content .audio-player-container .audio-player .default-bar .progress-bar {
+            background-color: #222629; }
         body.home section.projects .projects-container .project-box .project-content .audio-player-container .audio-player .buttons {
           width: 47%;
           margin: 61px auto 0; }
           body.home section.projects .projects-container .project-box .project-content .audio-player-container .audio-player .buttons .prev, body.home section.projects .projects-container .project-box .project-content .audio-player-container .audio-player .buttons .next, body.home section.projects .projects-container .project-box .project-content .audio-player-container .audio-player .buttons .play {
-            height: 80px;
-            width: 80px;
-            border-radius: 40px;
-            background-size: 40%; }
+            height: 70px;
+            width: 70px;
+            border-radius: 40px; }
           body.home section.projects .projects-container .project-box .project-content .audio-player-container .audio-player .buttons .play {
-            background-position: 20px center; }
+            background-position: 18px center;
+            background-size: 40%;
+            border-color: #222629; }
+          body.home section.projects .projects-container .project-box .project-content .audio-player-container .audio-player .buttons .play.pause {
+            background-size: 31%;
+            background-position: 25px center; }
+          body.home section.projects .projects-container .project-box .project-content .audio-player-container .audio-player .buttons .prev, body.home section.projects .projects-container .project-box .project-content .audio-player-container .audio-player .buttons .next {
+            background-size: 32%; }
           body.home section.projects .projects-container .project-box .project-content .audio-player-container .audio-player .buttons .prev {
             -webkit-transform: translate3d(0, 0, 0);
             -moz-transform: translate3d(0, 0, 0);
@@ -1912,18 +1976,29 @@ section.about .gear-container.visible {
             -moz-transform: translate3d(0, 0, 0) rotate(180deg);
             -ms-transform: translate3d(0, 0, 0) rotate(180deg);
             transform: translate3d(0, 0, 0) rotate(180deg); }
+    body.home section.projects .projects-container .project-box.off {
+      -ms-transform: scale(1);
+      /* IE 9 */
+      -webkit-transform: scale(1);
+      /* Chrome, Safari, Opera */
+      -moz-transform: scale(1);
+      /* Mozilla ? */
+      transform: scale(1); }
     body.home section.projects .projects-container .project-wrapper.next, body.home section.projects .projects-container .project-wrapper.last {
       opacity: 0; }
-    body.home section.projects .projects-container .project-wrapper.active {
-      -webkit-transform: translate3d(0, -160px, 100px);
-      -moz-transform: translate3d(0, -160px, 100px);
-      -ms-transform: translate3d(0, -160px, 100px);
-      transform: translate3d(0, -160px, 100px); }
-      body.home section.projects .projects-container .project-wrapper.active h2 {
+    body.home section.projects .projects-container .project-wrapper {
+      -webkit-transform: translate3d(0, -220px, 100px);
+      -moz-transform: translate3d(0, -220px, 100px);
+      -ms-transform: translate3d(0, -220px, 100px);
+      transform: translate3d(0, -220px, 100px);
+      opacity: 0; }
+      body.home section.projects .projects-container .project-wrapper h2 {
         -webkit-transform: translate3d(0, 0, 0);
         -moz-transform: translate3d(0, 0, 0);
         -ms-transform: translate3d(0, 0, 0);
-        transform: translate3d(0, 0, 0); } }
+        transform: translate3d(0, 0, 0); }
+    body.home section.projects .projects-container .project-wrapper.active {
+      opacity: 1; } }
 
 @media (max-width: 800px) {
   body.single.single-post .author-details-container {

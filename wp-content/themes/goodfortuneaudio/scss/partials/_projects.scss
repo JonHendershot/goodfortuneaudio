@@ -190,6 +190,48 @@
 			@include translate(-40px,0,0);
 		}
 	}
+	.project-nav-mobile {
+		@include flexbox(center,space-between);
+		width: 100%;
+		font-size: 9px;
+		font-weight: 800;
+		text-transform: uppercase;
+		letter-spacing: 2px;
+		margin: 60px 0 20px;
+		position: relative;
+		
+		.project-count {
+			position: absolute;
+		    left: 0;
+		    right: 0;
+		    margin: auto;
+		    @include max-content(width);
+		    padding: 0;
+		}
+		span.project-num {
+			color: $dark_grey;
+		}
+		.project-trigger:after {
+			
+			
+		}
+		.project-trigger.next-project:after {
+			content: "\f061";
+			font: normal normal normal 9px/1 FontAwesome;
+			padding: 2px;
+			text-decoration: none;
+			display: inline-block;
+			@include easeout(600ms);
+		}
+		.project-trigger.previous-project:before {
+			content: "\f060";
+			font: normal normal normal 9px/1 FontAwesome;
+			padding: 2px;
+			text-decoration: none;
+			display: inline-block;
+			@include easeout(600ms);
+		}
+	}
 }
 .project-box.open, .project-box.playing {
 	.project-content {
@@ -221,6 +263,6 @@
 	}
 }
 .project-box.off {
-	transform: scale(0.35); // rotate3d(3,3,0,50deg);
+	@include scale(0.35);
 	opacity: 0;
 }

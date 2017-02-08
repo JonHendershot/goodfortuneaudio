@@ -63,6 +63,19 @@
 			
 							</div>
 						</div>
+						<div class="project-nav-mobile">
+							<?php 
+								// Variables
+									
+									$prev_project_object = $query->posts[$project_num - 1];
+									$next_project_object = $query->posts[1];
+									
+									echo "<div class='previous-project project-trigger' data-postid='$project_num'>$prev_project_object->post_title</div>
+										  <div class='project-count'>Project <span class='project-num current-num'>1</span> of <span class='project-num'>$project_num</span></div>
+										  <div class='next-project project-trigger' data-postid='2'>$next_project_object->post_title</div>";
+							 ?>
+							 
+						</div>
 					</div>
 				</div>
 					 
