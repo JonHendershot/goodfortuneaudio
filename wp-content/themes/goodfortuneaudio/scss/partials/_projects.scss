@@ -191,7 +191,6 @@
 		}
 	}
 	.project-nav-mobile {
-		@include flexbox(center,space-between);
 		width: 100%;
 		font-size: 9px;
 		font-weight: 800;
@@ -199,6 +198,7 @@
 		letter-spacing: 2px;
 		margin: 60px 0 20px;
 		position: relative;
+		display: none;
 		
 		.project-count {
 			position: absolute;

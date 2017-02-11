@@ -33,12 +33,12 @@
 					<div style="background-image: url(<?php echo $featured_image; ?>)" id="project-background"/></div>
 					<div class="project-content">
 						<div class="project-meta">
-							<div class="roles">
+							<div class="roles mobile-hidden">
 								<h3>Roles</h3>
 								<div class="divider"></div>
 								<span class="role meta"><?php echo $roles; ?></span>
 							</div>
-							<div class="song-title">
+							<div class="song-title mobile-visible">
 								<h3>Title</h3>
 								<div class="divider"></div>
 								<span class="title meta">"<?php echo $song_title; ?>"</span>

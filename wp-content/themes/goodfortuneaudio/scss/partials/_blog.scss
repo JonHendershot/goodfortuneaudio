@@ -4,7 +4,7 @@
 	.searchform {
 		width: 100%;
 		input[type="text"] {
-			width: 100%;
+			@include calc(width, "100% - 20px");
 			background-color: transparent;
 			border: 1px solid transparent;
 			border-radius: 0;

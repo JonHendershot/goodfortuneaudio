@@ -24,7 +24,7 @@ $query = new WP_Query( $args );
 			// In-Loop Variables
 			$image = wp_get_attachment_url( get_post_thumbnail_id($post->ID) );
 		?>
-		<a href="<?php the_permalink(); ?>">
+		<a class="post-<?php echo $bb; ?>" href="<?php the_permalink(); ?>">
 			<div class="blog-post" style="background-image: url(<?php echo $image; ?>);">
 				<div class="post-meta-container">
 					<h2 class="post-title"><?php the_title(); ?></h2>
