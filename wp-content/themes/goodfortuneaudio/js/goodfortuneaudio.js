@@ -466,9 +466,9 @@ function mobile(){
 	
 	
 	// Swipe Events
-	$(window).on('swipeup',function(){
+	$('.page-viewer').on('swipeup',function(){
 		if($('body.home').length){
-			alert('fired');
+		
 			var activeScreenData = $('section.active').data('self'),
 				activeScreenID = parseInt(activeScreenData.section_id),
 				nextScreenID = activeScreenID + 1;
@@ -477,9 +477,9 @@ function mobile(){
 		}
 		
 	});
-	$(window).on('swipedown',function(){
+	$('.page-viewer').on('swipedown',function(){
 		if($('body.home').length){
-			alert('fired');
+		
 			var activeScreenData = $('section.active').data('self'),
 				activeScreenID = parseInt(activeScreenData.section_id),
 				nextScreenID = activeScreenID - 1;
