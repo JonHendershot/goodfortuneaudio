@@ -364,6 +364,20 @@
 	// Home Page
 	body.home {
 		
+		// Logo
+		#masthead {
+			a.header-logo {
+				top: 17px;
+				left: 0;
+				right: auto;
+				
+				img {
+					width: 144px;
+				}
+			}	
+		}
+		
+		
 		// Header 
 		section.home {
 			.content-wrapper {
@@ -394,7 +408,7 @@
 						}
 						p {
 							font-size: 12px;
-							line-height: 17px;
+							line-height: 14px;
 						
 						}
 						.about-btns {
@@ -407,6 +421,7 @@
 								text-align: center;
 								margin-right: 0;
 								margin-bottom: 15px;
+								font-weight: 800;
 							}
 							
 						}

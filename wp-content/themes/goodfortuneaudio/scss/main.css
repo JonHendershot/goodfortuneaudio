@@ -2060,6 +2060,12 @@ section.about .gear-container.visible {
     width: 118% !important; } }
 
 @media (max-width: 500px) {
+  body.home #masthead a.header-logo {
+    top: 17px;
+    left: 0;
+    right: auto; }
+    body.home #masthead a.header-logo img {
+      width: 144px; }
   body.home section.home .content-wrapper .tagline h1 {
     font-size: 26px;
     padding-left: 7px;
@@ -2076,7 +2082,7 @@ section.about .gear-container.visible {
       line-height: 19px; }
     body.home section.about .content-wrapper .about-content-wrapper .about-content p {
       font-size: 12px;
-      line-height: 17px; }
+      line-height: 14px; }
     body.home section.about .content-wrapper .about-content-wrapper .about-content .about-btns {
       flex-direction: column;
       margin-top: 0px; }
@@ -2085,7 +2091,8 @@ section.about .gear-container.visible {
         padding: 12px 0;
         text-align: center;
         margin-right: 0;
-        margin-bottom: 15px; }
+        margin-bottom: 15px;
+        font-weight: 800; }
     body.home section.about .content-wrapper .top-image {
       display: none; }
   body.home section.projects #project-container {
