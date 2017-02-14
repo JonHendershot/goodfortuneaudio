@@ -461,6 +461,7 @@ function mobile(){
 	}
 	
 }(jQuery));
+/*
 (function mobileNav($){
 	
 	
@@ -486,6 +487,7 @@ function mobile(){
 		}		
 	});
 }(jQuery));
+*/
 
 function nextScreen(currentScreenID, nextID){
 	var $ = jQuery,
