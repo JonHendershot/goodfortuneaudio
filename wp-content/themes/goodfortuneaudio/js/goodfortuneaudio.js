@@ -35,7 +35,12 @@ function mobile(){
 			scrollerCache = 0;
 		
 		// Set Scrollport Height
-		scrollPort.css({'height':scrollPortHeight + 'px'});
+		if(mobile() == false){
+			scrollPort.css({'height':scrollPortHeight + 'px'});
+		}else {
+			scrollPort.css({'height':windowHeight + 'px'});
+		}
+		
 		
 		// Handle Scroll Event
 		$(window).scroll(function(){
@@ -457,6 +462,8 @@ function mobile(){
 	
 }(jQuery));
 (function mobileNav($){
+	
+	
 	
 	// Swipe Events
 	$(window).on('swipeup',function(){
