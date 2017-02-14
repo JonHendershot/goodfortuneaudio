@@ -1898,150 +1898,152 @@ section.about .gear-container.visible {
     padding-top: 0px; } }
 
 @media (max-width: 900px) {
-  body.home #masthead a.header-logo {
-    top: 25px;
-    left: 0;
-    right: 0;
-    margin: 0 auto; }
-  body.home #content .scroller-nav {
-    display: none; }
-  body.home section.about .content-wrapper {
-    max-width: 80%; }
-    body.home section.about .content-wrapper .about-content-wrapper .about-content {
-      width: 100%; }
-      body.home section.about .content-wrapper .about-content-wrapper .about-content img.side-image {
-        display: none; }
-      body.home section.about .content-wrapper .about-content-wrapper .about-content .about-btns {
-        justify-content: flex-start;
-        -webkit-justify-content: flex-start; }
-        body.home section.about .content-wrapper .about-content-wrapper .about-content .about-btns .main-btn {
-          margin-right: 15px; }
-  body.home section.projects .projects-container {
-    width: 80%;
-    margin: 0 auto;
-    position: relative;
-    height: 86%; }
-    body.home section.projects .projects-container .project-box {
-      display: flex;
-      display: -webkit-flex;
-      display: -moz-flex;
-      display: -ms-flex;
-      align-items: center;
-      -webkit-align-items: center;
-      justify-content: space-between;
-      -webkit-justify-content: space-between;
-      padding-bottom: 0;
-      height: 100%;
-      flex-direction: column; }
-      body.home section.projects .projects-container .project-box #project-background {
-        position: relative;
-        display: block;
-        padding-bottom: 73%;
-        height: 0; }
-      body.home section.projects .projects-container .project-box .project-content {
-        -webkit-transform: translate3d(0, 0, 0);
-        -moz-transform: translate3d(0, 0, 0);
-        -ms-transform: translate3d(0, 0, 0);
-        transform: translate3d(0, 0, 0);
-        opacity: 1;
-        visibility: visible;
-        margin-top: 0;
-        position: relative;
+  body.home {
+    overflow: hidden; }
+    body.home #masthead a.header-logo {
+      top: 25px;
+      left: 0;
+      right: 0;
+      margin: 0 auto; }
+    body.home #content .scroller-nav {
+      display: none; }
+    body.home section.about .content-wrapper {
+      max-width: 80%; }
+      body.home section.about .content-wrapper .about-content-wrapper .about-content {
         width: 100%; }
-        body.home section.projects .projects-container .project-box .project-content .project-meta {
-          max-width: 100%;
-          margin: 0 auto 40px; }
-          body.home section.projects .projects-container .project-box .project-content .project-meta .roles, body.home section.projects .projects-container .project-box .project-content .project-meta .song-title {
-            -webkit-transform: translate3d(0, 0, 0);
-            -moz-transform: translate3d(0, 0, 0);
-            -ms-transform: translate3d(0, 0, 0);
-            transform: translate3d(0, 0, 0); }
-          body.home section.projects .projects-container .project-box .project-content .project-meta h3 {
-            font-size: 26px; }
-          body.home section.projects .projects-container .project-box .project-content .project-meta .meta {
-            font-size: 14px; }
-        body.home section.projects .projects-container .project-box .project-content .audio-player-container .audio-player .default-bar {
-          width: 80%; }
-          body.home section.projects .projects-container .project-box .project-content .audio-player-container .audio-player .default-bar .progress-bar {
-            background-color: #222629; }
-        body.home section.projects .projects-container .project-box .project-content .audio-player-container .audio-player .buttons {
-          width: 47%;
-          margin: 61px auto 0; }
-          body.home section.projects .projects-container .project-box .project-content .audio-player-container .audio-player .buttons .prev, body.home section.projects .projects-container .project-box .project-content .audio-player-container .audio-player .buttons .next, body.home section.projects .projects-container .project-box .project-content .audio-player-container .audio-player .buttons .play {
-            height: 70px;
-            width: 70px;
-            border-radius: 40px; }
-          body.home section.projects .projects-container .project-box .project-content .audio-player-container .audio-player .buttons .play {
-            background-position: 18px center;
-            background-size: 40%;
-            border-color: #222629; }
-          body.home section.projects .projects-container .project-box .project-content .audio-player-container .audio-player .buttons .play.pause {
-            background-size: 31%;
-            background-position: 25px center; }
-          body.home section.projects .projects-container .project-box .project-content .audio-player-container .audio-player .buttons .prev, body.home section.projects .projects-container .project-box .project-content .audio-player-container .audio-player .buttons .next {
-            background-size: 32%; }
-          body.home section.projects .projects-container .project-box .project-content .audio-player-container .audio-player .buttons .prev {
-            -webkit-transform: translate3d(0, 0, 0);
-            -moz-transform: translate3d(0, 0, 0);
-            -ms-transform: translate3d(0, 0, 0);
-            transform: translate3d(0, 0, 0); }
-          body.home section.projects .projects-container .project-box .project-content .audio-player-container .audio-player .buttons .next {
-            -webkit-transform: translate3d(0, 0, 0) rotate(180deg);
-            -moz-transform: translate3d(0, 0, 0) rotate(180deg);
-            -ms-transform: translate3d(0, 0, 0) rotate(180deg);
-            transform: translate3d(0, 0, 0) rotate(180deg); }
-    body.home section.projects .projects-container .project-box.off {
-      -ms-transform: scale(1);
-      /* IE 9 */
-      -webkit-transform: scale(1);
-      /* Chrome, Safari, Opera */
-      -moz-transform: scale(1);
-      /* Mozilla ? */
-      transform: scale(1); }
-    body.home section.projects .projects-container .project-wrapper.next, body.home section.projects .projects-container .project-wrapper.last {
-      opacity: 0; }
-    body.home section.projects .projects-container .project-wrapper {
-      -webkit-transform: translate3d(0, -220px, 100px);
-      -moz-transform: translate3d(0, -220px, 100px);
-      -ms-transform: translate3d(0, -220px, 100px);
-      transform: translate3d(0, -220px, 100px);
-      opacity: 0; }
-      body.home section.projects .projects-container .project-wrapper h2 {
-        -webkit-transform: translate3d(0, 0, 0);
-        -moz-transform: translate3d(0, 0, 0);
-        -ms-transform: translate3d(0, 0, 0);
-        transform: translate3d(0, 0, 0); }
-    body.home section.projects .projects-container .project-wrapper.active {
-      opacity: 1; }
-    body.home section.projects .projects-container .project-nav-mobile {
-      display: flex;
-      display: -webkit-flex;
-      display: -moz-flex;
-      display: -ms-flex;
-      align-items: center;
-      -webkit-align-items: center;
-      justify-content: space-between;
-      -webkit-justify-content: space-between; }
-  body.home section.blog .blog-container {
-    width: 80%; }
-    body.home section.blog .blog-container .blog-posts {
-      position: relative; }
-      body.home section.blog .blog-container .blog-posts a .blog-post .post-meta-container {
-        opacity: 1; }
-      body.home section.blog .blog-container .blog-posts a .blog-post:after {
-        opacity: 1; }
-      body.home section.blog .blog-container .blog-posts a:not(.post-1) {
-        opacity: 0;
-        visibility: hidden;
-        position: absolute;
-        top: 0;
-        left: 0;
+        body.home section.about .content-wrapper .about-content-wrapper .about-content img.side-image {
+          display: none; }
+        body.home section.about .content-wrapper .about-content-wrapper .about-content .about-btns {
+          justify-content: flex-start;
+          -webkit-justify-content: flex-start; }
+          body.home section.about .content-wrapper .about-content-wrapper .about-content .about-btns .main-btn {
+            margin-right: 15px; }
+    body.home section.projects .projects-container {
+      width: 80%;
+      margin: 0 auto;
+      position: relative;
+      height: 86%; }
+      body.home section.projects .projects-container .project-box {
+        display: flex;
+        display: -webkit-flex;
+        display: -moz-flex;
+        display: -ms-flex;
+        align-items: center;
+        -webkit-align-items: center;
+        justify-content: space-between;
+        -webkit-justify-content: space-between;
+        padding-bottom: 0;
         height: 100%;
-        width: 100%; }
-  body.home section.contact .contact-container {
-    width: 80%; }
-    body.home section.contact .contact-container form {
-      width: 100%; } }
+        flex-direction: column; }
+        body.home section.projects .projects-container .project-box #project-background {
+          position: relative;
+          display: block;
+          padding-bottom: 73%;
+          height: 0; }
+        body.home section.projects .projects-container .project-box .project-content {
+          -webkit-transform: translate3d(0, 0, 0);
+          -moz-transform: translate3d(0, 0, 0);
+          -ms-transform: translate3d(0, 0, 0);
+          transform: translate3d(0, 0, 0);
+          opacity: 1;
+          visibility: visible;
+          margin-top: 0;
+          position: relative;
+          width: 100%; }
+          body.home section.projects .projects-container .project-box .project-content .project-meta {
+            max-width: 100%;
+            margin: 0 auto 40px; }
+            body.home section.projects .projects-container .project-box .project-content .project-meta .roles, body.home section.projects .projects-container .project-box .project-content .project-meta .song-title {
+              -webkit-transform: translate3d(0, 0, 0);
+              -moz-transform: translate3d(0, 0, 0);
+              -ms-transform: translate3d(0, 0, 0);
+              transform: translate3d(0, 0, 0); }
+            body.home section.projects .projects-container .project-box .project-content .project-meta h3 {
+              font-size: 26px; }
+            body.home section.projects .projects-container .project-box .project-content .project-meta .meta {
+              font-size: 14px; }
+          body.home section.projects .projects-container .project-box .project-content .audio-player-container .audio-player .default-bar {
+            width: 80%; }
+            body.home section.projects .projects-container .project-box .project-content .audio-player-container .audio-player .default-bar .progress-bar {
+              background-color: #222629; }
+          body.home section.projects .projects-container .project-box .project-content .audio-player-container .audio-player .buttons {
+            width: 47%;
+            margin: 61px auto 0; }
+            body.home section.projects .projects-container .project-box .project-content .audio-player-container .audio-player .buttons .prev, body.home section.projects .projects-container .project-box .project-content .audio-player-container .audio-player .buttons .next, body.home section.projects .projects-container .project-box .project-content .audio-player-container .audio-player .buttons .play {
+              height: 70px;
+              width: 70px;
+              border-radius: 40px; }
+            body.home section.projects .projects-container .project-box .project-content .audio-player-container .audio-player .buttons .play {
+              background-position: 18px center;
+              background-size: 40%;
+              border-color: #222629; }
+            body.home section.projects .projects-container .project-box .project-content .audio-player-container .audio-player .buttons .play.pause {
+              background-size: 31%;
+              background-position: 25px center; }
+            body.home section.projects .projects-container .project-box .project-content .audio-player-container .audio-player .buttons .prev, body.home section.projects .projects-container .project-box .project-content .audio-player-container .audio-player .buttons .next {
+              background-size: 32%; }
+            body.home section.projects .projects-container .project-box .project-content .audio-player-container .audio-player .buttons .prev {
+              -webkit-transform: translate3d(0, 0, 0);
+              -moz-transform: translate3d(0, 0, 0);
+              -ms-transform: translate3d(0, 0, 0);
+              transform: translate3d(0, 0, 0); }
+            body.home section.projects .projects-container .project-box .project-content .audio-player-container .audio-player .buttons .next {
+              -webkit-transform: translate3d(0, 0, 0) rotate(180deg);
+              -moz-transform: translate3d(0, 0, 0) rotate(180deg);
+              -ms-transform: translate3d(0, 0, 0) rotate(180deg);
+              transform: translate3d(0, 0, 0) rotate(180deg); }
+      body.home section.projects .projects-container .project-box.off {
+        -ms-transform: scale(1);
+        /* IE 9 */
+        -webkit-transform: scale(1);
+        /* Chrome, Safari, Opera */
+        -moz-transform: scale(1);
+        /* Mozilla ? */
+        transform: scale(1); }
+      body.home section.projects .projects-container .project-wrapper.next, body.home section.projects .projects-container .project-wrapper.last {
+        opacity: 0; }
+      body.home section.projects .projects-container .project-wrapper {
+        -webkit-transform: translate3d(0, -220px, 100px);
+        -moz-transform: translate3d(0, -220px, 100px);
+        -ms-transform: translate3d(0, -220px, 100px);
+        transform: translate3d(0, -220px, 100px);
+        opacity: 0; }
+        body.home section.projects .projects-container .project-wrapper h2 {
+          -webkit-transform: translate3d(0, 0, 0);
+          -moz-transform: translate3d(0, 0, 0);
+          -ms-transform: translate3d(0, 0, 0);
+          transform: translate3d(0, 0, 0); }
+      body.home section.projects .projects-container .project-wrapper.active {
+        opacity: 1; }
+      body.home section.projects .projects-container .project-nav-mobile {
+        display: flex;
+        display: -webkit-flex;
+        display: -moz-flex;
+        display: -ms-flex;
+        align-items: center;
+        -webkit-align-items: center;
+        justify-content: space-between;
+        -webkit-justify-content: space-between; }
+    body.home section.blog .blog-container {
+      width: 80%; }
+      body.home section.blog .blog-container .blog-posts {
+        position: relative; }
+        body.home section.blog .blog-container .blog-posts a .blog-post .post-meta-container {
+          opacity: 1; }
+        body.home section.blog .blog-container .blog-posts a .blog-post:after {
+          opacity: 1; }
+        body.home section.blog .blog-container .blog-posts a:not(.post-1) {
+          opacity: 0;
+          visibility: hidden;
+          position: absolute;
+          top: 0;
+          left: 0;
+          height: 100%;
+          width: 100%; }
+    body.home section.contact .contact-container {
+      width: 80%; }
+      body.home section.contact .contact-container form {
+        width: 100%; } }
 
 @media (max-width: 800px) {
   body.single.single-post .author-details-container {
