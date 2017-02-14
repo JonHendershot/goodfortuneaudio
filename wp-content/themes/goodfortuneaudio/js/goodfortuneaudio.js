@@ -460,18 +460,23 @@ function mobile(){
 	
 	// Swipe Events
 	$(window).on('swipeup',function(){
-		var activeScreenData = $('section.active').data('self'),
-			activeScreenID = parseInt(activeScreenData.section_id),
-			nextScreenID = activeScreenID + 1;
+		if($('body.home').length){
+			var activeScreenData = $('section.active').data('self'),
+				activeScreenID = parseInt(activeScreenData.section_id),
+				nextScreenID = activeScreenID + 1;
+			
+			nextScreen(activeScreenID, nextScreenID);
+		}
 		
-		nextScreen(activeScreenID, nextScreenID);
 	});
 	$(window).on('swipedown',function(){
-		var activeScreenData = $('section.active').data('self'),
-			activeScreenID = parseInt(activeScreenData.section_id),
-			nextScreenID = activeScreenID - 1;
+		if($('body.home').length){
+			var activeScreenData = $('section.active').data('self'),
+				activeScreenID = parseInt(activeScreenData.section_id),
+				nextScreenID = activeScreenID - 1;
 		
-		nextScreen(activeScreenID, nextScreenID);
+			nextScreen(activeScreenID, nextScreenID);
+		}		
 	});
 }(jQuery));
 
