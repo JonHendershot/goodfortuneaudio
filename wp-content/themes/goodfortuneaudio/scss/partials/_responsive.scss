@@ -424,8 +424,9 @@
 				width: 90%;
 			
 				.project-box {
-					height: 97%;
-					padding-top: 6%;
+					height: 85%;
+					padding-top: 0;
+					@include translate(0,-10px,0);
 					
 					#project-background:after {
 						opacity: 1;
@@ -454,28 +455,44 @@
 							}
 						}
 						.project-meta {
-							flex-direction: column;
+							flex-direction: column-reverse;
+							position: absolute;
+							top: 0;
+							left: 0;
+							width: 100%;
+							@include translate(0,-187px,0);
 							
 							.roles, .song-title {
 								width: 100%;
 							}
 						
 							.song-title {
-								@include translate(0,-135px,0);
+								/*
+@include translate(0,-135px,0);
 								position: absolute;
 								top: 0;
 								left: 0;
 								right: 0;
 								margin: 0 auto;
+*/
 								h3, .divider {
 									display: none;
 								}	
 							}
 							.roles {
-								
-							}
-							h3 {
-								font-size: 20px;
+								margin-top: 17px;
+								h3 {
+									font-size: 15px;
+									letter-spacing: 7px;
+									padding-left: 7px;
+									font-weight: 800;
+								}
+								.divider {
+									display: none;
+								}
+								.role.meta {
+									font-size: 9px;
+								}
 							}
 							.meta {
 								font-size: 10px;
@@ -483,8 +500,11 @@
 								font-weight: 600;
 							}
 						}
+						.audio-player-container {
+							@include translate(0,-10px,0);
+						}
 						.project-nav-mobile {
-							margin: 40px 0 45px;
+							margin: 40px 0 0;
 							/*
 .project-count {
 								@include translate(0,-100%,0);
@@ -500,7 +520,7 @@
 					}
 				}
 				.project-wrapper {
-					@include translate(0,-150px,0);
+					@include translate(0,-144px,0);
 					h2 {
 						font-size: 24px;
 						letter-spacing: 6px;

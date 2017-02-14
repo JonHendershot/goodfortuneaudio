@@ -2091,8 +2091,12 @@ section.about .gear-container.visible {
   body.home section.projects #project-container {
     width: 90%; }
     body.home section.projects #project-container .project-box {
-      height: 97%;
-      padding-top: 6%; }
+      height: 85%;
+      padding-top: 0;
+      -webkit-transform: translate3d(0, -10px, 0);
+      -moz-transform: translate3d(0, -10px, 0);
+      -ms-transform: translate3d(0, -10px, 0);
+      transform: translate3d(0, -10px, 0); }
       body.home section.projects #project-container .project-box #project-background:after {
         opacity: 1; }
       body.home section.projects #project-container .project-box .project-content .audio-player-container .audio-player .buttons {
@@ -2108,29 +2112,50 @@ section.about .gear-container.visible {
       body.home section.projects #project-container .project-box .project-content .audio-player-container .audio-player .default-bar {
         width: 80%; }
       body.home section.projects #project-container .project-box .project-content .project-meta {
-        flex-direction: column; }
+        flex-direction: column-reverse;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        -webkit-transform: translate3d(0, -187px, 0);
+        -moz-transform: translate3d(0, -187px, 0);
+        -ms-transform: translate3d(0, -187px, 0);
+        transform: translate3d(0, -187px, 0); }
         body.home section.projects #project-container .project-box .project-content .project-meta .roles, body.home section.projects #project-container .project-box .project-content .project-meta .song-title {
           width: 100%; }
         body.home section.projects #project-container .project-box .project-content .project-meta .song-title {
-          -webkit-transform: translate3d(0, -135px, 0);
-          -moz-transform: translate3d(0, -135px, 0);
-          -ms-transform: translate3d(0, -135px, 0);
-          transform: translate3d(0, -135px, 0);
-          position: absolute;
-          top: 0;
-          left: 0;
-          right: 0;
-          margin: 0 auto; }
+          /*
+@include translate(0,-135px,0);
+								position: absolute;
+								top: 0;
+								left: 0;
+								right: 0;
+								margin: 0 auto;
+*/ }
           body.home section.projects #project-container .project-box .project-content .project-meta .song-title h3, body.home section.projects #project-container .project-box .project-content .project-meta .song-title .divider {
             display: none; }
-        body.home section.projects #project-container .project-box .project-content .project-meta h3 {
-          font-size: 20px; }
+        body.home section.projects #project-container .project-box .project-content .project-meta .roles {
+          margin-top: 17px; }
+          body.home section.projects #project-container .project-box .project-content .project-meta .roles h3 {
+            font-size: 15px;
+            letter-spacing: 7px;
+            padding-left: 7px;
+            font-weight: 800; }
+          body.home section.projects #project-container .project-box .project-content .project-meta .roles .divider {
+            display: none; }
+          body.home section.projects #project-container .project-box .project-content .project-meta .roles .role.meta {
+            font-size: 9px; }
         body.home section.projects #project-container .project-box .project-content .project-meta .meta {
           font-size: 10px;
           letter-spacing: 3px;
           font-weight: 600; }
+      body.home section.projects #project-container .project-box .project-content .audio-player-container {
+        -webkit-transform: translate3d(0, -10px, 0);
+        -moz-transform: translate3d(0, -10px, 0);
+        -ms-transform: translate3d(0, -10px, 0);
+        transform: translate3d(0, -10px, 0); }
       body.home section.projects #project-container .project-box .project-content .project-nav-mobile {
-        margin: 40px 0 45px;
+        margin: 40px 0 0;
         /*
 .project-count {
 								@include translate(0,-100%,0);
@@ -2141,10 +2166,10 @@ section.about .gear-container.visible {
         body.home section.projects #project-container .project-box .project-content .project-nav-mobile .project-trigger:after, body.home section.projects #project-container .project-box .project-content .project-nav-mobile .project-trigger:before {
           font-size: 7px; }
     body.home section.projects #project-container .project-wrapper {
-      -webkit-transform: translate3d(0, -150px, 0);
-      -moz-transform: translate3d(0, -150px, 0);
-      -ms-transform: translate3d(0, -150px, 0);
-      transform: translate3d(0, -150px, 0); }
+      -webkit-transform: translate3d(0, -144px, 0);
+      -moz-transform: translate3d(0, -144px, 0);
+      -ms-transform: translate3d(0, -144px, 0);
+      transform: translate3d(0, -144px, 0); }
       body.home section.projects #project-container .project-wrapper h2 {
         font-size: 24px;
         letter-spacing: 6px; }
