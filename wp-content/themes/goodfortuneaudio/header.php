@@ -30,5 +30,8 @@
 			<img src="<?php echo $options['GFA_logo_alt1']; ?>" class="header-logo white hidden preblur" />
 		</a>
 	</header><!-- #masthead -->
+	<div id="mobile-site-menu">
+		<?php get_template_part("template-parts/module_nav_mobile"); ?>
+	</div>
 
 	<div id="content" class="site-content">

@@ -132,7 +132,10 @@ function mobile(){
 				
 				
 				nextScreen(activeScreenID,target);
-				window.scrollTo(0, scrollY);
+				if(mobile() !== true){
+					window.scrollTo(0, scrollY);
+				}
+				
 		});
 		
 	}

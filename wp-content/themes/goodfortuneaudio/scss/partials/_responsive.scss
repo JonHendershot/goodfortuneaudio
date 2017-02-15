@@ -398,6 +398,7 @@
 			.content-wrapper {
 				width: 90%;
 				max-width: 90%;
+				@include translate(0,-10px,0);
 				.about-content-wrapper {
 					.about-content {
 						h2 {
