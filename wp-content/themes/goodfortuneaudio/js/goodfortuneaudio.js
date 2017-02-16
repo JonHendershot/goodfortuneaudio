@@ -151,14 +151,14 @@ function mobile(){
 				setTimeout(function(){
 					$('.lightbox.' + lightbox).addClass('visible open');			
 				}, 0);
-					$('.section-about .about-content-wrapper, #vid1, .scroller-nav, .scroll-hint-container, .header-logo.visible, .content-wrapper .top-image').addClass('blur');
+					$('.section-about .about-content-wrapper, #vid1, .scroller-nav, .scroll-hint-container, .header-logo.visible, .content-wrapper .top-image, .mobile-menu-trigger').addClass('blur');
 				$('.close-lb').addClass('open');
 				$('body').addClass('lb-open');
 			}
 		}
 	});
 	
-	$('.close-lb, .section-about .about-content-wrapper, .section-about .top-image').click(function(){
+	$('.close-lb, .section-about .about-content-wrapper, .section-about .top-image, .mobile-menu-trigger').click(function(){
 		closeLb($);
 	});
 }(jQuery));

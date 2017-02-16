@@ -2201,6 +2201,8 @@ section.about .gear-container.visible {
     right: auto; }
     body.home #masthead a.header-logo img {
       width: 144px; }
+  body.home section:not(.home) {
+    padding-top: 10px; }
   body.home section.home .content-wrapper .tagline h1 {
     font-size: 26px;
     padding-left: 7px;
@@ -2209,11 +2211,7 @@ section.about .gear-container.visible {
     margin-top: 25px; }
   body.home section.about .content-wrapper {
     width: 90%;
-    max-width: 90%;
-    -webkit-transform: translate3d(0, -10px, 0);
-    -moz-transform: translate3d(0, -10px, 0);
-    -ms-transform: translate3d(0, -10px, 0);
-    transform: translate3d(0, -10px, 0); }
+    max-width: 90%; }
     body.home section.about .content-wrapper .about-content-wrapper .about-content h2 {
       margin-top: 0;
       max-width: 100%;
@@ -2234,15 +2232,13 @@ section.about .gear-container.visible {
         font-weight: 800; }
     body.home section.about .content-wrapper .top-image {
       display: none; }
+  body.home section.about .gear-container div {
+    max-height: 130px; }
   body.home section.projects #project-container {
     width: 90%; }
     body.home section.projects #project-container .project-box {
       height: 85%;
-      padding-top: 0;
-      -webkit-transform: translate3d(0, -10px, 0);
-      -moz-transform: translate3d(0, -10px, 0);
-      -ms-transform: translate3d(0, -10px, 0);
-      transform: translate3d(0, -10px, 0); }
+      padding-top: 0; }
       body.home section.projects #project-container .project-box #project-background:after {
         opacity: 1; }
       body.home section.projects #project-container .project-box .project-content .audio-player-container .audio-player .buttons {

@@ -421,7 +421,9 @@
 				}
 			}	
 		}
-		
+		section:not(.home) {
+			padding-top: 10px;
+		}
 		
 		// Header 
 		section.home {
@@ -443,7 +445,6 @@
 			.content-wrapper {
 				width: 90%;
 				max-width: 90%;
-				@include translate(0,-10px,0);
 				.about-content-wrapper {
 					.about-content {
 						h2 {
@@ -477,6 +478,11 @@
 					display: none;
 				}
 			}
+			.gear-container {
+				div {
+					max-height: 130px;
+				}
+			}
 		}
 		
 		// Projects
@@ -487,8 +493,6 @@
 				.project-box {
 					height: 85%;
 					padding-top: 0;
-					@include translate(0,-10px,0);
-					
 					#project-background:after {
 						opacity: 1;
 					}

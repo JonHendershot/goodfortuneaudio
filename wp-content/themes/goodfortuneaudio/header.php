@@ -29,7 +29,7 @@
 			<img src="<?php echo $options['GFA_logo']; ?>" class="header-logo orange visible preblur" />
 			<img src="<?php echo $options['GFA_logo_alt1']; ?>" class="header-logo white hidden preblur" />
 		</a>
-		<div class="mobile-menu-trigger">
+		<div class="mobile-menu-trigger preblur">
 			<span class="circle"></span>
 			<span class="circle"></span>
 			<span class="circle"></span>
