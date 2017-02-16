@@ -132,6 +132,11 @@
 
 @media (max-width: 900px){
 	
+	.mobile-menu-trigger {
+		top: 31px;
+		right: 30px;
+	}
+	
 	  /////////////////////////
 	 /////// HOME PAGE ///////
 	/////////////////////////
@@ -148,10 +153,7 @@
 				
 				margin: 0; 
 			}
-			.mobile-menu-trigger {
-				top: 31px;
-				right: 30px;
-			}
+			
 		}
 		#content {
 			z-index: 9;
@@ -379,7 +381,7 @@
 		.mobile-nav {
 			@include calc(width,"100% - 60px");
 			.nav-item {
-				font-size: 30px;
+				font-size: 40px;
 				font-weight: 800;
 				letter-spacing: 0px;
 				text-align: left;
@@ -388,6 +390,10 @@
 				text-transform: none;
 			}
 		}
+	}
+	.mobile-menu-trigger {
+		top: 22px;
+		right: 22px;
 	}
 	
 	// Home Page

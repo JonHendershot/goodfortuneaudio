@@ -1980,15 +1980,15 @@ section.about .gear-container.visible {
     padding-top: 0px; } }
 
 @media (max-width: 900px) {
+  .mobile-menu-trigger {
+    top: 31px;
+    right: 30px; }
   body.home {
     overflow: hidden; }
     body.home #masthead a.header-logo {
       top: 25px;
       left: 20px;
       margin: 0; }
-    body.home #masthead .mobile-menu-trigger {
-      top: 31px;
-      right: 30px; }
     body.home #content {
       z-index: 9;
       position: relative;
@@ -2174,7 +2174,7 @@ section.about .gear-container.visible {
       width: -webkit-calc(100% - 60px);
       width: calc(100% - 60px); }
       #mobile-site-menu .mobile-nav .nav-item {
-        font-size: 30px;
+        font-size: 40px;
         font-weight: 800;
         letter-spacing: 0px;
         text-align: left;
@@ -2184,6 +2184,9 @@ section.about .gear-container.visible {
         width: -moz-max-content;
         width: -moz-fit-content;
         text-transform: none; }
+  .mobile-menu-trigger {
+    top: 22px;
+    right: 22px; }
   body.home #masthead a.header-logo {
     top: 17px;
     left: -12px;
