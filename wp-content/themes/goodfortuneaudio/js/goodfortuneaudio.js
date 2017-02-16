@@ -519,8 +519,7 @@ function mobile(){
 	});
 }(jQuery));
 
-(function preventRefresh(){
-	if(mobile()==true){
+
 		
 		window.addEventListener('load', function() {
 		
@@ -543,6 +542,7 @@ function mobile(){
 		      // first overscrolling touchmove.
 		      if (touchYDelta > 0) {
 		        e.preventDefault();
+
 		        return;
 		      }
 		    
@@ -552,8 +552,8 @@ function mobile(){
 		  document.addEventListener('touchmove', touchmoveHandler, false);
 		});
 
-	}
-});
+	
+
 
 function nextScreen(currentScreenID, nextID){
 	var $ = jQuery,
