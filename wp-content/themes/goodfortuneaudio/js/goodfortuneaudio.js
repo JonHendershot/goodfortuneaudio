@@ -466,8 +466,34 @@ function mobile(){
 }(jQuery));
 (function mobileNav($){
 	
+	// Menu Events
+	$('.mobile-menu-trigger').click(function(){
+		if($(this).hasClass('open')){
+			closeMobile();
+		}else {
+			openMobile();
+		}
+	});
 	
 	
+	$('#mobile-site-menu .nav-item').click(function(){
+		console.log('clicked');
+		var activeScreen = parseInt($('section.active').data('self').section_id),
+			nextScreenID = parseInt($(this).data('self').section_num);
+		
+		closeMobile();
+		
+		setTimeout(nextScreen(activeScreen,nextScreenID), 1000);
+	});
+	
+	function openMobile(){
+		
+		$('#content, #mobile-site-menu, .mobile-menu-trigger').addClass('open');
+	}
+	function closeMobile(){
+		$(this).removeClass('open');
+		$('#content, #mobile-site-menu, .mobile-menu-trigger').removeClass('open');
+	}
 	// Swipe Events
 	$('.page-viewer').on('swipeup',function(){
 		if($('body.home').length){
@@ -584,12 +610,14 @@ function nextScreen(currentScreenID, nextID){
 		$('.background-image-mobile').css({'background-image':'url('+ particlesrc +')'});
 	}
 	
+	// Scroll Hint	
 	if(nextID ==5){
 		$('.scroll-hint-container').addClass('hidden');
 	}else {
 		$('.scroll-hint-container').removeClass('hidden');
 	}
 
+	// Change interface information
 	$('.nav-wrapper.active').removeClass('active');
 	$('.nav-wrapper.nav-' + nsID).addClass('active');
 	$('.scroller-nav .info').find( $('.section-title') ).css({"color":nameColor});
@@ -600,6 +628,23 @@ function nextScreen(currentScreenID, nextID){
 	$('.page-viewer, html').css({'background-color':backgroundClr});
 	$('.header-logo img.visible').removeClass('visible').addClass('hidden');
 	$('.header-logo img.'+logoColor).removeClass('hidden').addClass('visible');
+	
+	// Mobile menu trigger
+	if(mobile() == true){
+		if(nextID == 3 || nextID == 4){
+			$('.mobile-menu-trigger .circle').css({'background-color' : '#ffffff'});
+			$('#mobile-site-menu').css({'background-color':'rgb(34, 38, 41)'});
+			$('#mobile-site-menu .nav-item').css({'color':'#ffffff'});
+		}else if(nextID == 5){
+			$('#mobile-site-menu').css({'background-color':'rgb(34, 38, 41)'});
+			$('#mobile-site-menu .nav-item').css({'color':'#CA5D44'});
+			$('.mobile-menu-trigger .circle').css({'background-color' : '#CA5D44'});
+		}else {
+			$('.mobile-menu-trigger .circle').css({'background-color' : '#CA5D44'});
+			$('#mobile-site-menu').css({'background-color':'#ffffff'});
+			$('#mobile-site-menu .nav-item').css({'color':'#CA5D44'});
+		}
+	}
 	
 	// scroll Lock
 	$(window).scroll(function(){

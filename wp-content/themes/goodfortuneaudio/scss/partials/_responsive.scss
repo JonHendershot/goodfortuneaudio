@@ -144,17 +144,29 @@
 		#masthead {
 			a.header-logo {
 				top: 25px;
-				left: 0;
-				right: 0;
-				margin: 0 auto; 
+				left: 20px;
+				
+				margin: 0; 
+			}
+			.mobile-menu-trigger {
+				top: 31px;
+				right: 30px;
 			}
 		}
 		#content {
+			z-index: 9;
+			position: relative;
+			@include easeout(800ms);
 			.scroller-nav {
 				display: none;
 			}
 		}
-		
+		#content.open {
+			@include translate(-100%,0,0);
+		}
+		#vid1, #vid2 {
+			display: none;
+		}
 		
 		// About 
 		section.about {
@@ -361,6 +373,23 @@
 
 @media (max-width: 500px){
 	
+	// Mobile Menu 
+	#mobile-site-menu {
+		@include flexbox(flex-end,center);
+		.mobile-nav {
+			@include calc(width,"100% - 60px");
+			.nav-item {
+				font-size: 30px;
+				font-weight: 800;
+				letter-spacing: 0px;
+				text-align: left;
+				margin: 3px 0;
+				@include max-content(width);
+				text-transform: none;
+			}
+		}
+	}
+	
 	// Home Page
 	body.home {
 		
@@ -368,7 +397,7 @@
 		#masthead {
 			a.header-logo {
 				top: 17px;
-				left: 0;
+				left: -12px;
 				right: auto;
 				
 				img {

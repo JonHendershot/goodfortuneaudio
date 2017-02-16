@@ -29,6 +29,11 @@
 			<img src="<?php echo $options['GFA_logo']; ?>" class="header-logo orange visible preblur" />
 			<img src="<?php echo $options['GFA_logo_alt1']; ?>" class="header-logo white hidden preblur" />
 		</a>
+		<div class="mobile-menu-trigger">
+			<span class="circle"></span>
+			<span class="circle"></span>
+			<span class="circle"></span>
+		</div>
 	</header><!-- #masthead -->
 	<div id="mobile-site-menu">
 		<?php get_template_part("template-parts/module_nav_mobile"); ?>
