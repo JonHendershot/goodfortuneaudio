@@ -647,18 +647,21 @@ function nextScreen(currentScreenID, nextID){
 	}
 	
 	// scroll Lock
-	$(window).scroll(function(){
-		if($('#scrollport').hasClass('scrollLock')){
-			var scrollLock = (nextID * 100)-10;
-			window.scrollTo(0,scrollLock);
-		}
-	});
-		
-
+	if(mobile() !== true){
+		$(window).scroll(function(){
+			if($('#scrollport').hasClass('scrollLock')){
+				var scrollLock = (nextID * 100)-10;
+				window.scrollTo(0,scrollLock);
+			}
+		});
 			
-	setTimeout(function(){
-		$('#scrollport').removeClass('scrollLock');
-	},1500);
+	
+				
+		setTimeout(function(){
+			$('#scrollport').removeClass('scrollLock');
+		},1500);
+	}
+	
 }
 function projectHover(event){
 	if(mobile()==false){
