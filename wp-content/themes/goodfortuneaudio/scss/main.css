@@ -386,7 +386,7 @@ header .header-logo {
     opacity: 1; }
 
 header .mobile-menu-trigger {
-  position: absolute;
+  position: fixed;
   top: 22px;
   right: 20px;
   z-index: 9999;
