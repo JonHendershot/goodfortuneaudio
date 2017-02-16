@@ -1990,6 +1990,9 @@ section.about .gear-container.visible {
       top: 25px;
       left: 20px;
       margin: 0; }
+    body.home scroll-hint-container.mobile {
+      opacity: 0;
+      visibility: hidden; }
     body.home #content {
       z-index: 9;
       position: relative;

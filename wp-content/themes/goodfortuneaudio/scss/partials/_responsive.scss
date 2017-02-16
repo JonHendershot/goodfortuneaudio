@@ -156,6 +156,10 @@
 			}
 			
 		}
+		scroll-hint-container.mobile {
+			opacity: 0;
+			visibility: hidden;
+		}
 		#content {
 			z-index: 9;
 			position: relative;
