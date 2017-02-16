@@ -519,42 +519,6 @@ function mobile(){
 	});
 }(jQuery));
 
-
-		
-		window.addEventListener('load', function() {
-		
-		  var maybePreventPullToRefresh = false;
-		  var lastTouchY = 0;
-		  var touchstartHandler = function(e) {
-			  if (e.touches.length != 1) return;
-			    lastTouchY = e.touches[0].clientY;
-			    // Pull-to-refresh will only trigger if the scroll begins when the
-			    // document's Y offset is zero.
-			    maybePreventPullToRefresh = window.pageYOffset == 0;
-			}
-		
-		  var touchmoveHandler = function(e) {
-		    var touchY = e.touches[0].clientY;
-		    var touchYDelta = touchY - lastTouchY;
-		    lastTouchY = touchY;
-		
-		      // To suppress pull-to-refresh it is sufficient to preventDefault the
-		      // first overscrolling touchmove.
-		      if (touchYDelta > 0) {
-		        e.preventDefault();
-
-		        return;
-		      }
-		    
-		  }
-		
-		  document.addEventListener('touchstart', touchstartHandler, false);
-		  document.addEventListener('touchmove', touchmoveHandler, false);
-		});
-
-	
-
-
 function nextScreen(currentScreenID, nextID){
 	var $ = jQuery,
 		nsID = nextID,
@@ -767,8 +731,6 @@ function preload() {
 	}
 }
 
-
-
 jQuery(document).ready(function($) {
 	$( "#gear-accordion" ).accordion({
 		collapsible: true,
@@ -776,4 +738,35 @@ jQuery(document).ready(function($) {
 		animate: {'duration':300},
 		active: 0
 	});
+});
+
+window.addEventListener('load', function() {
+
+  var maybePreventPullToRefresh = false;
+  var lastTouchY = 0;
+  var touchstartHandler = function(e) {
+	  if (e.touches.length != 1) return;
+	    lastTouchY = e.touches[0].clientY;
+	    // Pull-to-refresh will only trigger if the scroll begins when the
+	    // document's Y offset is zero.
+	    maybePreventPullToRefresh = window.pageYOffset == 0;
+	}
+
+  var touchmoveHandler = function(e) {
+    var touchY = e.touches[0].clientY;
+    var touchYDelta = touchY - lastTouchY;
+    lastTouchY = touchY;
+
+      // To suppress pull-to-refresh it is sufficient to preventDefault the
+      // first overscrolling touchmove.
+      if (touchYDelta > 0) {
+        e.preventDefault();
+
+        return;
+      }
+    
+  }
+
+  document.addEventListener('touchstart', touchstartHandler, false);
+  document.addEventListener('touchmove', touchmoveHandler, false);
 });
