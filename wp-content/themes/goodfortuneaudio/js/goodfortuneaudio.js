@@ -495,7 +495,7 @@ function mobile(){
 		$('#content, #mobile-site-menu, .mobile-menu-trigger').removeClass('open');
 	}
 	// Swipe Events
-	$('.page-viewer').on('swipeup',function(){
+	$('body.home').on('swipeup',function(){
 		if($('body.home').length){
 		
 			var activeScreenData = $('section.active').data('self'),
@@ -506,7 +506,7 @@ function mobile(){
 		}
 		
 	});
-	$('.page-viewer').on('swipedown',function(){
+	$('body.home').on('swipedown',function(){
 		if($('body.home').length){
 		
 			var activeScreenData = $('section.active').data('self'),
