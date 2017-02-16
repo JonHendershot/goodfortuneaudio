@@ -507,6 +507,7 @@ function mobile(){
 		
 	});
 	$('body.home').on('swipedown',function(){
+		preventDefault(); // don't refresh?
 		if($('body.home').length){
 		
 			var activeScreenData = $('section.active').data('self'),
