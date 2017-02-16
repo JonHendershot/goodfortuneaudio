@@ -1984,7 +1984,14 @@ section.about .gear-container.visible {
     top: 31px;
     right: 30px; }
   body.home {
-    overflow: hidden; }
+    overflow: hidden;
+    /*
+		#scrollport {
+			display: none;
+			height: 0px !important;
+			min-height: 0px !important;
+		}
+*/ }
     body.home #masthead a.header-logo {
       top: 25px;
       left: 20px;
@@ -2006,10 +2013,6 @@ section.about .gear-container.visible {
       transform: translate3d(-100%, 0, 0); }
     body.home #vid1, body.home #vid2 {
       display: none; }
-    body.home #scrollport {
-      display: none;
-      height: 0px !important;
-      min-height: 0px !important; }
     body.home section.about .content-wrapper {
       max-width: 80%; }
       body.home section.about .content-wrapper .about-content-wrapper .about-content {
