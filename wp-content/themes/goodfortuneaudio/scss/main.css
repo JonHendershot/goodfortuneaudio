@@ -1984,7 +1984,8 @@ section.about .gear-container.visible {
     top: 31px;
     right: 30px; }
   body.home {
-    overflow: hidden; }
+    overflow: hidden;
+    touch-action: none; }
     body.home #masthead a.header-logo {
       top: 25px;
       left: 20px;

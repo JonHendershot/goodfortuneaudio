@@ -145,6 +145,7 @@
 	
 	body.home {
 		overflow: hidden;
+		touch-action: none;
 		// General
 		#masthead {
 			a.header-logo {
