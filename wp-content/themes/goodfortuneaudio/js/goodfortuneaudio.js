@@ -767,9 +767,11 @@ window.addEventListener('load', function() {
       }
     
   }
-  if(scopeElement.length){
+ 
+  if(scopeElement){
 	 document.addEventListener('touchstart', touchstartHandler, false);
 	 document.addEventListener('touchmove', touchmoveHandler, false); 
+	 console.log('fired');
   }
   
 });
