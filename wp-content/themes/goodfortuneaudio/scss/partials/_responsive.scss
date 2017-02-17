@@ -480,7 +480,20 @@
 			}
 			.gear-container {
 				div {
-					max-height: 130px;
+					max-height: 120px;
+				}
+				h3 {
+					font-size: 15px;
+					letter-spacing: 4px;
+					padding-left: 4px;
+				}
+				h5 {
+					font-size: 15px;
+					letter-spacing: 1px;
+				}
+				span.gear-content {
+					font-size: 14px;
+					line-height: 1em;
 				}
 			}
 		}

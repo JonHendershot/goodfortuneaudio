@@ -2233,7 +2233,17 @@ section.about .gear-container.visible {
     body.home section.about .content-wrapper .top-image {
       display: none; }
   body.home section.about .gear-container div {
-    max-height: 130px; }
+    max-height: 120px; }
+  body.home section.about .gear-container h3 {
+    font-size: 15px;
+    letter-spacing: 4px;
+    padding-left: 4px; }
+  body.home section.about .gear-container h5 {
+    font-size: 15px;
+    letter-spacing: 1px; }
+  body.home section.about .gear-container span.gear-content {
+    font-size: 14px;
+    line-height: 1em; }
   body.home section.projects #project-container {
     width: 90%; }
     body.home section.projects #project-container .project-box {
