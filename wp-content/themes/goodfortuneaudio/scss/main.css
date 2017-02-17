@@ -548,7 +548,8 @@ header .mobile-menu-trigger {
   -moz-transition-timing-function: cubic-bezier(0.74, 0.005, 0.24, 0.995);
   -o-transition-timing-function: cubic-bezier(0.74, 0.005, 0.24, 0.995);
   transition-timing-function: cubic-bezier(0.74, 0.005, 0.24, 0.995);
-  /* custom */ }
+  /* custom */
+  z-index: 999; }
   .page-viewer video {
     position: absolute;
     top: 0;
