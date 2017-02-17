@@ -485,15 +485,6 @@ function mobile(){
 		
 		setTimeout(nextScreen(activeScreen,nextScreenID), 1000);
 	});
-	
-	function openMobile(){
-		
-		$('#content, #mobile-site-menu, .mobile-menu-trigger').addClass('open');
-	}
-	function closeMobile(){
-		$(this).removeClass('open');
-		$('#content, #mobile-site-menu, .mobile-menu-trigger').removeClass('open');
-	}
 	// Swipe Events
 	$('body.home').on('swipeup',function(){
 		if(!$('.gear-container').hasClass('open')){
@@ -517,6 +508,26 @@ function mobile(){
 			nextScreen(activeScreenID, nextScreenID);
 		}		
 	});
+	$('body').on('swipeleft',function(){
+		if(!$('#mobile-site-menu').hasClass('open')){
+			openMobile();
+		}
+	});
+	$('body').on('swiperight',function(){
+		if($('#mobile-site-menu').hasClass('open')){
+			closeMobile();
+		}
+	});
+	
+	function openMobile(){
+		
+		$('#content, #mobile-site-menu, .mobile-menu-trigger').addClass('open');
+	}
+	function closeMobile(){
+		$(this).removeClass('open');
+		$('#content, #mobile-site-menu, .mobile-menu-trigger').removeClass('open');
+	}
+	
 }(jQuery));
 
 function nextScreen(currentScreenID, nextID){
