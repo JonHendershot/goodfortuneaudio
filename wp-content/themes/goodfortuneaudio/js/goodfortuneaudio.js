@@ -742,6 +742,7 @@ jQuery(document).ready(function($) {
 
 window.addEventListener('load', function() {
 
+
   var maybePreventPullToRefresh = false;
   var lastTouchY = 0;
   var touchstartHandler = function(e) {
@@ -766,7 +767,9 @@ window.addEventListener('load', function() {
       }
     
   }
-
-  document.addEventListener('touchstart', touchstartHandler, false);
-  document.addEventListener('touchmove', touchmoveHandler, false);
+  if(getElementById('page_viewer').length){
+	 document.addEventListener('touchstart', touchstartHandler, false);
+	 document.addEventListener('touchmove', touchmoveHandler, false); 
+  }
+  
 });
