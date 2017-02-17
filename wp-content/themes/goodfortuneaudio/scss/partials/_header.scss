@@ -3,12 +3,13 @@
 	position: fixed;
 	width: 100%;
 	height: 100%;
-	@include flexbox(center,center);
+	display: none;
 	transition-delay: 800ms;
 	background-color: $white;
 	z-index: 1;
 	transform: matrix3d(1,0,0.00,-0.001,0.00,1,0.00,0.00,0,0,1,0,100vw,0,0,1);
 -webkit-transform: matrix3d(1,0,0.00,-0.001,0.00,1,0.00,0.00,0,0,1,0,100vw,0,0,1);
+top: 0;
 	.mobile-nav {
 		@include max-content(width);
 		@include translate(40%,0,0);
@@ -26,6 +27,7 @@
 			@include max-content(width);
 			color: $orange;
 			transition-delay: 800ms;
+			font-family: $body_font;
 		}
 	}
 }
@@ -65,6 +67,7 @@ header {
 		}
 	}
 	.mobile-menu-trigger {
+		display: none;
 		position: fixed;
 		    top: 22px;
 		    right: 20px;
@@ -75,7 +78,7 @@ header {
 		    letter-spacing: 4px;
 			color: $orange;
 			width: 30px;
-			@include flexbox(center, space-between);
+			
 			
 			.circle {
 				height: 6px;

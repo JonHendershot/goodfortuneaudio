@@ -1,4 +1,21 @@
 body.single.single-post {	
+	header#masthead {
+		@include flexbox(center,space-between);
+		
+		a {
+			img {
+				
+			}
+			img.white {
+				display: none !important;
+			}
+		}
+		.mobile-menu-trigger {
+			position: relative;
+			top: 0;
+			left: 0;
+		}
+	}
 	#content {
 		max-width: 850px;
 		width: 95%;

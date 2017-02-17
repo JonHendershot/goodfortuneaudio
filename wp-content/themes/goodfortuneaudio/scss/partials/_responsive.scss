@@ -131,10 +131,16 @@
 }
 
 @media (max-width: 900px){
+	header {
+		.mobile-menu-trigger {
+			top: 31px;
+			right: 30px;
+			@include flexbox(center, space-between);
+		}	
+	}
 	
-	.mobile-menu-trigger {
-		top: 31px;
-		right: 30px;
+	#mobile-site-menu {
+		@include flexbox(center, center);
 	}
 	
 	  /////////////////////////
@@ -163,14 +169,12 @@
 		#content {
 			z-index: 9;
 			position: relative;
-			@include easeout(800ms);
+			
 			.scroller-nav {
 				display: none;
 			}
 		}
-		#content.open {
-			@include translate(-100%,0,0);
-		}
+
 		#vid1, #vid2 {
 			display: none;
 		}
@@ -401,10 +405,13 @@
 			}
 		}
 	}
-	.mobile-menu-trigger {
-		top: 22px;
-		right: 22px;
+	header {
+		.mobile-menu-trigger {
+			top: 22px;
+			right: 22px;
+		}	
 	}
+	
 	
 	// Home Page
 	body.home {
