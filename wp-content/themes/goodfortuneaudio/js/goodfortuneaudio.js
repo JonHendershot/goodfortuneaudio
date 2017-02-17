@@ -742,7 +742,7 @@ jQuery(document).ready(function($) {
 
 window.addEventListener('load', function() {
 
-
+  var scopeElement = document.getElementById('page_viewer');	
   var maybePreventPullToRefresh = false;
   var lastTouchY = 0;
   var touchstartHandler = function(e) {
@@ -767,7 +767,7 @@ window.addEventListener('load', function() {
       }
     
   }
-  if(getElementById('page_viewer').length){
+  if(scopeElement.length){
 	 document.addEventListener('touchstart', touchstartHandler, false);
 	 document.addEventListener('touchmove', touchmoveHandler, false); 
   }
