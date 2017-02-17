@@ -496,7 +496,7 @@ function mobile(){
 	}
 	// Swipe Events
 	$('body.home').on('swipeup',function(){
-		if($('body.home').length && !$('.gear-container').hasClass('open')){
+		if(!$('.gear-container').hasClass('open')){
 		
 			var activeScreenData = $('section.active').data('self'),
 				activeScreenID = parseInt(activeScreenData.section_id),
@@ -508,7 +508,7 @@ function mobile(){
 	});
 	$('body.home').on('swipedown',function(){
 		
-		if($('body.home').length && !$('.gear-container').hasClass('open')){
+		if(!$('.gear-container').hasClass('open')){
 		
 			var activeScreenData = $('section.active').data('self'),
 				activeScreenID = parseInt(activeScreenData.section_id),
