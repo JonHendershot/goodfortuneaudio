@@ -2194,7 +2194,8 @@ section.about .gear-container.visible {
         body.home section.blog .blog-container .blog-posts a .blog-post .post-meta-container {
           opacity: 1; }
           body.home section.blog .blog-container .blog-posts a .blog-post .post-meta-container h2 {
-            letter-spacing: 1px !important; }
+            letter-spacing: 1px !important;
+            font-weight: normal; }
         body.home section.blog .blog-container .blog-posts a .blog-post:after {
           opacity: 1; }
         body.home section.blog .blog-container .blog-posts a:not(.post-1) {
@@ -2211,7 +2212,8 @@ section.about .gear-container.visible {
         width: 100%; }
   body.single #content header.post-header h1 {
     margin-top: 50px;
-    letter-spacing: 1px !important; }
+    letter-spacing: 1px !important;
+    font-weight: normal; }
   body.single #content header.post-header .entry-meta {
     margin-bottom: 50px !important; } }
 
