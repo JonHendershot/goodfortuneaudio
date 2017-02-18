@@ -365,6 +365,9 @@
 						.blog-post {
 							.post-meta-container {
 								opacity: 1;
+								h2 {
+									letter-spacing: 1px !important;
+								}
 							}
 						}
 						.blog-post:after {
@@ -403,7 +406,7 @@
 			header.post-header {
 				h1 {
 					margin-top: 50px;
-					letter-spacing: 6px !important;
+					letter-spacing: 1px !important;
 				}
 				.entry-meta {
 					margin-bottom: 50px !important;
