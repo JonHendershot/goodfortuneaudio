@@ -13,6 +13,12 @@
 	$orange = "#CA5D44";
 	$page_header_photo = get_the_post_thumbnail_url();
 
+// Set scroll to, if it's needed
+	if(isset($_GET['sn'])){
+		$scrollTo = $_GET['sn'];
+		echo "<input value='$scrollTo' id='scroll-to' hidden disabled />";
+	}
+
 // Get Header Parts
 
 	get_template_part( 'template-parts/module_nav' );

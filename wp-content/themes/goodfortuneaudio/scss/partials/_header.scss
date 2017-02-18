@@ -16,7 +16,11 @@ top: 0;
 		@include easeout(800ms);
 		margin: 0 auto 20px;
 		
-		
+		a {
+			text-decoration: none;
+			margin: 0;
+			padding: 0;
+		}
 		.nav-item {
 			font-size: 50px;
 			font-weight: 800;

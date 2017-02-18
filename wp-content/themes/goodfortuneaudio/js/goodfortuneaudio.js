@@ -23,6 +23,12 @@ function mobile(){
 }(jQuery));
 (function scroller($){
 
+	if( $('#scroll-to').length){
+		var scrollTo = $('#scroll-to').val();
+		
+		nextScreen(1,scrollTo);
+	}
+	
 	if( $('.page-viewer').length ){
 	
 		// Set Variables

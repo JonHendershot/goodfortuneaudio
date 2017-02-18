@@ -109,10 +109,10 @@
 		#masthead {
 			position: relative;
 			@include flexbox(center,flex-end);
-			width: 95%;
+			width: 90%;
 			max-width: 850px;
 			margin: 0 auto;
-			padding-top: 34px;
+			padding: 30px 0 14px;
 			
 			
 			.header-logo {
@@ -142,12 +142,15 @@
 	#mobile-site-menu {
 		@include flexbox(center, center);
 	}
+	.main-btn:after, .main-btn:hover:after {
+		@include translate(0,-100%,0);
+	}
 	
 	  /////////////////////////
 	 /////// HOME PAGE ///////
 	/////////////////////////
 	
-	$home-max-width: 80%;
+	$home-max-width: 90%;
 	
 	body.home {
 		overflow: hidden;
@@ -216,10 +219,11 @@
 				
 				// Project Displayer
 				.project-box {
-					@include flexbox(center,space-between);
+					@include flexbox(center,flex-start);
 					padding-bottom: 0;
-					height: 100%;
+					@include max-content(height);
 					flex-direction: column;
+					margin-top: 20px;
 					
 					#project-background {
 						position: relative;
@@ -231,13 +235,14 @@
 						@include translate(0,0,0);
 						opacity: 1;
 						visibility: visible;
-						margin-top: 0;
+						margin-top: 70px;
 						position: relative;
 						width: 100%;
 						
 						.project-meta {
 							max-width: 100%;
-							margin: 0 auto 40px;
+							margin: 0 auto 55px;
+							padding: 0 4px;
 							
 							.roles,.song-title {
 								@include translate(0,0,0);
@@ -247,20 +252,52 @@
 								font-size: 26px;
 							}
 							.meta {
-								font-size: 14px;
+								font-size: 12px;
+								letter-spacing: 3px;
+								margin-top: 15px;
+							}
+							.roles {
+								h3 {
+									text-align: left;
+									padding-left: 0;
+									
+								}
+								.divider {
+									margin: 12px auto 12px 3px;
+									display: none;
+								}
+								.role {
+									text-align: left;
+									padding-left: 0;
+								}
+							}
+							.song-title {
+								h3 {
+									text-align: right;
+									padding-left: 0;
+									margin-right: -15px;
+									
+								}
+								.divider {
+									margin: 12px 3px 12px auto;
+									display: none;
+								}
+								.title {
+									text-align: right;
+								}
 							}
 						}
 						.audio-player-container {
 							.audio-player {
 								.default-bar {
-									width: $home-max-width;
+									width: 90%;
 									.progress-bar {
 										background-color: $dark_grey;
 									}
 								}
 								.buttons {
 									width: 47%;
-									margin: 61px auto 0;
+									margin: 20px auto 0;
 									
 									.prev,.next,.play {
 										height: 70px;
@@ -300,10 +337,12 @@
 					opacity: 0;
 				}
 				.project-wrapper {
-					@include translate(0,-220px,100px);
+					@include translate(0,230px,100px);
 					opacity: 0;
+					bottom: auto !important;
 					h2 {
 						@include translate(0,0,0);
+						position: relative;
 					}
 				}
 				.project-wrapper.active {
@@ -356,6 +395,22 @@
 			}
 		}
 	}	
+      /////////////////////////
+	 ///////   SINGLE  ///////
+	/////////////////////////
+	body.single {
+		#content {
+			header.post-header {
+				h1 {
+					margin-top: 50px;
+					letter-spacing: 6px !important;
+				}
+				.entry-meta {
+					margin-bottom: 50px !important;
+				}
+			}
+		}
+	}
 }
 
 @media (max-width : 800px){
@@ -412,8 +467,9 @@
 		}	
 	}
 	
-	
-	// Home Page
+	  /////////////////////////
+	 /////// HOME PAGE ///////
+	/////////////////////////
 	body.home {
 		
 		// Logo
@@ -545,7 +601,7 @@
 							top: 0;
 							left: 0;
 							width: 100%;
-							@include translate(0,-187px,0);
+							@include translate(0,-216px,0);
 							
 							.roles, .song-title {
 								width: 100%;
@@ -626,6 +682,25 @@
 		section.contact {
 			.contact-container {
 				width: 90%;
+			}
+		}
+	}
+	
+	  /////////////////////////
+	 ///////  SINGLE   ///////
+	/////////////////////////	
+	body.single {
+		#content {
+			.single-page-container {
+				article {
+					header {
+						h1 {
+							font-size: 32px !important;
+							letter-spacing: 4px !important;
+							line-height: 0.95em; 
+						}
+					}
+				}
 			}
 		}
 	}
