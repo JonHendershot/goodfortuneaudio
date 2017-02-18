@@ -2068,7 +2068,10 @@ section.about .gear-container.visible {
       width: 90%;
       margin: 0 auto;
       position: relative;
-      height: 74%; }
+      height: max-content;
+      height: -webkit-max-content;
+      height: -moz-max-content;
+      height: -moz-fit-content; }
       body.home section.projects .projects-container .project-box {
         display: flex;
         display: -webkit-flex;
@@ -2084,7 +2087,8 @@ section.about .gear-container.visible {
         height: -moz-max-content;
         height: -moz-fit-content;
         flex-direction: column;
-        margin-top: 20px; }
+        margin-top: 20px;
+        position: relative; }
         body.home section.projects .projects-container .project-box #project-background {
           position: relative;
           display: block;
@@ -2428,7 +2432,10 @@ section.about .gear-container.visible {
 
 @media (max-width: 350px) {
   body.home section.projects #project-container {
-    height: 82%; }
+    height: max-content;
+    height: -webkit-max-content;
+    height: -moz-max-content;
+    height: -moz-fit-content; }
     body.home section.projects #project-container .project-box .project-content .project-meta {
       -webkit-transform: translate3d(0, -215px, 0);
       -moz-transform: translate3d(0, -215px, 0);

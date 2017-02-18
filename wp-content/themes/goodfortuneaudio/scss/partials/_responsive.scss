@@ -215,7 +215,7 @@
 				width: $home-max-width;
 				margin: 0 auto;
 				position: relative;
-				height: 74%;
+				@include max-content(height);
 				
 				// Project Displayer
 				.project-box {
@@ -224,7 +224,7 @@
 					@include max-content(height);
 					flex-direction: column;
 					margin-top: 20px;
-					
+					position: relative;
 					#project-background {
 						position: relative;
 						display: block;
@@ -744,7 +744,7 @@
 		// Projects
 		section.projects {
 			#project-container {
-				height: 82%;
+				@include max-content(height);
 				.project-box {
 					.project-content {
 						.project-meta {
