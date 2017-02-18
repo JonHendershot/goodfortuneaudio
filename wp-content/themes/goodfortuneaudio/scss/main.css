@@ -2068,7 +2068,7 @@ section.about .gear-container.visible {
       width: 90%;
       margin: 0 auto;
       position: relative;
-      height: 86%; }
+      height: 74%; }
       body.home section.projects .projects-container .project-box {
         display: flex;
         display: -webkit-flex;
@@ -2340,10 +2340,10 @@ section.about .gear-container.visible {
         top: 0;
         left: 0;
         width: 100%;
-        -webkit-transform: translate3d(0, -216px, 0);
-        -moz-transform: translate3d(0, -216px, 0);
-        -ms-transform: translate3d(0, -216px, 0);
-        transform: translate3d(0, -216px, 0); }
+        -webkit-transform: translate3d(0, -239px, 0);
+        -moz-transform: translate3d(0, -239px, 0);
+        -ms-transform: translate3d(0, -239px, 0);
+        transform: translate3d(0, -239px, 0); }
         body.home section.projects #project-container .project-box .project-content .project-meta .roles, body.home section.projects #project-container .project-box .project-content .project-meta .song-title {
           width: 100%; }
         body.home section.projects #project-container .project-box .project-content .project-meta .song-title {
@@ -2371,12 +2371,17 @@ section.about .gear-container.visible {
         body.home section.projects #project-container .project-box .project-content .project-meta .meta {
           font-size: 10px;
           letter-spacing: 3px;
-          font-weight: 600; }
+          font-weight: 600;
+          text-align: center;
+          padding-left: 6px; }
+        body.home section.projects #project-container .project-box .project-content .project-meta h3 {
+          text-align: center;
+          padding-left: 7px; }
       body.home section.projects #project-container .project-box .project-content .audio-player-container {
-        -webkit-transform: translate3d(0, -10px, 0);
-        -moz-transform: translate3d(0, -10px, 0);
-        -ms-transform: translate3d(0, -10px, 0);
-        transform: translate3d(0, -10px, 0); }
+        -webkit-transform: translate3d(0, -25px, 0);
+        -moz-transform: translate3d(0, -25px, 0);
+        -ms-transform: translate3d(0, -25px, 0);
+        transform: translate3d(0, -25px, 0); }
       body.home section.projects #project-container .project-box .project-content .project-nav-mobile {
         margin: 40px 0 0;
         /*
@@ -2389,10 +2394,10 @@ section.about .gear-container.visible {
         body.home section.projects #project-container .project-box .project-content .project-nav-mobile .project-trigger:after, body.home section.projects #project-container .project-box .project-content .project-nav-mobile .project-trigger:before {
           font-size: 7px; }
     body.home section.projects #project-container .project-wrapper {
-      -webkit-transform: translate3d(0, -144px, 0);
-      -moz-transform: translate3d(0, -144px, 0);
-      -ms-transform: translate3d(0, -144px, 0);
-      transform: translate3d(0, -144px, 0); }
+      -webkit-transform: translate3d(0, 110px, 0);
+      -moz-transform: translate3d(0, 110px, 0);
+      -ms-transform: translate3d(0, 110px, 0);
+      transform: translate3d(0, 110px, 0); }
       body.home section.projects #project-container .project-wrapper h2 {
         font-size: 24px;
         letter-spacing: 6px; }
@@ -2408,3 +2413,29 @@ section.about .gear-container.visible {
     font-size: 32px !important;
     letter-spacing: 4px !important;
     line-height: 0.95em; } }
+
+@media (max-width: 400px) {
+  body.home section.projects #project-container .project-box .project-content .project-meta {
+    -webkit-transform: translate3d(0, -225px, 0);
+    -moz-transform: translate3d(0, -225px, 0);
+    -ms-transform: translate3d(0, -225px, 0);
+    transform: translate3d(0, -225px, 0); }
+  body.home section.projects #project-container .project-wrapper {
+    -webkit-transform: translate3d(0, 96px, 0);
+    -moz-transform: translate3d(0, 96px, 0);
+    -ms-transform: translate3d(0, 96px, 0);
+    transform: translate3d(0, 96px, 0); } }
+
+@media (max-width: 350px) {
+  body.home section.projects #project-container {
+    height: 82%; }
+    body.home section.projects #project-container .project-box .project-content .project-meta {
+      -webkit-transform: translate3d(0, -215px, 0);
+      -moz-transform: translate3d(0, -215px, 0);
+      -ms-transform: translate3d(0, -215px, 0);
+      transform: translate3d(0, -215px, 0); }
+    body.home section.projects #project-container .project-wrapper {
+      -webkit-transform: translate3d(0, 72px, 0);
+      -moz-transform: translate3d(0, 72px, 0);
+      -ms-transform: translate3d(0, 72px, 0);
+      transform: translate3d(0, 72px, 0); } }
