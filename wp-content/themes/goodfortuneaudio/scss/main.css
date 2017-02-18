@@ -724,7 +724,7 @@ body.single.single-post {
   body.single.single-post h1 {
     font-size: 40px !important;
     font-family: "Bebas Neue", sans-serif !important;
-    letter-spacing: 6px !important;
+    letter-spacing: 1px !important;
     margin-bottom: 0px !important; }
   body.single.single-post h2 {
     text-align: center; }
