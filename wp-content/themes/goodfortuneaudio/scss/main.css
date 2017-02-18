@@ -68,7 +68,7 @@ body.single #content {
   filter: blur(5px); }
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: "Bebas Neue", sans-serif;
+  font-family: "Bebas Nseue", sans-serif;
   color: #fff;
   text-transform: uppercase;
   font-size: 20px;
@@ -723,8 +723,8 @@ body.single.single-post {
     line-height: 1.2em; }
   body.single.single-post h1 {
     font-size: 40px !important;
-    font-family: "Bebas Neue", sans-serif !important;
-    letter-spacing: 1px !important;
+    font-family: "Bebas Nseue", sans-serif !important;
+    letter-spacing: 6px !important;
     margin-bottom: 0px !important; }
   body.single.single-post h2 {
     text-align: center; }
@@ -1231,7 +1231,7 @@ section.home .content-wrapper {
       margin: auto;
       width: 125px; }
     section.home .content-wrapper .tagline h1 {
-      font-family: "Bebas Neue", sans-serif;
+      font-family: "Bebas Nseue", sans-serif;
       color: #fff;
       text-transform: uppercase;
       font-size: 20px;
@@ -1659,7 +1659,7 @@ section.home .content-wrapper {
     border-bottom: 1px solid #959595;
     border-radius: 0;
     font-size: 20px;
-    font-family: "Bebas Neue", sans-serif;
+    font-family: "Bebas Nseue", sans-serif;
     color: #222629;
     box-shadow: none;
     letter-spacing: 2px; }
@@ -1860,7 +1860,7 @@ section.about .gear-container {
     overflow-y: scroll;
     text-transform: uppercase; }
   section.about .gear-container span.gear-content {
-    font-family: "Bebas Neue", sans-serif;
+    font-family: "Bebas Nseue", sans-serif;
     line-height: 1.8em;
     font-size: 16px; }
   section.about .gear-container h5 {
@@ -2194,8 +2194,7 @@ section.about .gear-container.visible {
         body.home section.blog .blog-container .blog-posts a .blog-post .post-meta-container {
           opacity: 1; }
           body.home section.blog .blog-container .blog-posts a .blog-post .post-meta-container h2 {
-            letter-spacing: 1px !important;
-            font-weight: normal; }
+            letter-spacing: 1px !important; }
         body.home section.blog .blog-container .blog-posts a .blog-post:after {
           opacity: 1; }
         body.home section.blog .blog-container .blog-posts a:not(.post-1) {
