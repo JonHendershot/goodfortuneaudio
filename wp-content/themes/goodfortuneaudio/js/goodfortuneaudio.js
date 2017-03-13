@@ -599,8 +599,9 @@ function mobile(){
 				}
 				
 				xhr.onload = function(){
-					var data = JSON.parse(this.responseText);				
-					displayUpload(data);
+					var data = this.responseText;				
+					/* displayUpload(data); */
+					console.log(data);
 				}
 				
 				
