@@ -1,7 +1,16 @@
 <?php 
 	error_reporting(E_ALL);
 	header('HTTP/1.1 200 OK', 'Content-Type: application/json');
-	require($_SERVER['DOCUMENT_ROOT'].'/gfa/wp-load.php');
+	
+	// Dynamic require URL to grab wp-load.php in both local and production environments
+	if($_SERVER['DOCUMENT_ROOT']=='/Applications/MAMP/htdocs'){
+		$wpLoad_URL = '/gfa/wp-load.php';
+	}else {
+		$wpLoad_URL = '/wp-load.php';
+	}
+	
+	
+	require($_SERVER['DOCUMENT_ROOT'].$wpLoad_URL);
 	$uploadDIR = dirname(__FILE__).'/uploads';
 	
 	
@@ -30,7 +39,6 @@
 	
 	echo json_encode($uploaded);
 	echo "test";
-	
 	
 	
 	
