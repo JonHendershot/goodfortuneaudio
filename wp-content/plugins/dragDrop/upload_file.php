@@ -1,5 +1,7 @@
-<?php 
+<?php /*
+
 	error_reporting(E_ALL);
+*/
 	header('HTTP/1.1 200 OK', 'Content-Type: application/json');
 	
 	// Dynamic require URL to grab wp-load.php in both local and production environments
@@ -38,8 +40,3 @@
 	}
 	
 	echo json_encode($uploaded);
-	echo "test";
-	
-	
-	
-	
