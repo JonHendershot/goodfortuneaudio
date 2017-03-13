@@ -149,3 +149,18 @@ require get_template_directory() . '/inc/jetpack.php';
  * Load theme options file.
  */
 require get_template_directory() . '/theme_options.php';
+
+// Check if file was uploaded to form and, if it exists, attach to email
+// Add attachement to email
+do_action( 'wpcf7_before_send_mail', 'attach_file' );
+function attach_file($cf7)
+{
+     //check if it is the project planner form
+     if ($cf7->id==61)
+     {
+      
+      $filename = plugins_url() . '/dragDrop/uploads/' . $cf7->form['file-names'];
+
+      $cf7->uploaded_files = array('file-name'=>$filename);
+     }
+}

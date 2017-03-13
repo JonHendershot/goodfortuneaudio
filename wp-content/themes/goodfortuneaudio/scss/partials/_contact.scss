@@ -1,5 +1,5 @@
 .contact-container {
-	width: $home-width;
+	width: 60%;
 	
 	form {
 		width: 60%;
@@ -65,5 +65,321 @@
 	}
 	input[type="submit"]:hover:after {
 		@include translate(0,0,0);
+	}
+	
+	.general-contact-container {
+		visibility: hidden;
+		opacity: 0;
+		display: none;
+	}
+	.project-planner-container {
+		position: relative;
+		min-height: 50vh;
+		visibility: hidden;
+		opacity: 0;
+		display: none;
+		.planner-meta {
+			
+			@include flexbox(center,space-between);
+			width: 100%;
+			.section-number {
+				span {
+					font-family: $heading_font;
+				}
+				.current-field {
+					color: $dark_grey;
+				}
+				.total-fields {
+					color: $orange;
+				}	
+			}
+			
+			.current-title {
+				font-family: $body_font;
+				color: $dark_grey;
+				text-transform: uppercase;
+				font-weight: 600;
+				letter-spacing: 3px;
+			}
+		}
+		#project-planner {
+			br {
+				display: none;
+			}
+			.ppsection {
+				
+				$title-size : 20px;
+				$field-size : 46px;
+				$transform : 'uppercase';
+				$spacing : 2px;
+				
+				position: absolute;
+				top: 0;
+				left: 0;
+				right: 0;
+				bottom: 0;
+				margin: auto;
+				@include max-content(height);
+				@include translate(150%,0,0);
+				opacity: 0;
+				visibility: hidden;
+				@include ease(1000ms);
+				
+				// General 
+				.instruct {
+					font-family: $heading_font;
+					color: $orange;
+					font-size: $title-size;
+					letter-spacing: $spacing;
+					text-transform: $transform;
+				}
+				
+				// Services 
+				.services {
+					.wpcf7-checkbox {
+						@include flexbox(center, space-between);
+						width: 100%;
+						margin-top: 15px;
+						.wpcf7-list-item {
+							background-color: transparent;
+							border: 1px solid $dark_grey;
+							position: relative;
+							padding: 0 20px 4px;
+							@include transition(all,300ms,ease-in-out);
+							cursor: pointer;
+							margin: 0;
+							input[type="checkbox"]{
+								visibility: hidden;
+								display: none;
+							}
+							
+							.wpcf7-list-item-label {
+								color: $dark_grey;
+								text-transform: uppercase;
+								font-size: 10px;
+								font-weight: 600;
+								letter-spacing: 2px;
+								@include transition(all,300ms,ease-in-out);
+								
+							}
+							
+							.wpcf7-list-item-label:before {
+								content: 'x';
+								position: absolute;
+								display: block;
+								top: 0;
+								bottom: 0;
+								left: 8px;
+								height: 50%;
+								margin: auto;
+								opacity: 0;
+							}
+							
+							
+						}
+						.wpcf7-list-item:hover {
+							border-color: $orange;
+							.wpcf7-list-item-label {
+								color: $orange;
+							}
+						}
+						.wpcf7-list-item.checked {
+							border-color: $orange;
+							background-color: $orange;
+							.wpcf7-list-item-label {
+								color: $white;
+							}
+						}
+					}
+				}
+				.service-select {
+					@include translate(0,50%,0);
+					@include easeout(600ms);
+				}
+				.service-select.elaborate {
+					@include translate(0,-10%,0);
+				}
+				.elaboration {
+					visibility: hidden;
+					opacity: 0;
+/*
+					position: absolute;
+					bottom: 0;
+*/
+					@include translate(0,-20%,0);
+					@include easeout(600ms);
+					.song-count {
+						.number-songs {
+							margin: 0 5px;
+							input {
+								background-color: transparent;
+								color: $dark_grey;
+								font-family: $heading_font;
+								font-size: $field-size;
+								border: none;
+								width: 60px;
+								text-align: center;
+								font-weight: 800;
+							}
+						}
+					}
+				}
+				.elaboration.elaborate {
+					visibility: visible;
+					opacity: 1;
+					@include translate(0,10%,0);
+				}
+				
+				// Scheduling
+				
+				
+				.date-explain {
+					font-family: $heading_font;
+					color: $orange;
+					font-size: $title-size;
+					letter-spacing: $spacing;
+					text-transform: $transform;
+				}
+				.date-range {
+					color: $dark_grey;
+					font-family: $heading_font;
+					font-size: $field-size;
+					letter-spacing: $spacing;
+					span {
+						display: block;
+					}
+					input {
+						background-color: transparent;
+						border: none;
+						box-shadow: none;
+						color: $dark_grey;
+						font-family: $heading_font;
+						font-size: $field-size;
+						letter-spacing: $spacing;
+					}
+					.range-to {
+						color: $orange;
+						font-family: $heading_font;
+						font-size: $title-size;
+						letter-spacing: $spacing;
+						text-transform: $transform;
+						
+					}
+				}
+			}
+			.ppsection.visible {
+				@include translate(0,0,0);
+				visibility: visible;
+				opacity: 1;
+			}
+			.ppsection.prev {
+				@include translate(-150%,0,0);
+			}
+			// Drag & Drop Upload
+			.prev-material {
+				.band-file {
+					display: none; // hide input for now
+				}
+				#dropzone {
+					background-color: $white;
+					border-radius: 5px;
+					width: 50%;
+					@include flexbox(center,center);
+					padding: 20px 1.5%;
+					box-shadow: 0px 6px 28px rgba(17, 17, 17, 0.1);
+					
+					.container {
+						border: 2px dashed $border_grey;
+						border-radius: 5px;
+						padding: 60px 0;
+						width: 90%;
+						@include transition(0.3s, all, ease-in-out);
+						span{
+							color: #9b9b9b;
+							text-align: center;
+							font-size: 12px;
+							width: 60%;
+							margin: 0 auto;
+							display: block;
+							font-family: $body_font;
+							letter-spacing: 0px;
+							font-weight: 400;
+							@include transition (0.3s, opacity, ease-in-out);
+							
+							.browse-trigger {
+								color: $orange;
+								cursor: pointer;
+								display: inline;
+							}
+						}
+						
+					
+					}
+				}
+				#dropzone.drag_over {
+					.container {
+						border-color: $orange;
+						span {
+							opacity: 0.25;
+						}
+					}
+				}
+			}
+		}
+		.btns {
+			width: 100%;
+			@include flexbox(center,space-between);
+			position: absolute;
+			bottom: 0;
+			left: 0;
+			.nav-hint {
+				font-family: $heading_font;
+				color: $dark_grey;
+				letter-spacing: 1px;
+				font-size: 14px;
+				padding-top: 8px;
+				visibility: hidden;
+				opacity: 0;
+				@include ease(1000ms);
+			}
+			.nav-hint.visible {
+				visibility: visible;
+				opacity: 1;
+			}
+			.main-btn.hidden {
+				visibility: hidden;
+				opacity: 0;
+			
+			}
+			.main-btn.next-field:after {
+				@include translate(-100%,0,0);
+			}
+			.main-btn.next-field:hover:after {
+				@include translate(-2px,0,0);
+			}
+			.main-btn.prev-field:after {
+				@include translate(100%,0,0);
+			}
+			.main-btn.prev-field:hover:after {
+				@include translate(2px,0,0);
+			}
+			.main-btn {
+				position: absolute;
+				top: 0;
+			}
+			.main-btn.next-field, .main-btn.submit {
+				right: 0;
+			}
+			.main-btn.prev-field {
+				left: 0;
+				@include ease(1000ms);
+			}
+			
+		}
+	}
+	.project-planner-container.open, .general-contact-container.open {
+		visibility: visible;
+		opacity: 1;
+		display: block;
 	}
 }

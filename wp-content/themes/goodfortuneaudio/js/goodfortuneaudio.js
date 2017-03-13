@@ -110,7 +110,6 @@ function mobile(){
 				activeScreenID = parseInt(activeScreenData.section_id);
 	
 				
-				
 	
 			
 			if(e.keyCode == '38'){ // pressed up
@@ -118,7 +117,13 @@ function mobile(){
 			}
 			if(e.keyCode == '40'){ // pressed down
 				var nextScreenID = parseInt(activeScreenID);
+			}
+			if(e.keyCode == '39'){ // pressed right
+				
 			}	
+			if(e.keyCode == '37'){ // pressed left
+			
+			}
 		var scrollY = (scrollTrigger * nextScreenID) - 10
 			nextScreen(activeScreenID,nextScreenID);
 			window.scrollTo(0, scrollY);
@@ -535,6 +540,112 @@ function mobile(){
 	}
 	
 }(jQuery));
+(function projectPlanner($){
+	
+	// Planner Navigation
+	$('.btns .main-btn').click(function(){
+		var currentField = parseInt($('.ppsection.visible').data('part'));
+		
+		if($(this).hasClass('next-field')){
+			var nextField = currentField + 1;
+		}
+		if($(this).hasClass('prev-field')){
+			var nextField = currentField - 1;
+		}
+		
+		ppNextField(currentField, nextField);
+	});
+	
+	// Keypress
+		
+		document.onkeydown = function(e){	
+			if($('.project-planner-container').hasClass('open')){
+				var currentField = parseInt($('.ppsection.visible').data('part'));
+	
+				if(e.keyCode == '39'){ // pressed right
+					var nextField = currentField + 1;
+				}	
+				if(e.keyCode == '37'){ // pressed left
+					var nextField = currentField - 1;
+				}
+				
+				if(e.keyCode == '37' || e.keyCode == '39'){
+					ppNextField(currentField, nextField);
+				}
+			}	
+		}
+	
+	// Checkboxes 
+	$('.wpcf7-list-item').click(function(){
+		var object = $(this),
+			value = $(this).text();
+		
+		
+		checkbox(object,value);
+	});
+}(jQuery));
+(function dropZoneUploader($){
+	
+	
+	var dropzone = document.getElementById('dropzone'),
+		upload = function(file){
+				var formData = new FormData(),
+					xhr = new XMLHttpRequest(),
+					x;
+					
+				for(x = 0; x < file.length; x++){
+					formData.append('file[]', file[x]);
+				}
+				
+				xhr.onload = function(){
+					var data = JSON.parse(this.responseText);				
+					displayUpload(data);
+				}
+				
+				xhr.open('post','wp-content/plugins/dragDrop/upload_file.php'); // fix this static link!
+				xhr.send(formData);
+			},
+		displayUpload = function(data){
+			// Display what's being uploaded for the user
+			var input = $('form .prev-material input[name="file-names"]'),
+				x;
+			
+			for(x=0; x < data.length; x++){
+				input.val(data[x].name);
+			}
+		};
+	
+	dropzone.ondragover = function(){
+		$(this).addClass('drag_over'); 
+		return false;
+	};
+	dropzone.ondragleave = function() {
+		$(this).removeClass('drag_over');
+		return false;
+	};
+	dropzone.ondrop = function(e){
+		// Prevent default browser action
+		e.preventDefault();
+		
+		// Handle uploader styles
+		$(this).removeClass('drag_over');
+		
+		// Create variables
+		var fileLength = e.dataTransfer.files.length,
+			fileType = e.dataTransfer.files[0]['type'];
+		
+		
+		// Handle upload event
+		if(fileLength === 1 && fileType == 'audio/mp3'){
+			// Upload File
+			upload(e.dataTransfer.files);
+			
+		}else {
+			// Instruct user as to what uploads are accepted
+			alert('please upload a single .mp3 file');
+		}
+	};
+}(jQuery));
 
 function nextScreen(currentScreenID, nextID){
 	var $ = jQuery,
@@ -747,6 +858,117 @@ function preload() {
 		images[i].src = preload.arguments[i]
 	}
 }
+function ppNextField(currentFieldID, nextFieldID){
+	var $ = jQuery,
+		fieldCount = $('.ppsection').length,
+		nextButton = $('.btns .next-field'),
+		prevButton = $('.btns .prev-field'),
+		submitButton = $('.btns .submit'),
+		partName = $('.ppsection.part-' + nextFieldID).data('name'),
+		currentName = $('.planner-meta .current-title').text(),
+		partNumber = $('.ppsection.part-' + nextFieldID).data('part');
+		
+	// HANDLE BUTTONS
+	
+	if(nextFieldID < currentFieldID && nextFieldID > 1){ // going back to a previous field in the form
+		// Manage Buttons
+		submitButton.addClass('hidden');
+		nextButton.removeClass('hidden');
+	}
+	if(nextFieldID > currentFieldID && nextFieldID < fieldCount){ // going forward to next field
+		// Manage Buttons
+		prevButton.removeClass('hidden');
+		$('.nav-hint').removeClass('visible');
+		
+	}
+	if(nextFieldID == 1){ // first field
+		// Manage Buttons
+		prevButton.addClass('hidden');
+		$('.nav-hint').addClass('visible');
+	}
+	if(nextFieldID == fieldCount){ // last field
+		// Manage buttons
+		nextButton.addClass('hidden');
+		submitButton.removeClass('hidden');
+	}
+	
+	//CHANGE FIELDS
+	
+	if(nextFieldID > currentFieldID && $('.ppsection.part-' + nextFieldID).length){ // Move Forward
+		// Animate Fields
+		$('.ppsection.part-' + nextFieldID).addClass('visible');
+		$('.ppsection.part-' + currentFieldID).removeClass('visible').addClass('prev');
+		
+	}
+	if(nextFieldID < currentFieldID && $('.ppsection.part-' + nextFieldID).length){ // Move Backwards
+		// Animate Fields
+		$('.ppsection.part-' + nextFieldID).addClass('visible').removeClass('prev');
+		$('.ppsection.part-' + currentFieldID).removeClass('visible');
+	}
+	
+	// UPDATE PROJECT PLANNER META
+	$('.planner-meta .current-field').text('0' + partNumber);
+	if(partName !== currentName){
+		$('.planner-meta .current-title').text(partName);
+	}
+	
+	// CHANGE NAV HINT
+	
+	
+}
+function checkbox(clicked,value){
+	var $ = jQuery,
+		checkbox = $('input[value="' + value + '"'),
+		expand = ["Full Record","EP"],
+		expandEval = expand.indexOf(value),
+		placePrep = 'Tell me more about your '
+		valist = {
+				"Full Record" : placePrep + "record...", 
+				"EP" : placePrep + "EP...", 
+				"Single" : placePrep + "single...",
+				"Other" : "You've selected 'other'. Please tell me more about what makes this project different!"
+				};
+		
+	if(checkbox.attr('checked') !== 'checked'){
+		// Remove other checkbox to make exclusive
+		$('.wpcf7-list-item.checked').removeClass('checked').find('input').attr('checked',false);		
+		
+		// Apply new selection
+		checkbox.attr('checked',true);	
+		clicked.addClass('checked');
+		
+		// Display Expanision, if needed
+		if( expandEval !== -1){
+			// the clicked value warrants expansion, so show it
+			$('.ppsection .elaboration, .service-select').addClass('elaborate');
+			
+			setTimeout(function(){ // Timeout to make field focus after it's done animating
+				var input = $('input[name="number-songs"]'),
+					inputVal = input.val();
+				
+				input.focus();
+				input.val('').val(inputVal);
+				
+			},605);
+			
+		}else if($('.ppsection .elaboration').hasClass('elaborate')){
+			$('.elaboration.elaborate, .service-select.elaborate').removeClass('elaborate');
+		}
+			
+	}else {
+		// Clicked an already active checkbox, deactivate it
+		checkbox.attr('checked',false);
+		clicked.removeClass('checked');
+		$('.elaboration.elaborate, .service-select.elaborate').removeClass('elaborate');
+	}
+	
+	// Change the describe project placeholder if other, else - reset it
+	$('textarea[name="project-description"]').attr('placeholder', valist[value]);
+
+	
+	
+}
+
 
 jQuery(document).ready(function($) {
 	$( "#gear-accordion" ).accordion({
