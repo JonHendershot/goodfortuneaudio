@@ -602,8 +602,10 @@ function mobile(){
 					displayUpload(data);
 				}
 				
+				console.log(data);
 				xhr.open('post','wp-content/plugins/dragDrop/upload_file.php'); // fix this static link!
 				xhr.send(formData);
+				
 			},
 		displayUpload = function(data){
 			// Display what's being uploaded for the user
