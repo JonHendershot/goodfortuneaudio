@@ -28,6 +28,7 @@
 	}
 	
 	echo json_encode($uploaded);
+	echo "test";
 	
 	
 	

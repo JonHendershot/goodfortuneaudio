@@ -599,7 +599,7 @@ function mobile(){
 				}
 				
 				xhr.onload = function(){
-					var data = this.responseText;				
+					var data = JSON.parse(this.responseText);				
 					displayUpload(data);
 					console.log(data);
 				}
