@@ -595,6 +595,7 @@ function mobile(){
 					
 				for(x = 0; x < file.length; x++){
 					formData.append('file[]', file[x]);
+					console.log(file[x].name);
 				}
 				
 				xhr.onload = function(){
@@ -602,7 +603,7 @@ function mobile(){
 					displayUpload(data);
 				}
 				
-				console.log(data);
+				
 				xhr.open('post','wp-content/plugins/dragDrop/upload_file.php'); // fix this static link!
 				xhr.send(formData);
 				
