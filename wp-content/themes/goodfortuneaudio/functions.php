@@ -156,7 +156,7 @@ do_action( 'wpcf7_before_send_mail', 'attach_file' );
 function attach_file($cf7)
 {
      //check if it is the project planner form
-     if ($cf7->id==61 )
+     if ($cf7->id==61 || $cf7->id == 103)
      {
       
       $filename = plugins_url() . '/dragDrop/uploads/' . $cf7->form['file-names'];

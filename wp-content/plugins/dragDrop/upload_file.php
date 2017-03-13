@@ -38,5 +38,5 @@
 			
 		}
 	}
-	
+	echo $uploadDIR;
 	echo json_encode($uploaded);
