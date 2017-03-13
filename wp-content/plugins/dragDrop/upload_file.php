@@ -1,4 +1,5 @@
 <?php 
+	error_reporting(E_ALL);
 	header('HTTP/1.1 200 OK', 'Content-Type: application/json');
 	require($_SERVER['DOCUMENT_ROOT'].'/gfa/wp-load.php');
 	$uploadDIR = dirname(__FILE__).'/uploads';
