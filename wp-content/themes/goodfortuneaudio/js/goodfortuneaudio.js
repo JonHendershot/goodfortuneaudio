@@ -604,7 +604,7 @@ function mobile(){
 				}
 				
 				
-				xhr.open('post','wp-content/dragDrop/upload_file.php'); // fix this static link!
+				xhr.open('post','wp-content/plugins/dragDrop/upload_file.php'); // fix this static link!
 				xhr.send(formData);
 				
 			},
