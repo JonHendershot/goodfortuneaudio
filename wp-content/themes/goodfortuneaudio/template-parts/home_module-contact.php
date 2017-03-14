@@ -5,7 +5,7 @@
 	$contact_form = get_field('contact_code');
 	$project_planner = get_field('project_planner_code');
 	?>
-	<div class="project-planner-container open">
+	<div class="project-planner-container">
 		<div class="planner-meta">
 			<div class="section-number">
 				<span class="current-field">01</span>
@@ -31,7 +31,7 @@
 			</div>
 		</div>
 	</div>
-	<div class="general-contact-container">
+	<div class="general-contact-container open">
 		<div id="general-contact"><?php echo do_shortcode($contact_form); ?></div>
 	</div>
 	
