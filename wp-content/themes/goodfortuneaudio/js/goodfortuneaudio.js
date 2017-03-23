@@ -23,45 +23,62 @@ function mobile(){
 }(jQuery));
 (function scroller($){
 
+	// Handle page refferal
 	if( $('#scroll-to').length){
 		var scrollTo = $('#scroll-to').val();
 		
 		nextScreen(1,scrollTo);
 	}
 	
+	// Handle scroller
 	if( $('.page-viewer').length ){
 	
 		// Set Variables
-		var scrollTrigger = 100,
-			screenCount = $('section').length,
-			scrollPort = $('#scrollport'),
-			portHeight = (scrollTrigger) * (screenCount - 1),
-			windowHeight = $(window).height(),
-			scrollPortHeight = windowHeight + portHeight,
-			scrollerCache = 0;
+		var screenCount = $('section').length;
 		
 		// Set Scrollport Height
-		if(mobile() == false){
+		/*
+if(mobile() == false){
 			scrollPort.css({'height':scrollPortHeight + 'px'});
 		}else {
 			scrollPort.css({'height':windowHeight + 'px'});
 		}
+*/
 		
+		// Handle Mousewheel Event
+		var throttle = 0, // throttle the event so that it doesn't fire more than once per transition
+			timeout = 1500; // transition timing
 		
-		// Handle Scroll Event
-		$(window).scroll(function(){
-			// Scroll Variables
-			var activeScreenData = $('section.active').data('self'),
-				activeScreenID = parseInt(activeScreenData.section_id),
-				distanceScrolled = parseInt( (window.pageYOffset * 0.01) + 1);
-	/* 			console.log(parseInt(distanceScrolled)); */
-			
-			if(distanceScrolled !== activeScreenID && !scrollPort.hasClass('scrollLock')){
-			
-				scrollPort.addClass('scrollLock');
-				nextScreen(activeScreenID, distanceScrolled);
+		$(window).bind('mousewheel',function(e){
+			if(throttle == 0){
+				// Throttle the function
+				throttle = 1;
+				setTimeout(function(){
+					throttle = 0;
+				},timeout);
+				
+				// Get transition variables
+				var wheelVal = e.originalEvent.wheelDelta,
+					activeScreenData = $('section.active').data('self'),
+					activeScreenID = parseInt(activeScreenData.section_id);
+				
+				// Get next screen ID based on wheel direction	
+				if(wheelVal > 0){
+					// We've detected a scroll up
+					console.log('scroll up');
+					var nextScreenID = activeScreenID - 1;
+				}else {
+					// We've detected a scroll down
+					console.log('scroll down');
+					var nextScreenID = activeScreenID + 1;
+				}
+				
+				// Transition to the next screen if it exists
+				var nextScreenObj = $('section.section-' + nextScreenID);	
+				if(nextScreenObj.length){
+					nextScreen(activeScreenID,nextScreenID);
+				}
 			}
-			
 		});
 		
 		// Handle Mouse events on Nav
@@ -74,11 +91,9 @@ function mobile(){
 		$('.nav-wrapper').click(function(){
 			var activeScreenData = $('section.active').data('self'),
 				activeScreenID = parseInt(activeScreenData.section_id),
-				nextScreenID = parseInt($(this).data('self').section_num),
-				scrollY = (scrollTrigger * nextScreenID) - 10;
-				
+				nextScreenID = parseInt($(this).data('self').section_num);
+								
 				nextScreen(activeScreenID,nextScreenID);
-				window.scrollTo(0, scrollY);
 				
 				if($('.blur').length){
 					closeLb($);
@@ -91,12 +106,9 @@ function mobile(){
 		
 			var activeScreenData = $('section.active').data('self'),
 				activeScreenID = parseInt(activeScreenData.section_id),
-				nextScreenID = parseInt(activeScreenID + 1),
-				scrollY = (scrollTrigger * nextScreenID) - 10;
-				
+				nextScreenID = parseInt(activeScreenID + 1);				
 				
 				nextScreen(activeScreenID,nextScreenID);
-				window.scrollTo(0, scrollY);
 				if($('.blur').length){
 					closeLb($);
 				}
@@ -106,47 +118,50 @@ function mobile(){
 		
 		document.onkeydown = function(e){
 			
-			var activeScreenData = $('section.active').data('self'),
-				activeScreenID = parseInt(activeScreenData.section_id);
+			altKeys = [8,9,37,38,39,40,46,91,188,190];
+			numberKeys = [48,49,50,51,52,53,54,55,56,57];
+			
+			// if an input field is active, don't fire!
+			if( ! $('input, textarea').is(':focus') ){
+				var activeScreenData = $('section.active').data('self'),
+					activeScreenID = parseInt(activeScreenData.section_id);
 	
+				if(e.keyCode == '38'){ // pressed up
+					var nextScreenID = parseInt(activeScreenID - 1);
+				}
+				if(e.keyCode == '40'){ // pressed down
+					var nextScreenID = parseInt(activeScreenID + 1);
+				}
+				if(e.keyCode == '39'){ // pressed right
+					
+				}	
+				if(e.keyCode == '37'){ // pressed left
 				
-	
+				}
+				if(e.keyCode == 38 || e.keyCode == 40){
+					nextScreen(activeScreenID,nextScreenID);
+						
+					if($('.blur').length){
+						closeLb($);
+					}
+				}
+			}
+			// If we're in one of the data entry inputs, only allow certain things to be pressed 
+			if( $('input.number-only').is(':focus') ){
+				if( numberKeys.indexOf(e.keyCode) === -1  && altKeys.indexOf(e.keyCode) === -1){
+					e.preventDefault();
+				}
+			}
 			
-			if(e.keyCode == '38'){ // pressed up
-				var nextScreenID = parseInt(activeScreenID - 1);
-			}
-			if(e.keyCode == '40'){ // pressed down
-				var nextScreenID = parseInt(activeScreenID);
-			}
-			if(e.keyCode == '39'){ // pressed right
-				
-			}	
-			if(e.keyCode == '37'){ // pressed left
-			
-			}
-		var scrollY = (scrollTrigger * nextScreenID) - 10
-			nextScreen(activeScreenID,nextScreenID);
-			window.scrollTo(0, scrollY);
-			
-			if($('.blur').length){
-				closeLb($);
-			}
-		
 		}
 		
 		// Anchor click
 		$('.anchor').click(function(){
 			var activeScreenData = $('section.active').data('self'),
 				activeScreenID = parseInt(activeScreenData.section_id),
-				target = $(this).data('target'),
-				scrollY = (scrollTrigger * target) - 10;
-				
-				
-				nextScreen(activeScreenID,target);
-				if(mobile() !== true){
-					window.scrollTo(0, scrollY);
-				}
-				
+				target = $(this).data('target');
+							
+				nextScreen(activeScreenID,target);				
 		});
 		
 	}
@@ -277,7 +292,6 @@ function mobile(){
 				var projectID = parseInt($(this).attr('data-postid')),
 					projectObject = $('.project-wrapper.project-' + projectID).data('heuristic');
 				
-				console.log(projectID);
 				nextProject(projectObject);
 				
 				
@@ -488,7 +502,6 @@ function mobile(){
 	
 	
 	$('#mobile-site-menu .nav-item').click(function(){
-		console.log('clicked');
 		var activeScreen = parseInt($('section.active').data('self').section_id),
 			nextScreenID = parseInt($(this).data('self').section_num);
 		
@@ -557,23 +570,22 @@ function mobile(){
 	});
 	
 	// Keypress
-		
-		document.onkeydown = function(e){	
-			if($('.project-planner-container').hasClass('open')){
-				var currentField = parseInt($('.ppsection.visible').data('part'));
-	
-				if(e.keyCode == '39'){ // pressed right
-					var nextField = currentField + 1;
-				}	
-				if(e.keyCode == '37'){ // pressed left
-					var nextField = currentField - 1;
-				}
-				
-				if(e.keyCode == '37' || e.keyCode == '39'){
-					ppNextField(currentField, nextField);
-				}
-			}	
-		}
+
+		var down = [];
+		$(document).keydown(function(e) {
+			var currentField = parseInt($('.ppsection.visible').data('part'));
+		    down[e.keyCode] = true;
+		    if (down[16] && down[39]) {
+		        var nextField = currentField + 1;
+		    }
+		    if (down[16] && down[37]){
+			    var nextField = currentField - 1;
+		    }
+		    ppNextField(currentField, nextField);
+		}).keyup(function(e) {
+		    
+		    down[e.keyCode] = false;
+		});
 	
 	// Checkboxes 
 	$('.wpcf7-list-item').click(function(){
@@ -583,40 +595,204 @@ function mobile(){
 		
 		checkbox(object,value);
 	});
+	
+	// Currency Field 
+	var budgetInput = $('input[name="budget"]');
+	$('span.budget').prepend("<span class='currency'>$</span>");
+	$(document).keydown(function(){
+		setTimeout(function(){
+			var length = budgetInput.val().length + 1,
+				distance = (length * 9) * -1;
+			
+			$('.budget-space .budget .currency').css({'-webkit-transform':'translate3d(' + distance +'px,0,0)'});
+			
+		},5);
+		
+	});
+	
+	// Mail Sent Ok
+	$(".wpcf7").on('wpcf7:mailsent', function(event){
+		setTimeout(function(){
+				  $('.submit-success').addClass('visible');
+		}, 800);
+	  $('.ppsection.visible').addClass('prev').removeClass('visible');
+	  $('.planner-meta .curren-title').text('success!');
+	  $('.project-planner-container .btns').addClass('hidden');
+	});
+	
+	// Errors
+	$(".wpcf7").on('wpcf7:invalid', function(event){
+		var info = $('.wpcf7-not-valid-tip').first(),
+			section = findParent(info),
+			current = $('.ppsection.visible').data("part");
+			
+		ppNextField(current, section);
+		
+		$('.project-planner-container .main-btn.submit').addClass('hidden');
+		$('.project-planner-container .main-btn.next-field').removeClass('hidden');
+		
+		$('.ppsection.prev').each(function(){
+			var part = $(this).data("part");
+			
+			if(part > section){
+				$(this).removeClass('prev');
+			}
+		});
+		
+		
+		
+			
+	  
+	});
+	
+	function findParent(obj){
+		var child = obj,
+			parent;
+		for(ii = 1; ii < 6; ii++){
+			
+			if(child.parent().hasClass('ppsection')){
+				parent = child.parent().data('part');
+			}else {
+				child = child.parent();
+			}
+			
+		}
+		return parent;
+	}
+	
 }(jQuery));
 (function dropZoneUploader($){
 	
+	uploads = [];
 	
+	// Drop files on dropzone
 	var dropzone = document.getElementById('dropzone'),
 		upload = function(file){
-				var formData = new FormData(),
-					xhr = new XMLHttpRequest(),
-					x;
-					
+				var x;
+			
 				for(x = 0; x < file.length; x++){
-					formData.append('file[]', file[x]);
-					console.log(file[x].name);
+					
+					
+					// Check that the file passes validation vefore uploading it
+					validation = validateUploads(file[x]);
+					
+					if(typeof validation !== undefined && validation.length > 0){
+						// There are errors, send them out and don't upload!
+						
+						for(er = 0; er < validation.length; er++){
+						}
+					}else {
+						// AJAX 
+						var formData = new FormData(),
+							xhr = new XMLHttpRequest(),
+							fileName = file[x].name,
+							fileSize = file[x].size;
+						
+						
+						
+						
+						formData.append('file[]', file[x]);
+						
+						
+						// Update Display Info
+						var fileStatus = $('#uploaded-files .uploaded-file:not(.visible)').first();
+						
+						if( ! fileStatus.hasClass('visible')){
+							fileStatus.addClass('visible').find('.file-name').attr('id', fileID(file[x]));
+							fileStatus.find('.file-name').text(file[x].name);
+						}
+						
+						
+						// Upload Progress
+						xhr.upload.addEventListener("loadstart", function(e){
+
+							
+							this.progressID = "f_" + Math.round(Math.random() * e.timeStamp * 503413015.254); // global variable for progress uploader
+							
+							
+							var progressContainer = $('#uploaded-files .uploaded-file:not(.hasFile)').first();
+							
+							if(progressContainer.length){
+								progressContainer.attr('id',this.progressID).addClass('hasFile');
+							} 
+							
+						});
+						xhr.upload.addEventListener("progress", progressHandler, false);
+						
+						xhr.onload = function(){
+							var data = JSON.parse(this.responseText);
+							
+							if(data.errors.length > 0){
+								
+								// There are errors, let's pass that information to the errors function
+								uploadErrors(data.errors);
+							}
+							
+							
+							displayUpload(data.uploads);
+							
+						}
+						
+						
+						xhr.open('post','wp-content/plugins/dragDrop/upload_file.php'); // fix this static link!
+						xhr.send(formData);	
+					}
 				}
-				
-				xhr.onload = function(){
-					var data = JSON.parse(this.responseText);				
-					displayUpload(data);
-					console.log(data);
-				}
-				
-				
-				xhr.open('post','wp-content/plugins/dragDrop/upload_file.php'); // fix this static link!
-				xhr.send(formData);
-				
 			},
+		uploadErrors = function(array){
+			for(er = 0; er < array.length; er++){
+				var file_name 	= array[er].file_name,
+					error_type 	= array[er].type,
+					error 		= array[er].error,
+					file_id 	= fileID(file_name),
+					error_out	= "<li class='error'>" + error + "</li>";
+					
+				$('#' + file_id).addClass('error').parent().addClass('errors').find('.error-list').prepend(error_out);	
+				
+			}
+		},
 		displayUpload = function(data){
 			// Display what's being uploaded for the user
-			var input = $('form .prev-material input[name="file-names"]'),
-				x;
+			var	x;
 			
 			for(x=0; x < data.length; x++){
-				input.val(data[x].name);
+				
+				// Set Variables for sending uploaded file names to hidden inputs
+				var loopNum = x + 1,
+					input = $('#filenames input[type="text"]:not(.hasFile)').first();
+				
+				// Push filename to array
+				uploads.push(data[x].name);
+				
+				// Add file name to inputs
+				if( ! input.hasClass('hasFile')){
+					var filename_split = data[x].name.split('.'),
+						fileUP_id = 'f_' + filename_split[0];
+					
+					input.val(data[x].name).addClass('hasFile').attr('id',fileUP_id);
+				}
+				
+				// Add uploaded class to filename in progress container
+				$('#uploaded-files').find('.file-name').each( function(){
+					var fileName = $(this).text();
+					
+					if(fileName == data[x].name){
+						$(this).addClass('loaded');
+					}	
+				});
+				
 			}
+			
+		},
+		progressHandler = function(e){
+			var totalSize = e.total,
+					totalLoaded = e.loaded,
+					percentLoaded = (totalLoaded/totalSize),
+					elemID = this.progressID;
+					
+	
+				$('#uploaded-files .uploaded-file#' + elemID + ' .progress-bar .progress').css({'transform':'scaleX(' + percentLoaded + ')'});
+			
 		};
 	
 	dropzone.ondragover = function(){
@@ -632,24 +808,141 @@ function mobile(){
 		e.preventDefault();
 		
 		// Handle uploader styles
-		$(this).removeClass('drag_over');
+		$(this).removeClass('drag_over').addClass('uploading');
 		
 		// Create variables
 		var fileLength = e.dataTransfer.files.length,
 			fileType = e.dataTransfer.files[0]['type'];
-		
-		
-		// Handle upload event
-		if(fileLength === 1 && fileType == 'audio/mp3'){
-			// Upload File
-			upload(e.dataTransfer.files);
 			
-		}else {
-			// Instruct user as to what uploads are accepted
-			alert('please upload a single .mp3 file');
-		}
+		// Handle upload event
+			if(fileLength <= 2 && uploads.length < 2){ //  && fileType == 'audio/mp3'
+				// Upload File
+				upload(e.dataTransfer.files);
+				
+			}else if(uploads.length >= 2 || fileLength > 2){
+				alert("Sorry, we don't want more than two files.");
+			}else {
+				// Instruct user as to what uploads are accepted
+				alert('please upload a single .mp3 file');
+			}
+		
 	};
+	
+	// Click on browse
+	$('#dropzone .browse-trigger').click(function(e){
+		$('#file-upload-hidden').trigger('click');
+	});
+	
+	// Upload file when input changes
+	$('#file-upload-hidden').change(function(){
+		
+		$('#dropzone').removeClass('drag_over').addClass('uploading');
+		
+		// Create variables
+		var fileLength = this.files.length,
+			fileType = this.files[0]['type'];
+			
+		// Handle upload event
+			if(fileLength <= 2 && uploads.length < 2){ //  && fileType == 'audio/mp3'
+				// Pass file to upload
+				upload(this.files);
+				
+			}else if(uploads.length >= 2 || fileLength > 2){
+				alert("Sorry, we don't want more than two files.");
+			}else {
+				// Instruct user as to what uploads are accepted
+				alert('please upload a single .mp3 file');
+			}
+			
+			// Remove file from input
+			this.value = '';
+	});
+	// Remove File from upload queue
+	$('.remove-file').click(function(){
+		var id = $(this).data('file'),
+			uploadContainer = $('.uploaded-file.file-' + id),
+			progressBar = uploadContainer.find('.progress-bar .progress'),
+			fileNameContainer = uploadContainer.find('.file-name'),
+			fileName = fileNameContainer.text(),
+			filename_split = fileName.split('.'),
+			fileUP_id = 'f_' + filename_split[0],
+			input = $('input#'+fileUP_id),
+			index = uploads.indexOf(fileName);
+					
+			progressBar.css({'transform' : 'scale(0)'});
+			fileNameContainer.text('');
+			input.val('').removeClass('hasFile').attr('id','');
+			uploadContainer.removeClass('visible');
+			
+			$('.file-' + id).attr('id','').removeClass('hasFile errors').find('.upload-info').removeClass('errors').find('.file-name').removeClass('loaded error').attr('id','');
+			$('.file-' + id).find('.error-list').text('');
+			if(! $('.uploaded-file.visible').length){
+				$('#dropzone').removeClass('uploading');
+			}
+			
+			// Remove File from uploaded array
+			if(index > -1){
+				uploads.splice(index,1);
+			}
+	});
+	
 }(jQuery));
+(function openForms($){
+	// Open
+	$('.form-trigger').click(function(){
+		
+		var selectedForm = $(this).data('form');
+		$('.launch-pad').addClass('hidden');
+		setTimeout(function(){
+			$('.contact-' + selectedForm).addClass('open');
+		},800);
+	});
+	
+	// Close
+	$('.close-form').click(function(){
+		$('.contact-form-cont.open').removeClass('open');
+		setTimeout(function(){
+			$('.launch-pad').removeClass('hidden');
+		},800);
+	});
+}(jQuery));
+
+function validateUploads(obj){
+	
+	var $ = jQuery,
+		errors = [],
+		f_Id = fileID(obj);
+	
+	// File Duplicate
+	if($('#' + f_Id).length){
+		errors.push('Oh shit, it looks like you already uploaded this one.');
+	}
+	
+	// More than two files uploaded
+	
+	// File Type
+	
+	// File Size
+	
+	return errors;
+}
+function fileID(obj){
+		// Global File ID Variable	
+		
+		
+		if(obj.name !== undefined){
+			// File object is being passed
+			var fileName = obj.name;
+		}else {
+			// File-name string is being passed
+			var fileName = obj;
+		}
+		
+		var	file_ID = 'f_' + fileName.split('.')[0].replace(/ /g,'-');
+		
+		return file_ID;
+}
+
 
 function nextScreen(currentScreenID, nextID){
 	var $ = jQuery,
@@ -821,7 +1114,6 @@ function projectHover(event){
 			rotateX = (percentX * rotateValue),
 			rotateY = (percentY * rotateValue);
 		
-		console.log('X: ' + rotateX +  ' Y: ' + rotateY);
 		
 	
 		projectBackground.style.transform = 'matrix3d(0.98,0,0.17,'+ rotateX +',0.00,0.98,0.17,' + rotateY + ',-0.17,-0.17,0.9603999999999999,0,0,0,0,1) translate3d(0,0,0)';
@@ -870,7 +1162,8 @@ function ppNextField(currentFieldID, nextFieldID){
 		submitButton = $('.btns .submit'),
 		partName = $('.ppsection.part-' + nextFieldID).data('name'),
 		currentName = $('.planner-meta .current-title').text(),
-		partNumber = $('.ppsection.part-' + nextFieldID).data('part');
+		partNumber = $('.ppsection.part-' + nextFieldID).data('part'),
+		input = $('.ppsection.part-' + nextFieldID + ' input, .ppsection.part-' + nextFieldID + ' textarea' ).first();
 		
 	// HANDLE BUTTONS
 	
@@ -902,7 +1195,6 @@ function ppNextField(currentFieldID, nextFieldID){
 		// Animate Fields
 		$('.ppsection.part-' + nextFieldID).addClass('visible');
 		$('.ppsection.part-' + currentFieldID).removeClass('visible').addClass('prev');
-		
 	}
 	if(nextFieldID < currentFieldID && $('.ppsection.part-' + nextFieldID).length){ // Move Backwards
 		// Animate Fields
@@ -911,12 +1203,21 @@ function ppNextField(currentFieldID, nextFieldID){
 	}
 	
 	// UPDATE PROJECT PLANNER META
-	$('.planner-meta .current-field').text('0' + partNumber);
+	if(partNumber !== undefined){
+		$('.planner-meta .current-field').text('0' + partNumber);
+	}
 	if(partName !== currentName){
 		$('.planner-meta .current-title').text(partName);
 	}
 	
-	// CHANGE NAV HINT
+	// Activate first field of the section if it's a typing field
+	if(input.length && input.val() == ''){
+		
+		setTimeout(function(){
+			// put in set timeout because focus won't fire before animation has completed
+			input.focus();
+		},1000);
+	}
 	
 	
 }
@@ -1014,7 +1315,6 @@ window.addEventListener('load', function() {
   if(scopeElement){
 	 document.addEventListener('touchstart', touchstartHandler, false);
 	 document.addEventListener('touchmove', touchmoveHandler, false); 
-	 console.log('fired');
   }
   
 });

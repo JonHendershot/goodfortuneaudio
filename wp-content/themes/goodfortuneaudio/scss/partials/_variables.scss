@@ -17,6 +17,8 @@ $dark_grey: #222629;
 $orange: #CA5D44;
 $divider_color: #C8422C;
 $border_grey: #EDEDED;
+$upload_grey: #444444;
+$progress_bg: #868686;
 /*************************************
   - - - - - - MISC VARIALBES - - - - - 
 **************************************/
@@ -53,6 +55,12 @@ $home-width : 60%;
     -webkit-transform: scale($percent); /* Chrome, Safari, Opera */
     -moz-transform: scale($percent); /* Mozilla ? */
     transform: scale($percent);
+}
+@mixin scaleX($percent){
+	 -ms-transform: scaleX($percent); /* IE 9 */
+    -webkit-transform: scaleX($percent); /* Chrome, Safari, Opera */
+    -moz-transform: scaleX($percent); /* Mozilla ? */
+    transform: scaleX($percent);
 }
 @mixin transrotate($X,$Y,$Z,$degree){
 		-webkit-transform: translate3d($X,$Y,$Z) rotate($degree);

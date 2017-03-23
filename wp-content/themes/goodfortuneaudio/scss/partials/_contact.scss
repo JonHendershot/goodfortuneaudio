@@ -1,6 +1,59 @@
 .contact-container {
 	width: 60%;
+	position: relative;
+	// Launch Pad
+	.launch-pad {
+		@include flexbox(center,space-between);
+		flex-direction: column;
+		height: 45vh;
+		transition: 1000ms all ease-in-out;
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		margin: auto;
+
+		// General
+		h3	{
+			letter-spacing: 10px;
+			font-size: 20px;
+			text-align: center;
+			font-weight: 200;
+		}
+		p {
+			font-size: 10px;
+			letter-spacing: 3px;
+			text-align: center;
+			max-width: 300px;
+			margin: 0 auto 20px;
+			font-weight: 600;
+			padding-left: 3px;
+		}
+		.main-btn {
+			margin: 0 auto;
+		}
+		
+		// General
+		.general-contact-wrap {
+			h3,p {
+				color: $orange;
+			}
+		}
+		// Project Planner {
+		.project-planner-wrap {
+			h3,p {
+				color: $dark_grey;
+			}
+		}
+	}
+	.launch-pad.hidden {
+		opacity: 0;
+		visibility: hidden;
+	}
 	
+	
+	// Forms
 	form {
 		width: 60%;
 		margin: 0 auto;
@@ -66,18 +119,50 @@
 	input[type="submit"]:hover:after {
 		@include translate(0,0,0);
 	}
-	
+	img.close-form {
+		width: 15px;
+		display: inline-block;
+		margin-right: 5px;
+		@include translate(0,2px,0);
+		cursor: pointer;
+	}
 	.general-contact-container {
 		visibility: hidden;
 		opacity: 0;
-		display: none;
+		transition: all 1000ms ease-in-out;
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		margin: auto;
+		min-height: 50vh;
+		.form-meta {
+			@include flexbox(center, space-between);
+			width: 100%;
+			
+			.current-title {
+				    font-family: $body_font;
+				    color: $dark_grey;
+				    text-transform: uppercase;
+				    font-weight: 600;
+				    letter-spacing: 3px;
+			}
+		
+		}
 	}
 	.project-planner-container {
-		position: relative;
 		min-height: 50vh;
 		visibility: hidden;
 		opacity: 0;
-		display: none;
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		margin: auto;
+		transition: all 1000ms ease-in-out;
+		
 		.planner-meta {
 			
 			@include flexbox(center,space-between);
@@ -126,12 +211,55 @@
 				@include ease(1000ms);
 				
 				// General 
+				
+				input[type=number].no-spin::-webkit-inner-spin-button, 
+				input[type=number].no-spin::-webkit-outer-spin-button,
+				input[type=date]::-webkit-inner-spin-button, 
+				input[type=date]::-webkit-outer-spin-button { 
+					-webkit-appearance: none; 
+					margin: 0; 
+				}
+				
 				.instruct {
 					font-family: $heading_font;
 					color: $orange;
 					font-size: $title-size;
 					letter-spacing: $spacing;
 					text-transform: $transform;
+				}
+				
+				// Budget
+				.budget-space {
+					input[type="number"] {
+						font-size: $field-size !important;
+						width: 165px !important;
+						border: none !important;
+						text-align: center;
+						font-family: $heading_font;
+						color: $dark_grey;
+						background-color: transparent;
+					}
+					input:before {
+						content: '$';
+						position: relative;
+						
+					}
+					.budget {
+						position: relative;
+						.currency {
+							position: absolute;
+							bottom: 0;
+							left: 0;
+							right: 0;
+							@include max-content(width);
+							font-size: 33px;
+							color: $dark_grey;
+							font-family: $heading_font;
+							margin: auto;
+							@include translate(-10px,0,0);
+						}
+					}
+					
 				}
 				
 				// Services 
@@ -277,22 +405,33 @@
 			}
 			// Drag & Drop Upload
 			.prev-material {
+				$upload_pad : 20px;
+				#file-upload-hidden {
+					display: none;
+					visibility: hidden;
+				}
 				.band-file {
 					display: none; // hide input for now
+				}
+				#dropzone.uploading {
+					@include calc(width,"50% -" $upload_pad*2);
 				}
 				#dropzone {
 					background-color: $white;
 					border-radius: 5px;
-					width: 50%;
+					@include calc(width,"100% -" $upload_pad*2);
 					@include flexbox(center,center);
-					padding: 20px 1.5%;
+					padding: 20px;
 					box-shadow: 0px 6px 28px rgba(17, 17, 17, 0.1);
+					@include ease(800ms);
+					z-index: 9999;
+					position: relative;
 					
 					.container {
 						border: 2px dashed $border_grey;
 						border-radius: 5px;
 						padding: 60px 0;
-						width: 90%;
+						width: 100%;
 						@include transition(0.3s, all, ease-in-out);
 						span{
 							color: #9b9b9b;
@@ -305,6 +444,7 @@
 							letter-spacing: 0px;
 							font-weight: 400;
 							@include transition (0.3s, opacity, ease-in-out);
+							max-width: 233px;
 							
 							.browse-trigger {
 								color: $orange;
@@ -324,7 +464,138 @@
 						}
 					}
 				}
+				#filenames input[type="text"]{
+					visibility: hidden;
+					display: none;
+				}
+				#uploaded-files {
+					@include calc(width, "50% - 15px");
+					padding: 15px;
+					position: absolute;
+					top: 0;
+					bottom: 0;
+					right: 0;
+					margin: auto;
+					border-radius: 5px;
+					@include max-content(height);
+					z-index: 99;
+
+					
+					.uploaded-file {
+						@include calc(width,"100% - 15px");
+						visibility: hidden;
+						opacity: 0;
+						padding: 15px;
+					    background-color: $upload_grey;
+					    border-bottom-right-radius: 5px;
+					    border-top-right-radius: 5px;
+					    margin: 5px 0;
+					    position: relative;
+						.progress-bar {
+							width: 100%;
+							background-color: $progress_bg;
+							height: 4px;
+							border-radius: 2px;
+							position: relative;
+							overflow: hidden;
+							.progress {
+								position: absolute;
+								left: 0;
+								top: 0;
+								height: 4px;
+								border-radius: 2px;
+								background: linear-gradient(to right,rgba(255,132,121,1) 0%, rgba(255,176,135,1) 100% );
+								width: 100%;
+								@include ease(400ms);
+								@include scaleX(0);
+								transform-origin: left;
+							}
+						}
+						.upload-info {
+							@include flexbox(center,space-between);
+							margin-top: 5px;
+							.file-name {
+								font-size: 11px;
+								@include ease(400ms);
+							}
+							.file-name.error {
+								font-style: italic;
+								color: red;
+							}
+							.file-name.loaded {
+								@include translate(16px,0,0)
+							}
+							.file-name:before {
+								content:'';
+								position: absolute;
+								top: 0;
+								bottom: 0;
+								left: 0;
+								background-image: url('../images/checkmark.png');
+								background-size: contain;
+								background-position: center center;
+								background-repeat: no-repeat;
+								height: 100%;
+								width: 9px;
+								@include translate(-18px,0px,0);
+								display: block;
+								opacity: 0;
+								visibility: hidden;
+								@include ease(400ms);
+							}
+							.file-name.loaded:before {
+								visibility: visible;
+								opacity: 1;
+								@include translate(-13px,0,0);
+							}
+							.remove-file {
+								color: #FFAF86;
+								font-size: 14px;
+								cursor: pointer;
+							}
+							.error-list {
+								list-style: none;
+								padding: 0;
+								margin: 0;
+								position: absolute;
+								top: 0;
+								right: 0;
+								background-color: $white;
+								color: $dark_grey;								
+							    border-radius: 4px;
+							    padding: 10px;
+							    font-size: 9px;
+							    z-index: 9999;
+							    top: 0;
+							    left: 0;
+							    right: 0;
+							    bottom: 0;
+							    margin: auto;
+							    @include max-content(width);
+							    @include max-content(height);
+							    opacity: 0;
+							    visibility: hidden;
+								@include transition(500ms, all, ease-in-out);
+							    
+							}
+							
+						}
+						.upload-info.errors {
+							.error-list {
+								opacity: 1;
+								visibility: visible;
+								
+							}
+						}
+					}
+					.uploaded-file.visible {
+						opacity: 1;
+						visibility: visible;
+					}
+				}
 			}
+			
+			
 		}
 		.btns {
 			width: 100%;
@@ -332,6 +603,7 @@
 			position: absolute;
 			bottom: 0;
 			left: 0;
+			transition: 800ms all ease-in-out;
 			.nav-hint {
 				font-family: $heading_font;
 				color: $dark_grey;
@@ -376,10 +648,111 @@
 			}
 			
 		}
+		.btns.hidden{
+			opacity: 0;
+			visibility: hidden;
+		}
+		.submit-success {
+			text-align: center;
+			opacity: 0;
+			visibility: hidden;
+			position: absolute;
+			top: 0;
+			left: 0;
+			right: 0;
+			bottom: 0;
+			@include max-content(height);
+			margin: auto;
+			@include transition(800ms,opacity,ease-in-out);
+			img,p,div {
+				@include translate(0,50px,0);
+				@include easeout(800ms);
+			}
+			img {
+				width: 150px;
+				margin: 0 auto;
+			}
+			p {
+				color: $dark_grey;
+				font-family: $heading_font;
+				font-size: 20px;	
+				transition-delay: 100ms;
+			}
+			.main-btn {
+				margin: 0 auto;
+				transition-delay: 150ms;
+			}
+		}
+		.submit-success.visible {
+			opacity: 1;
+			visibility: visible;
+			img,p,div {
+				@include translate(0,0,0);
+			}
+		}
 	}
 	.project-planner-container.open, .general-contact-container.open {
 		visibility: visible;
 		opacity: 1;
+	}
+	
+	// Form Response
+	.wpcf7-response-output {
+		border: none;
+	    color: $dark_grey;
+	    font-weight: 600;
+	    font-style: italic;
+	    position: absolute;
+	    top: 0;
+	    padding: 0;
+	    margin: 0 auto;
+	    left: 0;
+	    right: 0;
+	    @include max-content(width);
+	    font-size: 14px;
+	}
+	.wpcf7-validation-errors::before {
+		color: $orange;
+		font-style: italic;
+		content: "\f071";
+/*
 		display: block;
+		position: absolute;
+		left: 0;
+		top: 0;
+		bottom: 0;
+*/
+		margin-right: 5px;
+		font-family: "FontAwesome";
+		@include translate(-110%,0,0);
+		width: 20px;
+	}
+	span.wpcf7-not-valid-tip {
+	    color: red;
+	    font-weight: normal;
+	    display: block;
+	    background-color: transparent;
+	    font-size: 10px;
+	    margin: 0;
+	    margin-top: -15px;
+	    padding: 5px;
+	}
+	span.wpcf7-not-valid-tip:before {
+		content: "\f05a";
+		font-family: "FontAwesome";
+		margin-right: 5px;
+	}
+	.service-select span.wpcf7-not-valid-tip {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		@include translate(0,-10px,0);
+	}
+	.service-select .services {
+		position: static;
+	}
+	.wpcf7-mail-sent-ok {
+		display: none !important;
 	}
 }

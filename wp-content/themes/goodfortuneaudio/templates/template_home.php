@@ -25,7 +25,7 @@
 	get_template_part( 'template-parts/module_scroll-hint' );
 	
 ?>
-<div id="scrollport"></div>
+<!-- <div id="scrollport"></div> -->
 <div class="page-viewer" id="page_viewer">
 	<div class="background-image" style="background-image: url(<?php  echo $page_header_photo; ?>);"></div>
 	<div class="background-image-mobile" style="background-image: url(<?php echo get_template_directory_uri() . '/images/particle_screen_1.png'; ?>);" data-screens='{"screen_1" : "<?php echo get_template_directory_uri() . '/images/particle_screen_1.png'; ?>", "screen_2" : "<?php echo get_template_directory_uri() . '/images/particle_screen_2.png'; ?>"}'></div>

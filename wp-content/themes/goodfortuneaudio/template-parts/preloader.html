@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>svg</title>
+	</head>
+	<body>
+		<style>
+			html,body {
+				margin: 0;
+				padding: 0;
+			}
+			body {
+				height: 100vh;
+				width: 100vw;
+			}
+			div.svg-elem {
+				width: 100%;
+				height: 100%;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+			}
+			.load-container {
+				width: 65%;
+				margin: 0 auto;
+				transform: scaleX(0);
+				transition: 0.3s all ease-in-out;
+				height: 2px;
+				background-color: rgb(222,222,222);
+			}
+			.load-container.set {
+				transform: scaleX(1);
+			}
+			
+			</style>
+<div class="svg-elem">
+	<div class="load-container" id="container">
+		<div class="loader"></div>
+	</div>
+<!--
+	<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="283px"
+	 height="414px" viewBox="0 0 283 414" enable-background="new 0 0 283 414" xml:space="preserve">
+		<g id="G">
+			<g>
+				<path fill="#12171A" d="M200.055,150.342h69.618l0.44-1.317c-2.762-32.659-14.262-58.453-34.431-77.444l-40.23,60.204
+					C197.475,137.28,199.036,143.434,200.055,150.342z"/>
+				<path fill="#12171A" d="M147.131,204.087v47.718h50.296v50.508c-4.548,3.653-10.685,6.585-18.451,8.778
+					c-7.766,2.193-18.451,3.292-32.056,3.292c-18.737,0-33.318-6.761-43.699-20.312c-3.006-3.916-5.437-8.304-7.575-12.946
+					l-39.32,58.841c23.854,20.858,53.97,31.517,90.595,31.517c31.174,0,57.086-4.908,77.73-14.725
+					c20.657-9.796,36.387-21.14,47.215-34.032V202.607H148.118L147.131,204.087z"/>
+			</g>
+		</g>
+		<g id="Slash">
+			<g>
+				<path fill="#12171A" d="M277.765,8.611l-5.784-3.863L4.235,405.389l5.784,3.863L277.765,8.611z"/>
+			</g>
+		</g>
+	</svg>
+-->
+</div>
+			<script>
+				document.getElementById("container").className = "load-container set";
+			</script>
+	</body>
+</html>

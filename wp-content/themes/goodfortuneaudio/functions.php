@@ -152,33 +152,6 @@ require get_template_directory() . '/theme_options.php';
 
 // Check if file was uploaded to form and, if it exists, attach to email
 // Add attachement to email
-/*
-do_action('wpcf7_before_send_mail','attach_file');
-function attach_file($cf7)
-{	
-	$id = $cf7->id();
-    if ($id==61 || $id==103){
-        
-    }
-    $submission = WPCF7_Submission::get_instance();
-        $submission->add_uploaded_file('test',get_template_directory().'/screenshot.png');
-}
-*/
-
-/*
-$file = 'http://loaclhost:8888/gfa/wp-content/plugins/dragDrop/uploads/FUCK-URSELF.mp3';
-     //check if it is the project planner form
-     if ($cf7->id==61 || $cf7->id == 103)
-     {
-      
-      $filenameOLD = plugins_url() . '/dragDrop/uploads/' . $cf7->form['file-names'];
-      $filename = 'http://loaclhost:8888/gfa/wp-content/plugins/dragDrop/uploads/FUCK-URSELF.mp3';
-
-      $cf7->uploaded_files = array('file-name'=>$filename);
-     }
-     $cf7->uploaded_files = array('file-name'=>$file);
-*/
-
 
 add_action( 'wpcf7_before_send_mail', 'gfa_upload_file' );
  
@@ -186,9 +159,17 @@ function gfa_upload_file($cf7) {
    
 	$formID = $cf7->id();
 	if($formID == 61 || $formID == 103){
-		$fileNAME = $_POST['file-names'];
-	    $upFILE = ABSPATH . 'wp-content/plugins/dragDrop/uploads/' . $fileNAME;
-	    $submission = WPCF7_Submission::get_instance();
-	    $submission->add_uploaded_file('file_upload',$upFILE);   
+		$fileNAME = $_POST['file-name-1']; // '01Deadicated.mp3';
+		$fileNAME2 = $_POST['file-name-2']; // '02SayAnything.mp3';
+		$files = array($fileNAME,$fileNAME2); // json_decode($_POST['file-names'], true);
+		$submission = WPCF7_Submission::get_instance();
+		
+		foreach($files as $key => $file){
+			
+			$upFILE = ABSPATH . 'wp-content/plugins/dragDrop/uploads/' . $file;
+			
+			$submission->add_uploaded_file("file_upload_$key",$upFILE);
+		} 
+
 	}
 }

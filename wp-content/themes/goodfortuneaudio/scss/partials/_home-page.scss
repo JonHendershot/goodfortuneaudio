@@ -1,10 +1,8 @@
-// Scroller Port
-#scrollport {
-	@include calc(min-height,"100vh + 100px");
-	z-index: -1;
-	background: transparent;
+
+// 
+body.page-template-template_home {
+	overflow: hidden;
 }
-// Scroll Hint 
 
 // Setup variables for scroll hint box
 $lineWidth : 22px;
@@ -20,7 +18,7 @@ $hoverdistance : 0.5 * $lineWidth;
 	margin: auto;
 	@include max-content(width);
 	@include flexbox(center,center);
-	z-index: 999;
+	z-index: 999999;
 	cursor: pointer;
 	visibility: visible;
 	@include ease(1500ms);
