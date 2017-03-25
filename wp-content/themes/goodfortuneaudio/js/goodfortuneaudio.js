@@ -6,7 +6,13 @@ function mobile(){
 	    
 	    return(isMobile);
 }
-
+(function dates($){
+	var field = $('.date-picker');
+	
+	if(field.length){
+		field.datepicker();
+	}
+}(jQuery));
 (function mediaInvoker($){
 	if(mobile() === true){
 		// We're on a mobile device, no videos please!

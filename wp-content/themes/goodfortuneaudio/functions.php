@@ -112,7 +112,7 @@ function goodfortuneaudio_scripts() {
 	//wp_enqueue_script( 'jquery' ); // debug this dependency, it should be getting called in the gfa-main-js script immediately below this
 	wp_enqueue_script( 'jquery_mobile', get_template_directory_uri() . '/js/jquery.mobile.custom.min.js', array('jquery'), '22', true );
 	wp_enqueue_script( 'jquery-mobile-swipeup', get_template_directory_uri() . '/js/jquerymobile-swipeupdown.js', array(), '1', true );
-	wp_enqueue_script( 'goodfortuneaudio-main-js', get_template_directory_uri() . '/js/goodfortuneaudio.js', array('jquery-ui-accordion'), '23', true );
+	wp_enqueue_script( 'goodfortuneaudio-main-js', get_template_directory_uri() . '/js/goodfortuneaudio.js', array('jquery-ui-accordion', 'jquery-ui-datepicker'), '23', true );
 	
 	
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
