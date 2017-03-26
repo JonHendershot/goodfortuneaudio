@@ -53,10 +53,10 @@ if(mobile() == false){
 		
 		// Handle Mousewheel Event
 		var throttle = 0, // throttle the event so that it doesn't fire more than once per transition
-			timeout = 1500; // transition timing
-		
+			timeout = 1500, // transition timing
+			lightbox = $('.lightbox'); // use to check if lightbox element is open and disable scroll
 		$(window).bind('mousewheel',function(e){
-			if(throttle == 0){
+			if(throttle == 0 && !lightbox.hasClass('open')){
 				// Throttle the function
 				throttle = 1;
 				setTimeout(function(){
