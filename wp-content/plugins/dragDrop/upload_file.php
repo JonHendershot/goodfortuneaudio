@@ -5,7 +5,7 @@
 	header('HTTP/1.1 200 OK', 'Content-Type: application/json');
 	
 	// Dynamic require URL to grab wp-load.php in both local and production environments
-	if($_SERVER['DOCUMENT_ROOT']=='/Applications/MAMP/htdocs/Sites'){
+	if($_SERVER['DOCUMENT_ROOT']=='/Applications/MAMP/htdocs/Sites' || $_SERVER['DOCUMENT_ROOT']=='/Applications/MAMP/htdocs/'){
 		$wpLoad_URL = '/gfa/wp-load.php';
 	}else {
 		$wpLoad_URL = '/wp-load.php';
@@ -35,7 +35,6 @@
 			$filePath = $uploadDIR.'/'.$name;
 			
 			// Validation
-
 			if(ext_is_audio( $name ) === false){
 				$extNotAudio = "Sorry, this file extension is not accepted";
 				

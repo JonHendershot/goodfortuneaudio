@@ -10,7 +10,10 @@ function mobile(){
 	var field = $('.date-picker');
 	
 	if(field.length){
-		field.datepicker();
+		field.datepicker({
+			dayNamesMin: ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"],
+			showOtherMonths: true
+		});
 	}
 }(jQuery));
 (function mediaInvoker($){
