@@ -2890,16 +2890,19 @@ section.about .gear-container.visible {
   - - - - - - - RESPOND - - - - - - - -
 **************************************/
 @media (min-height: 900px) {
-  .projects-container .project-wrapper.next {
+  .section-projects .projects-container .project-wrapper.next {
     -webkit-transform: translate3d(0, 34vh, 0);
     -moz-transform: translate3d(0, 34vh, 0);
     -ms-transform: translate3d(0, 34vh, 0);
     transform: translate3d(0, 34vh, 0); }
-  .projects-container .project-wrapper.last {
+  .section-projects .projects-container .project-wrapper.last {
     -webkit-transform: translate3d(0, -34vh, 0);
     -moz-transform: translate3d(0, -34vh, 0);
     -ms-transform: translate3d(0, -34vh, 0);
-    transform: translate3d(0, -34vh, 0); } }
+    transform: translate3d(0, -34vh, 0); }
+  .section-projects .project-nav, .section-projects .num-progress {
+    display: none;
+    visibility: hidden; } }
 
 @media (max-height: 800px) and (min-width: 901px) {
   section.about .content-wrapper .top-image {

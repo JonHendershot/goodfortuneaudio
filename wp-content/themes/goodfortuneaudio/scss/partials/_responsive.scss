@@ -2,12 +2,18 @@
 
 @media (min-height: 900px){
 	// Projects
-	.projects-container {
-		.project-wrapper.next {
-			@include translate(0,34vh,0);
+	.section-projects {
+		.projects-container {
+			.project-wrapper.next {
+				@include translate(0,34vh,0);
+			}
+			.project-wrapper.last{
+				@include translate(0,-34vh,0);
+			}	
 		}
-		.project-wrapper.last{
-			@include translate(0,-34vh,0);
+		.project-nav,.num-progress {
+			display: none;
+			visibility: hidden;
 		}
 	}
 }
