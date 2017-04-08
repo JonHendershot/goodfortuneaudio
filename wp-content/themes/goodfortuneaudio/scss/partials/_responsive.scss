@@ -11,10 +11,6 @@
 				@include translate(0,-34vh,0);
 			}	
 		}
-		.project-nav,.num-progress {
-			display: none;
-			visibility: hidden;
-		}
 	}
 }
 
@@ -357,6 +353,10 @@
 				.project-nav-mobile {
 					@include flexbox(center,space-between);
 				}
+			}
+			.project-nav,.num-progress {
+				display: none;
+				visibility: hidden;
 			}
 		}
 		// Blogs

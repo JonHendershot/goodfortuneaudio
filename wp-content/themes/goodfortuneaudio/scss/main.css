@@ -2899,10 +2899,7 @@ section.about .gear-container.visible {
     -webkit-transform: translate3d(0, -34vh, 0);
     -moz-transform: translate3d(0, -34vh, 0);
     -ms-transform: translate3d(0, -34vh, 0);
-    transform: translate3d(0, -34vh, 0); }
-  .section-projects .project-nav, .section-projects .num-progress {
-    display: none;
-    visibility: hidden; } }
+    transform: translate3d(0, -34vh, 0); } }
 
 @media (max-height: 800px) and (min-width: 901px) {
   section.about .content-wrapper .top-image {
@@ -3179,6 +3176,9 @@ section.about .gear-container.visible {
         -webkit-align-items: center;
         justify-content: space-between;
         -webkit-justify-content: space-between; }
+    body.home section.projects .project-nav, body.home section.projects .num-progress {
+      display: none;
+      visibility: hidden; }
     body.home section.blog .blog-container {
       width: 90%; }
       body.home section.blog .blog-container .blog-posts {
