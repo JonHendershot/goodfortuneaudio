@@ -1,3 +1,11 @@
+// Hide WP Admin Bar
+html[lang="en-US"] {
+	margin-top: 0 !important;
+}
+#wpadminbar {
+	display: none;
+	visibility: hidden;
+}
 // General Styles 
 html {
 	@include transition(1500ms, background-color, ease-in-out);
@@ -17,6 +25,12 @@ body.lb-open {
 	-moz-transition: 0.5s filter linear !important;
 	-ms-transition: 0.5s filter linear !important;
 */
+}
+.blurtrans {
+	transition: 0.05s filter linear !important;
+	-webkit-transition: 0.05s filter linear !important;
+	-moz-transition: 0.05s filter linear !important;
+	-ms-transition: 0.05s filter linear !important;
 }
 #content {
 	z-index: 9;

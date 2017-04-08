@@ -12,6 +12,8 @@ $date_bg : #f0f0f0;
 	box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, .5);
 	border-radius: 4px;
 	overflow: hidden;
+	@include translate(0,-65px,0);
+
 }
 .ui-datepicker a {
 	text-decoration: none;

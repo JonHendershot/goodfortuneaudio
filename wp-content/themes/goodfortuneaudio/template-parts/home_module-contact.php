@@ -19,7 +19,7 @@
 		
 	</div>
 	<div class="project-planner-container contact-form-cont contact-project">
-		<div class="planner-meta">
+		<div class="planner-meta preblur blurtrans">
 			<div class="section-number">
 				<img src="<?php echo get_template_directory_uri() . '/images/button_x.png'; ?>" class="close-form" />
 				<span class="current-field">01</span>
@@ -35,7 +35,7 @@
 			<p class="message">Thanks for your project information, we'll be in touch shortly!</p>
 			<div class="main-btn blue close-form"><span>Close project planner</span></div>
 		</div>
-		<div class="btns">
+		<div class="btns preblur blurtrans">
 			<div class="nav-hint visible">
 				Press [ SHIFT ] + [ LEFT ] & [ RIGHT ] arrow keys or click to continue
 			</div>

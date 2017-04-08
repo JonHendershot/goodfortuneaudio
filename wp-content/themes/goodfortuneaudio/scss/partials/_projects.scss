@@ -100,6 +100,9 @@
 		}
 
 	}
+	.project-wrapper.off {
+		opacity: 0;
+	}
 	.project-wrapper.active {
 		visibility: visible;
 		@include translate(0,0,100px);
@@ -141,6 +144,39 @@
 	}
 }
 
+// Number Progress
+$num_color : #b7513a;
+$num_opacity : 0.35;
+.num-progress {
+	@include flexbox(center,center);
+	flex-direction: column;
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	right: -15px;
+	
+	
+	.divider {
+		width: 170%;
+		height: 25px;
+		background-color: $num_color;
+		opacity: 0.15;
+		display: block;
+		@include transition(0.4s,all,ease-in-out);
+	}
+	span {
+		font-family: $heading_font;
+		font-size: 190px;
+		color: $num_color;
+		opacity: 0.15;
+		@include transition(0.4s,all,ease-in-out);
+	}
+}
+.num-progress:hover, .project-nav:hover + .num-progress {
+	.divider,span, {
+		opacity: $num_opacity;
+	}
+}
 
 
 		

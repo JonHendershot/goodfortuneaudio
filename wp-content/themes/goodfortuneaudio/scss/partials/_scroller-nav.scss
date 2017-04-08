@@ -71,7 +71,7 @@ $inner_bubble_size :  6px;
 		}
 		
 	}
-	.nav-wrapper.active {
+	.nav-wrapper.active, .nav-wrapper.visible {
 		.info {
 			opacity: 1;
 			letter-spacing: 6px;
@@ -97,6 +97,27 @@ $inner_bubble_size :  6px;
 		.outer-circle {
 			@include scale(1);
 
+		}
+	}
+}
+.project-nav {
+	left: auto;
+	right: 25px;
+	
+	.nav-wrapper {
+		flex-direction: row-reverse;
+		.info {
+			@include translate(0,0,0);
+		}
+	}
+	.nav-wrapper.active {
+		.info {
+			@include translate(-10px,0,0);
+		}
+	}
+	.nav-wrapper.hover {
+		.info {
+			@include translate(-10px,0,0);
 		}
 	}
 }

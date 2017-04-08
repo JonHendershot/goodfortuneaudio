@@ -2,6 +2,9 @@
 // 
 body.page-template-template_home {
 	overflow: hidden;
+	#content {
+		height: 100vh;
+	}
 }
 
 // Setup variables for scroll hint box
@@ -11,7 +14,7 @@ $hoverdistance : 0.5 * $lineWidth;
 
 // Apply styles
 .scroll-hint-container {
-	position: fixed;
+	position: absolute;
 	bottom: 30px;
 	left: 0;
 	right: 0;
@@ -93,7 +96,7 @@ $hoverdistance : 0.5 * $lineWidth;
 
 // Home Page
 section {
-	position: fixed;
+	position: absolute;
 	width: 100%;
 	opacity: 0;
 	visibility: hidden;

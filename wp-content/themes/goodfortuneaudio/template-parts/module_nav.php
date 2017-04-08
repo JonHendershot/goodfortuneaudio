@@ -1,4 +1,4 @@
-<div class="scroller-nav preblur">
+<div class="scroller-nav preblur" id="page-nav">
 	
 	<?php
 		wp_reset_query();

@@ -5,7 +5,7 @@
 	.launch-pad {
 		@include flexbox(center,space-between);
 		flex-direction: column;
-		height: 45vh;
+		@include max-content(height);
 		transition: 1000ms all ease-in-out;
 		position: absolute;
 		top: 0;
@@ -33,8 +33,11 @@
 		.main-btn {
 			margin: 0 auto;
 		}
+		.general-contact-wrap,.project-planner-wrap {
+			margin: 25px 0;
+		}
 		
-		// General
+		// General Contact
 		.general-contact-wrap {
 			h3,p {
 				color: $orange;

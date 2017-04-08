@@ -7,14 +7,28 @@ function mobile(){
 	    return(isMobile);
 }
 (function dates($){
-	var field = $('.date-picker');
 	
+	// Variables
+	var field = $('.date-picker'),
+		calFooter = '<div class="cal-title">Start Date</div>',
+		dateIndex = {
+				"begin-date":"Start Date",
+				"end-date":"End Date"
+			},
+		blurEl = '.scroller-nav, .project-planner-container .planner-meta, .project-planner-container .btns, .header-logo.visible, video.visible';
+	
+	// Only initialize datepicker UI if .date-picker inputs exist on this page
 	if(field.length){
+		// Intialize datepicker for each .date-picker input
 		field.datepicker({
 			dayNamesMin: ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"],
 			showOtherMonths: true
 		});
 	}
+	
+	field.focus(function(){
+		$('.ui-datepicker').css({'display':'block'});
+	});
 }(jQuery));
 (function mediaInvoker($){
 	if(mobile() === true){
@@ -97,7 +111,7 @@ if(mobile() == false){
 			$(this).removeClass('hover');
 		});
 		
-		$('.nav-wrapper').click(function(){
+		$('#page-nav .nav-wrapper').click(function(){
 			var activeScreenData = $('section.active').data('self'),
 				activeScreenID = parseInt(activeScreenData.section_id),
 				nextScreenID = parseInt($(this).data('self').section_num);
@@ -275,7 +289,32 @@ if(mobile() == false){
 				// Add full duration to duration element
 				duration.text(trackMinutes + ':' + durationPre+trackSeconds);
 			}
-		
+			
+		// Audio Navigation
+			$('.song-nav').click(function(){
+				if( ! $(this).hasClass('disabled')){ // Only fire function if nav button is enabled
+				
+				
+					var currentSong = parseInt($("#project-player").attr('data-current-song')),
+						nextSong = parseInt($(this).attr('data-get'));
+						
+					audioNav(currentSong,nextSong);	
+				
+					$('.play.pause').removeClass('pause');	
+				}
+			});
+			$('.song-nav').hover(function(){
+				var btnKey = this.classList[0],
+					selector = '.' + btnKey + '-title';
+				
+				$('.audio-player-container .buttons ' + selector).addClass('visible');	
+			},function(){
+				var btnKey = this.classList[0],
+					selector = '.' + btnKey + '-title';
+				
+				$('.audio-player-container .buttons ' + selector).removeClass('visible');	
+			});
+			
 		
 		// PROJECT NAVIGATION
 		// Begin Clone
@@ -298,12 +337,20 @@ if(mobile() == false){
 			
 		// Mobile Trigger Click
 			$('.project-trigger').click(function(){
+				
 				var projectID = parseInt($(this).attr('data-postid')),
 					projectObject = $('.project-wrapper.project-' + projectID).data('heuristic');
 				
 				nextProject(projectObject);
 				
 				
+			});
+		
+		// Project Nav Click
+			$('.project-nav .nav-wrapper').click(function(){
+				var projectID = parseInt($(this).attr('data-project')),
+					projectObject = $('.project-wrapper.project-' + projectID).data('heuristic');
+				nextProject(projectObject);
 			});
 		
 		// Anon Functions
@@ -346,6 +393,7 @@ if(mobile() == false){
 						
 				}
 			}
+			
 		// Switch projects
 			function nextProject(projectdata){
 				$('.project-box, .project-wrapper').removeClass('playing');
@@ -354,15 +402,17 @@ if(mobile() == false){
 				var projectID = parseInt(projectdata.project_number),
 					projectTitle = projectdata.artist,
 					projectImage = projectdata.artist_image,
-					projectFile = projectdata.song_file
-					projectFileTitle = projectdata.song_title,
+					projectFile = projectdata.song_file_1,
+					projectFileTitle = projectdata.song_title_1,
 					projectRoles = projectdata.roles_played,
 					projectFrame = projectdata.project_frame,
 					nextProjectID = projectID + 1,
 					prevProjectID = projectID -1,
 					nextCloneID = projectID + 2,
 					prevCloneID = projectID - 2,
-					totalProjects = parseInt(projectdata.total_projects);
+					totalProjects = parseInt(projectdata.total_projects),
+					totalSongs = parseInt(projectdata.total_project_songs),
+					currentProject = parseInt($('.project-wrapper.active').data('heuristic').project_number);
 				
 				if( projectID <= totalProjects ){ // only execute if next id Exists
 						
@@ -405,6 +455,56 @@ if(mobile() == false){
 								}
 								
 								
+							}else if( projectID < (currentProject - 1) ){
+								// We're jumping over projects now and we need to handle those animations a little bit differently
+								// Animate Down
+								
+								// Variables
+								var previous = projectID - 1,
+									next = projectID + 1;
+								
+								if(previous >= 1){
+									var previousID = previous;
+								}else {
+									var previousID = totalProjects;
+								}
+								
+								if(next <= totalProjects){
+									var nextID = next;
+								}else {
+									var nextID = 1;
+								}
+								
+								// Fade Titles Out
+								$('.project-wrapper').addClass('off');
+								// Change Positions
+								setTimeout(function(){
+									
+									$('.project-wrapper.active, .project-wrapper.next').removeClass('active next').addClass('bottom');
+									
+									if($('.project-wrapper.project-' + nextID).hasClass('last')){
+										$('.project-wrapper.last.project-' + nextID).removeClass('last').addClass('next');
+									}else {
+										$('.project-wrapper.project-' + nextID).first().removeClass('top').addClass('next');
+										$('.project-wrapper.last').removeClass('last').addClass('bottom');
+									}
+									$('.project-wrapper.project-' + previousID).first().removeClass('top last next active bottom').addClass('last');
+									$('.project-wrapper.project-' + projectID).first().removeClass('top last next active bottom').addClass('active');
+									
+
+								},400);
+								setTimeout(function(){
+									$('.project-wrapper.off').removeClass('off');
+								},1000);
+								
+								// Clone past next item if needed
+								for(ii = nextID; ii <= totalProjects; ii++){
+									if( ! $('.project-wrapper.top.project-' + ii).length){
+										$('.project-wrapper.project-'+ii).first().clone(true).removeClass('top bottom active next last').addClass('top').prependTo('.projects-container');
+									}
+								}
+								
+								
 							}
 							
 							if( $('.project-wrapper.project-' + projectID).hasClass('last') ){ // animate down
@@ -426,15 +526,73 @@ if(mobile() == false){
 								}
 								
 								
+							}else if( projectID > (currentProject + 1) ){
+								// We're jumping over projects now and we need to handle those animations a little bit differently
+								// Animate Up
+								
+								// Variables
+								var previous = projectID - 1,
+									next = projectID + 1;
+								
+								if(previous >= 1){
+									var previousID = previous;
+								}else {
+									var previousID = totalProjects;
+								}
+								
+								if(next <= totalProjects){
+									var nextID = next;
+								}else {
+									var nextID = 1;
+								}
+								
+								// Fade Titles Out
+								$('.project-wrapper').addClass('off');
+								// Change Positions
+								setTimeout(function(){
+									
+									$('.project-wrapper.active, .project-wrapper.last').removeClass('active last').addClass('top');
+									
+									if($('.project-wrapper.project-' + previousID).hasClass('next')){
+										$('.project-wrapper.next.project-' + previousID).removeClass('next').addClass('last');
+									}else {
+										$('.project-wrapper.project-' + previousID).last().removeClass('bottom').addClass('last');
+										$('.project-wrapper.next').removeClass('next').addClass('top');
+									}
+									$('.project-wrapper.project-' + nextID).last().removeClass('top last next active bottom').addClass('next');
+									$('.project-wrapper.project-' + projectID).last().removeClass('top last next active bottom').addClass('active');
+									
+
+								},400);
+								setTimeout(function(){
+									$('.project-wrapper.off').removeClass('off');
+								},1000);
+
+								
+								// Clone past next item if needed
+								setTimeout(function(){
+									for(ii = 1; ii <= previousID; ii++){
+										if( ! $('.project-wrapper.bottom.project-' + ii).length){
+											$('.project-wrapper.project-'+ii).first().clone(true).removeClass('top bottom active next last').addClass('bottom').appendTo('.projects-container');
+										}
+									}	
+								}, 1100);
+								
+								
 							}
 							
 						
 							
+							
+							
 							$('.project-box').addClass('off');
 /* 							$('#project-background').addClass('transition'); */
 							$('.project-box audio source').attr('src','');
-							
 						
+					// Update Project Nav
+						$('.project-nav .nav-wrapper.active').removeClass('active');
+						$('.project-nav .nav-wrapper.project-' + projectID).addClass('active');		
+						$('.num-progress .current-project').text(projectID);
 					// Update Info
 						setTimeout(function(){
 							
@@ -446,6 +604,26 @@ if(mobile() == false){
 							$('.project-box audio source').attr('src',projectFile);
 							$('.role.meta').text(projectRoles);
 							$('.title.meta').text('"' + projectFileTitle + '"');
+							
+							if(totalSongs > 1){
+								
+								// Enable Buttons
+								$('.audio-player-container .buttons .song-nav.disabled').removeClass('disabled');
+								// Next Button
+								$('.audio-player-container .buttons .next.song-nav').attr('data-get',2);
+								$('.audio-player-container .buttons .next-title').text(projectdata.song_title_2);
+								
+								// Previous Button
+								$('.audio-player-container .buttons .prev.song-nav').attr('data-get',totalSongs);
+								$('.audio-player-container .buttons .prev-title').text(projectdata['song_title_' + totalSongs]);
+								
+							}else {
+								// Diable Buttons
+								$('.audio-player-container .buttons .song-nav').addClass('disabled').attr('data-get','');
+								
+								// Remove Text from nav titles
+								$('.audio-player-container .buttons .song-nav-title').text('');
+							}
 							
 		
 							audioTrack.load();
@@ -473,12 +651,12 @@ if(mobile() == false){
 						
 						setTimeout(function(){
 							$('.project-box').removeClass('off');
-							$('.project-wrapper.next, .project-wrapper.last').removeClass('off');
+/* 							$('.project-wrapper.next, .project-wrapper.last').removeClass('off'); */
 /* 							$('#project-background').removeClass('transition'); */
 						},500);
 					
 					// Update Mobile Triggers
-					if(mobile() == true){
+						if(mobile() == true){
 						
 		
 						
@@ -601,7 +779,6 @@ if(mobile() == false){
 		var object = $(this),
 			value = $(this).text();
 		
-		
 		checkbox(object,value);
 	});
 	
@@ -632,7 +809,7 @@ if(mobile() == false){
 	// Errors
 	$(".wpcf7").on('wpcf7:invalid', function(event){
 		var info = $('.wpcf7-not-valid-tip').first(),
-			section = findParent(info),
+			section = findParent(info,'ppsection'),
 			current = $('.ppsection.visible').data("part");
 			
 		ppNextField(current, section);
@@ -652,23 +829,7 @@ if(mobile() == false){
 		
 			
 	  
-	});
-	
-	function findParent(obj){
-		var child = obj,
-			parent;
-		for(ii = 1; ii < 6; ii++){
-			
-			if(child.parent().hasClass('ppsection')){
-				parent = child.parent().data('part');
-			}else {
-				child = child.parent();
-			}
-			
-		}
-		return parent;
-	}
-	
+	});	
 }(jQuery));
 (function dropZoneUploader($){
 	
@@ -951,6 +1112,20 @@ function fileID(obj){
 		
 		return file_ID;
 }
+function findParent(obj,cls){
+	var child = obj,
+		parent;
+	for(ii = 1; ii < 6; ii++){
+		
+		if(child.parent().hasClass(cls)){
+			parent = child.parent().data('part');
+		}else {
+			child = child.parent();
+		}
+		
+	}
+	return parent;
+}
 
 
 function nextScreen(currentScreenID, nextID){
@@ -1055,16 +1230,20 @@ function nextScreen(currentScreenID, nextID){
 	
 
 	// Change interface information
-	$('.nav-wrapper.active').removeClass('active');
-	$('.nav-wrapper.nav-' + nsID).addClass('active');
-	$('.scroller-nav .info').find( $('.section-title') ).css({"color":nameColor});
-	$('.section-num').css({"color":numberColor});
-	$('.outer-circle, .inner-circle').css({"background-color":bubbleColor});
-	$('section.active').not('.section-' + nsID).removeClass('active');
-	$('.section-' + nsID).addClass('active');	
-	$('.page-viewer, html').css({'background-color':backgroundClr});
-	$('.header-logo img.visible').removeClass('visible').addClass('hidden');
-	$('.header-logo img.'+logoColor).removeClass('hidden').addClass('visible');
+		
+		// Page Navigation
+		$('#page-nav .nav-wrapper.active').removeClass('active');
+		$('#page-nav .nav-wrapper.nav-' + nsID).addClass('active');
+		$('#page-nav .scroller-nav .info').find( $('.section-title') ).css({"color":nameColor});
+		$('#page-nav .section-num').css({"color":numberColor});
+		$('#page-nav .outer-circle, .inner-circle').css({"background-color":bubbleColor});
+	
+		// Change Interface
+		$('section.active').not('.section-' + nsID).removeClass('active');
+		$('.section-' + nsID).addClass('active');	
+		$('.page-viewer, html').css({'background-color':backgroundClr});
+		$('.header-logo img.visible').removeClass('visible').addClass('hidden');
+		$('.header-logo img.'+logoColor).removeClass('hidden').addClass('visible');
 	
 	// Mobile menu trigger
 	if(mobile() == true){
@@ -1228,11 +1407,16 @@ function ppNextField(currentFieldID, nextFieldID){
 		},1000);
 	}
 	
+	// Hide datepicker calendar
+	if( $('.ui-datepicker').is(':visible') ){
+		$('.ui-datepicker').css({'display':'none'});
+		console.log('hiding datepicker');
+	}
 	
 }
 function checkbox(clicked,value){
 	var $ = jQuery,
-		checkbox = $('input[value="' + value + '"'),
+		checkbox = $('input[value="' + value + '"]'),
 		expand = ["Full Record","EP"],
 		expandEval = expand.indexOf(value),
 		placePrep = 'Tell me more about your '
@@ -1266,6 +1450,7 @@ function checkbox(clicked,value){
 			},605);
 			
 		}else if($('.ppsection .elaboration').hasClass('elaborate')){
+			// Remove expansion if it's showing and it's not needed
 			$('.elaboration.elaborate, .service-select.elaborate').removeClass('elaborate');
 		}
 			
@@ -1277,10 +1462,56 @@ function checkbox(clicked,value){
 	}
 	
 	// Change the describe project placeholder if other, else - reset it
-	$('textarea[name="project-description"]').attr('placeholder', valist[value]);
-
+	$('textarea[name="project-description"]').attr('placeholder', valist[value]);	
+}
+function audioNav(current,next){
 	
+	// Set Variables
+	var $ = jQuery,
+		audioPlayer = $('#project-player'),
+		projectData = $('.project-wrapper.active').data('heuristic'),
+		titleDisplay = $('.project-meta .title.meta'),
+		audioKey = 'song_file_' + next,
+		titleKey = 'song_title_' + next,
+		audioUrl = projectData[audioKey],
+		audioTitle = projectData[titleKey],
+		totalSongs = projectData['total_project_songs'];
 	
+	// Change Audio File for current song
+	audioPlayer.attr('data-current-song',next).find('source').attr('src',audioUrl);
+	document.getElementById('project-player').load();
+	
+	// Change Title Display for current song
+	titleDisplay.text('"' + audioTitle + '"');
+	
+	// Update Handles
+	if(next + 1 <= totalSongs){
+		// Next song in progression exists, go get it
+		var nextGet = next + 1;
+	}else {
+		// Next song in progression doesn't exist, let's get the first one
+		var nextGet = 1;
+	}
+	if(next-1 >= 1){
+		// Previous song in progression exists, go get it
+		var prevGet = next - 1;
+	}else {
+		// Previous song in progression doesn't exist, use the last one
+		var prevGet = totalSongs;
+	}
+	
+	$('.song-nav.next').attr('data-get',nextGet);
+	$('.song-nav.prev').attr('data-get',prevGet);
+	
+	// Update Song Titles
+	var nextTitleKey =  'song_title_' + nextGet,
+		prevTitleKey = 'song_title_' + prevGet,
+		nextTitle = projectData[nextTitleKey],
+		prevTitle = projectData[prevTitleKey];
+	
+	$('.audio-player-container .buttons .prev-title').text(prevTitle);
+	$('.audio-player-container .buttons .next-title').text(nextTitle);
+		
 }
 
 

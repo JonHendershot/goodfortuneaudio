@@ -53,6 +53,7 @@
 		@include flexbox(center,space-between);
 		width: 20%;
 		margin: 0 auto;
+		position: relative;
 		.prev, .next, .play {
 			height: 40px;
 			width: 40px;
@@ -88,5 +89,28 @@
 		.prev {
 			@include translate(20px,0,0);
 		}
+		.next.disabled, .prev.disabled {
+			opacity: 0.2;
+			cursor: not-allowed;
+		}
+		.song-nav-title {
+			position: absolute;
+		    font-size: 9px;
+		    letter-spacing: 1px;
+		    @include transition(0.3s,all,ease-in-out);
+		    opacity: 0;
+		}
+		.song-nav-title.visible {
+			opacity: 1;
+		}
+		.prev-title {
+			left: 0;
+			@include translate(-100%,0,0);
+		}
+		.next-title {
+			right: 0;
+			@include translate(100%,0,0);
+		}
+		
 	}
 }
