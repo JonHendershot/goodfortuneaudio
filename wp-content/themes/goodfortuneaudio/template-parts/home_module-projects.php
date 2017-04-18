@@ -26,6 +26,7 @@
 				$project_num = $query->found_posts;
 				$project_frame_var = get_field('promo_position');
 				$project_frame = strtolower($project_frame_var);
+				$project_class = "project-wrapper project-$ii ";
 				
 				// Establish total song Count
 				if($song_file_3){
@@ -66,6 +67,20 @@
 				// Translate $project_info into a JSON object
 				$project_json = json_encode($project_info);
 				
+			// Check project number and append class names to project class object 
+				if( $ii === 1){
+					$project_class .= 'active ';
+				}
+				if( $ii === 2){
+					$project_class .= 'next ';
+				}
+				if( $ii === $project_num ){
+					$project_class .= 'last ';
+				}
+				if( $ii > 2 && $ii !== $project_num ){
+					$project_class .= 'bottom ';
+				}
+			
 			// Setup Project Image box and populate with first project image -- this only runs one time
 				if($ii === 1){ ?>
 					<div class="project-box image-container <?php echo $project_frame; ?>" id="project-box" onmousemove="projectHover(event)" onmouseout="projectReset()" >
@@ -147,7 +162,7 @@
 					</div>		 
 				<?php	} // End if first iteration ?> 
 			
-				<div class="project-wrapper <?php echo "project-$ii "; if($ii === 1){echo 'active';} if($ii === 2){echo' next ';} if($ii === $project_num){echo ' last';} if( $ii > 2  && $ii !== $project_num){ echo " bottom "; } ?>" data-heuristic='<?php echo $project_json; ?>' data-number="<?php echo $ii; ?>">
+				<div class="<?php echo $project_class; ?>" data-heuristic='<?php echo $project_json; ?>' data-number="<?php echo $ii; ?>">
 					<h2><?php echo $artist; ?></h2>
 				</div>		
 	<?php $ii++; endwhile; wp_reset_query();?>

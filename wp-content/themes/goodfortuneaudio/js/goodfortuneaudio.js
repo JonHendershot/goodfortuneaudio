@@ -502,9 +502,7 @@ if(mobile() == false){
 									if( ! $('.project-wrapper.top.project-' + ii).length){
 										$('.project-wrapper.project-'+ii).first().clone(true).removeClass('top bottom active next last').addClass('top').prependTo('.projects-container');
 									}
-								}
-								
-								
+								}	
 							}
 							
 							if( $('.project-wrapper.project-' + projectID).hasClass('last') ){ // animate down
@@ -521,11 +519,9 @@ if(mobile() == false){
 										$('.project-wrapper.project-' + (totalProjects)).first().clone(true).removeClass('top active last bottom next').addClass('top').prependTo('.projects-container');
 									}else if(prevCloneID == -1){
 										$('.project-wrapper.project-' + (totalProjects-1)).first().clone(true).removeClass('top active last bottom next').addClass('top').prependTo('.projects-container');
-									}
-									
+									}	
 								}
-								
-								
+	
 							}else if( projectID > (currentProject + 1) ){
 								// We're jumping over projects now and we need to handle those animations a little bit differently
 								// Animate Up
@@ -580,10 +576,6 @@ if(mobile() == false){
 								
 								
 							}
-							
-						
-							
-							
 							
 							$('.project-box').addClass('off');
 /* 							$('#project-background').addClass('transition'); */
@@ -1439,7 +1431,7 @@ function checkbox(clicked,value){
 		if( expandEval !== -1){
 			// the clicked value warrants expansion, so show it
 			$('.ppsection .elaboration, .service-select').addClass('elaborate');
-			
+			$('.elaboration input').val(4);
 			setTimeout(function(){ // Timeout to make field focus after it's done animating
 				var input = $('input[name="number-songs"]'),
 					inputVal = input.val();
@@ -1452,6 +1444,7 @@ function checkbox(clicked,value){
 		}else if($('.ppsection .elaboration').hasClass('elaborate')){
 			// Remove expansion if it's showing and it's not needed
 			$('.elaboration.elaborate, .service-select.elaborate').removeClass('elaborate');
+			$('.elaboration input').val('');
 		}
 			
 	}else {
